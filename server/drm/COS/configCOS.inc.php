@@ -30,11 +30,11 @@ Temple Place, Suite 330, Boston, MA 02111-1307 USA
 */
 //General configuration file
 //LIS DB DIRECTIVES
-$COS_DB_TYPE = "mysql";
-$COS_DB_SERVER = "localhost";
-$COS_DB_DBNAME = "cos_sf";
-$COS_DB_USRNAME = "root";
-$COS_DB_PWD = "";
+$GLOBALS['COS_DB_TYPE'] = "mysql";
+$GLOBALS['COS_DB_SERVER'] = "127.0.0.1";
+$GLOBALS['COS_DB_DBNAME'] = "cosws_dev";
+$GLOBALS['COS_DB_USRNAME'] = "root";
+$GLOBALS['COS_DB_PWD'] = "";
 $GLOBALS['VERSION'] = "<a href='../../'>OpenSDRM</a> Commerce Server 0.2sf ";
 $GLOBALS['FOOTER_NOTE'] = "&copy; Adetti 2007 - Produced by ADETTI (Carlos Serrao)";
 ?>

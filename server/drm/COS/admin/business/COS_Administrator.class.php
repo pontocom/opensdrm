@@ -341,6 +341,10 @@ class COS_Administrator extends DatabaseHandler
 		"identification" => $this->cert->getCert(1),
 		"signature" => base64_encode($this->signData_($this->cert->getCert(1)))
 		);
+        
+        var_dump($parameters);
+        exit;
+        
 		$result = $soapclient->call('AUSrequestListOfPGW_', $parameters);
 //		echo "<br>Parameters:";
 //		print_r($parameters);
