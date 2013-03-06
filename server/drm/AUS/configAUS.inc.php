@@ -35,6 +35,7 @@ $GLOBALS['AUS_DB_SERVER'] = "127.0.0.1";
 $GLOBALS['AUS_DB_DBNAME'] = "ausws_dev";
 $GLOBALS['AUS_DB_USRNAME'] = "root";
 $GLOBALS['AUS_DB_PWD'] = "";
+
 //AUS WS DIRECTIVES
 $GLOBALS['VERSION'] = "<a href='../../'>OpenSDRM</a> Authentication Server 0.2sf ";
 $GLOBALS['FOOTER_NOTE'] = "&copy; Adetti 2007 - Produced by ADETTI (Carlos Serrao)";
