@@ -1,0 +1,132 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: cryptlib - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\DOCUME~1\CARLOS~1\LOCALS~1\Temp\RSP79E.tmp" with contents
+[
+/nologo /MD /W3 /GX /O2 /D "NDEBUG" /D "WIN32" /D "_WINDOWS" /D "USE_PRECOMPILED_HEADERS" /Fp"release/cryptlib.pch" /Yu"pch.h" /Fo"release/" /Fd"release/" /FD /c 
+"d:\Development\InternalProjects\ahcrypto\crypto++\algebra.cpp"
+"d:\Development\InternalProjects\ahcrypto\crypto++\asn.cpp"
+"d:\Development\InternalProjects\ahcrypto\crypto++\base64.cpp"
+"d:\Development\InternalProjects\ahcrypto\crypto++\cryptlib.cpp"
+"d:\Development\InternalProjects\ahcrypto\crypto++\eprecomp.cpp"
+"d:\Development\InternalProjects\ahcrypto\crypto++\files.cpp"
+"d:\Development\InternalProjects\ahcrypto\crypto++\filters.cpp"
+"d:\Development\InternalProjects\ahcrypto\crypto++\hex.cpp"
+"d:\Development\InternalProjects\ahcrypto\crypto++\integer.cpp"
+"d:\Development\InternalProjects\ahcrypto\crypto++\iterhash.cpp"
+"d:\Development\InternalProjects\ahcrypto\crypto++\md5.cpp"
+"d:\Development\InternalProjects\ahcrypto\crypto++\misc.cpp"
+"d:\Development\InternalProjects\ahcrypto\crypto++\modes.cpp"
+"d:\Development\InternalProjects\ahcrypto\crypto++\mqueue.cpp"
+"d:\Development\InternalProjects\ahcrypto\crypto++\nbtheory.cpp"
+"d:\Development\InternalProjects\ahcrypto\crypto++\oaep.cpp"
+"d:\Development\InternalProjects\ahcrypto\crypto++\pkcspad.cpp"
+"d:\Development\InternalProjects\ahcrypto\crypto++\pubkey.cpp"
+"d:\Development\InternalProjects\ahcrypto\crypto++\queue.cpp"
+"d:\Development\InternalProjects\ahcrypto\crypto++\randpool.cpp"
+"d:\Development\InternalProjects\ahcrypto\crypto++\rsa.cpp"
+"d:\Development\InternalProjects\ahcrypto\crypto++\sha.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\CARLOS~1\LOCALS~1\Temp\RSP79E.tmp" 
+Creating temporary file "C:\DOCUME~1\CARLOS~1\LOCALS~1\Temp\RSP79F.tmp" with contents
+[
+/nologo /MD /W3 /GX /O2 /D "NDEBUG" /D "WIN32" /D "_WINDOWS" /D "USE_PRECOMPILED_HEADERS" /Fp"release/cryptlib.pch" /Yc"pch.h" /Fo"release/" /Fd"release/" /FD /c 
+"d:\Development\InternalProjects\ahcrypto\crypto++\pch.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\CARLOS~1\LOCALS~1\Temp\RSP79F.tmp" 
+Creating temporary file "C:\DOCUME~1\CARLOS~1\LOCALS~1\Temp\RSP7A0.tmp" with contents
+[
+/nologo /out:"release\cryptlib.lib" 
+".\release\algebra.obj"
+".\release\asn.obj"
+".\release\base64.obj"
+".\release\cryptlib.obj"
+".\release\eprecomp.obj"
+".\release\files.obj"
+".\release\filters.obj"
+".\release\hex.obj"
+".\release\integer.obj"
+".\release\iterhash.obj"
+".\release\md5.obj"
+".\release\misc.obj"
+".\release\modes.obj"
+".\release\mqueue.obj"
+".\release\nbtheory.obj"
+".\release\oaep.obj"
+".\release\pch.obj"
+".\release\pkcspad.obj"
+".\release\pubkey.obj"
+".\release\queue.obj"
+".\release\randpool.obj"
+".\release\rsa.obj"
+".\release\sha.obj"
+]
+Creating command line "link.exe -lib @C:\DOCUME~1\CARLOS~1\LOCALS~1\Temp\RSP7A0.tmp"
+<h3>Output Window</h3>
+Compiling...
+pch.cpp
+Compiling...
+algebra.cpp
+asn.cpp
+base64.cpp
+cryptlib.cpp
+eprecomp.cpp
+files.cpp
+filters.cpp
+hex.cpp
+integer.cpp
+iterhash.cpp
+md5.cpp
+misc.cpp
+modes.cpp
+mqueue.cpp
+nbtheory.cpp
+oaep.cpp
+pkcspad.cpp
+pubkey.cpp
+queue.cpp
+randpool.cpp
+Generating Code...
+Compiling...
+rsa.cpp
+sha.cpp
+Generating Code...
+Creating library...
+<h3>
+--------------------Configuration: ahcrypto - Win32 Release_TS--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\DOCUME~1\CARLOS~1\LOCALS~1\Temp\RSP7A1.tmp" with contents
+[
+/nologo /G6 /MD /W3 /GX /O2 /I "..\.." /I "..\..\main" /I "..\..\Zend" /I "..\..\TSRM" /I "..\..\bindlib_w32" /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /D "_USRDLL" /D "AHCRYPTO_EXPORTS" /D ZEND_DEBUG=0 /D "COMPILE_DL_AHCRYPTO" /D ZTS=1 /D "ZEND_WIN32" /D "PHP_WIN32" /FR"Release_TS/" /Fp"Release_TS/ahcrypto.pch" /YX /Fo"Release_TS/" /Fd"Release_TS/" /FD /c 
+"d:\Development\InternalProjects\ahcrypto\ahcrypto.c"
+"d:\Development\InternalProjects\ahcrypto\crypto++.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\CARLOS~1\LOCALS~1\Temp\RSP7A1.tmp" 
+Creating temporary file "C:\DOCUME~1\CARLOS~1\LOCALS~1\Temp\RSP7A2.tmp" with contents
+[
+kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib php4ts.lib cryptlib.lib /nologo /dll /incremental:no /pdb:"Release_TS/php_ahcrypto.pdb" /machine:I386 /out:"../../../../MOSES/php/extensions/php_ahcrypto.dll" /implib:"Release_TS/php_ahcrypto.lib" /libpath:"..\..\Release_TS" /libpath:"crypto++\release" 
+.\Release_TS\ahcrypto.obj
+".\Release_TS\crypto++.obj"
+]
+Creating command line "link.exe @C:\DOCUME~1\CARLOS~1\LOCALS~1\Temp\RSP7A2.tmp"
+<h3>Output Window</h3>
+Compiling...
+ahcrypto.c
+d:\Development\InternalProjects\ahcrypto\ahcrypto.c(3) : fatal error C1083: Cannot open include file: 'php.h': No such file or directory
+crypto++.cpp
+d:\Development\InternalProjects\ahcrypto\crypto++.cpp(14) : fatal error C1083: Cannot open include file: 'php.h': No such file or directory
+Error executing cl.exe.
+
+
+
+<h3>Results</h3>
+php_ahcrypto.dll - 2 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

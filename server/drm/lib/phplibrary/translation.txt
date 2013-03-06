@@ -1,0 +1,317 @@
+ID	German	English
+TestDummy	TestDummy	TestDummy
+AD	Andorra	-
+AE	Vereinigte Arabische Emirate	-
+AF	Afghanistan	-
+AG	Antigua und Barbuda	-
+AI	Anguilla	-
+AL	Albanien	-
+AM	Armenien	-
+AN	Niederländische Antillen	-
+AO	Angola	-
+AQ	Antarktis	-
+AR	Argentinien	-
+AS	Amerikanische Samoa	-
+AT	Österreich	-
+AU	Australien	-
+AW	Aruba	-
+AZ	Aserbaidschan	-
+BA	Bosnien und Herzegowina	-
+BA	Herzegowina	-
+BB	Barbados	-
+BD	Bangladesch	-
+BE	Belgien	-
+BF	Burkina Faso	-
+BG	Bulgarien	-
+BH	Bahrain	-
+BI	Burundi	-
+BJ	Benin	-
+BM	Bermuda	-
+BN	Brunei Darussalam	-
+BO	Bolivien	-
+BR	Brasilien	-
+BS	Bahamas	-
+BT	Bhutan	-
+BV	Bouvetinsel	-
+BW	Botswana	-
+BY	Belarus	-
+BZ	Belize	-
+CA	Kanada	-
+CC	Kokosinseln	-
+CD	Kongo	-
+CF	Zentralafrikanische Republik	-
+CG	Kongo	-
+CH	Schweiz	-
+CI	Elfenbeinküste	-
+CK	Cookinseln	-
+CL	Chile	-
+CM	Kamerun	-
+CN	China	-
+CO	Kolumbien	-
+CR	Costa Rica	-
+CU	Kuba	-
+CV	Kap Verde	-
+CX	Weihnachtsinsel	-
+CY	Zypern	-
+CZ	Tschechische Republik	-
+DE	Deutschland	-
+DJ	Dschibuti	-
+DK	Dänemark	-
+DM	Dominica	-
+DO	Dominikanische Republik	-
+DZ	Algerien	-
+EC	Ecuador	-
+EE	Estland	-
+EG	Ägypten	-
+EH	Westsahara	-
+ER	Eritrea	-
+ES	Spanien	-
+ET	Äthiopien	-
+FI	Finnland	-
+FJ	Fidschi	-
+FK	Falklandinseln	-
+FM	Mikronesien	-
+FO	Färöer	-
+FR	Frankreich	-
+GA	Gabun	-
+GB	England	-
+GB	Grossbritannien	-
+GB	Schottland	-
+GD	Grenada	-
+GE	Georgien	-
+GF	Französisch Guayana	-
+GH	Ghana	-
+GI	Gibraltar	-
+GL	Grönland	-
+GM	Gambia	-
+GN	Guinea	-
+GP	Guadeloupe	-
+GQ	Äquatorial Guinea	-
+GR	Griechenland	-
+GS	Südgeorgien und die südlichen Sandwichinseln	-
+GT	Guam	-
+GT	Guatemala	-
+GW	Guinea Bissau	-
+GY	Guyana	-
+HK	Hongkong	-
+HM	Herald und McDonaldinseln	-
+HN	Honduras	-
+HR	Kroatien	-
+HT	Haïti	-
+HU	Ungarn	-
+ID	Indonesien	-
+IE	Irland	-
+IL	Israel	-
+IN	Indien	-
+IO	Brittisches Territorium im Indischen Ozean	-
+IQ	Irak	-
+IR	Iran	-
+IS	Island	-
+IT	Italien	-
+JM	Jamaika	-
+JO	Jordanien	-
+JP	Japan	-
+KE	Kenia	-
+KG	Kirgisistan	-
+KH	Kambodscha	-
+KI	Kiribati	-
+KM	Komoren	-
+KN	St. Kitts und Nevis	-
+KP	Nordkorea	-
+KR	Südkorea	-
+KW	Kuwait	-
+KY	Kaimaninseln	-
+KZ	Kasachstan	-
+LA	Laos	-
+LB	Libanon	-
+LC	St. Lucia	-
+LI	Liechtenstein	-
+LK	Sri Lanka	-
+LR	Liberia	-
+LS	Lesotho	-
+LT	Litauen	-
+LU	Luxemburg	-
+LV	Lettland	-
+LY	Libysch arabische Dschamahirija	-
+MA	Marokko	-
+MC	Monaco	-
+MD	Moldau	-
+MG	Madagaskar	-
+MH	Marshallinseln	-
+MK	Mazedonien	-
+ML	Mali	-
+MM	Myanmar	-
+MN	Mongolei	-
+MO	Macau	-
+MP	Marianen	-
+MQ	Martinique	-
+MR	Mauretanien	-
+MS	Montserrat	-
+MT	Malta	-
+MU	Mauritius	-
+MV	Malediven	-
+MW	Malawi	-
+MX	Mexiko	-
+MY	Malaysia	-
+MZ	Mosambik	-
+NA	Namibia	-
+NC	Neukaledonien	-
+NE	Niger	-
+NF	Norfolkinsel	-
+NG	Nigeria	-
+NI	Nicaragua	-
+NL	Holland	-
+NL	Niederlande	-
+NO	Norwegen	-
+NP	Nepal	-
+NR	Nauru	-
+NU	Niue	-
+NZ	Neuseeland	-
+OM	Oman	-
+PA	Panama	-
+PE	Peru	-
+PF	Französisch Polynesien	-
+PG	Papua Neuguinea	-
+PH	Philippinen	-
+PK	Pakistan	-
+PL	Polen	-
+PM	St. Pierre und Miquelon	-
+PN	Pitcairninseln	-
+PR	Puerto Rico	-
+PT	Portugal	-
+PW	Palau	-
+PY	Paraguay	-
+QA	Katar	-
+RE	Réunion	-
+RO	Rumänien	-
+RU	Russische Föderation	-
+RW	Ruanda	-
+SA	Saudi Arabien	-
+SB	Salomonen	-
+SC	Seychellen	-
+SD	Sudan	-
+SE	Schweden	-
+SG	Singapur	-
+SH	St. Helena	-
+SI	Slowenien	-
+SJ	Svalbard und Jan Mayen	-
+SK	Slowakei	-
+SL	Sierra Leone	-
+SM	San Marino	-
+SN	Senegal	-
+SO	Somalia	-
+SR	Suriname	-
+ST	São Tomé und Principe	-
+SV	El Salvador	-
+SY	Syrien	-
+SZ	Swasiland	-
+TC	Turksinseln und Caicosinseln	-
+TD	Tschad	-
+TF	Französische Südgebiete	-
+TG	Togo	-
+TH	Thailand	-
+TJ	Tadschikistan	-
+TK	Tokelau	-
+TM	Turkmenistan	-
+TN	Tunesien	-
+TO	Tonga	-
+TP	Osttimor	-
+TR	Türkei	-
+TT	Trinidad und Tobago	-
+TV	Tuvalu	-
+TW	Taiwan	-
+TZ	Tansania	-
+UA	Ukraine	-
+UG	Uganda	-
+UM	Amerikanische Überseeinseln	-
+US	USA	-
+US	Vereinigte Staaten von Amerika	-
+UY	Uruguay	-
+UZ	Usbekistan	-
+VA	Vatikan	-
+VC	St. Vincent und die Grenadinen	-
+VE	Venezuela	-
+VG	Brittische Jungferninseln	-
+VI	Amerikanische Jungferninseln	-
+VN	Vietnam	-
+VU	Vanuatu	-
+WF	Wallis und Futuna	-
+WS	Samoa	-
+YE	Jemen	-
+YT	Mayotte	-
+YU	Jugoslawien	-
+ZA	Südafrika	-
+ZM	Sambia	-
+ZW	Simbabwe	-
+
+Monday	Montag	Monday
+Tuesday	Dienstag	Tuesday
+Wednesday	Mittwoch	Wednesday
+Thursday	Freitag	Thursday
+Friday	Donnerstag	Friday
+Saturday	Samstag	Saturday
+Sunday	Sonntag	Sunday
+Monday#	Mo	Mo
+Tuesday#	Di	Tu
+Wednesday#	Mi	We
+Thursday#	Fr	Th
+Friday#	Do	Fr
+Saturday#	Sa	Sa
+Sunday#	So	Su
+January	Januar	January
+February	Februar	February
+March	März	March
+April	April	April
+May	Mai	May
+June	Juni	June
+July	Juni	July
+August	Juli	August
+September	September	September
+October	Oktober	October
+Novembers	November	Novembers
+December	Dezember	December
+January#	Jan	Jan
+February#	Feb	Feb
+March#	Mär	Mar
+April#	Apr	Arp
+May#	Mai	May
+June#	Jun	Jun
+July#	Jun	Jul
+August#	Jul	Aug
+September#	Sep	Sep
+October#	Okt	Oct
+Novembers#	Nov	Nov
+December#	Dez	Dec
+
+Unknown	Unbekannt	Unknown
+Image	Bild	Image
+Audio	Musik	Audio
+ActiveServerPages	Active Server Pages	Active Server Pages
+DynamicHTML	Dynamische HTML Seite	Dynamic HTML
+Python	Python	Python
+HyperTextMarkupLanguage	HyperText Markup Sprache	HyperText Markup Language
+PortableDocument	Portables Dokument	Portable Document
+Compressed	Komprimiert	Compressed
+AccessList	Zugriffsliste	AccessList
+Batch	Kommandozeilen	Batch
+Application	Anwendung	Application
+Script	Skript	Script
+Help	Hilfe	Help
+Text	Text	Text
+MicrosoftInstallation	Microsoft Installation	Microsoft Installation
+Video	Video	Video
+MicrosoftPowerpoint	Microsoft Powerpoint	Microsoft Powerpoint
+HeaderFile	HeaderFile	Header File
+CSource	C Quellcode	C
+MicrosoftWord	Microsoft Word	Microsoft Word
+MicrosoftExcel	Microsoft Excel	Microsoft Excel
+eXtendedMarkupLanguage	Erweiterbare Markup Sprache	eXtended Markup Language
+MicrosoftAccess	Microsoft Access	Microsoft Access
+Winbatch	WinBatch	WinBatch
+DataSource	Datenquelle	Data Source
+Registry	Registrierung	Registry
+ShortCut	Verknüpfung	ShortCut
+vCard	vCard	vCard
+MicrosoftOutlook	Microsoft Outlook	Microsoft Outlook
+VectorData	Vector Daten	VectorData
+

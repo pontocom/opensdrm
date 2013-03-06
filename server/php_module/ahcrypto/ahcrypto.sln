@@ -1,0 +1,40 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ahcrypto", "ahcrypto.vcproj", "{08E4068B-61F4-4EFC-9D0B-82CD0A5DE24B}"
+	ProjectSection(ProjectDependencies) = postProject
+		{0D04FA09-FCBB-45B7-B5E8-B97A0403180C} = {0D04FA09-FCBB-45B7-B5E8-B97A0403180C}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "cryptlib", "crypto++\cryptlib.vcproj", "{0D04FA09-FCBB-45B7-B5E8-B97A0403180C}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		Debug = Debug
+		Debug_TS = Debug_TS
+		Release = Release
+		Release_TS = Release_TS
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{08E4068B-61F4-4EFC-9D0B-82CD0A5DE24B}.Debug.ActiveCfg = Debug_TS|Win32
+		{08E4068B-61F4-4EFC-9D0B-82CD0A5DE24B}.Debug.Build.0 = Debug_TS|Win32
+		{08E4068B-61F4-4EFC-9D0B-82CD0A5DE24B}.Debug_TS.ActiveCfg = Debug_TS|Win32
+		{08E4068B-61F4-4EFC-9D0B-82CD0A5DE24B}.Debug_TS.Build.0 = Debug_TS|Win32
+		{08E4068B-61F4-4EFC-9D0B-82CD0A5DE24B}.Release.ActiveCfg = Release_TS|Win32
+		{08E4068B-61F4-4EFC-9D0B-82CD0A5DE24B}.Release.Build.0 = Release_TS|Win32
+		{08E4068B-61F4-4EFC-9D0B-82CD0A5DE24B}.Release_TS.ActiveCfg = Release_TS|Win32
+		{08E4068B-61F4-4EFC-9D0B-82CD0A5DE24B}.Release_TS.Build.0 = Release_TS|Win32
+		{0D04FA09-FCBB-45B7-B5E8-B97A0403180C}.Debug.ActiveCfg = Debug|Win32
+		{0D04FA09-FCBB-45B7-B5E8-B97A0403180C}.Debug.Build.0 = Debug|Win32
+		{0D04FA09-FCBB-45B7-B5E8-B97A0403180C}.Debug_TS.ActiveCfg = Debug|Win32
+		{0D04FA09-FCBB-45B7-B5E8-B97A0403180C}.Debug_TS.Build.0 = Debug|Win32
+		{0D04FA09-FCBB-45B7-B5E8-B97A0403180C}.Release.ActiveCfg = Release|Win32
+		{0D04FA09-FCBB-45B7-B5E8-B97A0403180C}.Release.Build.0 = Release|Win32
+		{0D04FA09-FCBB-45B7-B5E8-B97A0403180C}.Release_TS.ActiveCfg = Release|Win32
+		{0D04FA09-FCBB-45B7-B5E8-B97A0403180C}.Release_TS.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

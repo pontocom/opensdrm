@@ -1,0 +1,10 @@
+#!/bin/bash/
+cd php-4.3.9
+./buildconf --force
+./configure --with-apxs=/usr/local/apache/bin/apxs --with-ahcrypto
+make
+/usr/local/apache/bin/apachectl stop
+make install
+/usr/local/apache/bin/apachectl start
+cd ..
+

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?> 
+ <definitions xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:si="http://soapinterop.org/xsd" xmlns:tns="http://www.adetti.pt/opensdrmws" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns="http://schemas.xmlsoap.org/wsdl/" targetNamespace="http://www.adetti.pt/opensdrmws">
+ <types>
+ <xsd:schema targetNamespace="http://www.adetti.pt/opensdrmws">
+  <xsd:import namespace="http://schemas.xmlsoap.org/soap/encoding/" /> 
+  <xsd:import namespace="http://schemas.xmlsoap.org/wsdl/" /> 
+  </xsd:schema>
+  </types>
+ <message name="CFSrequestServerLocationRequest">
+  <part name="id" type="xsd:string" /> 
+  </message>
+ <message name="CFSrequestServerLocationResponse">
+  <part name="result_message" type="xsd:string" /> 
+  <part name="location" type="xsd:string" /> 
+  </message>
+ <message name="CFSrequestLocationStorageRequest">
+  <part name="id" type="xsd:string" /> 
+  <part name="location" type="xsd:string" /> 
+  </message>
+ <message name="CFSrequestLocationStorageResponse">
+  <part name="result_message" type="xsd:string" /> 
+  </message>
+ <message name="CFSrequestLocationDeleteRequest">
+  <part name="id" type="xsd:string" /> 
+  </message>
+ <message name="CFSrequestLocationDeleteResponse">
+  <part name="result_message" type="xsd:string" /> 
+  </message>
+ <portType name="opensdrmwsPortType">
+ <operation name="CFSrequestServerLocation">
+  <input message="tns:CFSrequestServerLocationRequest" /> 
+  <output message="tns:CFSrequestServerLocationResponse" /> 
+  </operation>
+ <operation name="CFSrequestLocationStorage">
+  <input message="tns:CFSrequestLocationStorageRequest" /> 
+  <output message="tns:CFSrequestLocationStorageResponse" /> 
+  </operation>
+ <operation name="CFSrequestLocationDelete">
+  <input message="tns:CFSrequestLocationDeleteRequest" /> 
+  <output message="tns:CFSrequestLocationDeleteResponse" /> 
+  </operation>
+  </portType>
+ <binding name="opensdrmwsBinding" type="tns:opensdrmwsPortType">
+  <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http" /> 
+ <operation name="CFSrequestServerLocation">
+  <soap:operation soapAction="http://localhost/opensdrm/CFS/CFS.ws.php/CFSrequestServerLocation" style="rpc" /> 
+ <input>
+  <soap:body use="encoded" namespace="http://www.adetti.pt/opensdrmws" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" /> 
+  </input>
+ <output>
+  <soap:body use="encoded" namespace="http://www.adetti.pt/opensdrmws" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" /> 
+  </output>
+  </operation>
+ <operation name="CFSrequestLocationStorage">
+  <soap:operation soapAction="http://localhost/opensdrm/CFS/CFS.ws.php/CFSrequestLocationStorage" style="rpc" /> 
+ <input>
+  <soap:body use="encoded" namespace="http://www.adetti.pt/opensdrmws" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" /> 
+  </input>
+ <output>
+  <soap:body use="encoded" namespace="http://www.adetti.pt/opensdrmws" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" /> 
+  </output>
+  </operation>
+ <operation name="CFSrequestLocationDelete">
+  <soap:operation soapAction="http://localhost/opensdrm/CFS/CFS.ws.php/CFSrequestLocationDelete" style="rpc" /> 
+ <input>
+  <soap:body use="encoded" namespace="http://www.adetti.pt/opensdrmws" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" /> 
+  </input>
+ <output>
+  <soap:body use="encoded" namespace="http://www.adetti.pt/opensdrmws" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" /> 
+  </output>
+  </operation>
+  </binding>
+ <service name="opensdrmws">
+ <port name="opensdrmwsPort" binding="tns:opensdrmwsBinding">
+  <soap:address location="http://localhost/opensdrm/CFS/CFS.ws.php" /> 
+  </port>
+  </service>
+  </definitions>

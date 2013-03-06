@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSPY v5 rel. 4 U (http://www.xmlspy.com) by PONTOCOM (COM) -->
+<!ELEMENT content (type, filesize, filetype, content_specific)>
+<!ELEMENT content_specific (title, album, music_category, band, music_lenght, recording_year, recording_place, lyrics, other_info)>
+<!ELEMENT band (name, formation_date, num_elements, element*, band_contact, short_description, short_history)>
+<!ELEMENT element (name, role)>
+<!ELEMENT type (#PCDATA)>
+<!ELEMENT filesize (#PCDATA)>
+<!ELEMENT filetype (#PCDATA)>
+<!ELEMENT title (#PCDATA)>
+<!ELEMENT album (#PCDATA)>
+<!ELEMENT music_category (#PCDATA)>
+<!ELEMENT music_lenght (#PCDATA)>
+<!ELEMENT recording_year (#PCDATA)>
+<!ELEMENT recording_place (#PCDATA)>
+<!ELEMENT lyrics (#PCDATA)>
+<!ELEMENT other_info (#PCDATA)>
+<!ELEMENT name (#PCDATA)>
+<!ELEMENT formation_date (#PCDATA)>
+<!ELEMENT num_elements (#PCDATA)>
+<!ELEMENT band_contact (#PCDATA)>
+<!ELEMENT short_description (#PCDATA)>
+<!ELEMENT short_history (#PCDATA)>
+<!ELEMENT role (#PCDATA)>

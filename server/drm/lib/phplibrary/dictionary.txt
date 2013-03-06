@@ -1,0 +1,5 @@
+German	English
+Sonne	sun
+Tag	day
+schöne
+es

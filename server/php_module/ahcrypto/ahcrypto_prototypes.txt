@@ -1,0 +1,8 @@
+array ahrsa_createKeys(int dimension)
+string ahrsa_cipher(string valor_a_cifrar, string n, string e)
+string ahrsa_decipher(string valor_a_decifrar, string n, string e, string d, string p, string q)
+string ahrsa_sign(string valor_a_assinar,  string n, string e, string d, string p, string q)
+boolean ahrsa_verify(string valor_a_verificar,  string signature, string n, string e)
+
+string ahaes_cipher(string valor_a_cifrar, string k)
+string ahaes_decipher(string valor_a_decifrar, string k)

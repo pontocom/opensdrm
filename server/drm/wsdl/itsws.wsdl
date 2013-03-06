@@ -1,0 +1,99 @@
+<wsdl:definitions xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:si="http://soapinterop.org/xsd" xmlns:tns="http://www.adetti.pt/opensdrmws" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:ns="http://schemas.xmlsoap.org/wsdl/http/" xmlns:ns1="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://www.adetti.pt/opensdrmws">
+	<wsdl:types>
+		<xsd:schema targetNamespace="http://www.adetti.pt/opensdrmws">
+			<xsd:import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+			<xsd:import namespace="http://schemas.xmlsoap.org/wsdl/"/>
+		</xsd:schema>
+	</wsdl:types>
+	<message name="ITSrequestIPMPToolsListRequest"/>
+	<message name="ITSrequestIPMPToolsListResponse">
+		<part name="result_message" type="xsd:string"/>
+		<part name="ipmp_tools_list" type="xsd:string"/>
+	</message>
+	<message name="ITSrequestIPMPToolDownloadRequest">
+		<part name="ipmp_tool_id" type="xsd:string"/>
+	</message>
+	<message name="ITSrequestIPMPToolDownloadResponse">
+		<part name="result_message" type="xsd:string"/>
+		<part name="ipmp_tool_url" type="xsd:string"/>
+	</message>
+	<message name="ITSaddNewIPMPToolRequest">
+		<part name="ipmptoolid" type="xsd:string"/>
+		<part name="ipmptoolurl" type="xsd:string"/>
+		<part name="ipmptooldesc" type="xsd:string"/>
+	</message>
+	<message name="ITSaddNewIPMPToolResponse">
+		<part name="result_message" type="xsd:string"/>
+	</message>
+	<message name="ITSrequestIPMPToolDetailsRequest">
+		<part name="ipmptoolid" type="xsd:string"/>
+	</message>
+	<message name="ITSrequestIPMPToolDetailsResponse">
+		<part name="result_message" type="xsd:string"/>
+		<part name="ipmptoolid" type="xsd:string"/>
+		<part name="ipmptoolurl" type="xsd:string"/>
+		<part name="ipmptooldesc" type="xsd:string"/>
+	</message>
+	<portType name="opensdrmwsPortType">
+		<operation name="ITSrequestIPMPToolsList">
+			<input message="tns:ITSrequestIPMPToolsListRequest"/>
+			<output message="tns:ITSrequestIPMPToolsListResponse"/>
+		</operation>
+		<operation name="ITSrequestIPMPToolDownload">
+			<input message="tns:ITSrequestIPMPToolDownloadRequest"/>
+			<output message="tns:ITSrequestIPMPToolDownloadResponse"/>
+		</operation>
+		<operation name="ITSaddNewIPMPTool">
+			<input message="tns:ITSaddNewIPMPToolRequest"/>
+			<output message="tns:ITSaddNewIPMPToolResponse"/>
+		</operation>
+		<operation name="ITSrequestIPMPToolDetails">
+			<input message="tns:ITSrequestIPMPToolDetailsRequest"/>
+			<output message="tns:ITSrequestIPMPToolDetailsResponse"/>
+		</operation>
+	</portType>
+	<binding name="opensdrmwsBinding" type="tns:opensdrmwsPortType">
+		<soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<operation name="ITSrequestIPMPToolsList">
+			<soap:operation soapAction="http://localhost/opensdrm/ITS/ITS.ws.php/ITSrequestIPMPToolsList" style="rpc"/>
+			<input>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://www.adetti.pt/opensdrmws"/>
+			</input>
+			<output>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://www.adetti.pt/opensdrmws"/>
+			</output>
+		</operation>
+		<operation name="ITSrequestIPMPToolDownload">
+			<soap:operation soapAction="http://localhost/opensdrm/ITS/ITS.ws.php/ITSrequestIPMPToolDownload" style="rpc"/>
+			<input>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://www.adetti.pt/opensdrmws"/>
+			</input>
+			<output>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://www.adetti.pt/opensdrmws"/>
+			</output>
+		</operation>
+		<operation name="ITSaddNewIPMPTool">
+			<soap:operation soapAction="http://localhost/opensdrm/ITS/ITS.ws.php/ITSaddNewIPMPTool" style="rpc"/>
+			<input>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://www.adetti.pt/opensdrmws"/>
+			</input>
+			<output>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://www.adetti.pt/opensdrmws"/>
+			</output>
+		</operation>
+		<operation name="ITSrequestIPMPToolDetails">
+			<soap:operation soapAction="http://localhost/opensdrm/ITS/ITS.ws.php/ITSrequestIPMPToolDetails" style="rpc"/>
+			<input>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://www.adetti.pt/opensdrmws"/>
+			</input>
+			<output>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://www.adetti.pt/opensdrmws"/>
+			</output>
+		</operation>
+	</binding>
+	<service name="opensdrmws">
+		<port name="opensdrmwsPort" binding="tns:opensdrmwsBinding">
+			<soap:address location="http://localhost/opensdrm/ITS/ITS.ws.php"/>
+		</port>
+	</service>
+</wsdl:definitions>

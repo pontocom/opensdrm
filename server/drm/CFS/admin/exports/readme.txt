@@ -1,0 +1,1 @@
+This directory will contain protected data exported by the administrator.

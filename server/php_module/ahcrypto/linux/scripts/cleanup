@@ -1,0 +1,10 @@
+#!/bin/bash
+
+rm -R php-4.3.9
+tar -xzvf php-4.3.9.tar.gz
+cd php-4.3.9/ext
+./ext_skel --extname=ahcrypto
+cp ../../../ahc_files/* ahcrypto/
+mkdir ahcrypto/crypto++
+cp /home/jhht/Projects/ahcrypto2/crypto++/* ahcrypto/crypto++/
+

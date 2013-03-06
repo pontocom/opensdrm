@@ -1,0 +1,52 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "aesmp3", "aesmp3.vcproj", "{9B29E1BC-653D-4344-8AE7-93C8B07CFBEB}"
+	ProjectSection(ProjectDependencies) = postProject
+		{F0232275-FE5B-432D-A750-DE70F1A69258} = {F0232275-FE5B-432D-A750-DE70F1A69258}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "cryptlib", "..\Crypto++\cryptlib.vcproj", "{F0232275-FE5B-432D-A750-DE70F1A69258}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "showmp3", "..\showmp3\showmp3.vcproj", "{D4CCC62F-E4A3-4262-AC8C-2C3DA0204BC9}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		Debug = Debug
+		DLL-Import Debug = DLL-Import Debug
+		DLL-Import Release = DLL-Import Release
+		Release = Release
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{9B29E1BC-653D-4344-8AE7-93C8B07CFBEB}.Debug.ActiveCfg = Debug|Win32
+		{9B29E1BC-653D-4344-8AE7-93C8B07CFBEB}.Debug.Build.0 = Debug|Win32
+		{9B29E1BC-653D-4344-8AE7-93C8B07CFBEB}.DLL-Import Debug.ActiveCfg = Debug|Win32
+		{9B29E1BC-653D-4344-8AE7-93C8B07CFBEB}.DLL-Import Debug.Build.0 = Debug|Win32
+		{9B29E1BC-653D-4344-8AE7-93C8B07CFBEB}.DLL-Import Release.ActiveCfg = Release|Win32
+		{9B29E1BC-653D-4344-8AE7-93C8B07CFBEB}.DLL-Import Release.Build.0 = Release|Win32
+		{9B29E1BC-653D-4344-8AE7-93C8B07CFBEB}.Release.ActiveCfg = Release|Win32
+		{9B29E1BC-653D-4344-8AE7-93C8B07CFBEB}.Release.Build.0 = Release|Win32
+		{F0232275-FE5B-432D-A750-DE70F1A69258}.Debug.ActiveCfg = Debug|Win32
+		{F0232275-FE5B-432D-A750-DE70F1A69258}.Debug.Build.0 = Debug|Win32
+		{F0232275-FE5B-432D-A750-DE70F1A69258}.DLL-Import Debug.ActiveCfg = DLL-Import Debug|Win32
+		{F0232275-FE5B-432D-A750-DE70F1A69258}.DLL-Import Debug.Build.0 = DLL-Import Debug|Win32
+		{F0232275-FE5B-432D-A750-DE70F1A69258}.DLL-Import Release.ActiveCfg = DLL-Import Release|Win32
+		{F0232275-FE5B-432D-A750-DE70F1A69258}.DLL-Import Release.Build.0 = DLL-Import Release|Win32
+		{F0232275-FE5B-432D-A750-DE70F1A69258}.Release.ActiveCfg = Release|Win32
+		{F0232275-FE5B-432D-A750-DE70F1A69258}.Release.Build.0 = Release|Win32
+		{D4CCC62F-E4A3-4262-AC8C-2C3DA0204BC9}.Debug.ActiveCfg = Debug|Win32
+		{D4CCC62F-E4A3-4262-AC8C-2C3DA0204BC9}.Debug.Build.0 = Debug|Win32
+		{D4CCC62F-E4A3-4262-AC8C-2C3DA0204BC9}.DLL-Import Debug.ActiveCfg = Debug|Win32
+		{D4CCC62F-E4A3-4262-AC8C-2C3DA0204BC9}.DLL-Import Debug.Build.0 = Debug|Win32
+		{D4CCC62F-E4A3-4262-AC8C-2C3DA0204BC9}.DLL-Import Release.ActiveCfg = Release|Win32
+		{D4CCC62F-E4A3-4262-AC8C-2C3DA0204BC9}.DLL-Import Release.Build.0 = Release|Win32
+		{D4CCC62F-E4A3-4262-AC8C-2C3DA0204BC9}.Release.ActiveCfg = Release|Win32
+		{D4CCC62F-E4A3-4262-AC8C-2C3DA0204BC9}.Release.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

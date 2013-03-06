@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Project>
+	<Folder FolderName="XML Files" ExtStr="xml;cml;math;mtx;rdf;smil;svg;wml"/>
+	<Folder FolderName="XSL Files" ExtStr="xsl;xslt"/>
+	<Folder FolderName="HTML Files" ExtStr="html;htm;xhtml;asp"/>
+	<Folder FolderName="DTD/Schemas" ExtStr="dtd;dcd;xdr;biz;xsd"/>
+	<Folder FolderName="Entities" ExtStr="ent"/>
+	<File FilePath=".\ausws.wsdl" HomeFolder="Yes"/>
+	<File FilePath=".\cfsws.wsdl" HomeFolder="Yes"/>
+	<File FilePath=".\itsws.wsdl" HomeFolder="Yes"/>
+	<File FilePath=".\lisws.wsdl" HomeFolder="Yes"/>
+	<File FilePath=".\mdsws.wsdl" HomeFolder="Yes"/>
+	<File FilePath=".\pgwws.wsdl" HomeFolder="Yes"/>
+	<File FilePath=".\rgsws.wsdl" HomeFolder="Yes"/>
+</Project>

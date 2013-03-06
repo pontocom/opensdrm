@@ -1,0 +1,60 @@
+<STYLE>
+A {
+    text-decoration : none;
+    color : #444444;
+    font-weight : bold;
+    font-size : 8pt
+}
+A:visited {
+    text-decoration : none
+; color: #444444
+}
+A:active {
+    text-decoration : none
+; color: #444444
+}
+A:hover {
+    text-decoration : underline;
+    color : #444444
+; font-weight: bold
+}
+
+A.menu {
+    text-decoration : none;
+    color : #FFffff;
+    font-weight : bold;
+    font-size : 8pt
+}
+A.menu:visited {
+    text-decoration : none; color: #FFFFFF: #ffffff
+}
+A.menu:active {
+    text-decoration : none; color: #FFFFFF: #ffffff
+}
+A.menu:hover {
+    text-decoration : underline;
+    color : #444444; background-color: #FFFFFF
+}
+
+body {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #444444;
+}
+
+td, th {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+}
+
+input { font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 9px; font-weight: normal; color: #5a6ba1; border: #5a6ba1; border-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; background-color: #FFFFFF}
+
+input.botao { font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 12px; font-weight: bold; color: #5a6ba1; border: 1px #5a6ba1 solid; background-color: #FFFFFF}
+
+input.imagem {font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 9px; font-weight: normal; border-style: none; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px}
+
+textarea { font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 9px; font-weight: normal; color: #5a6ba1; border: #5a6ba1; border-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; background-color: #FFFFFF}
+
+select { font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 9px; font-weight: normal; color: #5a6ba1; border: #5a6ba1; border-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; background-color: #FFFFFF}
+
+</STYLE>

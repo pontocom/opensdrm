@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- UPDATE: Moved the type attribute for Constraints to be global: 2004-01-30 -->
+<!-- UPDATE: Added AnyAttribute to IDGroup to allow for external attributes to be defined: 2004-02-02 -->
+<xsd:schema targetNamespace="http://odrl.net/1.1/ODRL-EX" xmlns:enc="http://www.w3.org/2001/04/xmlenc#" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:o-ex="http://odrl.net/1.1/ODRL-EX" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.1">
+	<xsd:import namespace="http://www.w3.org/2000/09/xmldsig#" schemaLocation="http://www.w3.org/TR/2002/REC-xmldsig-core-20020212/xmldsig-core-schema.xsd"/>
+	<!-- NOTE: The formal W3C Encryption Namespace URI has been updated 2004-01-30 -->
+	<xsd:import namespace="http://www.w3.org/2001/04/xmlenc#" schemaLocation="http://www.w3.org/TR/xmlenc-core/xenc-schema.xsd"/>
+	<xsd:element name="rights" type="o-ex:rightsType"/>
+	<xsd:element name="offer" type="o-ex:offerAgreeType"/>
+	<xsd:element name="agreement" type="o-ex:offerAgreeType"/>
+	<xsd:complexType name="offerAgreeType">
+		<xsd:choice minOccurs="0" maxOccurs="unbounded">
+			<xsd:element ref="o-ex:context" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="o-ex:party" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="o-ex:asset" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="o-ex:permission" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="o-ex:constraint" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="o-ex:requirement" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="o-ex:condition" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:choice>
+	</xsd:complexType>
+	<xsd:complexType name="rightsType">
+		<xsd:complexContent>
+			<xsd:extension base="o-ex:offerAgreeType">
+				<xsd:choice minOccurs="0" maxOccurs="unbounded">
+					<xsd:element ref="o-ex:revoke" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="o-ex:offer" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="o-ex:agreement" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="ds:Signature" minOccurs="0"/>
+				</xsd:choice>
+				<xsd:attributeGroup ref="o-ex:IDGroup"/>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:element name="context" type="o-ex:contextType"/>
+	<xsd:element name="contextElement" abstract="true"/>
+	<xsd:complexType name="contextType">
+		<xsd:choice minOccurs="0" maxOccurs="unbounded">
+			<xsd:element ref="o-ex:context" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="o-ex:contextElement" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:choice>
+		<xsd:attributeGroup ref="o-ex:IDGroup"/>
+	</xsd:complexType>
+	<xsd:complexType name="partyType">
+		<xsd:choice minOccurs="0" maxOccurs="unbounded">
+			<xsd:element ref="o-ex:context" minOccurs="0"/>
+			<xsd:element ref="o-ex:rightsholder" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="o-ex:party" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="o-ex:container" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="o-ex:asset" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:choice>
+		<xsd:attributeGroup ref="o-ex:IDGroup"/>
+	</xsd:complexType>
+	<xsd:element name="party" type="o-ex:partyType"/>
+	<xsd:element name="rightsholder" type="o-ex:rightsHolderType"/>
+	<xsd:element name="rightsHolderElement" abstract="true"/>
+	<xsd:complexType name="rightsHolderType">
+		<xsd:choice minOccurs="0" maxOccurs="unbounded">
+			<xsd:element ref="o-ex:context" minOccurs="0"/>
+			<xsd:element ref="o-ex:rightsHolderElement" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="o-ex:container" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:choice>
+		<xsd:attributeGroup ref="o-ex:IDGroup"/>
+	</xsd:complexType>
+	<xsd:complexType name="assetType">
+		<xsd:choice minOccurs="0" maxOccurs="unbounded">
+			<xsd:element ref="o-ex:context"/>
+			<xsd:element ref="o-ex:inherit"/>
+			<xsd:element name="digest">
+				<xsd:complexType>
+					<xsd:choice minOccurs="0" maxOccurs="unbounded">
+						<xsd:element ref="ds:DigestMethod"/>
+						<xsd:element ref="ds:DigestValue"/>
+					</xsd:choice>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element ref="ds:KeyInfo"/>
+		</xsd:choice>
+		<xsd:attributeGroup ref="o-ex:IDGroup"/>
+		<xsd:attribute name="type">
+			<xsd:simpleType>
+				<xsd:restriction base="xsd:NMTOKEN">
+					<xsd:enumeration value="work"/>
+					<xsd:enumeration value="expression"/>
+					<xsd:enumeration value="manifestation"/>
+					<xsd:enumeration value="item"/>
+				</xsd:restriction>
+			</xsd:simpleType>
+		</xsd:attribute>
+	</xsd:complexType>
+	<xsd:element name="asset" type="o-ex:assetType"/>
+	<xsd:complexType name="inheritType">
+		<xsd:choice minOccurs="0" maxOccurs="unbounded">
+			<xsd:element ref="o-ex:context" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:choice>
+		<xsd:attribute name="override" type="xsd:boolean" default="false"/>
+		<xsd:attribute name="default" type="xsd:boolean" default="false"/>
+	</xsd:complexType>
+	<xsd:element name="inherit" type="o-ex:inheritType"/>
+	<xsd:element name="permission" type="o-ex:permissionType"/>
+	<xsd:element name="permissionElement" abstract="true"/>
+	<xsd:complexType name="permissionType">
+		<xsd:choice minOccurs="0" maxOccurs="unbounded">
+			<xsd:element ref="o-ex:context" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="o-ex:permissionElement" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="o-ex:container" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="o-ex:constraint" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="o-ex:sequence" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="o-ex:requirement" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="o-ex:condition" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="o-ex:asset" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:choice>
+		<xsd:attribute name="exclusive" type="xsd:boolean" use="optional"/>
+		<xsd:attributeGroup ref="o-ex:IDGroup"/>
+	</xsd:complexType>
+	<xsd:element name="constraint" type="o-ex:constraintType"/>
+	<xsd:element name="constraintElement" abstract="true"/>
+	<xsd:complexType name="constraintType">
+		<xsd:choice minOccurs="0" maxOccurs="unbounded">
+			<xsd:element ref="o-ex:constraint" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="o-ex:constraintElement" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="o-ex:container" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="o-ex:sequence" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="o-ex:context" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:choice>
+		<xsd:attributeGroup ref="o-ex:IDGroup"/>
+		<xsd:attribute ref="o-ex:type"/>
+	</xsd:complexType>
+	<xsd:attribute name="type" type="xsd:anyURI"/>
+	<xsd:element name="requirement" type="o-ex:requirementType"/>
+	<xsd:element name="requirementElement" abstract="true"/>
+	<xsd:complexType name="requirementType">
+		<xsd:sequence minOccurs="0" maxOccurs="unbounded">
+			<xsd:element ref="o-ex:context" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="o-ex:requirementElement" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="o-ex:container" minOccurs="0" maxOccurs="unbounded"/>
+ 		<xsd:element ref="o-ex:sequence" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+		<xsd:attributeGroup ref="o-ex:IDGroup"/>
+	</xsd:complexType>
+	<xsd:element name="condition" type="o-ex:conditionType"/>
+	<xsd:element name="conditionElement" abstract="true"/>
+	<xsd:complexType name="conditionType">
+		<xsd:sequence minOccurs="0" maxOccurs="unbounded">
+			<xsd:element ref="o-ex:context" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="o-ex:conditionElement" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="o-ex:permission" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="o-ex:constraint" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="o-ex:container" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="o-ex:sequence" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+		<xsd:attributeGroup ref="o-ex:IDGroup"/>
+	</xsd:complexType>
+	<xsd:complexType name="revokeType">
+		<xsd:sequence minOccurs="0" maxOccurs="unbounded">
+			<xsd:element ref="o-ex:context" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+		<xsd:attributeGroup ref="o-ex:IDGroup"/>
+	</xsd:complexType>
+	<xsd:element name="revoke" type="o-ex:revokeType"/>
+	<xsd:complexType name="sequenceType">
+		<xsd:sequence>
+			<xsd:element ref="o-ex:seq-item" maxOccurs="unbounded"/>
+		</xsd:sequence>
+		<xsd:attribute name="order" default="total">
+			<xsd:simpleType>
+				<xsd:restriction base="xsd:NMTOKEN">
+					<xsd:enumeration value="total"/>
+					<xsd:enumeration value="partial"/>
+				</xsd:restriction>
+			</xsd:simpleType>
+		</xsd:attribute>
+	</xsd:complexType>
+	<xsd:element name="sequence" type="o-ex:sequenceType"/>
+	<xsd:complexType name="containerType">
+		<xsd:choice minOccurs="0" maxOccurs="unbounded">
+			<xsd:element ref="o-ex:container" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="o-ex:permission" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="o-ex:permissionElement" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="o-ex:constraintElement" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="o-ex:conditionElement" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="o-ex:requirementElement" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="o-ex:rightsHolderElement" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="o-ex:constraint" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="o-ex:condition" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="o-ex:sequence" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="o-ex:requirement" minOccurs="0" maxOccurs="unbounded"/>
+   <xsd:element ref="o-ex:party" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:choice>
+		<xsd:attribute name="type" default="and">
+			<xsd:simpleType>
+				<xsd:restriction base="xsd:NMTOKEN">
+					<xsd:enumeration value="and"/>
+					<xsd:enumeration value="in-or"/>
+					<xsd:enumeration value="ex-or"/>
+				</xsd:restriction>
+			</xsd:simpleType>
+		</xsd:attribute>
+		<xsd:attributeGroup ref="o-ex:IDGroup"/>
+	</xsd:complexType>
+	<xsd:element name="container" type="o-ex:containerType"/>
+	<xsd:complexType name="seqItemType">
+		<xsd:choice minOccurs="0" maxOccurs="unbounded">
+			<xsd:element ref="o-ex:container" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="o-ex:permission" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="o-ex:permissionElement" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="o-ex:constraintElement" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="o-ex:conditionElement" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="o-ex:requirementElement" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="o-ex:rightsHolderElement" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="o-ex:constraint" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="o-ex:condition" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="o-ex:sequence" minOccurs="0" maxOccurs="unbounded"/>						<xsd:element ref="o-ex:requirement" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:choice>
+		<xsd:attribute name="number" type="xsd:integer" use="required"/>
+	</xsd:complexType>
+	<xsd:element name="seq-item" type="o-ex:seqItemType"/>
+	<xsd:attributeGroup name="IDGroup">
+		<xsd:attribute name="id" type="xsd:ID"/>
+		<xsd:attribute name="idref" type="xsd:IDREF"/>
+		<xsd:anyAttribute namespace="##other"/>
+	</xsd:attributeGroup>
+</xsd:schema>

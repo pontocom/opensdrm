@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- UPDATE: Updated Count element to allow type and ID attributes: 2004-01-30 -->
+<xsd:schema targetNamespace="http://odrl.net/1.1/ODRL-DD" xmlns:o-ex="http://odrl.net/1.1/ODRL-EX" xmlns:o-dd="http://odrl.net/1.1/ODRL-DD" xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.1">
+	<xsd:import namespace="http://odrl.net/1.1/ODRL-EX" schemaLocation="ODRL-EX-11.xsd"/>
+	<!-- Declare all the Permission Elements -->
+	<xsd:element name="display" type="o-ex:permissionType" substitutionGroup="o-ex:permissionElement"/>
+	<xsd:element name="print" type="o-ex:permissionType" substitutionGroup="o-ex:permissionElement"/>
+	<xsd:element name="play" type="o-ex:permissionType" substitutionGroup="o-ex:permissionElement"/>
+	<xsd:element name="execute" type="o-ex:permissionType" substitutionGroup="o-ex:permissionElement"/>
+	<xsd:element name="sell" type="o-ex:permissionType" substitutionGroup="o-ex:permissionElement"/>
+	<xsd:element name="lend" type="o-ex:permissionType" substitutionGroup="o-ex:permissionElement"/>
+	<xsd:element name="give" type="o-ex:permissionType" substitutionGroup="o-ex:permissionElement"/>
+	<xsd:element name="lease" type="o-ex:permissionType" substitutionGroup="o-ex:permissionElement"/>
+	<xsd:element name="modify" type="o-ex:permissionType" substitutionGroup="o-ex:permissionElement"/>
+	<xsd:element name="excerpt" type="o-ex:permissionType" substitutionGroup="o-ex:permissionElement"/>
+	<xsd:element name="aggregate" type="o-ex:permissionType" substitutionGroup="o-ex:permissionElement"/>
+	<xsd:element name="annotate" type="o-ex:permissionType" substitutionGroup="o-ex:permissionElement"/>
+	<xsd:element name="move" type="o-ex:permissionType" substitutionGroup="o-ex:permissionElement"/>
+	<xsd:element name="duplicate" type="o-ex:permissionType" substitutionGroup="o-ex:permissionElement"/>
+	<xsd:element name="delete" type="o-ex:permissionType" substitutionGroup="o-ex:permissionElement"/>
+	<xsd:element name="verify" type="o-ex:permissionType" substitutionGroup="o-ex:permissionElement"/>
+	<xsd:element name="backup" type="o-ex:permissionType" substitutionGroup="o-ex:permissionElement"/>
+	<xsd:element name="restore" type="o-ex:permissionType" substitutionGroup="o-ex:permissionElement"/>
+	<xsd:element name="install" type="o-ex:permissionType" substitutionGroup="o-ex:permissionElement"/>
+	<xsd:element name="uninstall" type="o-ex:permissionType" substitutionGroup="o-ex:permissionElement"/>
+	<xsd:element name="save" type="o-ex:permissionType" substitutionGroup="o-ex:permissionElement"/>
+	<!-- Declare the Payment Element (used in Requirements) -->
+	<xsd:element name="payment">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="amount">
+					<xsd:complexType>
+						<xsd:simpleContent>
+							<xsd:extension base="xsd:decimal">
+								<xsd:attribute name="currency" type="xsd:NMTOKEN" use="required"/>
+							</xsd:extension>
+						</xsd:simpleContent>
+					</xsd:complexType>
+				</xsd:element>
+				<xsd:element name="taxpercent" minOccurs="0">
+					<xsd:complexType>
+						<xsd:simpleContent>
+							<xsd:extension base="xsd:decimal">
+								<xsd:attribute name="code" type="xsd:NMTOKEN" use="required"/>
+							</xsd:extension>
+						</xsd:simpleContent>
+					</xsd:complexType>
+				</xsd:element>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<!-- Define the dataTypes used for Requirements that use Payment element -->
+	<xsd:complexType name="feeType">
+		<xsd:complexContent>
+			<xsd:extension base="o-ex:requirementType">
+				<xsd:sequence>
+					<xsd:element ref="o-dd:payment"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<!-- Declare all the Requirements Elements -->
+	<xsd:element name="prepay" type="o-dd:feeType" substitutionGroup="o-ex:requirementElement"/>
+	<xsd:element name="postpay" type="o-dd:feeType" substitutionGroup="o-ex:requirementElement"/>
+	<xsd:element name="peruse" type="o-dd:feeType" substitutionGroup="o-ex:requirementElement"/>
+	<xsd:element name="accept" type="o-ex:requirementType" substitutionGroup="o-ex:requirementElement"/>
+	<xsd:element name="register" type="o-ex:requirementType" substitutionGroup="o-ex:requirementElement"/>
+	<xsd:element name="attribution" type="o-ex:requirementType" substitutionGroup="o-ex:requirementElement"/>
+	<xsd:element name="tracked" type="o-ex:requirementType" substitutionGroup="o-ex:requirementElement"/>
+	<!-- Declare all the RightsHolder Elements -->
+	<xsd:element name="fixedamount" substitutionGroup="o-ex:rightsHolderElement">
+		<xsd:complexType>
+			<xsd:complexContent>
+				<xsd:extension base="o-ex:rightsHolderType">
+					<xsd:sequence>
+						<xsd:element ref="o-dd:payment"/>
+					</xsd:sequence>
+				</xsd:extension>
+			</xsd:complexContent>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="percentage" substitutionGroup="o-ex:rightsHolderElement">
+		<xsd:simpleType>
+			<xsd:restriction base="xsd:decimal">
+				<xsd:minInclusive value="0"/>
+				<xsd:maxInclusive value="100"/>
+			</xsd:restriction>
+		</xsd:simpleType>
+	</xsd:element>
+	<!-- Declare all the Context Elements -->
+	<xsd:simpleType name="uriAndOrString">
+		<xsd:union memberTypes="xsd:anyURI xsd:string"/>
+	</xsd:simpleType>
+	<xsd:element name="uid" type="o-dd:uriAndOrString" substitutionGroup="o-ex:contextElement"/>
+	<xsd:element name="role" type="xsd:anyURI" substitutionGroup="o-ex:contextElement"/>
+	<xsd:element name="name" type="xsd:string" substitutionGroup="o-ex:contextElement"/>
+	<xsd:element name="remark" type="xsd:string" substitutionGroup="o-ex:contextElement"/>
+	<xsd:element name="event" type="xsd:string" substitutionGroup="o-ex:contextElement"/>
+	<xsd:element name="pLocation" type="xsd:string" substitutionGroup="o-ex:contextElement"/>
+	<xsd:element name="dLocation" type="xsd:anyURI" substitutionGroup="o-ex:contextElement"/>
+	<xsd:element name="reference" type="xsd:anyURI" substitutionGroup="o-ex:contextElement"/>
+	<xsd:element name="version" type="xsd:string" substitutionGroup="o-ex:contextElement"/>
+	<xsd:element name="transaction" type="xsd:string" substitutionGroup="o-ex:contextElement"/>
+	<xsd:element name="service" type="xsd:anyURI" substitutionGroup="o-ex:contextElement"/>
+	<xsd:element name="date" type="o-dd:dateType" substitutionGroup="o-ex:contextElement"/>
+	<!-- Declare all the Constraint Elements -->
+	<xsd:element name="individual" type="o-ex:constraintType" substitutionGroup="o-ex:constraintElement"/>
+	<xsd:element name="group" type="o-ex:constraintType" substitutionGroup="o-ex:constraintElement"/>
+	<xsd:element name="cpu" type="o-ex:constraintType" substitutionGroup="o-ex:constraintElement"/>
+	<xsd:element name="network" type="o-ex:constraintType" substitutionGroup="o-ex:constraintElement"/>
+	<xsd:element name="screen" type="o-ex:constraintType" substitutionGroup="o-ex:constraintElement"/>
+	<xsd:element name="storage" type="o-ex:constraintType" substitutionGroup="o-ex:constraintElement"/>
+	<xsd:element name="memory" type="o-ex:constraintType" substitutionGroup="o-ex:constraintElement"/>
+	<xsd:element name="printer" type="o-ex:constraintType" substitutionGroup="o-ex:constraintElement"/>
+	<xsd:element name="software" type="o-ex:constraintType" substitutionGroup="o-ex:constraintElement"/>
+	<xsd:element name="hardware" type="o-ex:constraintType" substitutionGroup="o-ex:constraintElement"/>
+	<xsd:element name="spatial" type="o-ex:constraintType" substitutionGroup="o-ex:constraintElement"/>
+	<xsd:element name="quality" type="o-ex:constraintType" substitutionGroup="o-ex:constraintElement"/>
+	<xsd:element name="format" type="o-ex:constraintType" substitutionGroup="o-ex:constraintElement"/>
+	<xsd:element name="unit" type="o-ex:constraintType" substitutionGroup="o-ex:constraintElement"/>
+	<xsd:element name="watermark" type="o-ex:constraintType" substitutionGroup="o-ex:constraintElement"/>
+	<xsd:element name="purpose" type="o-ex:constraintType" substitutionGroup="o-ex:constraintElement"/>
+	<xsd:element name="industry" type="o-ex:constraintType" substitutionGroup="o-ex:constraintElement"/>
+	<xsd:element name="count"  substitutionGroup="o-ex:constraintElement">
+	    <xsd:complexType>
+	        <xsd:simpleContent>
+	            <xsd:extension base="xsd:positiveInteger">
+    	                 <xsd:attributeGroup ref="o-ex:IDGroup"/>
+		    <xsd:attribute ref="o-ex:type"/>
+	            </xsd:extension>
+	        </xsd:simpleContent>
+	    </xsd:complexType>
+	</xsd:element>
+	<xsd:element name="range" substitutionGroup="o-ex:constraintElement">
+		<xsd:complexType>
+			<xsd:complexContent>
+				<xsd:extension base="o-ex:constraintType">
+					<xsd:sequence>
+						<xsd:element name="min" type="xsd:decimal" minOccurs="0"/>
+						<xsd:element name="max" type="xsd:decimal" minOccurs="0"/>
+					</xsd:sequence>
+				</xsd:extension>
+			</xsd:complexContent>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="datetime" type="o-dd:dateType" substitutionGroup="o-ex:constraintElement"/>
+	<xsd:simpleType name="dateAndOrTime">
+		<xsd:union memberTypes="xsd:date xsd:dateTime"/>
+	</xsd:simpleType>
+	<xsd:complexType name="dateType">
+		<xsd:complexContent>
+			<xsd:extension base="o-ex:constraintType">
+				<xsd:choice>
+					<xsd:sequence>
+						<xsd:element name="start" type="o-dd:dateAndOrTime" minOccurs="0"/>
+						<xsd:element name="end" type="o-dd:dateAndOrTime" minOccurs="0"/>
+					</xsd:sequence>
+					<xsd:element name="fixed" type="o-dd:dateAndOrTime" minOccurs="0"/>
+				</xsd:choice>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:element name="accumulated" type="xsd:duration" substitutionGroup="o-ex:constraintElement"/>
+	<xsd:element name="interval" type="xsd:duration" substitutionGroup="o-ex:constraintElement"/>
+	<xsd:element name="recontext" type="xsd:boolean" substitutionGroup="o-ex:constraintElement"/>
+	<!-- Transfer Permission is defined as a ContainerType to enable complete expression of
+	      rights in the Constraint  -->
+	<xsd:element name="transferPerm" substitutionGroup="o-ex:container">
+		<xsd:complexType>
+			<xsd:complexContent>
+				<xsd:extension base="o-ex:containerType">
+					<xsd:attribute name="downstream" default="equal">
+						<xsd:simpleType>
+							<xsd:restriction base="xsd:NMTOKEN">
+								<xsd:enumeration value="equal"/>
+								<xsd:enumeration value="less"/>
+								<xsd:enumeration value="notgreater"/>
+							</xsd:restriction>
+						</xsd:simpleType>
+					</xsd:attribute>
+				</xsd:extension>
+			</xsd:complexContent>
+		</xsd:complexType>
+	</xsd:element>
+</xsd:schema>

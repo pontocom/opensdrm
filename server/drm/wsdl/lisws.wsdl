@@ -1,0 +1,188 @@
+<!-- edited with XMLSPY v2004 rel. 2 U (http://www.xmlspy.com) by xpto (xpto) -->
+<wsdl:definitions xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:si="http://soapinterop.org/xsd" xmlns:tns="http://www.adetti.pt/opensdrmws" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:ns="http://schemas.xmlsoap.org/wsdl/http/" xmlns:ns1="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://www.adetti.pt/opensdrmws">
+	<wsdl:types>
+		<xsd:schema targetNamespace="http://www.adetti.pt/opensdrmws">
+			<xsd:import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+			<xsd:import namespace="http://schemas.xmlsoap.org/wsdl/"/>
+		</xsd:schema>
+	</wsdl:types>
+	<message name="LISrequestContentKeyStoreRequest">
+		<part name="key" type="xsd:string"/>
+		<part name="cid" type="xsd:string"/>
+	</message>
+	<message name="LISrequestContentKeyStoreResponse">
+		<part name="result_message" type="xsd:string"/>
+	</message>
+	<message name="LISrequestLicenseListRequest">
+		<part name="uid" type="xsd:string"/>
+		<part name="cid" type="xsd:string"/>
+	</message>
+	<message name="LISrequestLicenseListResponse">
+		<part name="result_message" type="xsd:string"/>
+		<part name="list_of_licenses" type="xsd:string"/>
+	</message>
+	<message name="LISrequestLicenseDownloadRequest">
+		<part name="uid" type="xsd:string"/>
+		<part name="cid" type="xsd:string"/>
+		<part name="authData" type="xsd:string"/>
+	</message>
+	<message name="LISrequestLicenseDownloadResponse">
+		<part name="result_message" type="xsd:string"/>
+		<part name="license" type="xsd:string"/>
+	</message>
+	<message name="LISrequestLicenseDownloadSpecialRequest">
+		<part name="uid" type="xsd:string"/>
+		<part name="cid" type="xsd:string"/>
+		<part name="authData" type="xsd:string"/>
+	</message>
+	<message name="LISrequestLicenseDownloadSpecialResponse">
+		<part name="result_message" type="xsd:string"/>
+		<part name="license" type="xsd:string"/>
+	</message>
+	<message name="LISrequestLicenseDeleteRequest">
+		<part name="uid" type="xsd:string"/>
+		<part name="cid" type="xsd:string"/>
+	</message>
+	<message name="LISrequestLicenseDeleteResponse">
+		<part name="result_message" type="xsd:string"/>
+	</message>
+	<message name="LISrequestLicenseCreationRequest">
+		<part name="uid" type="xsd:string"/>
+		<part name="cid" type="xsd:string"/>
+		<part name="licdata" type="xsd:string"/>
+	</message>
+	<message name="LISrequestLicenseCreationResponse">
+		<part name="result_message" type="xsd:string"/>
+	</message>
+	<message name="LISrequestLicenseUpdateRequest">
+		<part name="uid" type="xsd:string"/>
+		<part name="cid" type="xsd:string"/>
+		<part name="licdata" type="xsd:string"/>
+	</message>
+	<message name="LISrequestLicenseUpdateResponse">
+		<part name="result_message" type="xsd:string"/>
+	</message>
+	<message name="LISrequestLicensePassingRequest">
+		<part name="uid_src" type="xsd:string"/>
+		<part name="uid_target" type="xsd:string"/>
+		<part name="cid" type="xsd:string"/>
+		<part name="rights" type="xsd:string"/>
+	</message>
+	<message name="LISrequestLicensePassingResponse">
+		<part name="result_message" type="xsd:string"/>
+	</message>
+	<portType name="opensdrmwsPortType">
+		<operation name="LISrequestContentKeyStore">
+			<input message="tns:LISrequestContentKeyStoreRequest"/>
+			<output message="tns:LISrequestContentKeyStoreResponse"/>
+		</operation>
+		<operation name="LISrequestLicenseList">
+			<input message="tns:LISrequestLicenseListRequest"/>
+			<output message="tns:LISrequestLicenseListResponse"/>
+		</operation>
+		<operation name="LISrequestLicenseDownload">
+			<input message="tns:LISrequestLicenseDownloadRequest"/>
+			<output message="tns:LISrequestLicenseDownloadResponse"/>
+		</operation>
+		<operation name="LISrequestLicenseDownloadSpecial">
+			<input message="tns:LISrequestLicenseDownloadSpecialRequest"/>
+			<output message="tns:LISrequestLicenseDownloadSpecialResponse"/>
+		</operation>
+		<operation name="LISrequestLicenseDelete">
+			<input message="tns:LISrequestLicenseDeleteRequest"/>
+			<output message="tns:LISrequestLicenseDeleteResponse"/>
+		</operation>
+		<operation name="LISrequestLicenseCreation">
+			<input message="tns:LISrequestLicenseCreationRequest"/>
+			<output message="tns:LISrequestLicenseCreationResponse"/>
+		</operation>
+		<operation name="LISrequestLicenseUpdate">
+			<input message="tns:LISrequestLicenseUpdateRequest"/>
+			<output message="tns:LISrequestLicenseUpdateResponse"/>
+		</operation>
+		<operation name="LISrequestLicensePassing">
+			<input message="tns:LISrequestLicensePassingRequest"/>
+			<output message="tns:LISrequestLicensePassingResponse"/>
+		</operation>
+	</portType>
+	<binding name="opensdrmwsBinding" type="tns:opensdrmwsPortType">
+		<soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<operation name="LISrequestContentKeyStore">
+			<soap:operation soapAction="http://localhost/opensdrm/LIS/LIS.ws.php/LISrequestContentKeyStore" style="rpc"/>
+			<input>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://www.adetti.pt/opensdrmws"/>
+			</input>
+			<output>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://www.adetti.pt/opensdrmws"/>
+			</output>
+		</operation>
+		<operation name="LISrequestLicenseList">
+			<soap:operation soapAction="http://localhost/opensdrm/LIS/LIS.ws.php/LISrequestLicenseList" style="rpc"/>
+			<input>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://www.adetti.pt/opensdrmws"/>
+			</input>
+			<output>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://www.adetti.pt/opensdrmws"/>
+			</output>
+		</operation>
+		<operation name="LISrequestLicenseDownload">
+			<soap:operation soapAction="http://localhost/opensdrm/LIS/LIS.ws.php/LISrequestLicenseDownload" style="rpc"/>
+			<input>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://www.adetti.pt/opensdrmws"/>
+			</input>
+			<output>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://www.adetti.pt/opensdrmws"/>
+			</output>
+		</operation>
+		<operation name="LISrequestLicenseDownloadSpecial">
+			<soap:operation soapAction="http://localhost/opensdrm/LIS/LIS.ws.php/LISrequestLicenseDownloadSpecial" style="rpc"/>
+			<input>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://www.adetti.pt/opensdrmws"/>
+			</input>
+			<output>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://www.adetti.pt/opensdrmws"/>
+			</output>
+		</operation>
+		<operation name="LISrequestLicenseDelete">
+			<soap:operation soapAction="http://localhost/opensdrm/LIS/LIS.ws.php/LISrequestLicenseDelete" style="rpc"/>
+			<input>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://www.adetti.pt/opensdrmws"/>
+			</input>
+			<output>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://www.adetti.pt/opensdrmws"/>
+			</output>
+		</operation>
+		<operation name="LISrequestLicenseCreation">
+			<soap:operation soapAction="http://localhost/opensdrm/LIS/LIS.ws.php/LISrequestLicenseCreation" style="rpc"/>
+			<input>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://www.adetti.pt/opensdrmws"/>
+			</input>
+			<output>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://www.adetti.pt/opensdrmws"/>
+			</output>
+		</operation>
+		<operation name="LISrequestLicenseUpdate">
+			<soap:operation soapAction="http://localhost/opensdrm/LIS/LIS.ws.php/LISrequestLicenseUpdate" style="rpc"/>
+			<input>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://www.adetti.pt/opensdrmws"/>
+			</input>
+			<output>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://www.adetti.pt/opensdrmws"/>
+			</output>
+		</operation>
+		<operation name="LISrequestLicensePassing">
+			<soap:operation soapAction="http://localhost/opensdrm/LIS/LIS.ws.php/LISrequestLicensePassing" style="rpc"/>
+			<input>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://www.adetti.pt/opensdrmws"/>
+			</input>
+			<output>
+				<soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://www.adetti.pt/opensdrmws"/>
+			</output>
+		</operation>
+	</binding>
+	<service name="opensdrmws">
+		<port name="opensdrmwsPort" binding="tns:opensdrmwsBinding">
+			<soap:address location="http://localhost/opensdrm/LIS/LIS.ws.php"/>
+		</port>
+	</service>
+</wsdl:definitions>
