@@ -31,8 +31,8 @@ Temple Place, Suite 330, Boston, MA 02111-1307 USA
 //General configuration file
 //AUS DB DIRECTIVES
 $GLOBALS['AUS_DB_TYPE'] = "mysql";
-// $AUS_DB_SERVER = "localhost";
-$GLOBALS['AUS_DB_DBNAME'] = "aus_sf";
+$GLOBALS['AUS_DB_SERVER'] = "127.0.0.1";
+$GLOBALS['AUS_DB_DBNAME'] = "ausws_dev";
 $GLOBALS['AUS_DB_USRNAME'] = "root";
 $GLOBALS['AUS_DB_PWD'] = "";
 //AUS WS DIRECTIVES

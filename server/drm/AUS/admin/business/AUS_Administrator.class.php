@@ -76,19 +76,19 @@ class AUS_Administrator
 	 */
 	function verifyLogin($username, $password){
 		$rs=$this->db_con->executeQuery("SELECT * FROM ".$GLOBALS['AUS_DB_DBNAME'].".ausws_admin WHERE login='$username' AND password='$password'");
-
+        
 		/* verificar resultado */
 		if($rs->RecordCount()==0) return false;
 		return true;
 	}
 
-	function verifyLogin_($username, $password){
-		$rs=$this->db_con->executeQuery("SELECT * FROM ".$GLOBALS['AUS_DB_DBNAME'].".ausws_admin WHERE login='$username' AND password='".md5($password)."'");
-
-		/* verificar resultado */
-		if($rs->RecordCount()==0) return false;
-		return true;
-	}
+//	function verifyLogin_($username, $password){
+//		$rs=$this->db_con->executeQuery("SELECT * FROM ".$GLOBALS['AUS_DB_DBNAME'].".ausws_admin WHERE login='$username' AND password='".md5($password)."'");
+//
+//        /* verificar resultado */
+//		if($rs->RecordCount()==0) return false;
+//		return true;
+//	}
 	
 	function specialVerifyUser($uid, $login, $hash) {
 		$l = new Logger();

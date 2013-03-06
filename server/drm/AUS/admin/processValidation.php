@@ -13,7 +13,7 @@ if($_REQUEST['op']=="REGISTRATION") {
 	}
 } else {
 	$aus_admin = new AUS_Administrator();
-	if($aus_admin->verifyLogin_($_REQUEST['username'], $_REQUEST['password'])==true){
+	if($aus_admin->verifyLogin($_REQUEST['username'], $_REQUEST['password'])==true){
 		$_SESSION['LOGIN']=1;
 		header("Location: ausManager.php");
 	} else {
