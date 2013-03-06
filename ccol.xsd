@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.example.org/ccol/" targetNamespace="http://www.example.org/ccol/">
+    <complexType name="command">
+    	<sequence>
+    		<element name="operation" maxOccurs="1" minOccurs="1">
+    			<simpleType>
+    				<restriction base="string">
+    					<enumeration value="play"></enumeration>
+    					<enumeration value="display"></enumeration>
+    					<enumeration value="print"></enumeration>
+    					<enumeration value="execute"></enumeration>
+    					<enumeration value="modify"></enumeration>
+    					<enumeration value="excerpt"></enumeration>
+    					<enumeration value="annotate"></enumeration>
+    					<enumeration value="aggregate"></enumeration>
+    					<enumeration value="sell"></enumeration>
+    					<enumeration value="lend"></enumeration>
+    					<enumeration value="give"></enumeration>
+    					<enumeration value="lease"></enumeration>
+    					<enumeration value="move"></enumeration>
+    					<enumeration value="duplicate"></enumeration>
+    					<enumeration value="backup"></enumeration>
+    					<enumeration value="install"></enumeration>
+    					<enumeration value="delete"></enumeration>
+    					<enumeration value="verify"></enumeration>
+    					<enumeration value="restore"></enumeration>
+    					<enumeration value="uninstall"></enumeration>
+    					<enumeration value="save"></enumeration>
+    				</restriction>
+    			</simpleType>
+    		</element>
+    		<element name="details" type="string" maxOccurs="1"
+    			minOccurs="0">
+    		</element>
+    		<element name="cid" type="string" maxOccurs="1"
+    			minOccurs="1">
+    		</element>
+    		<element name="meta" type="tns:meta"></element>
+    	</sequence>
+    </complexType>
+
+    <complexType name="meta">
+    	<sequence>
+    		<element name="license_location" type="string" maxOccurs="1"
+    			minOccurs="1">
+    		</element>
+    		<element name="ptools" type="tns:ptools" maxOccurs="unbounded" minOccurs="0"></element>
+    	</sequence>
+    </complexType>
+    
+    <complexType name="ptools">
+    	<sequence>
+    		<element name="toolid" type="string"></element>
+    		<element name="toolurl" type="string"></element>
+    	</sequence>
+    </complexType>
+</schema>

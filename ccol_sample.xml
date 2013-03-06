@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ccol:command>
+	<ccol:operation>play</ccol:operation>
+	<ccol:cid>myMusicID</ccol:cid>
+	<ccol:meta>
+		<ccol:license_location>URLLicenseServer</ccol:license_location>
+		<ccol:toolid>CommParser</ccol:toolid>
+		<ccol:toolurl>URLCommParserToolsLocation</ccol:toolurl>
+		<ccol:toolid>RELParser</ccol:toolid>
+		<ccol:toolurl>URLRELParserToolsLocation</ccol:toolurl>
+	</ccol:meta>
+</ccol:command>
