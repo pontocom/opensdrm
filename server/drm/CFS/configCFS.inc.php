@@ -31,8 +31,8 @@ Temple Place, Suite 330, Boston, MA 02111-1307 USA
 //General configuration file
 //AUS DB DIRECTIVES
 $GLOBALS['CFS_DB_TYPE'] = "mysql";
-$GLOBALS['CFS_DB_SERVER'] = "localhost";
-$GLOBALS['CFS_DB_DBNAME'] = "cfs_sf";
+$GLOBALS['CFS_DB_SERVER'] = "127.0.0.1";
+$GLOBALS['CFS_DB_DBNAME'] = "cfsws_dev";
 $GLOBALS['CFS_DB_USRNAME'] = "root";
 $GLOBALS['CFS_DB_PWD'] = "";
 // AUS location

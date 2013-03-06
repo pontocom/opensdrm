@@ -13,7 +13,7 @@ if($_REQUEST['op']=="REGISTRATION") {
 	}
 } else {
 	$cfs_admin = new CFS_Administrator();
-	if($cfs_admin->verifyLogin_($_REQUEST['username'], $_REQUEST['password'])==true){
+	if($cfs_admin->verifyLogin($_REQUEST['username'], $_REQUEST['password'])==true){
 		$_SESSION['LOGIN']=1;
 		header("Location: cfsManager.php");
 	} else {

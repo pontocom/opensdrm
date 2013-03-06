@@ -3,8 +3,10 @@ session_start();
 if($_SESSION['LOGIN']==1) {
 	header("Location: cfsManager.php");
 }
-require_once("Zend/Config/Ini.php");
-include_once("business/CFS_Administrator.class.php");
+//require_once("Zend/Config/Ini.php");
+//include_once("business/CFS_Administrator.class.php");
+include_once($_SERVER["DOCUMENT_ROOT"]."/config.inc.php");
+include_once($_SERVER["DOCUMENT_ROOT"].$GLOBALS['INSTALLATION_DIR']."/CFS/admin/business/CFS_Administrator.class.php");
 
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -88,7 +90,7 @@ function validateFormRegistration()
 <body>
 <p align="center"><img src="opensdrm-banner.jpg" /></p>
 <?php
-        $cfg = new Zend_Config_Ini(getenv("DOCUMENT_ROOT") . '/config.ini', 'opensdrm.cfs');
+        //$cfg = new Zend_Config_Ini(getenv("DOCUMENT_ROOT") . '/config.ini', 'opensdrm.cfs');
         
 	$cfs_admin = new CFS_Administrator();
 	if($cfs_admin->verifyAdminStatus())
@@ -150,6 +152,9 @@ function validateFormRegistration()
 <?php
 	}
 ?>
-<p align="center" class="footer"><?php echo $cfg->version.$cfg->footer_note;?></p>
+<p align="center" class="footer">
+    <?php //echo $cfg->version.$cfg->footer_note;?>
+    <?php echo $GLOBALS['VERSION'].$GLOBALS['FOOTER_NOTE'];?>
+</p>
 </body>
 </html>

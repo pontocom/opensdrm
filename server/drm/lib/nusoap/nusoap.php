@@ -839,6 +839,7 @@ class nusoap_base {
     * @access public
     */
 	function getmicrotime() {
+        date_default_timezone_set('Europe/Paris');
 		if (function_exists('gettimeofday')) {
 			$tod = gettimeofday();
 			$sec = $tod['sec'];
