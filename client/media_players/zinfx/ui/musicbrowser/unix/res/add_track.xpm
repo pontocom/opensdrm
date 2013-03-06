@@ -1,0 +1,28 @@
+/* XPM */
+static char *add_track_pic[] = {
+/* width height num_colors chars_per_pixel */
+"    22    18        3            1",
+/* colors */
+". c #000000",
+"# c #808080",
+"a c None",
+/* pixels */
+"aaaaaaaaaaaaaaaaaaaaaa",
+"aaaaaaaaaaaaaaaaaaaaaa",
+"aaaaaaaaaaaaaaaaaaaaaa",
+"aaaaaaa.aaaaaaaaaaa.aa",
+"aaaaaaa..aaaaaaaaa..##",
+"aaaaaaa...aa.aaaa.....",
+"aaaaaaa....a..aaaa..##",
+"aaaaaaa.a..a...aaaa.aa",
+"aaaaaaa.aa.a....aaaaaa",
+"aaaaaaa.aa.a.a..aaaaaa",
+"aaaaaaa.a.aa.aa.aaaaaa",
+"aaaaa...aaaa.aa.aaaaaa",
+"aaaa....aaaa.a.aaaaaaa",
+"aaaa....aa...aaaaaaaaa",
+"aaaa...aa....aaaaaaaaa",
+"aaaaaaaaa....aaaaaaaaa",
+"aaaaaaaaa...aaaaaaaaaa",
+"aaaaaaaaaaaaaaaaaaaaaa"
+};

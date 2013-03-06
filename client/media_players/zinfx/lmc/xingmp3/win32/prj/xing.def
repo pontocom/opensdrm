@@ -1,0 +1,7 @@
+; xinglmc.def : Declares the module parameters for the DLL.
+
+LIBRARY      "xing"
+DESCRIPTION  'Xing MPEG Decoder Library'
+
+EXPORTS
+	Initialize

@@ -1,0 +1,67 @@
+The installation of FreeAmp is fairly straight forward.
+
+Linux
+------------------------------------------------------------------------------
+ Preparations:
+ 
+   What you'll need to fully build FreeAmp (note: most, if not all, of the
+   following are optional, but major features of FreeAmp will be missing
+   if the software packages are not installed.)
+       
+        nasm + perl: if you want to build with assembly optimzations
+	libid3: if you want changes made to mp3 metadata to be written to disk
+	GTK+ 1.2.x: _NEEDED_ if you want to have a GUI for FreeAmp
+	gdk-pixbuf: used for some optimzations, and if you want to use the 
+	            kjofol theme converter.
+	freetype: needed if you want the GTK+ GUI to look pretty.
+
+ Building FreeAmp:
+
+   Under Linux you must follow these steps to build the binary:
+
+	1) ./configure
+           The configure script should be a fairly familiar thing.  If it
+	   fails to successfully complete, you're probably missing some
+	   vital component.  It will also warn you of any missing optional
+	   components, such as GTK+, and tell you where to obtain the missing
+	   software packages.  Run ./configure --help to see the various
+	   options you have in compiling FreeAmp.
+	
+	2) make
+           This will build the binary.  If any problems occur here, send an
+	   email detailing the errors to info@freeamp.org.
+
+        3) make install 
+           This will install the binaries and plugins into /usr/local, or
+	   to the directory you specified by running ./configure --prefix=foo
+	   
+	4) freeamp
+	   Run it and enjoy =)
+	   
+Windows
+------------------------------------------------------------------------------
+
+  Build: See the file README.WIN32 in the main source directory
+
+  Install:   
+	In order to build the installer you will need InstallShield
+	Pro version 5.0 or later. The InstallShield project file is
+	in the install/win32 directory.
+
+	The first thing you need to do is run the Media Build Wizard
+	under the Build menu. Choose the package you wish to create
+	(FreeAmp 32bit Install, etc.) and click "Next" until it builds.
+
+	Next, compile the installer from the Build menu. This will place
+	the install files in:
+
+	install/win32/Media/<Package>/Disk Images/disk1
+
+	you can run the setup.exe file or use the PackageForTheWeb 
+	utility to create a self-extracting installer.
+
+  NOTE:
+	The InstallShield installer looks for the program files in the 
+	base\win32\prj directory so if you want to build an installer
+	do not remove the files.
+

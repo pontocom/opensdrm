@@ -1,0 +1,7 @@
+;fileinput.def : Declares the module parameters for the DLL.
+
+LIBRARY      "fileinput"
+DESCRIPTION  'File Input Library'
+
+EXPORTS
+	Initialize

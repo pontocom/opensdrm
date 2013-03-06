@@ -1,0 +1,698 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_MUSICBROWSER DIALOGEX 0, 0, 480, 250
+STYLE DS_CENTER | WS_MINIMIZEBOX | WS_MAXIMIZEBOX | WS_POPUP | 
+    WS_CLIPSIBLINGS | WS_CLIPCHILDREN | WS_CAPTION | WS_SYSMENU | 
+    WS_THICKFRAME
+CAPTION "My Music - ""Z.1inf"
+MENU IDR_MENU1
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    CONTROL         "Tree1",IDC_MUSICTREE,"SysTreeView32",TVS_HASBUTTONS | 
+                    TVS_HASLINES | TVS_LINESATROOT | TVS_EDITLABELS | 
+                    WS_BORDER | WS_TABSTOP,0,40,136,198,WS_EX_CLIENTEDGE
+    LTEXT           "My Music Collection",IDC_MUSICCATALOGTEXT,4,29,64,8
+    CONTROL         "List1",IDC_PLAYLISTBOX,"SysListView32",LVS_REPORT | 
+                    LVS_OWNERDRAWFIXED | WS_BORDER | WS_TABSTOP,139,40,341,
+                    198,WS_EX_CLIENTEDGE
+    LTEXT           "",IDC_PLAYLISTTITLE,142,29,337,8
+    PUSHBUTTON      "DUMMY",IDC_DUMMYCONTROL,0,0,479,27,BS_FLAT | NOT 
+                    WS_VISIBLE | NOT WS_TABSTOP
+END
+
+IDD_OPENURL DIALOG FIXED IMPURE  0, 0, 280, 21
+STYLE DS_3DLOOK | DS_CONTROL | WS_CHILD | WS_CLIPSIBLINGS
+FONT 8, "MS Sans Serif"
+BEGIN
+    CONTROL         "",IDS_URL,"Static",SS_ETCHEDHORZ,-2,0,282,1
+    LTEXT           "URL:",IDS_URL,6,7,17,8
+    PUSHBUTTON      "Open URL",IDC_OPEN_URL,222,4,50,13
+    COMBOBOX        IDC_URL,29,4,188,75,CBS_DROPDOWN | CBS_AUTOHSCROLL | 
+                    WS_VSCROLL | WS_TABSTOP
+END
+
+IDD_MUSICSEARCH DIALOG DISCARDABLE  0, 0, 254, 121
+STYLE DS_SETFOREGROUND | DS_CENTER | WS_POPUP | WS_VISIBLE | WS_CAPTION | 
+    WS_SYSMENU
+CAPTION "Search Computer for Music"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "Begin Search",IDOK,78,102,54,14
+    PUSHBUTTON      "Cancel",IDCANCEL,136,102,54,14
+    LTEXT           "&Look for music on:",IDC_STATIC,54,59,60,8
+    COMBOBOX        IDC_DRIVES,118,57,52,48,CBS_DROPDOWNLIST | WS_VSCROLL | 
+                    WS_TABSTOP
+    PUSHBUTTON      "&Browse...",IDC_BROWSE,198,76,50,14,WS_DISABLED
+    LTEXT           "Limit search to:",IDC_LIMITTEXT,54,78,48,8
+    EDITTEXT        IDC_DIRECTORY,108,76,84,13,ES_AUTOHSCROLL | ES_READONLY
+    LTEXT           "We will search your computer for supported music files. The files will not be moved or modified during this process. Their location will be remembered in order to provide you with an",
+                    IDC_STATIC,54,7,195,25
+    LTEXT           "organized view of your music collection. ",IDC_STATIC,
+                    54,31,195,8
+    LTEXT           "Where would you like to look for music?",IDC_STATIC,54,
+                    43,195,8
+    CONTROL         "",IDC_STATIC,"Static",SS_ETCHEDHORZ,0,96,254,1
+    PUSHBUTTON      "Help",9,194,102,54,14
+    CONTROL         131,IDC_STATIC,"Static",SS_BITMAP,5,7,41,81
+END
+
+IDD_SAVEPLAYLIST DIALOG DISCARDABLE  0, 0, 198, 63
+STYLE DS_MODALFRAME | DS_SETFOREGROUND | DS_CENTER | WS_POPUP | WS_CAPTION | 
+    WS_SYSMENU
+CAPTION "Save Playlist As"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,87,42,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,141,42,50,14
+    EDITTEXT        IDC_NAME,7,21,184,14,ES_AUTOHSCROLL
+    LTEXT           "What would you like to call this compilation of tracks?",
+                    IDC_STATIC,7,7,184,9
+END
+
+IDD_REMOVETRACKS DIALOG DISCARDABLE  0, 0, 209, 68
+STYLE DS_SETFOREGROUND | DS_CENTER | WS_POPUP | WS_VISIBLE | WS_CAPTION | 
+    WS_SYSMENU
+CAPTION "Remove Tracks"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "Remove",IDOK,90,47,54,14
+    PUSHBUTTON      "Cancel",IDCANCEL,148,47,54,14
+    LTEXT           "Are you sure you want to remove the selected tracks from your music library?",
+                    -1,34,7,168,20
+    ICON            IDI_WARN,-1,7,7,20,20
+    CONTROL         "Permanently remove items from my computer",IDC_DELETE,
+                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,34,30,165,10
+END
+
+IDD_EDITINFO DIALOG FIXED IMPURE  0, 0, 257, 151
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Edit Track Info"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,92,130,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,146,130,50,14
+    EDITTEXT        IDC_TITLE,47,27,114,14,ES_AUTOHSCROLL
+    COMBOBOX        IDC_ALBUM,47,44,114,69,CBS_DROPDOWN | CBS_AUTOHSCROLL | 
+                    CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_ARTIST,47,60,114,77,CBS_DROPDOWN | CBS_AUTOHSCROLL | 
+                    CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_GENRE,47,76,114,89,CBS_DROPDOWN | CBS_AUTOHSCROLL | 
+                    CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    EDITTEXT        IDC_COMMENT,47,94,203,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_LOCATION,47,113,203,14,ES_AUTOHSCROLL | ES_READONLY | 
+                    NOT WS_TABSTOP
+    EDITTEXT        IDC_TRACK,199,27,51,14,ES_AUTOHSCROLL | ES_NUMBER
+    CONTROL         "Spin2",IDC_SPINTRACK,"msctls_updown32",UDS_WRAP | 
+                    UDS_SETBUDDYINT | UDS_ALIGNRIGHT | UDS_AUTOBUDDY | 
+                    UDS_ARROWKEYS,243,27,11,14
+    EDITTEXT        IDC_YEAR,199,44,51,14,ES_AUTOHSCROLL | ES_NUMBER
+    CONTROL         "Spin1",IDC_SPINYEAR,"msctls_updown32",UDS_WRAP | 
+                    UDS_SETBUDDYINT | UDS_ALIGNRIGHT | UDS_AUTOBUDDY | 
+                    UDS_ARROWKEYS | UDS_NOTHOUSANDS,243,44,11,14
+    EDITTEXT        IDC_PLAYCOUNT,200,60,50,12,ES_AUTOHSCROLL
+    PUSHBUTTON      "Help",9,200,130,50,14
+    LTEXT           "Title:",IDC_TRACKTEXT,7,30,36,8
+    LTEXT           "Album:",IDC_TRACKTEXT,7,46,36,8
+    LTEXT           "Artist:",IDC_TRACKTEXT,7,62,36,8
+    LTEXT           "Genre:",IDC_TRACKTEXT,7,78,36,8
+    LTEXT           "Comments:",IDC_TRACKTEXT,7,97,36,8
+    LTEXT           "Year:",IDC_TRACKTEXT,178,46,18,8
+    LTEXT           "Use the fields below to change the information associated with your selected track(s).",
+                    IDC_TEXTTRACK,7,7,243,17
+    LTEXT           "Track #:",IDC_TRACKTEXT,168,30,28,8
+    LTEXT           "Location:",IDC_LOCATIONTEXT,7,117,30,8
+    LTEXT           "Playcount:",IDC_TRACKTEXT,164,62,34,8
+END
+
+IDD_INTROWIZARD_HELLO DIALOG DISCARDABLE  0, 0, 316, 164
+STYLE WS_CHILD | WS_DISABLED | WS_CAPTION
+CAPTION "Welcome!"
+FONT 8, "MS Sans Serif"
+BEGIN
+    CONTROL         "Text",IDC_TEXT2,"Button",BS_OWNERDRAW | BS_FLAT | 
+                    WS_TABSTOP,92,38,216,123
+    CONTROL         135,IDC_STATIC,"Static",SS_BITMAP,13,20,11,10
+    CONTROL         "Caption 1",IDC_CAPTION1,"Button",BS_OWNERDRAW | BS_LEFT | 
+                    BS_FLAT | WS_TABSTOP,92,0,216,10
+    CONTROL         "Text",IDC_TEXT1,"Button",BS_OWNERDRAW | BS_CENTER | 
+                    BS_FLAT | WS_TABSTOP,92,10,216,18
+    CONTROL         "Caption 2",IDC_CAPTION2,"Button",BS_OWNERDRAW | BS_LEFT | 
+                    BS_FLAT | WS_TABSTOP,92,28,216,10
+    CONTROL         130,IDC_STATIC,"Static",SS_BITMAP,2,2,81,161
+END
+
+IDD_INTROWIZARD_SEARCH DIALOG DISCARDABLE  0, 0, 308, 169
+STYLE WS_CHILD | WS_DISABLED | WS_CAPTION
+CAPTION "Search Computer For Music"
+FONT 8, "MS Sans Serif"
+BEGIN
+    CONTROL         "Caption 1",IDC_CAPTION1,"Button",BS_OWNERDRAW | BS_LEFT | 
+                    BS_FLAT | WS_TABSTOP,92,0,204,10
+    CONTROL         "Text",IDC_TEXT2,"Button",BS_OWNERDRAW | BS_FLAT | 
+                    WS_TABSTOP,92,82,200,40
+    CONTROL         "Text",IDC_TEXT1,"Button",BS_OWNERDRAW | BS_CENTER | 
+                    BS_FLAT | WS_TABSTOP,92,12,200,47
+    CONTROL         "Caption 2",IDC_CAPTION2,"Button",BS_OWNERDRAW | BS_LEFT | 
+                    BS_FLAT | WS_TABSTOP,92,69,204,10
+    LTEXT           "&Look for music on:",IDC_STATIC,92,128,60,8
+    COMBOBOX        IDC_DRIVES,155,126,53,60,CBS_DROPDOWNLIST | WS_VSCROLL | 
+                    WS_TABSTOP
+    PUSHBUTTON      "&Browse...",IDC_BROWSE,242,146,50,14,WS_DISABLED
+    LTEXT           "Limit search to:",IDC_LIMITTEXT,92,148,48,8
+    EDITTEXT        IDC_DIRECTORY,145,146,94,13,ES_AUTOHSCROLL | ES_READONLY
+    CONTROL         130,IDC_STATIC,"Static",SS_BITMAP,2,2,81,161
+END
+
+IDD_MISSINGTRACK DIALOG DISCARDABLE  0, 0, 257, 145
+STYLE DS_SETFOREGROUND | DS_CENTER | WS_POPUP | WS_VISIBLE | WS_CAPTION | 
+    WS_SYSMENU
+CAPTION "Unable to Locate Track"
+FONT 8, "MS Sans Serif"
+BEGIN
+    GROUPBOX        "",IDC_STATIC,7,69,243,48
+    LTEXT           " ",IDC_STATIC,10,68,8,8
+    DEFPUSHBUTTON   "OK",IDOK,138,124,54,14
+    PUSHBUTTON      "Cancel",IDCANCEL,196,124,54,14
+    CONTROL         "Remove this track from my playlists.",IDC_REMOVE,"Button",
+                    BS_AUTORADIOBUTTON | WS_GROUP,12,54,127,10
+    CONTROL         "Oops! I moved it. Let me show you where it is.",
+                    IDC_LOCATE,"Button",BS_AUTORADIOBUTTON,12,69,160,10
+    EDITTEXT        IDC_PATH,13,81,231,14,ES_AUTOHSCROLL
+    PUSHBUTTON      "Browse...",IDC_BROWSE,194,99,50,14
+    EDITTEXT        IDC_MISSINGTRACK,7,35,243,14,ES_AUTOHSCROLL | 
+                    ES_READONLY | NOT WS_BORDER
+    LTEXT           "Zinf is unable to locate the current track because it was either moved to a new location or it has been renamed.",
+                    IDC_STATIC,37,9,213,17
+    ICON            IDI_WARN,IDC_STATIC,7,7,20,20
+END
+
+IDD_FAVORITE DIALOG DISCARDABLE  0, 0, 222, 111
+STYLE DS_SETFOREGROUND | DS_CENTER | WS_POPUP | WS_VISIBLE | WS_CAPTION | 
+    WS_SYSMENU
+CAPTION "Favorite Stream"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,102,90,54,14
+    PUSHBUTTON      "Cancel",IDCANCEL,161,90,54,14
+    LTEXT           "Name :",IDC_STATIC,7,10,24,8
+    LTEXT           "Location (URL) :",IDC_STATIC,7,29,53,8
+    LTEXT           "Description :",IDC_STATIC,7,48,40,8
+    EDITTEXT        IDC_NAME,63,7,152,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_URL,63,26,152,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_DESCRIPTION,63,45,152,38,ES_MULTILINE | 
+                    ES_AUTOVSCROLL | ES_AUTOHSCROLL | ES_WANTRETURN
+END
+
+IDD_CHECKDB DIALOG DISCARDABLE  0, 0, 209, 71
+STYLE DS_SETFOREGROUND | DS_CENTER | WS_POPUP | WS_VISIBLE | WS_CAPTION | 
+    WS_SYSMENU
+CAPTION "Search For Music"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "Search",IDOK,90,50,54,14
+    PUSHBUTTON      "Cancel",IDCANCEL,148,50,54,14
+    LTEXT           "Your music database does not contain any items. Would you like to start a search to find music and playlists on your machine?",
+                    -1,31,7,171,25
+    ICON            IDI_WARN,-1,7,7,20,20
+    CONTROL         "Do not perform this check in the future.",IDC_CHECK,
+                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,31,35,165,10
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    IDD_MUSICBROWSER, DIALOG
+    BEGIN
+        BOTTOMMARGIN, 239
+    END
+
+    IDD_MUSICSEARCH, DIALOG
+    BEGIN
+        TOPMARGIN, 7
+    END
+
+    IDD_SAVEPLAYLIST, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 191
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 56
+    END
+
+    IDD_REMOVETRACKS, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 202
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 61
+    END
+
+    IDD_EDITINFO, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 250
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 144
+    END
+
+    IDD_INTROWIZARD_HELLO, DIALOG
+    BEGIN
+        RIGHTMARGIN, 308
+        BOTTOMMARGIN, 161
+    END
+
+    IDD_INTROWIZARD_SEARCH, DIALOG
+    BEGIN
+        RIGHTMARGIN, 305
+    END
+
+    IDD_MISSINGTRACK, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 250
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 138
+    END
+
+    IDD_FAVORITE, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 215
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 104
+    END
+
+    IDD_CHECKDB, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 202
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 64
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_MENU1 MENU DISCARDABLE 
+BEGIN
+    POPUP "&File"
+    BEGIN
+        MENUITEM "&New Playlist...",            ID_FILE_NEWPLAYLIST
+        MENUITEM "&Open Playlist...",           ID_FILE_OPENPLAYLIST
+        MENUITEM "&Save Playlist",              ID_FILE_SAVEPLAYLIST
+        MENUITEM "Save Playlist &As ...",       ID_FILE_SAVEASPLAYLIST
+        MENUITEM SEPARATOR
+        MENUITEM "&Import Tracks and Playlists...", ID_FILE_IMPORT
+        MENUITEM "&Export Playlist...",         ID_FILE_EXPORTPLAYLIST
+        MENUITEM SEPARATOR
+        MENUITEM "Search Computer for &Music...", ID_FILE_SEARCHFORMUSIC
+        MENUITEM SEPARATOR
+        MENUITEM "&Close",                      ID_FILE_CLOSEPLAYLIST
+    END
+    POPUP "E&dit"
+    BEGIN
+        MENUITEM "&Add Selected Tracks and Playlists", ID_EDIT_ADDTRACK
+        MENUITEM "Add &File From Disk...",      ID_EDIT_ADDFILE
+        MENUITEM "&Remove...",                  ID_EDIT_REMOVE
+        MENUITEM SEPARATOR
+        MENUITEM "Move &Up",                    ID_EDIT_MOVEUP
+        MENUITEM "Move &Down",                  ID_EDIT_MOVEDOWN
+        MENUITEM SEPARATOR
+        MENUITEM "&Clear Playlist",             ID_EDIT_CLEARPLAYLIST
+        MENUITEM SEPARATOR
+        MENUITEM "&Edit Playlist...",           ID_EDIT_EDITPLAYLIST
+        MENUITEM "Edit Track &Info...",         ID_EDIT_EDITINFO
+    END
+    POPUP "&View"
+    BEGIN
+        MENUITEM "View &Playlist Only",         ID_VIEW_MUSICCATALOG
+        MENUITEM "&Locate Current Track",       ID_VIEW_LOCATECURRENTITEM
+        MENUITEM "&Options...",                 ID_VIEW_OPTIONS
+    END
+    POPUP "&Controls"
+    BEGIN
+        MENUITEM "&Play the Current Track",     ID_CONTROLS_PLAYPAUSE
+        MENUITEM "&Stop the Current Track",     ID_CONTROLS_STOP
+        MENUITEM SEPARATOR
+        MENUITEM "Move to Pre&vious Track",     ID_CONTROLS_PREVIOUSSONG
+        MENUITEM "Move to &Next Track",         ID_CONTROLS_NEXTSONG
+        MENUITEM SEPARATOR
+        MENUITEM "&Eject CD",                   ID_CONTROLS_EJECT
+        MENUITEM SEPARATOR
+        MENUITEM "Play Tracks in Nor&mal Order", ID_CONTROLS_NORMALORDER
+        MENUITEM "Play Tracks in &Random Order", ID_CONTROLS_SHUFFLE
+        MENUITEM SEPARATOR
+        MENUITEM "Repeat N&o Tracks",           ID_CONTROLS_REPEATNONE
+        MENUITEM "Repeat &Current Track",       ID_CONTROLS_REPEATONE
+        MENUITEM "Repeat &All Tracks",          ID_CONTROLS_REPEATALL
+    END
+    POPUP "&Sort Playlist"
+    BEGIN
+        MENUITEM "by &Artist",                  ID_SORT_ARTIST
+        MENUITEM "by Al&bum",                   ID_SORT_ALBUM
+        MENUITEM "by &Title",                   ID_SORT_TITLE
+        MENUITEM "by &Year",                    ID_SORT_YEAR
+        MENUITEM "by Trac&k",                   ID_SORT_TRACK
+        MENUITEM "by &Genre",                   ID_SORT_GENRE
+        MENUITEM "by &Length",                  ID_SORT_LENGTH
+        MENUITEM "by L&ocation",                ID_SORT_LOCATION
+        MENUITEM "by &Filename",                ID_SORT_FILENAME
+        MENUITEM "by &Comment",                 ID_SORT_COMMENT
+        MENUITEM "&Randomly",                   ID_SORT_RANDOMIZE
+    END
+    POPUP "&Help"
+    BEGIN
+        MENUITEM "&Contents",                   ID_HELP_CONTENTS
+        MENUITEM SEPARATOR
+        MENUITEM "&Zinf Web Site",              ID_HELP_FREEAMPWEBSITE
+        MENUITEM SEPARATOR
+        MENUITEM "&About...",                   ID_HELP_ABOUT
+    END
+END
+
+IDR_TVPOPUP MENU DISCARDABLE 
+BEGIN
+    POPUP "Sheep?"
+    BEGIN
+        MENUITEM "&Add to Playlist",            ID_POPUP_ADDTRACK
+        MENUITEM "Add and Play &Now",           ID_POPUP_ADDTRACK_PLAY
+        MENUITEM "Edit &Playlist",              ID_POPUP_EDITPLAYLIST
+        MENUITEM SEPARATOR
+        MENUITEM "Rena&me",                     ID_POPUP_RENAME
+        MENUITEM "&Remove...",                  ID_POPUP_REMOVE
+        MENUITEM SEPARATOR
+        MENUITEM "&Edit Info...",               ID_POPUP_EDITINFO
+        MENUITEM "&Lookup at Bitzi",            ID_BITZI_LOOKUP
+    END
+END
+
+IDR_MENU2 MENU DISCARDABLE 
+BEGIN
+    POPUP "&File"
+    BEGIN
+        MENUITEM "&New Playlist...",            ID_FILE_NEWPLAYLIST
+        MENUITEM "&Open Playlist...",           ID_FILE_OPENPLAYLIST
+        MENUITEM "Save Playlist",               ID_FILE_SAVEPLAYLIST
+        MENUITEM "Save Playlist &As ...",       ID_FILE_SAVEASPLAYLIST
+        MENUITEM SEPARATOR
+        MENUITEM "&Import Tracks and Playlists...", ID_FILE_IMPORT
+        MENUITEM "&Export Playlist...",         ID_FILE_EXPORTPLAYLIST
+        MENUITEM SEPARATOR
+        MENUITEM "Search for &Music...",        ID_FILE_SEARCHFORMUSIC
+        MENUITEM SEPARATOR
+        MENUITEM "&Close",                      ID_FILE_CLOSEPLAYLIST
+    END
+    POPUP "E&dit"
+    BEGIN
+        MENUITEM "&Add Selected Tracks and Playlists", ID_EDIT_ADDTRACK
+        MENUITEM "Add &File From Disk...",      ID_EDIT_ADDFILE
+        MENUITEM "&Remove Items",               ID_EDIT_REMOVE
+        MENUITEM SEPARATOR
+        MENUITEM "Move &Up",                    ID_EDIT_MOVEUP
+        MENUITEM "Move &Down",                  ID_EDIT_MOVEDOWN
+        MENUITEM SEPARATOR
+        MENUITEM "&Edit Playlist...",           ID_EDIT_EDITPLAYLIST
+        MENUITEM "Edit Track and Playlist Info...", ID_EDIT_EDITINFO
+    END
+    POPUP "&View"
+    BEGIN
+        MENUITEM "View &Playlist Only",         ID_VIEW_MUSICCATALOG
+        MENUITEM "Options...",                  ID_VIEW_OPTIONS
+    END
+    POPUP "&Controls"
+    BEGIN
+        MENUITEM "Play",                        ID_CONTROLS_PLAYPAUSE
+        MENUITEM "Stop",                        ID_CONTROLS_STOP
+        MENUITEM SEPARATOR
+        MENUITEM "Next Track",                  ID_CONTROLS_NEXTSONG
+        MENUITEM "Previous Track",              ID_CONTROLS_PREVIOUSSONG
+        MENUITEM SEPARATOR
+        MENUITEM "Shuffle",                     ID_CONTROLS_SHUFFLE
+        MENUITEM SEPARATOR
+        MENUITEM "Repeat None",                 ID_CONTROLS_REPEATNONE
+        MENUITEM "Repeat One",                  ID_CONTROLS_REPEATONE
+        MENUITEM "Repeat All",                  ID_CONTROLS_REPEATALL
+    END
+    POPUP "&Sort Playlist"
+    BEGIN
+        MENUITEM "by &Artist",                  ID_SORT_ARTIST
+        MENUITEM "by Al&bum",                   ID_SORT_ALBUM
+        MENUITEM "by &Title",                   ID_SORT_TITLE
+        MENUITEM "by &Year",                    ID_SORT_YEAR
+        MENUITEM "by Trac&k",                   ID_SORT_TRACK
+        MENUITEM "by &Genre",                   ID_SORT_GENRE
+        MENUITEM "by &Length",                  ID_SORT_LENGTH
+        MENUITEM "by L&ocation",                ID_SORT_LOCATION
+        MENUITEM "&Randomly",                   ID_SORT_RANDOMIZE
+    END
+    POPUP "&Window"
+    BEGIN
+        MENUITEM "&Next",                       ID_WINDOW_NEXT
+        MENUITEM "&Previous",                   ID_WINDOW_PREVIOUS
+        MENUITEM SEPARATOR
+        MENUITEM "&Cascade",                    ID_WINDOW_CASCADE
+        MENUITEM "Tile &Horizontally",          ID_WINDOW_TILEHORIZONTALLY
+        MENUITEM "Tile &Vertically",            ID_WINDOW_TILEVERTICALLY
+        MENUITEM SEPARATOR
+    END
+    POPUP "&Help"
+    BEGIN
+        MENUITEM "&Contents",                   ID_HELP_CONTENTS
+        MENUITEM "&Search...",                  ID_HELP_SEARCH
+        MENUITEM SEPARATOR
+        MENUITEM "&FreeAmp Web Site",           ID_HELP_FREEAMPWEBSITE
+        MENUITEM "&EMusic.com Web Site",        ID_HELP_EMUSICCOMWEBSITE
+        MENUITEM SEPARATOR
+        MENUITEM "About...",                    ID_HELP_ABOUT
+    END
+END
+
+IDR_LVPOPUP MENU DISCARDABLE 
+BEGIN
+    POPUP "Sheep?"
+    BEGIN
+        MENUITEM "&Play Now",                   ID_POPUP_PLAY
+        MENUITEM "Move &Up",                    ID_POPUP_MOVEUP
+        MENUITEM "Move &Down",                  ID_POPUP_MOVEDOWN
+        MENUITEM SEPARATOR
+        MENUITEM "&Remove",                     ID_POPUP_REMOVE
+        MENUITEM SEPARATOR
+        MENUITEM "&Edit Info...",               ID_POPUP_EDITINFO
+        MENUITEM "&Lookup at Bitzi",            ID_BITZI_LOOKUP
+        MENUITEM SEPARATOR
+        MENUITEM "&Tip This Artist",            ID_POPUP_TIP
+    END
+END
+
+IDR_TVPOPUP1 MENU DISCARDABLE 
+BEGIN
+    POPUP "Sheep?"
+    BEGIN
+        MENUITEM "&Add to Playlist",            ID_POPUP_ADDTRACK
+        MENUITEM "Add and Play &Now",           ID_POPUP_ADDTRACK_PLAY
+        MENUITEM SEPARATOR
+        MENUITEM "Refresh CD",                  ID_POPUP_REFRESH_CD
+        MENUITEM SEPARATOR
+        MENUITEM "&Eject CD",                   ID_POPUP_EJECT
+    END
+END
+
+IDR_TVPOPUP2 MENU DISCARDABLE 
+BEGIN
+    POPUP "Sheep?"
+    BEGIN
+        MENUITEM "&Add to Playlist",            ID_POPUP_ADDTRACK
+        MENUITEM "Add and Play &Now",           ID_POPUP_ADDTRACK_PLAY
+        MENUITEM SEPARATOR
+        MENUITEM "Add to &Favorites",           ID_POPUP_FAVORITE
+        MENUITEM SEPARATOR
+        MENUITEM "Rena&me",                     ID_POPUP_RENAME
+        MENUITEM "&Remove...",                  ID_POPUP_REMOVEFAVORITE
+        MENUITEM SEPARATOR
+        MENUITEM "&Edit Info...",               ID_POPUP_EDITSTREAMINFO
+        MENUITEM SEPARATOR
+        MENUITEM "&Update Streams",             ID_POPUP_SUPDATE
+        MENUITEM "&Visit Website",              ID_POPUP_VISITWEB
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDI_EXE_ICON            ICON    DISCARDABLE     "icon1.ico"
+IDI_WARN                ICON    DISCARDABLE     "warn.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Cursor
+//
+
+IDC_DRAG                CURSOR  DISCARDABLE     "drag.cur"
+IDC_NODROP              CURSOR  DISCARDABLE     "nodrop.cur"
+IDC_SPLITTER            CURSOR  DISCARDABLE     "splitter.cur"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDB_PLAYING             BITMAP  FIXED IMPURE    "playing.bmp"
+IDB_TOOLBAR             BITMAP  DISCARDABLE     "TOOLBAR.BMP"
+IDB_PLAYLIST            BITMAP  DISCARDABLE     "playlist.bmp"
+IDB_CATALOG             BITMAP  DISCARDABLE     "catalog.bmp"
+IDB_ARTIST              BITMAP  DISCARDABLE     "artist.bmp"
+IDB_TRACK               BITMAP  DISCARDABLE     "track.bmp"
+IDB_ALBUM               BITMAP  DISCARDABLE     "album.bmp"
+IDB_ALL                 BITMAP  DISCARDABLE     "all.bmp"
+IDB_UNCATAGORIZED       BITMAP  DISCARDABLE     "uncatagorized.bmp"
+IDB_PORTABLE            BITMAP  DISCARDABLE     "portable.bmp"
+IDB_WIZARD              BITMAP  DISCARDABLE     "wizard.bmp"
+IDB_WIZARD_SMALL        BITMAP  DISCARDABLE     "wizard_small.bmp"
+IDB_WIREDPLANET         BITMAP  DISCARDABLE     "wiredplanet.bmp"
+IDB_ICECAST             BITMAP  DISCARDABLE     "icecast.bmp"
+IDB_SHOUTCAST           BITMAP  DISCARDABLE     "shoutcast.bmp"
+IDB_BUSY                BITMAP  DISCARDABLE     "busy.bmp"
+IDB_STREAMS             BITMAP  DISCARDABLE     "streams.bmp"
+IDB_CD                  BITMAP  DISCARDABLE     "cd.bmp"
+IDB_FAVORITES           BITMAP  DISCARDABLE     "favorites.bmp"
+IDB_RELATABLE           BITMAP  DISCARDABLE     "relatable.bmp"
+
+#ifndef _MAC
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 2,2,0,7
+ PRODUCTVERSION 2,2,0,7
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904b0"
+        BEGIN
+            VALUE "Comments", "For the latest version go to http://www.zinf.org\0"
+            VALUE "CompanyName", "Zinf Open Source Development Effort\0"
+            VALUE "FileDescription", "The Music Browser user interface enables you to organize your music collection and select music to listen to.\0"
+            VALUE "FileVersion", "2.2.1.7\0"
+            VALUE "InternalName", "MusicBrowser\0"
+            VALUE "LegalCopyright", "Copyright © EMusic.com 1999-2000 (http://www.gnu.org/copyleft/gpl.html)\0"
+            VALUE "LegalTrademarks", "Zinf, EMusic\0"
+            VALUE "OriginalFilename", "musicbrowser.ui\0"
+            VALUE "PrivateBuild", "\0"
+            VALUE "ProductName", "Music Browser User Interface\0"
+            VALUE "ProductVersion", "2.2.1\0"
+            VALUE "SpecialBuild", "\0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1200
+    END
+END
+
+#endif    // !_MAC
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_TOOLBAR             "button1"
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

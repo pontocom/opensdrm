@@ -1,0 +1,7 @@
+; downloadui.def : Declares the module parameters for the DLL.
+
+LIBRARY      "download"
+DESCRIPTION  'Download UI Library'
+
+EXPORTS
+	Initialize

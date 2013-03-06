@@ -1,0 +1,70 @@
+#!/bin/sh -e
+#
+# $Id: install-zinf,v 1.1 2004/10/13 16:16:04 linha2 Exp $
+#
+
+# Return the appropriate version string
+function DetectLIBC {
+      status=1
+      if [ -f `echo /lib/libc.so.6* | tail -1` ]; then
+              if fgrep GLIBC_2.1 /lib/libc.so.6* 2>&1 >/dev/null; then
+                      echo "glibc-2.1"
+                      status=0
+              else
+                      echo "glibc-2.0"
+                      status=0
+              fi
+      elif [ -f /lib/libc.so.5 ]; then
+              echo "libc5"
+              status=0
+      else
+              echo "unknown"
+      fi
+      return $status
+}
+
+libc=`DetectLIBC`
+
+#if [ "$libc" != "glibc-2.1" ]; then
+#    echo "You are not using glibc-2.1, this installation will fail."
+#    exit 0
+#else
+#    echo "You are using glibc-2.1.  Good.  Continuing..."
+#fi
+
+prefix=/usr
+
+bindir="$prefix/bin"
+libdir="$prefix/lib"
+fadir="$libdir/freeamp"
+plugdir="$fadir/plugins"
+sharedir="$prefix/share"
+fathemedir="$sharedir/freeamp"
+themedir="$fathemedir/themes"
+
+# We could use mkdir -p, but not all unix systems' mkdir's support -p
+for dir in "$bindir" "$libdir" "$fadir" "$plugdir" "$sharedir" "$fathemedir" "$themedir"; do
+    if [ \! -d "$dir" ]; then
+	echo "mkdir $dir"
+	mkdir "$dir"
+	echo "chown root $dir"
+	chown root "$dir"
+	echo "chmod 755 $dir"
+	chmod 755 "$dir"
+    fi
+done
+
+install -c -m 755 freeamp "$bindir"
+if test -f "MakeTheme"; then
+    install -c -m 755 MakeTheme "$bindir"
+fi
+for file in themes/*.*; do
+    echo "install -c -o root -m 644 $file $themedir"
+    install -c -o root -m 644 "$file" "$themedir"
+done
+for file in plugins/*.*; do
+    echo "install -c -o root -m 644 $file $plugdir"
+    install -c -o root -m 644 "$file" "$plugdir"
+done
+
+gzip -d -c < help/unix/freeamphelp.tar.gz | (cd "$fathemedir"; rm -rf help; tar -xmf -)

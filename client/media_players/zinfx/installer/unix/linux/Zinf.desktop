@@ -1,0 +1,8 @@
+
+[Desktop Entry]
+Name[en_US.ISO8859-1]=Zinf
+Exec=zinf 
+Icon=/usr/share/pixmaps/zinf.png
+Terminal=false
+MultipleArgs=false
+Type=Application

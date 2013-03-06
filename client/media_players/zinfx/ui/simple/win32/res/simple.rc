@@ -1,0 +1,435 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDM_PLAYER MENU DISCARDABLE 
+BEGIN
+    POPUP "&File"
+    BEGIN
+        MENUITEM "&Open...\tCtrl+O",            IDC_OPEN
+        MENUITEM SEPARATOR
+        POPUP "Recent &Files"
+        BEGIN
+            MENUITEM "Recent File List",            IDC_RECENTF1, GRAYED
+        END
+        MENUITEM SEPARATOR
+        MENUITEM "E&xit",                       IDC_EXIT
+    END
+    POPUP "&Edit"
+    BEGIN
+        MENUITEM "&Preferences",                IDC_EDIT_PREFS
+    END
+    POPUP "&Audio"
+    BEGIN
+        MENUITEM "&Play\tCtrl+P",               IDC_PLAY
+        MENUITEM "P&ause\tCtrl+A",              IDC_PAUSE
+        MENUITEM "&Stop\tCtrl+S",               IDC_STOP
+        MENUITEM SEPARATOR
+        MENUITEM "&Next Song\tPage Up",         IDC_NEXTSONG
+        MENUITEM "&Last Song\tPage Down",       IDC_LASTSONG
+    END
+END
+
+IDM_TRAY MENU DISCARDABLE 
+BEGIN
+    POPUP "popup"
+    BEGIN
+        MENUITEM "Open...",                     IDC_OPEN
+        MENUITEM SEPARATOR
+        MENUITEM "Preferences...",              IDC_EDIT_PREFS
+        MENUITEM SEPARATOR
+        MENUITEM "Play",                        IDC_PLAY
+        MENUITEM "Pause",                       IDC_PAUSE
+        MENUITEM "Next Song",                   IDC_NEXTSONG
+        MENUITEM "Last Song",                   IDC_LASTSONG
+        MENUITEM SEPARATOR
+        MENUITEM "Exit",                        IDC_EXIT
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_PLAYER DIALOGEX 0, 0, 152, 47
+STYLE DS_MODALFRAME | DS_SETFOREGROUND | DS_CENTER | WS_POPUP | WS_VISIBLE | 
+    WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_ACCEPTFILES
+CAPTION "Zinf"
+MENU IDM_PLAYER
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    PUSHBUTTON      "Play",IDC_PLAY,32,4,29,13
+    PUSHBUTTON      "Stop",IDC_STOP,91,4,29,13
+    PUSHBUTTON      ">>",IDC_NEXTSONG,121,4,29,13
+    PUSHBUTTON      "<<",IDC_LASTSONG,2,4,29,13
+    PUSHBUTTON      "Pause",IDC_PAUSE,61,4,29,13
+    CONTROL         "Slider1",IDC_SLIDER,"msctls_trackbar32",TBS_BOTH | 
+                    TBS_NOTICKS | WS_TABSTOP,34,20,81,11
+    LTEXT           "00:00:00",IDC_TOTAL_TIME,119,22,31,8
+    LTEXT           "00:00:00",IDC_CURRENT_TIME,2,22,31,8
+    CONTROL         "",IDC_STATIC,"Static",SS_ETCHEDHORZ,0,0,152,1
+END
+
+IDD_ABOUT DIALOG DISCARDABLE  0, 0, 186, 97
+STYLE DS_MODALFRAME | WS_POPUP | WS_CLIPCHILDREN
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,129,76,50,14
+    PUSHBUTTON      "Zinf.org",IDC_WEBLINK,70,76,50,14
+END
+
+IDD_PREF3 DIALOG DISCARDABLE  0, 0, 233, 174
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Debug"
+FONT 8, "MS Sans Serif"
+BEGIN
+    GROUPBOX        "",IDC_STATIC,3,84,227,86
+    LTEXT           " ",IDC_STATIC,9,84,8,8
+    CONTROL         "Enable Logging",IDC_LOG,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,11,83,63,10
+    CONTROL         "Log general player errors (e.g. Loading plugins)",
+                    IDC_LOGMAIN,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,13,98,
+                    163,10
+    CONTROL         "Log input from PMIs (e.g. File, HTTP, ShoutCAST)",
+                    IDC_LOGINPUT,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,13,
+                    112,174,10
+    CONTROL         "Log output from PMOs (e.g. Wave, DirectSound)",
+                    IDC_LOGOUTPUT,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,13,
+                    126,169,10
+    CONTROL         "Log decoding process (e.g. MP3, CDDA)",IDC_LOGDECODER,
+                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,13,140,145,10
+    CONTROL         "Log performance issues (e.g. Timings, Buffer Under/Overflows)",
+                    IDC_LOGPERFORMANCE,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,
+                    13,154,213,10
+    LTEXT           "If you are experiencing a problem with FreeAmp it is possible to log what the program is doing in order to help us track down the cause. When you enable logging a file is created in the program's install directory ",
+                    IDC_STATIC,3,3,227,24
+    LTEXT           "called freeamp.log. You should send us the log file when you report a bug.",
+                    IDC_STATIC,3,27,227,17
+    LTEXT           "You have the ability to narrow the logging to a particular portion of FreeAmp by selecting the various logging options. If you are not sure in which portion of the program the problem is occuring you can simply enable all the logging options.",
+                    IDC_STATIC,3,46,227,32
+END
+
+IDD_PREF2 DIALOG DISCARDABLE  0, 0, 233, 174
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Streaming"
+FONT 8, "MS Sans Serif"
+BEGIN
+    LTEXT           "Buffer Streams For",IDC_STATIC,57,17,59,8
+    EDITTEXT        IDC_STREAM_INTERVAL,117,15,25,12,ES_AUTOHSCROLL | 
+                    ES_NUMBER
+    LTEXT           "Seconds",IDC_STATIC,146,17,29,8
+    GROUPBOX        "",IDC_STATIC,3,40,227,42
+    LTEXT           " ",IDC_STATIC,9,42,8,8
+    CONTROL         "Save Streams Locally",IDC_SAVESTREAMS,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,11,41,83,10
+    LTEXT           "Save Location:",IDC_SAVELOCATION_TEXT,11,52,49,8
+    EDITTEXT        IDC_STREAMSAVEDIR,11,62,160,14,ES_AUTOHSCROLL
+    PUSHBUTTON      "Browse...",IDC_BROWSE,175,62,50,14
+    GROUPBOX        "",IDC_STATIC,3,89,227,41
+    LTEXT           " ",IDC_STATIC,9,90,8,8
+    CONTROL         "Use Proxy Server",IDC_USEPROXY,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,11,89,69,10
+    EDITTEXT        IDC_PROXYADDRESS,11,111,173,14,ES_AUTOHSCROLL
+    CTEXT           ":",IDC_COLON_TEXT,185,114,8,8
+    EDITTEXT        IDC_PORT,193,111,29,14,ES_AUTOHSCROLL | ES_NUMBER
+    LTEXT           "Port:",IDC_PORT_TEXT,193,101,15,8
+    LTEXT           "Proxy Address:",IDC_PROXYADDRESS_TEXT,11,101,47,8
+    GROUPBOX        "",IDC_STATIC,3,137,227,32
+    LTEXT           " ",IDC_STATIC,9,138,8,8
+    CONTROL         "Use Alternate IP",IDC_USETHISIP,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,11,137,64,10
+    EDITTEXT        IDC_IPADDRESS1,90,149,18,14,ES_AUTOHSCROLL | ES_NUMBER
+    LTEXT           "IP Address:",IDC_IPADDRESS_TEXT,47,153,37,8
+    CTEXT           ".",IDC_PERIOD1,108,155,8,8
+    EDITTEXT        IDC_IPADDRESS2,116,149,18,14,ES_AUTOHSCROLL | ES_NUMBER
+    CTEXT           ".",IDC_PERIOD2,134,155,8,8
+    EDITTEXT        IDC_IPADDRESS3,143,149,18,14,ES_AUTOHSCROLL | ES_NUMBER
+    CTEXT           ".",IDC_PERIOD3,161,155,8,8
+    EDITTEXT        IDC_IPADDRESS4,169,149,18,14,ES_AUTOHSCROLL | ES_NUMBER
+    GROUPBOX        "Buffer Sizes",IDC_STATIC,3,3,227,30
+END
+
+IDD_PREF1 DIALOG DISCARDABLE  0, 0, 233, 174
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "General"
+FONT 8, "MS Sans Serif"
+BEGIN
+    COMBOBOX        IDC_UI,81,13,125,50,CBS_DROPDOWNLIST | CBS_SORT | 
+                    WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_PMO,81,31,125,54,CBS_DROPDOWNLIST | CBS_SORT | 
+                    WS_VSCROLL | WS_TABSTOP
+    CONTROL         "Slider1",IDC_PRIORITY,"msctls_trackbar32",TBS_AUTOTICKS | 
+                    WS_TABSTOP,9,66,214,15
+    EDITTEXT        IDC_INPUT,73,122,25,12,ES_AUTOHSCROLL | ES_NUMBER
+    EDITTEXT        IDC_OUTPUT,73,138,25,12,ES_AUTOHSCROLL | ES_NUMBER
+    EDITTEXT        1026,73,154,25,12,ES_AUTOHSCROLL | ES_NUMBER
+    CONTROL         "Stay on top",IDC_STAYONTOP,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,153,126,52,10
+    CONTROL         "Manifest in Tray instead of Taskbar",IDC_TRAY,"Button",
+                    BS_AUTOCHECKBOX | BS_MULTILINE | WS_TABSTOP,153,145,75,
+                    17
+    LTEXT           "User Interface:",IDC_STATIC,27,15,48,8
+    LTEXT           "Output:",IDC_STATIC,50,32,25,8
+    GROUPBOX        "Plug-Ins",IDC_STATIC,3,2,227,48
+    GROUPBOX        "Decoder Priority",IDC_STATIC,3,54,227,52
+    GROUPBOX        "Buffer Sizes",IDC_STATIC,3,110,136,60
+    LTEXT           "Input Buffer Size:",IDC_STATIC,13,124,57,8
+    LTEXT           "Output Buffer Size:",IDC_STATIC,8,140,60,8
+    LTEXT           "Kilobytes",IDC_STATIC,103,124,29,8
+    LTEXT           "Kilobytes",IDC_STATIC,103,140,29,8
+    LTEXT           "Low",IDC_STATIC,41,84,14,8
+    LTEXT           "Normal",IDC_STATIC,104,84,23,8
+    LTEXT           "High",IDC_STATIC,175,84,16,8
+    LTEXT           "Realtime",IDC_STATIC,199,84,28,8
+    GROUPBOX        "Misc",IDC_STATIC,145,110,85,60
+    LTEXT           "Idle",IDC_STATIC,10,84,12,8
+    CTEXT           "Below Normal",IDC_STATIC,69,84,29,15
+    CTEXT           "Above Normal",IDC_STATIC,135,84,27,16
+    LTEXT           "Prebuffer Streams:",IDC_STATIC,9,156,59,8
+    LTEXT           "Seconds",IDC_STATIC,103,156,29,8
+END
+
+IDD_PREF4 DIALOG DISCARDABLE  0, 0, 233, 174
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "About"
+FONT 8, "MS Sans Serif"
+BEGIN
+    LTEXT           "Zinf is an Open Source effort to build the best digital audio player available.  In the interest of supporting the free software community, while at the same time fostering the growth of the online delivery of",
+                    IDC_STATIC,3,24,227,24
+    LTEXT           "music, EMusic.com, THE Source for Downloadable Music, is funding both the FreeAmp.org domain and the efforts of the FreeAmp team. The FreeAmp team consists of: Mark B. Elrod, Robert Kaye, Brett Thomas, Jason Woodward, and Mark H. Weaver.",
+                    IDC_STATIC,3,48,227,33
+    LTEXT           "Other people have also contributed to FreeAmp:",
+                    IDC_STATIC,3,83,227,9
+    LTEXT           "Zinf is being released under the terms of the GPL. As is provided by the GPL, all of EMusic.com's and your efforts toward FreeAmp will be released back to the community at large.",
+                    IDC_STATIC,3,122,227,25
+    LTEXT           "Alan Cutter, Gabor Fleischer, Jean-Michel HERVE, Hiromasa Kato, Michael Bruun Petersen, Sylvain Rebaud, The Snowblind Alliance, Tom Spindler, Valters Vingolds, and Bill Yuan.",
+                    IDC_STATIC,3,92,227,24
+    LTEXT           "version 1.3",IDC_STATIC,98,14,36,8
+    LTEXT           "Zinf",IDC_STATIC,102,5,29,8
+    PUSHBUTTON      "Visit FreeAmp.org",IDC_GOTOFREEAMP,30,156,67,14
+    PUSHBUTTON      "Visit EMusic.com",IDC_GOTOEMUSIC,136,156,67,14
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    IDD_PLAYER, DIALOG
+    BEGIN
+        BOTTOMMARGIN, 45
+    END
+
+    IDD_ABOUT, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 179
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 90
+    END
+
+    IDD_PREF3, DIALOG
+    BEGIN
+        LEFTMARGIN, 3
+        RIGHTMARGIN, 230
+        TOPMARGIN, 3
+        BOTTOMMARGIN, 170
+    END
+
+    IDD_PREF2, DIALOG
+    BEGIN
+        LEFTMARGIN, 3
+        RIGHTMARGIN, 230
+        TOPMARGIN, 3
+        BOTTOMMARGIN, 169
+    END
+
+    IDD_PREF1, DIALOG
+    BEGIN
+        LEFTMARGIN, 3
+        RIGHTMARGIN, 230
+        TOPMARGIN, 3
+        BOTTOMMARGIN, 171
+    END
+
+    IDD_PREF4, DIALOG
+    BEGIN
+        LEFTMARGIN, 3
+        RIGHTMARGIN, 230
+        TOPMARGIN, 3
+        BOTTOMMARGIN, 170
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Accelerator
+//
+
+IDA_PLAYLISTEDITOR ACCELERATORS FIXED IMPURE 
+BEGIN
+    "A",            IDC_SELECTALL,          VIRTKEY, CONTROL, NOINVERT
+    "C",            IDC_COPY,               VIRTKEY, CONTROL, NOINVERT
+    "F",            IDC_FIND,               VIRTKEY, CONTROL, NOINVERT
+    "N",            IDC_NEW,                VIRTKEY, CONTROL, NOINVERT
+    "O",            IDC_OPEN,               VIRTKEY, CONTROL, NOINVERT
+    "S",            IDC_SAVE,               VIRTKEY, CONTROL, NOINVERT
+    "V",            IDC_PASTE,              VIRTKEY, CONTROL, NOINVERT
+    VK_DELETE,      IDC_DELETE,             VIRTKEY, NOINVERT
+    "X",            IDC_CUT,                VIRTKEY, CONTROL, NOINVERT
+    "Y",            IDC_REDO,               VIRTKEY, CONTROL, NOINVERT
+    "Z",            IDC_UNDO,               VIRTKEY, CONTROL, NOINVERT
+END
+
+IDA_PLAYER ACCELERATORS FIXED IMPURE 
+BEGIN
+    "A",            IDC_PAUSE,              VIRTKEY, CONTROL, NOINVERT
+    "L",            IDC_EDIT_CURRENTPLAYLIST, VIRTKEY, CONTROL, NOINVERT
+    "O",            IDC_OPEN,               VIRTKEY, CONTROL, NOINVERT
+    "P",            IDC_PLAY,               VIRTKEY, CONTROL, NOINVERT
+    "S",            IDC_STOP,               VIRTKEY, CONTROL, NOINVERT
+    VK_NEXT,        IDC_NEXTSONG,           VIRTKEY, NOINVERT
+    VK_PRIOR,       IDC_LASTSONG,           VIRTKEY, NOINVERT
+END
+
+
+#ifndef _MAC
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,3,0,0
+ PRODUCTVERSION 1,3,0,0
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x40004L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904b0"
+        BEGIN
+            VALUE "Comments", "For the latest version go to http://www.zinf.org\0"
+            VALUE "CompanyName", "Zinf Open Source Development Effort\0"
+            VALUE "FileDescription", "Simple interface to the FreeAmp player. It is currently deprecated and works with version 1.3 and earlier.\0"
+            VALUE "FileVersion", "2.2.1\0"
+            VALUE "InternalName", "simple\0"
+            VALUE "LegalCopyright", "Copyright © EMusic.com 1999-2000 (http://www.gnu.org/copyleft/gpl.html)\0"
+            VALUE "LegalTrademarks", "Zinf, EMusic\0"
+            VALUE "OriginalFilename", "simple.ui\0"
+            VALUE "PrivateBuild", "\0"
+            VALUE "ProductName", "Simple User Interface\0"
+            VALUE "ProductVersion", "2.2.1\0"
+            VALUE "SpecialBuild", "\0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1200
+    END
+END
+
+#endif    // !_MAC
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDI_EXE_ICON            ICON    DISCARDABLE     "icon1.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_NAME                "Zinf"
+    IDS_WEBLINK             "http://www.zinf.org"
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

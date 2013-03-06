@@ -1,0 +1,7 @@
+;obsinput.def : Declares the module parameters for the DLL.
+
+LIBRARY      "obsinput"
+DESCRIPTION  'Obs Input Library'
+
+EXPORTS
+	Initialize

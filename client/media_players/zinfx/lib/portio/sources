@@ -1,0 +1,5 @@
+TARGETNAME=portio
+TARGETPATH=.
+TARGETTYPE=DRIVER
+
+SOURCES=portio.c portio.rc

@@ -1,0 +1,482 @@
+# Freeamp master Makefile
+# $Id: Makefile-plugins.in,v 1.1 2004/10/13 16:16:04 linha2 Exp $
+
+RELOC = @FPIC@
+
+include Makefile.header
+
+plugins-install install_plugins: install-plugins
+
+install-plugins: plugins
+	$(mkinstalldirs) $(DESTDIR)$(libdir)/zinf/plugins
+	@list=`ls plugins/*.*`; for p in $$list; do \
+	  if test -f $$p; then \
+	    echo "  $(INSTALL_PROGRAM) $$p $(DESTDIR)$(libdir)/zinf/`echo $$p|sed '$(transform)'`"; \
+	     $(INSTALL_PROGRAM) $$p $(DESTDIR)$(libdir)/zinf/`echo $$p|sed '$(transform)'`; \
+	  else :; fi; \
+	done
+	$(INSTALL_DATA) $(srcdir)/ftc/winamp/winamp_theme.xml $(DESTDIR)$(libdir)/zinf/plugins/winamp_theme.xml
+
+uninstall_plugins uninstall-plugins:
+	@list=`ls plugins/*.*`; for p in $$list; do \
+	  if test -f $(DESTDIR)$(libdir)/zinf/$$p; then \
+	    echo "  rm -f $(DESTDIR)$(libdir)/zinf/`echo $$p|sed '$(transform)'`"; \
+	    rm -f $(DESTDIR)$(libdir)/zinf/`echo $$p|sed '$(transform)'`; \
+	  else :; fi; \
+	done
+	-rmdir $(DESTDIR)/$(libdir)/zinf/plugins
+
+OSDEPPLUGINS = @OSDEPPLUGINS@
+
+clean-plugins plugins-clean:
+	-rm -f $(CORBAUIOBJ) $(VORBISLIBOBJ) $(VORBISOBJ) $(VORBISMDFOBJ) $(SIGNATUREPMOOBJ) $(LIBHTTPOBJ) $(KJOFOLOBJ) $(WINAMPOBJ) $(CDPMOOBJ) $(CDLMCOBJ) $(UNZIPOBJ) $(MBCDOBJ) $(PLSOBJ) $(RMPOBJ) $(MISCOBJ) $(ZLIBOBJ) $(MUSICBROWSEROBJ) $(MAKETHEMEOBJ) $(LFIOBJ) $(HTTPOBJ) $(OBSPMI) $(SCPMOOBJ) $(ALSAOBJ) $(ESNDOBJ) $(DOWNLOADUIOBJ) $(CMDUIOBJ) $(MPG123UIOBJ) $(NCURSESUIOBJ) $(LCDUIOBJ) $(IRMANUIOBJ) $(ZINFUIOBJ) $(ID3V1OBJ) $(ID3V2OBJ) $(M3UOBJ) $(PMP300OBJ) $(XINGLMCOBJ) $(WAVOBJ) $(WAVPMOOBJ) MakeTheme plugins/*.*
+
+PLUGINS =  lib/zlib/lib/libzlib.la
+PLUGINS += lib/unzip/lib/libunzip.la
+PLUGINS += plugins/localfileinput.pmi
+PLUGINS += plugins/httpinput.pmi
+PLUGINS += plugins/obsinput.pmi
+
+PLUGINS += plugins/soundcard.pmo
+PLUGINS += plugins/wavout.pmo
+
+PLUGINS += plugins/zinfcmd.ui
+PLUGINS += plugins/mpg123.ui
+PLUGINS += plugins/lcd.ui
+PLUGINS += plugins/irman.ui
+
+PLUGINS += plugins/xingmp3.lmc
+PLUGINS += plugins/wav.lmc
+
+PLUGINS += plugins/mbcd.mdf
+PLUGINS += plugins/id3v1.mdf
+PLUGINS += plugins/id3v2.mdf
+PLUGINS += plugins/misc.mdf
+
+PLUGINS += plugins/m3u.plf
+PLUGINS += plugins/pls.plf
+
+PLUGINS += plugins/rmp.dlf
+
+plugins plugins-cc: $(PLUGINS) $(OSDEPPLUGINS)
+
+# ugly horrible static junk
+
+#STATICLD  = -nostdlib /usr/lib/gcc-lib/i386-linux/2.95.2/libstdc++.a /usr/lib/gcc-lib/i386-linux/2.95.2/libgcc.a
+
+#
+# PMI section
+
+#
+# localfileinput is a nice simple example of a plugin dependency.
+LFIOBJ = io/src/pmi.o io/local/localfileinput.o io/src/pipeline.lo
+
+plugins/localfileinput.pmi: $(LFIOBJ)
+	$(LINKMOD) -o $@ $(LFIOBJ) $(STATICLD)
+
+#$(LFIOBJ):
+#	$(CXXCOMPILE) $(FPIC) -o $(*).o -c ${*:%.o=%}.c
+
+#
+# here's httpinput
+HTTPOBJ  = io/src/pmi.o io/http/httpinput.o io/src/pipeline.lo io/src/tstream.lo
+
+plugins/httpinput.pmi: $(HTTPOBJ)
+	$(LINKMOD) -o $@ $(HTTPOBJ) $(STATICLD)
+
+#$(HTTPOBJ):
+#	$(CXXCOMPILE) $(FPIC) -o $(*).o -c ${*:%.o=%}.c
+
+# obsinput
+OBSPMI  = io/src/pmi.o io/obs/obsinput.o io/src/pipeline.lo io/src/tstream.lo
+
+plugins/obsinput.pmi: $(OBSPMI)
+	$(LINKMOD) -o $@ $(OBSPMI) $(STATICLD)
+
+#
+# PMO section
+
+SCPMOOBJ  = io/soundcard/unix/$(UNIX_AUDIO_API)/src/soundcardpmo.o io/src/pmo.o
+SCPMOOBJ += io/src/pipeline.lo $(SCPMO$(HOST_OS)OBJ)
+
+plugins/soundcard.pmo: $(SCPMOOBJ)
+	$(LINKMOD) -o $@ $(SCPMOOBJ) $(SCPMO$(HOST_OS)LIB) $(STATICLD)
+
+# alsa
+ALSAOBJ  = io/alsa/$(OSDEP)/src/alsapmo.o io/src/pipeline.lo io/src/pmo.o
+
+plugins/alsa.pmo: $(ALSAOBJ)
+	$(LINKMOD) -o $@ $(ALSAOBJ) -lasound 
+#	$(LINKMOD) -o $@ $(ALSAOBJ) $(STATICLD) /usr/lib/libasound.a
+
+# esound
+ESNDOBJ  = io/esound/src/esoundpmo.o io/src/pipeline.lo io/src/pmo.o
+
+plugins/esound.pmo: $(ESNDOBJ)
+	$(LINKMOD) -o $@ $(ESNDOBJ) $(ESD_LIBS)
+#	$(LINKMOD) -o $@ $(ESNDOBJ) $(STATICLD) /usr/lib/libesd.a /usr/lib/libaudiofile.a
+
+# esound
+ARTSOBJ  = io/arts/src/artspmo.o io/src/pipeline.lo io/src/pmo.o
+
+plugins/arts.pmo: $(ARTSOBJ)
+	$(LINKMOD) -o $@ $(ARTSOBJ) $(ARTS_LIBS)
+   
+# cd
+CDPMOOBJ  = io/cd/unix/src/cdpmo.o io/cd/unix/src/cdaudio.o 
+CDPMOOBJ += io/cd/unix/src/discids.o io/src/pipeline.lo io/src/pmo.o
+
+plugins/cd.pmo: $(CDPMOOBJ)
+	$(LINKMOD) -o $@ $(CDPMOOBJ) $(STATICLD)
+
+# wav out
+WAVPMOOBJ  = io/wavout/src/wavoutpmo.o io/wavout/src/wav.o 
+WAVPMOOBJ += io/src/pmo.o io/src/pipeline.lo
+
+plugins/wavout.pmo: $(WAVPMOOBJ)
+	$(LINKMOD) -o $@ $(WAVPMOOBJ)
+
+#
+# UI section
+
+# download manager ui
+DOWNLOADUIOBJ  = ui/download/unix/src/downloadui.o 
+DOWNLOADUIOBJ += ui/download/unix/src/gtkdownloadui.o 
+DOWNLOADUIOBJ += ui/musicbrowser/unix/src/gtkmessagedialog.o
+
+plugins/download.ui: $(DOWNLOADUIOBJ)
+	$(LINKMOD) -o $@ $(DOWNLOADUIOBJ) $(GTK_LIBS) 
+#	$(LINKMOD) -o $@ $(DOWNLOADUIOBJ) $(STATICLD)
+
+# musicbrowser ui
+UNIXMUSICBROWSEROBJ  = ui/musicbrowser/unix/src/gtkmusicbrowser.o
+UNIXMUSICBROWSEROBJ += ui/musicbrowser/unix/src/browsermenu.o
+UNIXMUSICBROWSEROBJ += ui/musicbrowser/unix/src/browsertree.o
+UNIXMUSICBROWSEROBJ += ui/musicbrowser/unix/src/browserlist.o
+UNIXMUSICBROWSEROBJ += ui/musicbrowser/unix/src/musicbrowser.o 
+UNIXMUSICBROWSEROBJ += ui/musicbrowser/unix/src/infoeditor.o 
+UNIXMUSICBROWSEROBJ += ui/musicbrowser/unix/src/fileselector.o 
+UNIXMUSICBROWSEROBJ += ui/musicbrowser/unix/src/musicsearch.o 
+UNIXMUSICBROWSEROBJ += ui/musicbrowser/unix/src/gtkmessagedialog.o 
+UNIXMUSICBROWSEROBJ += ui/musicbrowser/unix/src/introwizard.o
+UNIXMUSICBROWSEROBJ += ui/musicbrowser/unix/src/missingfileui.o
+UNIXMUSICBROWSEROBJ += lib/xml/src/Parse.lo
+UNIXMUSICBROWSERLIBS = $(GTK_LIBS)
+
+MUSICBROWSEROBJ = $($(OSTYPE)MUSICBROWSEROBJ)
+MUSICBROWSERLIBS = $($(OSTYPE)MUSICBROWSERLIBS)
+MUSICBROWSERPOSTLINK = $($(OSTYPE)MUSICBROWSERPOSTLINK)
+
+plugins/musicbrowser.ui: $(MUSICBROWSEROBJ)
+	$(LINKMOD) -o $@ $(MUSICBROWSEROBJ) $(MUSICBROWSERLIBS)
+#	$(LINKMOD) -o $@ $(MUSICBROWSEROBJ) $(STATICLD) 
+	$(MUSICBROWSERPOSTLINK)
+
+# zinf ui
+ZINFUIOBJ  = ui/zinf/src/Theme.doh ui/zinf/src/Bitmap.o 
+ZINFUIOBJ += ui/zinf/src/Canvas.o ui/zinf/src/SliderControl.o 
+ZINFUIOBJ += ui/zinf/src/VSliderControl.o ui/zinf/src/Panel.o
+ZINFUIOBJ += ui/zinf/src/Window.o ui/zinf/src/ButtonControl.o 
+ZINFUIOBJ += ui/zinf/src/Control.o ui/zinf/src/TextControl.o 
+ZINFUIOBJ += ui/zinf/src/DialControl.o ui/zinf/src/Font.o 
+ZINFUIOBJ += ui/zinf/src/ZinfTheme.doh ui/zinf/src/ThemeZip.o 
+ZINFUIOBJ += ui/zinf/src/MultiStateControl.o ui/zinf/src/Headlines.o
+ZINFUIOBJ += ui/zinf/src/ForeignTheme.o base/src/utility.lo
+ZINFUIOBJ += ui/zinf/src/PixFontControl.o ui/zinf/src/PixTimeControl.o
+ZINFUIOBJ += ui/zinf/src/Equalizer.o ui/zinf/src/PixSliderControl.o
+ZINFUIOBJ += lib/zlib/lib/libzlib.la lib/xml/src/Parse.lo
+ZINFUIOBJ += lib/unzip/lib/libunzip.la 
+ZINFUIOBJ += $($(OSTYPE)ZINFUIOBJ)
+ZINFUILIBS = $($(OSTYPE)ZINFUILIBS)
+
+UNIXZINFUIOBJ += ui/zinf/unix/src/GTKFont.o
+UNIXZINFUIOBJ += ui/zinf/unix/src/GTKUtility.o 
+UNIXZINFUIOBJ += ui/zinf/unix/src/GTKMessageDialog.o 
+UNIXZINFUIOBJ += ui/zinf/unix/src/GTKWindow.o
+UNIXZINFUIOBJ += ui/zinf/unix/src/GTKBitmap.o 
+UNIXZINFUIOBJ += ui/zinf/unix/src/GTKCanvas.o
+UNIXZINFUIOBJ += ui/zinf/unix/src/ttfont.o 
+UNIXZINFUIOBJ += ui/zinf/unix/src/ThemeManager.o 
+UNIXZINFUIOBJ += ui/zinf/unix/src/GTKPreferenceWindow.o 
+UNIXZINFUIOBJ += ui/zinf/unix/src/GTKFileSelector.o  
+UNIXZINFUIOBJ += ui/musicbrowser/unix/src/gtkmessagedialog.o
+UNIXZINFUILIBS = $(GDK_PIXBUF_LIBS) -static $(TTF_LIBS) 
+
+plugins/zinf.ui: $(ZINFUIOBJ)
+	$(LINKMOD) -o $@ $(ZINFUIOBJ) $(ZINFUILIBS)
+#	$(LINKMOD) -o $@ $(ZINFUIOBJ) $(STATICLD)
+
+# MakeTheme, only built if we're building zinf.ui
+
+MAKETHEMEOBJ  = ui/zinf/tools/src/MakeTheme.o ui/zinf/src/ThemeZip.o
+MAKETHEMEOBJ += base/unix/src/win32impl.o
+MAKETHEMEOBJ += lib/zlib/lib/libzlib.a lib/unzip/lib/libunzip.la
+
+MakeTheme: $(MAKETHEMEOBJ)
+	$(CXXLINK) $(MAKETHEMEOBJ)
+
+# cmdline
+CMDUIOBJ = ui/cmdline/cmdlineUI.o 
+
+plugins/zinfcmd.ui: $(CMDUIOBJ)
+	$(LINKMOD) -o $@ $(CMDUIOBJ) $(STATICLD)
+
+# Mpg123 ui
+MPG123UIOBJ = ui/mpg123/Mpg123UI.o 
+
+plugins/mpg123.ui: $(MPG123UIOBJ)
+	$(LINKMOD) -o $@ $(MPG123UIOBJ) $(STATICLD)
+
+# ncurses ui
+NCURSESUIOBJ = ui/ncurses/ncursesUI.o 
+
+plugins/ncurses.ui: $(NCURSESUIOBJ)
+	$(LINKMOD) -o $@ $(NCURSESUIOBJ) -l@CURSES@ 
+#	$(LINKMOD) -o $@ $(NCURSESUIOBJ) /usr/lib/libncurses.a $(STATICLD)
+
+# lcd ui
+LCDUIOBJ = ui/lcd/src/lcdui.o ui/lcd/src/sockets.o 
+
+plugins/lcd.ui: $(LCDUIOBJ)
+	$(LINKMOD) -o $@ $(LCDUIOBJ) $(STATICLD)
+
+# IRman
+IRMANUIOBJ = ui/irman/src/irmanui.o ui/irman/src/ircmd.o 
+IRMANUIOBJ += ui/irman/src/irfunc.o ui/irman/src/irio.o
+
+plugins/irman.ui: $(IRMANUIOBJ)
+	$(LINKMOD) -o $@ $(IRMANUIOBJ) $(STATICLD)
+
+CORBAUIOBJ  = ui/corba/Freeamp-common.o ui/corba/corbaUI.o ui/corba/corba.o
+CORBAUIOBJ += ui/corba/Freeamp-skels.o
+
+ui/corba/Freeamp.idl:
+	cd ui/corba && $(ORBIT_IDL) Freeamp.idl
+
+ui/corba/Freeamp.h:
+	cd ui/corba && $(ORBIT_IDL) Freeamp.idl
+
+ui/corba/Freeamp-common.c: ui/corba/Freeamp.idl
+	cd ui/corba && $(ORBIT_IDL) Freeamp.idl
+
+ui/corba/Freeamp-skels.c: ui/corba/Freeamp.idl
+	cd ui/corba && $(ORBIT_IDL) Freeamp.idl
+
+plugins/corba.ui: $(CORBAUIOBJ)
+	$(LINKMOD) -o $@ $(CORBAUIOBJ) $(STATICLD) $(LDFLAGS) $(ORBIT_LIBS)
+
+#
+# LMC section
+
+# dummy lmc for cd audio
+
+CDLMCOBJ = lmc/cd/src/cdlmc.o io/src/pipeline.lo
+
+plugins/cd.lmc: $(CDLMCOBJ)
+	$(LINKMOD) -o $@ $(CDLMCOBJ) $(STATICLD)
+
+# the XING decoder objs and dependencies:
+# This is kinda nasty, since there's C, C++, and asm, oh my!
+# of course, each needs different compilation methods. grr.
+XINGLMCOBJC = lmc/xingmp3/src/cdct.o lmc/xingmp3/src/cupl3.o \
+  lmc/xingmp3/src/hwin.o lmc/xingmp3/src/iup.o lmc/xingmp3/src/l3init.o \
+  lmc/xingmp3/src/msis.o lmc/xingmp3/src/wavep.o lmc/xingmp3/src/csbt.o \
+  lmc/xingmp3/src/cwinm.o lmc/xingmp3/src/icdct.o lmc/xingmp3/src/mdct.o \
+  lmc/xingmp3/src/uph.o lmc/xingmp3/src/cup.o lmc/xingmp3/src/dec8.o \
+  lmc/xingmp3/src/isbt.o lmc/xingmp3/src/l3dq.o lmc/xingmp3/src/mhead.o \
+  lmc/xingmp3/src/upsf.o lmc/xingmp3/src/iwinm.o io/src/pipeline.lo
+
+XINGLMCOBJC += @XINGASM@ 
+#assembly lang code, if we need it
+
+XINGLMCOBJCXX=lmc/xingmp3/src/xinglmc.o 
+
+XINGLMCOBJ = $(XINGLMCOBJC) $(XINGLMCOBJCXX)
+
+plugins/xingmp3.lmc: $(XINGLMCOBJ)
+	$(LINKMOD) -o $@ $(XINGLMCOBJ) $(STATICLD)
+
+# vorbis lib
+VORBISLIBOBJ = lmc/vorbis/src/lib/analysis.o
+VORBISLIBOBJ += lmc/vorbis/src/lib/barkmel.o
+VORBISLIBOBJ += lmc/vorbis/src/lib/bitwise.o
+VORBISLIBOBJ += lmc/vorbis/src/lib/block.o
+VORBISLIBOBJ += lmc/vorbis/src/lib/codebook.o
+VORBISLIBOBJ += lmc/vorbis/src/lib/envelope.o
+VORBISLIBOBJ += lmc/vorbis/src/lib/floor0.o
+VORBISLIBOBJ += lmc/vorbis/src/lib/framing.o
+VORBISLIBOBJ += lmc/vorbis/src/lib/iir.o
+VORBISLIBOBJ += lmc/vorbis/src/lib/info.o
+VORBISLIBOBJ += lmc/vorbis/src/lib/lpc.o
+VORBISLIBOBJ += lmc/vorbis/src/lib/lsp.o
+VORBISLIBOBJ += lmc/vorbis/src/lib/mapping0.o
+VORBISLIBOBJ += lmc/vorbis/src/lib/mdct.o
+VORBISLIBOBJ += lmc/vorbis/src/lib/psy.o
+VORBISLIBOBJ += lmc/vorbis/src/lib/registry.o
+VORBISLIBOBJ += lmc/vorbis/src/lib/res0.o
+VORBISLIBOBJ += lmc/vorbis/src/lib/sharedbook.o
+VORBISLIBOBJ += lmc/vorbis/src/lib/smallft.o
+VORBISLIBOBJ += lmc/vorbis/src/lib/synthesis.o
+VORBISLIBOBJ += lmc/vorbis/src/lib/time0.o
+VORBISLIBOBJ += lmc/vorbis/src/lib/vorbisfile.o
+VORBISLIBOBJ += lmc/vorbis/src/lib/window.o
+lmc/vorbis/src/lib/libvorbis.la: $(VORBISLIBOBJ)
+	$(LIBMOD) $@ $(VORBISLIBOBJ)
+
+# vorbis lmc
+VORBISOBJ = lmc/vorbis/src/vorbislmc.o
+plugins/vorbis.lmc: $(VORBISOBJ) 
+	$(LINKMOD) -o $@ $(VORBISOBJ) -lvorbis -lvorbisfile $(STATICLD)
+
+# wav lmc
+WAVOBJ = lmc/wav/src/wavlmc.o
+plugins/wav.lmc: $(WAVOBJ) 
+	$(LINKMOD) -o $@ $(WAVOBJ) $(STATICLD)
+
+# MDF section 
+
+#id3v1
+ID3V1OBJ = plm/metadata/id3v1/id3v1.lo 
+
+plugins/id3v1.mdf: $(ID3V1OBJ)
+	$(LINKMOD) -o $@ $(ID3V1OBJ) $(STATICLD)
+
+#id3v2
+ID3V2OBJ = plm/metadata/id3v2/id3v2.lo
+ID3V2OBJ += plm/metadata/id3v2/field.o
+ID3V2OBJ += plm/metadata/id3v2/field_binary.o
+ID3V2OBJ += plm/metadata/id3v2/field_integer.o
+ID3V2OBJ += plm/metadata/id3v2/field_string_ascii.o
+ID3V2OBJ += plm/metadata/id3v2/field_string_unicode.o
+ID3V2OBJ += plm/metadata/id3v2/frame.o
+ID3V2OBJ += plm/metadata/id3v2/frame_impl.o
+ID3V2OBJ += plm/metadata/id3v2/frame_parse.o
+ID3V2OBJ += plm/metadata/id3v2/frame_render.o
+ID3V2OBJ += plm/metadata/id3v2/header.o
+ID3V2OBJ += plm/metadata/id3v2/header_frame.o
+ID3V2OBJ += plm/metadata/id3v2/header_tag.o
+ID3V2OBJ += plm/metadata/id3v2/helpers.o
+ID3V2OBJ += plm/metadata/id3v2/io.o
+ID3V2OBJ += plm/metadata/id3v2/io_decorators.o
+ID3V2OBJ += plm/metadata/id3v2/io_helpers.o
+ID3V2OBJ += plm/metadata/id3v2/misc_support.o
+ID3V2OBJ += plm/metadata/id3v2/readers.o
+ID3V2OBJ += plm/metadata/id3v2/spec.o
+ID3V2OBJ += plm/metadata/id3v2/tag.o
+ID3V2OBJ += plm/metadata/id3v2/tag_file.o
+ID3V2OBJ += plm/metadata/id3v2/tag_find.o
+ID3V2OBJ += plm/metadata/id3v2/tag_impl.o
+ID3V2OBJ += plm/metadata/id3v2/tag_parse.o
+ID3V2OBJ += plm/metadata/id3v2/tag_parse_lyrics3.o
+ID3V2OBJ += plm/metadata/id3v2/tag_parse_musicmatch.o
+ID3V2OBJ += plm/metadata/id3v2/tag_parse_v1.o
+ID3V2OBJ += plm/metadata/id3v2/tag_render.o
+ID3V2OBJ += plm/metadata/id3v2/utils.o
+ID3V2OBJ += plm/metadata/id3v2/writers.o
+ID3V2OBJ += plm/metadata/id3v2/c_wrapper.o
+
+plugins/id3v2.mdf: $(ID3V2OBJ)
+	$(LINKMOD) -o $@ $(ID3V2OBJ) $(STATICLD) $(ID3_LIBS)
+
+#vorbis
+VORBISMDFOBJ = plm/metadata/vorbis/vorbis.o
+
+plugins/vorbis.mdf: $(VORBISMDFOBJ) 
+	$(LINKMOD) -o $@ $(VORBISMDFOBJ) -lvorbis -lvorbisfile $(STATICLD)
+
+#misc
+MISCOBJ = plm/metadata/misc/misc.lo 
+
+plugins/misc.mdf: $(MISCOBJ)
+	$(LINKMOD) -o $@ $(MISCOBJ) $(STATICLD)
+
+#mbcd
+MBCDOBJ = plm/metadata/mbcd/mbcd.o 
+
+plugins/mbcd.mdf: $(MBCDOBJ)
+	$(LINKMOD) -o $@ $(MBCDOBJ) $(STATICLD) -lmusicbrainz
+
+# PLF section
+
+#m3u
+M3UOBJ = plm/playlist/m3u/m3u.o 
+
+plugins/m3u.plf: $(M3UOBJ)
+	$(LINKMOD) -o $@ $(M3UOBJ) $(STATICLD)
+
+
+#pls
+PLSOBJ = plm/playlist/pls/pls.o
+
+plugins/pls.plf: $(PLSOBJ)
+	$(LINKMOD) -o $@ $(PLSOBJ) $(STATICLD)
+
+# PPP section
+
+#pmp300
+PMP300OBJ  = plm/portable/pmp300/pmp300.o plm/portable/pmp300/sba/rio.o
+
+plugins/pmp300.ppp: $(PMP300OBJ)
+	$(LINKMOD) -o $@ $(PMP300OBJ) $(STATICLD)
+
+# DLM section
+
+# rmp
+
+RMPOBJ = dlm/rmp/rmp.o lib/xml/src/Parse.lo 
+
+plugins/rmp.dlf: $(RMPOBJ)
+	$(LINKMOD) -o $@ $(RMPOBJ) $(STATICLD) 
+
+# FTC section
+
+# winamp
+
+WINAMPOBJ = ftc/winamp/winamp.o
+
+plugins/winamp.ftf: $(WINAMPOBJ)
+	$(LINKMOD) -o $@ $(WINAMPOBJ) $(STATICLD)
+
+# kjofol
+
+KJOFOLOBJ = ftc/kjofol/kjofol.doh
+
+plugins/kjofol.ftf: $(KJOFOLOBJ)
+	$(LINKMOD) -o $@ $(KJOFOLOBJ) $(STATICLD)
+
+# zlib section
+
+ZLIBOBJ  = lib/zlib/src/adler32.lo lib/zlib/src/compress.lo lib/zlib/src/crc32.lo
+ZLIBOBJ += lib/zlib/src/deflate.lo lib/zlib/src/gzio.lo lib/zlib/src/infblock.lo
+ZLIBOBJ += lib/zlib/src/infcodes.lo lib/zlib/src/inffast.lo 
+ZLIBOBJ += lib/zlib/src/inflate.lo lib/zlib/src/inftrees.lo 
+ZLIBOBJ += lib/zlib/src/infutil.lo lib/zlib/src/trees.lo lib/zlib/src/uncompr.lo 
+ZLIBOBJ += lib/zlib/src/zutil.lo
+
+lib/zlib/lib/libzlib.la: $(ZLIBOBJ)
+	+test -d lib/zlib/lib || mkdir lib/zlib/lib 
+	$(LIBMOD) $@ $(ZLIBOBJ)
+
+# unzip section
+
+UNZIPOBJ  = lib/unzip/src/zip_header.o lib/unzip/src/zip_inflate.o
+UNZIPOBJ += lib/unzip/src/zip_testcrc.o lib/unzip/src/zip_utils.o
+UNZIPOBJ += lib/unzip/src/zip_wrapper.o
+
+lib/unzip/lib/libunzip.la: $(UNZIPOBJ)
+	+test -d lib/unzip/lib || mkdir lib/unzip/lib
+	$(LIBMOD) $@ $(UNZIPOBJ)
+
+
+# libhttp section
+
+LIBHTTPOBJ = lib/http/src/Http.lo
+
+lib/http/lib/libfahttp.la: $(LIBHTTPOBJ)
+	+test -d lib/http/lib || mkdir lib/http/lib
+	$(LIBMOD) $@ $(LIBHTTPOBJ)
+
+depend:
+	makedepend -fMakefile-plugins -- $(DEFS) -I/usr/include/g++-3 $(INCLUDES) $(CFLAGS) -- `echo $(CORBAUIOBJ) $(VORBISMDFOBJ) $(WAVPMOOBJ) $(VORBISLIBOBJ) $(VORBISOBJ) $(SIGNATUREPMOOBJ) $(KJOFOLOBJ) $(LIBHTTPOBJ) $(UNZIPOBJ) $(WINAMPOBJ) $(LFIOBJ) $(DOWNLOADUIOBJ) $(CDPMOOBJ) $(CDLMCOBJ) $(THEMEUIOBJ) $(MUSICBROWSEROBJ) $(HTTPOBJ) $(SCPMOOBJ) $(ALSAOBJ) $(ESNDOBJ) $(CMDUIOBJ) $(MPG123UIOBJ) $(NCURSESUIOBJ) $(LCDUIOBJ) $(IRMANUIOBJ) $(GTKUIOBJ) $(ZINFUIOBJ) $(XINGLMCOBJ) $(PMP300OBJ) $(M3UOBJ) $(ID3V1OBJ) $(ID3V2OBJ) | sed -e 's,\.o,.cpp,g' | sed -e 's,\.doh,.cpp,g'`
+ 
+# DO NOT DELETE THIS LINE -- make depend depends on it.

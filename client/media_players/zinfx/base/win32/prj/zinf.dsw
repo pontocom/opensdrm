@@ -1,0 +1,602 @@
+Microsoft Developer Studio Workspace File, Format Version 6.00
+# WARNING: DO NOT EDIT OR DELETE THIS WORKSPACE FILE!
+
+###############################################################################
+
+Project: "cdlmc"="..\..\..\lmc\cd\win32\prj\cdlmc.dsp" - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "cdoutput"="..\..\..\io\cd\win32\prj\cdoutput.dsp" - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "cryptlib"="..\..\..\..\..\Crypto++\cryptlib.dsp" - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "dde"="..\..\..\ui\dde\win32\prj\dde.dsp" - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "download"="..\..\..\ui\download\win32\prj\download.dsp" - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name fabaselib
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name gdbm
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "dsoundcard"="..\..\..\io\dsound\win32\prj\dsoundcard.dsp" - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name fabaselib
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "fabaselib"=".\fabaselib.dsp" - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "fileinput"="..\..\..\io\local\win32\prj\fileinput.dsp" - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name fabaselib
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "gdbm"="..\..\..\lib\gdbm\prj\gdbm.dsp" - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "httpinput"="..\..\..\io\http\win32\prj\httpinput.dsp" - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name fabaselib
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "id3v1"="..\..\..\plm\metadata\id3v1\prj\id3v1.dsp" - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name fabaselib
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "id3v2"="..\..\..\plm\metadata\id3v2\prj\id3v2.dsp" - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name fabaselib
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "m3u"="..\..\..\plm\playlist\m3u\prj\m3u.dsp" - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name fabaselib
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "mbcd"="..\..\..\plm\metadata\mbcd\prj\mbcd.dsp" - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "misc"="..\..\..\plm\metadata\misc\prj\misc.dsp" - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name fabaselib
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "musicbrowser"="..\..\..\ui\musicbrowser\win32\prj\musicbrowser.dsp" - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name fabaselib
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name gdbm
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "obsinput"="..\..\..\io\obs\win32\prj\obsinput.dsp" - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name fabaselib
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "pls"="..\..\..\plm\playlist\pls\prj\pls.dsp" - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "pmp300"="..\..\..\plm\portable\pmp300\prj\pmp300.dsp" - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name riolib
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name fabaselib
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "riolib"="..\..\..\plm\portable\pmp300\sba\prj\riolib.dsp" - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "rmp"="..\..\..\dlm\rmp\prj\rmp.dsp" - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name fabaselib
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "simple"="..\..\..\ui\simple\win32\prj\simple.dsp" - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name fileinput
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name soundcard
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name xing
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "soundcard"="..\..\..\io\soundcard\win32\prj\soundcard.dsp" - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name fabaselib
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "toolbar"="..\..\..\ui\toolbar\win32\prj\toolbar.dsp" - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name fabaselib
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name gdbm
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "unzip"="..\..\..\lib\unzip\prj\unzip.dsp" - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "vorbis"="..\..\..\lmc\vorbis\win32\prj\vorbis.dsp" - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name fabaselib
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "vorbismdf"="..\..\..\plm\metadata\vorbis\prj\vorbismdf.dsp" - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "wavlmc"="..\..\..\lmc\wav\win32\prj\wavlmc.dsp" - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "wavout"="..\..\..\io\wavout\win32\prj\wavout.dsp" - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "winamp"="..\..\..\ftc\winamp\prj\winamp.dsp" - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "xing"="..\..\..\lmc\xingmp3\win32\prj\xing.dsp" - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name fabaselib
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name cryptlib
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "zinf"=".\zinf.dsp" - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name zinfdev
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name download
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name fileinput
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name zinfui
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name gdbm
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name httpinput
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name id3v1
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name m3u
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name obsinput
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name rmp
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name soundcard
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name theme
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name xing
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name zlib
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name pmp300
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name musicbrowser
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name toolbar
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name fabaselib
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name misc
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name MakeTheme
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name pls
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name winamp
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name cdlmc
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name cdoutput
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name dde
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name id3v2
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name wavout
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name signature
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name vorbis
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name vorbismdf
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name mbcd
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name wavlmc
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "zinfui"="..\..\..\ui\zinf\win32\prj\zinfui.dsp" - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name zlib
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name fabaselib
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name unzip
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "zlib"="..\..\..\lib\zlib\prj\zlib.dsp" - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Global:
+
+Package=<5>
+{{{
+}}}
+
+Package=<3>
+{{{
+}}}
+
+###############################################################################
+

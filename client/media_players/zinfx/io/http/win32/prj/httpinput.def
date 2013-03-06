@@ -1,0 +1,7 @@
+;httpinput.def : Declares the module parameters for the DLL.
+
+LIBRARY      "httpinput"
+DESCRIPTION  'HTTP Input Library'
+
+EXPORTS
+	Initialize

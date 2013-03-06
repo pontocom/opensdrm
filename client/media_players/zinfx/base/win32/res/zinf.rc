@@ -1,0 +1,169 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+#include "..\..\..\config\config.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "#include ""..\\..\\..\\config\\config.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDI_ICON1               ICON    DISCARDABLE     "icon1.ico"
+IDI_MUSIC1              ICON    DISCARDABLE     "music1.ico"
+IDI_MUSIC2              ICON    DISCARDABLE     "music2.ico"
+IDI_MUSIC3              ICON    DISCARDABLE     "music3.ico"
+IDI_MUSIC4              ICON    DISCARDABLE     "music4.ico"
+IDI_MUSIC5              ICON    DISCARDABLE     "music5.ico"
+IDI_MUSIC6              ICON    DISCARDABLE     "music6.ico"
+IDI_WARN                ICON    DISCARDABLE     "warn.ico"
+IDI_MUSIC7              ICON    DISCARDABLE     "music7.ico"
+IDI_MUSIC8              ICON    DISCARDABLE     "music8.ico"
+IDI_MUSIC9              ICON    DISCARDABLE     "music9.ico"
+IDI_MUSIC10             ICON    DISCARDABLE     "music10.ico"
+IDI_MUSIC11             ICON    DISCARDABLE     "music11.ico"
+IDI_MUSIC13             ICON    DISCARDABLE     "music13.ico"
+IDI_MUSIC14             ICON    DISCARDABLE     "music14.ico"
+IDI_MUSIC15             ICON    DISCARDABLE     "music15.ico"
+IDI_MUSIC16             ICON    DISCARDABLE     "music16.ico"
+IDI_MUSIC17             ICON    DISCARDABLE     "music17.ico"
+IDI_MUSIC12             ICON    DISCARDABLE     "music12.ico"
+IDI_MUSIC18             ICON    DISCARDABLE     "music18.ico"
+IDI_MUSIC19             ICON    DISCARDABLE     "music19.ico"
+
+#ifndef _MAC
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 2,2,0,7
+ PRODUCTVERSION 2,2,0,7
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904b0"
+        BEGIN
+            VALUE "Comments", "For the latest version go to http://www.zinf.org\0"
+            VALUE "CompanyName", "Zinf Open Source Development Effort\0"
+            VALUE "FileDescription", "Zinf\0"
+            VALUE "FileVersion", "2.2.1.0\0"
+            VALUE "InternalName", "Zinf\0"
+            VALUE "LegalCopyright", "Copyright © EMusic.com 1999-2000 (http://www.gnu.org/copyleft/gpl.html)\0"
+            VALUE "LegalTrademarks", "Zinf, EMusic\0"
+            VALUE "OriginalFilename", "zinf.exe\0"
+            VALUE "PrivateBuild", "\0"
+            VALUE "ProductName", "Zinf Application\0"
+            VALUE "ProductVersion", "2.2.1\0"
+            VALUE "SpecialBuild", "\0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1200
+    END
+END
+
+#endif    // !_MAC
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_RECLAIMFILETYPES DIALOG DISCARDABLE  0, 0, 219, 73
+STYLE DS_SETFOREGROUND | DS_CENTER | WS_POPUP | WS_VISIBLE | WS_CAPTION | 
+    WS_SYSMENU
+CAPTION "Reclaim Music Files?"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "Yes",IDOK,99,52,54,14
+    PUSHBUTTON      "No",IDCANCEL,158,52,54,14
+    LTEXT           "Music files normally associated with FreeAmp have been associated with another application.  Do you want FreeAmp to reclaim these music files?",
+                    -1,34,7,178,26
+    ICON            IDI_WARN,-1,7,7,21,20
+    CONTROL         "When FreeAmp starts, check music file associations.",
+                    IDC_CHECK,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,34,35,
+                    178,10
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    IDD_RECLAIMFILETYPES, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 212
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 66
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+

@@ -1,0 +1,208 @@
+/*____________________________________________________________________________
+        
+        FreeAmp - The Free MP3 Player
+
+        Portions Copyright (C) 1998-2000 EMusic.com
+        Portions Copyright (C) 2000 Relatable
+
+        This program is free software; you can redistribute it and/or modify
+        it under the terms of the GNU General Public License as published by
+        the Free Software Foundation; either version 2 of the License, or
+        (at your option) any later version.
+
+        This program is distributed in the hope that it will be useful,
+        but WITHOUT ANY WARRANTY; without even the implied warranty of
+        MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+        GNU General Public License for more details.
+
+        You should have received a copy of the GNU General Public License
+        along with this program; if not, Write to the Free Software
+        Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+        
+        $Id: AUTHORS,v 1.1 2004/10/13 16:16:04 linha2 Exp $
+____________________________________________________________________________*/
+
+
+FreeAmp (www.freeamp.org) is an Open Source development effort 
+(www.opensource.org) with the code base and design provided by:
+
+Mark B. Elrod 
+Robert Kaye
+Isaac Richards
+Brett Thomas 
+Jason Woodward
+
+The development of FreeAmp is sponsored by EMusic Corp. 
+(www.emusic.com)
+
+Recent development of FreeAmp has also been sponsored by Relatable, LLC
+(www.relatable.com)
+
+FreeAmp's MP3 decoder is based upon work done by Xing Technology Corp. 
+(www.xing.com)
+
+Other major contributors and their contributions:
+"Michael Bruun Petersen" <mbp@image.dk>
+* ID3v1 tag parsing
+* PlayList Shuffle method
+
+"Gabor Fleischer" <flocsy@usa.net>
+* alsa-linux.pmo: Output to ALSA 1:1 and keep 1:0 to pure programs
+
+"Hiromasa Kato" <hiro@eng.iastate.edu>
+* BeOS port
+
+"Sylvain Rebaud" <soothe@jps.net>
+* DirectSound PMO for win32
+
+"Bill Yuan" <rainman_yuan@188.net>
+* RainPlay, an alternate UI
+
+"The Snowblind Alliance" <sba@tessier-ashpool.cix.co.uk>
+* Diamond Rio communications class - these guys rock!
+
+"Valters Vingolds" <Valters_Vingolds@swh-t.lv>
+* Allow the win32 FreeAmp UI to exist in the system tray
+* Author of the "Liquified Visions" theme
+* Changed FreeAmp theme format to more flexible and standard tar.gz 
+* Numerous feature requests on FreeAmp themes <grin>
+
+"Jean-Michel Herve" <tuo@skytech.org>
+* x86 assembly optimized MP3 decoder
+
+"Tom Spindler" <dogcow@globalcenter.net>
+* Solaris port, makefile organization
+
+"Alan Cutter" <alien@azure.melloworld.com>
+* HTTP Proxy patch
+
+"Skip Hansen" <shansen@earthlink.net>
+* HTTP numeric IP patch for Win93 OSR2 and Win NT
+
+"Stephan Auerhahn" <palpatine@midi.net>
+* ncurses UNIX interface
+
+"Mark Weaver" <mhw@netris.org>
+* Unix prefs
+
+"Henrik Johnson" <hpj@globecom.net>
+* Fast forward and fast backward in command line UI
+
+"Jean Tourrilhes" <jeant@rockfort.hpl.hp.com>
+* Unicast RTP support in obsinput.pmi
+
+"Jimen Ching" <jching@flex.com>
+* Patch to configure to change the gcc check to a g++ check
+
+"Brian Almeida" <bma@debian.org>
+* Debian maintainer
+* various fixes and patches
+
+"Reece Hart" <reece@in-machina.com>
+* Make uninstall target
+
+"Anton Kruger" <unknown>
+* Median-cut color quantization algorithm as published in 
+  Dr. Dobbs Journal September 1994
+
+"Chen Su" <chensu@hotmail.com>
+* Sample code on controlling the mixer device under Win32.
+
+"Daniel Pustka" <pustka@compuserve.com>
+* Fixed bugs in Win32 MusicBrowser
+* Split UpdateButtonMenuStates into UpdateButtonStates and UpdateMenuStates
+
+"Chad Loder" <cloder@ccs.neu.edu>
+* Contributed the README.win32 file which contains instructions on how
+  to build the Win32 source code.
+
+"Tony Arcieri" <bascule@procyon.mesa.k12.co.us>
+* the libcdaudio library, included for CD support.
+
+"Harald Klein" <linux@chello.at>
+* key support for the lcd ui
+* media info support for lcd ui
+* v0.2 lcdproc protocol changes
+
+"Tero Koskinen" <tkoskine@gnwmail.com>
+* wrote cxunzip, the basis for the code in lib/unzip
+
+Michael Rich <istan@alltel.net>
+* AlphNT porting/installer builds
+* WAV output plugin
+
+"Terje Malmedal" <tm@funcom.com>
+* fix for displaying European characters in the linux freeamp ui
+
+"Michael Jennings" <mej@valinux.com>
+* compile fixes for the linux build
+
+"Mo DeJong" <mdejong@cygnus.com>
+* Makefile patch for when srcdir != builddir
+
+"Alexander Haväng" <eel@musiknet.se>
+* icecast title streaming fixes
+
+"Roger Hardiman" <roger@cs.strath.ac.uk>
+* Preliminary FreeBSD support
+
+"Chris Kuklewicz" <chrisk@mit.edu>
+* patch to StopTimer to properly handle NULL timers.
+* patch to fix multiple Edit/Remove Items from segfaulting
+* patch to work around GTK bug wrt. hiding scrollbars
+
+"Robert Hart" <ab6rah@bath.ac.uk>
+* patch to grab track numbers from filenames
+
+"Steve Kemp" <skx@tardis.ed.ac.uk>
+* Playlist column selection for Win32 version of musicbrowser.ui
+
+"Martin Enlund" <maren@lysator.liu.se>
+* ORBit corba ui
+
+"Marty Schoch" <mschoch@multicasttech.com>
+* patch to PMI interface allowing use of Supported Protocols
+
+"Michael Lea" <mazeone@dcaa.net>
+* patch to select artists by keypress in the linux musicbrowser
+* many hours of testing
+
+"Stephen Frost" <sfrost@snowman.net>
+* irix and solaris porting efforts
+
+"Mark Spencer" <markster@linux-support.net>
+* tweaked the xing decoder to be reentrant
+
+"Phester (Wes Koop)" <phester@home.com>
+* FreeAmp theme changes for 2.1 (You rule!!)
+
+"Ray Lucke" <freeamp@raylucke.com>
+* KDE aRts pmo plugin
+
+"Michael Smith" <msmith@labyrinth.net.au>
+* A patch to help the vorbis streaming along
+
+"Kris" <kris@cs.ucsb.edu>
+* A patch to fix some theme manager inconsistencies in linux
+
+"Stefan Gehn" <sgehn@gmx.net>
+* Submitted a patch for a proper kde artsc detection
+
+"Steve Boyd" <spoyd@swgroup.com>
+* Patches for playlist issues, VBR/ID3v2, Track Columns and searching network
+  drives in the musicbrowser for win32 
+
+"John Cantrill" <thejohncantrill@hotmail.com>
+* WAV LMC
+
+"Chris Gray" <cgray4@cs.mcgill.ca>
+* Contributed a couple of patches for orbit compile issues and an
+  unclutter bug fix.
+
+"Ed Sweetman" <ed.sweetman@wmich.edu>
+* Play immediately patch, recursive file add, remember path between file
+  selector sessions for linux.
+
+"Hendrik Frenzel" <hfrenzel@scunc.net>
+* Updated spec file and building rpms for zinf
+

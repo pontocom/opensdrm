@@ -1,0 +1,18 @@
+// Simple CORBA interface for Freeamp
+//
+
+interface Freeamp {
+  void TogglePause();
+  void Previous();
+  void Next();
+  void Quit();
+  void Play();
+  void Stop();
+  void AddSong(in string url);
+  
+  void PlayNumber(in string number);
+  typedef sequence<string> StringList;
+  void GetPlaylist(out StringList list);
+  long GetNumber();
+  void DeleteNumber(in long number);
+};

@@ -1,0 +1,638 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#define APSTUDIO_HIDDEN_SYMBOLS
+#include "windows.h"
+#undef APSTUDIO_HIDDEN_SYMBOLS
+#include "..\..\..\..\config\config.h"
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_PREF_GENERAL DIALOG DISCARDABLE  0, 0, 233, 174
+STYLE DS_MODALFRAME | DS_CONTROL | WS_CHILD | WS_VISIBLE | WS_CAPTION | 
+    WS_SYSMENU
+CAPTION "General"
+FONT 8, "MS Sans Serif"
+BEGIN
+    GROUPBOX        "File Associations",IDC_STATIC,3,0,227,38
+    CONTROL         "Reclaim music file associations when application starts.",
+                    IDC_RECLAIMFILETYPES,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,12,12,189,10
+    CONTROL         "Ask before reclaiming music file associations.",
+                    IDC_ASKRECLAIM,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,12,
+                    24,157,10
+    GROUPBOX        "Playlist",IDC_STATIC,3,45,227,49
+    CONTROL         "Default action is to queue tracks; do not play them immediately.",
+                    IDC_DEFAULTACTION,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,
+                    12,57,213,10
+    CONTROL         "Save current playlist when exiting the application.",
+                    IDC_SAVECURRENTLIST,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,12,68,171,10
+    CONTROL         "Convert underscores to spaces in track info.",
+                    IDC_UNDERSCORES,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,12,
+                    79,155,10
+    GROUPBOX        "Show Toolbars As",IDC_STATIC,3,101,227,26
+    CONTROL         "Text and images",IDC_TEXTANDIMAGES,"Button",
+                    BS_AUTORADIOBUTTON,11,112,66,10
+    CONTROL         "Images only",IDC_IMAGESONLY,"Button",BS_AUTORADIOBUTTON,
+                    101,112,53,10
+    CONTROL         "Text only",IDC_TEXTONLY,"Button",BS_AUTORADIOBUTTON,178,
+                    112,43,10
+    GROUPBOX        "Miscellaneous",IDC_STATIC,3,134,227,34
+    CONTROL         "Remain on top of all other windows.",IDC_STAYONTOP,
+                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,12,144,128,10
+    CONTROL         "Show application icon in the system tray instead of the taskbar.",
+                    IDC_TRAY,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,12,154,
+                    213,10
+END
+
+IDD_PREF_DEBUG DIALOG DISCARDABLE  0, 0, 233, 174
+STYLE DS_MODALFRAME | DS_CONTROL | WS_CHILD | WS_VISIBLE | WS_CAPTION | 
+    WS_SYSMENU
+CAPTION "Debug"
+FONT 8, "MS Sans Serif"
+BEGIN
+    GROUPBOX        "",IDC_STATIC,3,84,227,86
+    LTEXT           " ",IDC_STATIC,9,84,8,8
+    CONTROL         "Enable Logging",IDC_LOG,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,11,83,63,10
+    CONTROL         "Log general player errors (e.g. Loading plugins)",
+                    IDC_LOGMAIN,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,13,98,
+                    163,10
+    CONTROL         "Log input from PMIs (e.g. File, HTTP, SHOUTcast, icecast)",
+                    IDC_LOGINPUT,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,13,
+                    112,174,10
+    CONTROL         "Log output from PMOs (e.g. Wave, DirectSound)",
+                    IDC_LOGOUTPUT,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,13,
+                    126,169,10
+    CONTROL         "Log decoding process (e.g. MP3, CDDA)",IDC_LOGDECODER,
+                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,13,140,145,10
+    CONTROL         "Log performance issues (e.g. Timings, Buffer Under/Overflows)",
+                    IDC_LOGPERFORMANCE,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,
+                    13,154,213,10
+    LTEXT           "If you are experiencing a problem with FreeAmp it is possible to log what the program is doing in order to help us track down the cause. When you enable logging a file is created in the program's install directory ",
+                    IDC_STATIC,3,3,227,24
+    LTEXT           "called FreeAmp.log. You should send us the log file when you report a bug.",
+                    IDC_STATIC,3,27,227,17
+    LTEXT           "You have the ability to narrow the logging to a particular portion of FreeAmp by selecting the various logging options. If you are not sure in which portion of the program the problem is occuring you can simply enable all the logging options.",
+                    IDC_STATIC,3,46,227,32
+END
+
+IDD_PREF_STREAMING DIALOG DISCARDABLE  0, 0, 233, 174
+STYLE DS_MODALFRAME | DS_CONTROL | WS_CHILD | WS_VISIBLE | WS_CAPTION | 
+    WS_SYSMENU
+CAPTION "Streaming"
+FONT 8, "MS Sans Serif"
+BEGIN
+    GROUPBOX        "",IDC_STATIC,3,3,227,42
+    LTEXT           " ",IDC_STATIC,9,6,8,8
+    CONTROL         "Save SHOUTcast/icecast Streams Locally",IDC_SAVESTREAMS,
+                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,11,3,149,10
+    LTEXT           "Save Location:",IDC_SAVELOCATION_TEXT,11,15,49,8
+    EDITTEXT        IDC_STREAMSAVEDIR,11,25,160,14,ES_AUTOHSCROLL
+    PUSHBUTTON      "Browse...",IDC_BROWSE,175,25,50,14
+    GROUPBOX        "",IDC_STATIC,3,52,227,41
+    LTEXT           " ",IDC_STATIC,9,54,8,8
+    CONTROL         "Use Proxy Server",IDC_USEPROXY,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,11,52,69,10
+    EDITTEXT        IDC_PROXYADDRESS,11,74,173,14,ES_AUTOHSCROLL
+    CTEXT           ":",IDC_COLON_TEXT,185,78,8,8
+    EDITTEXT        IDC_PORT,193,74,29,14,ES_AUTOHSCROLL | ES_NUMBER
+    LTEXT           "Port:",IDC_PORT_TEXT,193,65,15,8
+    LTEXT           "Proxy Address:",IDC_PROXYADDRESS_TEXT,11,65,47,8
+    GROUPBOX        "",IDC_STATIC,3,100,227,33
+    LTEXT           " ",IDC_STATIC,9,102,8,8
+    CONTROL         "Use This Network Address For Streaming",IDC_USETHISIP,
+                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,11,100,143,10
+    EDITTEXT        IDC_IPADDRESS1,90,113,18,14,ES_AUTOHSCROLL | ES_NUMBER
+    LTEXT           "IP Address:",IDC_IPADDRESS_TEXT,47,118,37,8
+    CTEXT           ".",IDC_PERIOD1,108,119,8,8
+    EDITTEXT        IDC_IPADDRESS2,116,113,18,14,ES_AUTOHSCROLL | ES_NUMBER
+    CTEXT           ".",IDC_PERIOD2,134,119,8,8
+    EDITTEXT        IDC_IPADDRESS3,143,113,18,14,ES_AUTOHSCROLL | ES_NUMBER
+    CTEXT           ".",IDC_PERIOD3,161,119,8,8
+    EDITTEXT        IDC_IPADDRESS4,169,113,18,14,ES_AUTOHSCROLL | ES_NUMBER
+END
+
+IDD_PREF_ABOUT DIALOG DISCARDABLE  0, 0, 233, 174
+STYLE DS_MODALFRAME | DS_CONTROL | WS_CHILD | WS_VISIBLE | WS_CAPTION | 
+    WS_SYSMENU
+CAPTION "About"
+FONT 8, "MS Sans Serif"
+BEGIN
+    PUSHBUTTON      "Visit Zinf.org",IDC_GOTOFREEAMP,84,156,67,14
+    CONTROL         "App",IDC_APP,"Button",BS_OWNERDRAW | BS_CENTER | 
+                    BS_FLAT | WS_TABSTOP,3,3,227,10
+    CONTROL         "Version",IDC_VERSION,"Button",BS_OWNERDRAW | BS_CENTER | 
+                    BS_FLAT | WS_TABSTOP,3,12,227,10
+    CONTROL         "(based on FreeAmp)",IDC_BASED_ON_FREEAMP,"Button",
+                    BS_OWNERDRAW | BS_CENTER | BS_FLAT | WS_TABSTOP,3,21,227,
+                    10
+    CONTROL         "Credit",IDC_CREDIT,"Button",BS_OWNERDRAW | BS_CENTER | 
+                    BS_FLAT | WS_TABSTOP,3,33,227,120
+END
+
+IDD_PREF_CDAUDIO DIALOG DISCARDABLE  0, 0, 233, 174
+STYLE DS_MODALFRAME | DS_CONTROL | WS_CHILD | WS_VISIBLE | WS_CAPTION | 
+    WS_SYSMENU
+CAPTION "MusicBrainz"
+FONT 8, "MS Sans Serif"
+BEGIN
+    CONTROL         "Automatically update Audio CD item in MyMusic",
+                    IDC_UPDATE_AUDIO,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,6,
+                    8,221,10
+    EDITTEXT        IDC_MB_URL,6,36,221,14,ES_AUTOHSCROLL
+    LTEXT           "MusicBrainz server URL for Audio CD/Metadata lookups:",
+                    IDC_STATIC,7,23,217,8
+END
+
+IDD_PREF_THEME DIALOG DISCARDABLE  0, 0, 233, 174
+STYLE DS_MODALFRAME | DS_CONTROL | WS_CHILD | WS_VISIBLE | WS_CAPTION | 
+    WS_SYSMENU
+CAPTION "Themes"
+FONT 8, "MS Sans Serif"
+BEGIN
+    LISTBOX         IDC_THEMELISTBOX,11,13,153,88,LBS_SORT | 
+                    LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_TABSTOP
+    GROUPBOX        "Theme Selection",IDC_STATIC,5,3,224,106
+    PUSHBUTTON      "&Add Theme",IDC_ADDTHEME,170,14,54,14
+    PUSHBUTTON      "&Delete Theme",IDC_DELETETHEME,170,33,54,14
+    GROUPBOX        "Default Font",IDC_STATIC,5,116,224,53
+    LTEXT           "A theme may specify a font type that is not installed on your system. The default font will be substituted in place of the missing font.",
+                    IDC_STATIC,11,127,212,19
+    PUSHBUTTON      "Choose &Font",IDC_CHOOSEFONT,172,149,50,14
+    LTEXT           "Note: Only the font name will be used. The font will appear in the style specified in the theme.",
+                    IDC_STATIC,11,146,156,17
+END
+
+IDD_PREF_UPDATE DIALOGEX 0, 0, 233, 174
+STYLE DS_MODALFRAME | DS_CONTROL | WS_CHILD | WS_VISIBLE | WS_CAPTION | 
+    WS_SYSMENU
+CAPTION "Update"
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    CONTROL         "List1",IDC_LIST,"SysListView32",LVS_REPORT | 
+                    LVS_SINGLESEL | LVS_SHOWSELALWAYS | LVS_OWNERDRAWFIXED | 
+                    LVS_NOSORTHEADER | WS_BORDER | WS_TABSTOP,3,3,227,74,
+                    WS_EX_CLIENTEDGE
+    PUSHBUTTON      "Check for Latest Versions",IDC_CHECK,23,131,90,14
+    PUSHBUTTON      "Update Components",IDC_UPDATE,121,131,90,14
+    CONTROL         "Check for the availability of updates when the application starts.",
+                    IDC_AUTOCHECK,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,9,
+                    149,216,10
+    GROUPBOX        "Description",-1,3,80,227,46
+    LTEXT           "This is a test. This text will tell the user what the hell the component actually does.By filling in this text I can see how the text will appear to the user when it is asctually filled in by the program and see if it looks good or bad the way it is.",
+                    IDC_DESCRIPTION,10,91,214,33
+    LTEXT           " Status: No update in progress.",IDC_STATUS,0,163,233,
+                    11,0,WS_EX_CLIENTEDGE
+    PUSHBUTTON      "Cancel Version Check",IDC_CANCELCHECK,23,131,90,14,NOT 
+                    WS_VISIBLE | WS_DISABLED
+    PUSHBUTTON      "Cancel Update",IDC_CANCELUPDATE,121,131,90,14,NOT 
+                    WS_VISIBLE | WS_DISABLED
+END
+
+IDD_PREF_GENERAL_OLD DIALOG DISCARDABLE  0, 0, 233, 174
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "General"
+FONT 8, "MS Sans Serif"
+BEGIN
+    COMBOBOX        IDC_UI,81,13,125,50,CBS_DROPDOWNLIST | CBS_SORT | 
+                    WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_PMO,81,31,125,54,CBS_DROPDOWNLIST | CBS_SORT | 
+                    WS_VSCROLL | WS_TABSTOP
+    CONTROL         "Slider1",IDC_PRIORITY,"msctls_trackbar32",TBS_AUTOTICKS | 
+                    WS_TABSTOP,9,66,214,15
+    EDITTEXT        IDC_INPUT,73,122,25,12,ES_AUTOHSCROLL | ES_NUMBER
+    EDITTEXT        IDC_OUTPUT,73,138,25,12,ES_AUTOHSCROLL | ES_NUMBER
+    EDITTEXT        IDC_PREBUFFER,73,154,25,12,ES_AUTOHSCROLL | ES_NUMBER
+    CONTROL         "Stay on top",IDC_STAYONTOP,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,153,126,52,10
+    CONTROL         "Manifest in Tray instead of Taskbar",IDC_TRAY,"Button",
+                    BS_AUTOCHECKBOX | BS_MULTILINE | WS_TABSTOP,153,145,75,
+                    17
+    LTEXT           "User Interface:",IDC_STATIC,27,15,48,8
+    LTEXT           "Output:",IDC_STATIC,50,32,25,8
+    GROUPBOX        "Plug-Ins",IDC_STATIC,3,2,227,48
+    GROUPBOX        "Decoder Priority",IDC_STATIC,3,54,227,52
+    GROUPBOX        "Buffer Sizes",IDC_STATIC,3,110,136,60
+    LTEXT           "Input Buffer Size:",IDC_STATIC,13,124,57,8
+    LTEXT           "Output Buffer Size:",IDC_STATIC,8,140,60,8
+    LTEXT           "Kilobytes",IDC_STATIC,103,124,29,8
+    LTEXT           "Kilobytes",IDC_STATIC,103,140,29,8
+    LTEXT           "Low",IDC_STATIC,41,84,14,8
+    LTEXT           "Normal",IDC_STATIC,104,84,23,8
+    LTEXT           "High",IDC_STATIC,175,84,16,8
+    LTEXT           "Realtime",IDC_STATIC,199,84,28,8
+    GROUPBOX        "Misc",IDC_STATIC,145,110,85,60
+    LTEXT           "Idle",IDC_STATIC,10,84,12,8
+    CTEXT           "Below Normal",IDC_STATIC,69,84,29,15
+    CTEXT           "Above Normal",IDC_STATIC,135,84,27,16
+    LTEXT           "Prebuffer Streams:",IDC_STATIC,9,156,59,8
+    LTEXT           "Seconds",IDC_STATIC,103,156,29,8
+END
+
+IDD_PREF_ADVANCED DIALOG DISCARDABLE  0, 0, 233, 174
+STYLE DS_MODALFRAME | DS_CONTROL | WS_CHILD | WS_VISIBLE | WS_CAPTION | 
+    WS_SYSMENU
+CAPTION "Advanced"
+FONT 8, "MS Sans Serif"
+BEGIN
+    CONTROL         "Slider1",IDC_PRIORITY,"msctls_trackbar32",TBS_AUTOTICKS | 
+                    WS_TABSTOP,9,20,214,15
+    EDITTEXT        IDC_INPUT,119,77,25,12,ES_AUTOHSCROLL | ES_NUMBER
+    EDITTEXT        IDC_OUTPUT,119,93,25,12,ES_AUTOHSCROLL | ES_NUMBER
+    EDITTEXT        IDC_PREBUFFER,119,109,25,12,ES_AUTOHSCROLL | ES_NUMBER
+    GROUPBOX        "Decoder Priority",IDC_STATIC,3,3,227,59
+    GROUPBOX        "Buffer Sizes",IDC_STATIC,3,66,227,62
+    LTEXT           "Input Buffer Size:",IDC_STATIC,59,79,57,8
+    LTEXT           "Output Buffer Size:",IDC_STATIC,54,95,60,8
+    LTEXT           "Kilobytes",IDC_STATIC,149,79,29,8
+    LTEXT           "Kilobytes",IDC_STATIC,149,95,29,8
+    LTEXT           "Low",IDC_STATIC,41,38,14,8
+    LTEXT           "Normal",IDC_STATIC,104,38,23,8
+    LTEXT           "High",IDC_STATIC,175,38,16,8
+    LTEXT           "Realtime",IDC_STATIC,199,38,28,8
+    LTEXT           "Idle",IDC_STATIC,10,38,12,8
+    CTEXT           "Below Normal",IDC_STATIC,69,38,29,15
+    CTEXT           "Above Normal",IDC_STATIC,135,38,27,16
+    LTEXT           "Prebuffer Streams:",IDC_STATIC,55,111,59,8
+    LTEXT           "Seconds",IDC_STATIC,149,111,29,8
+    GROUPBOX        "Default Values",IDC_STATIC,3,132,227,38
+    PUSHBUTTON      "Use &Defaults",IDC_USEDEFAULTS,170,146,50,14
+    LTEXT           "To reset this tab to use the recommended default values, click ""Use Defaults"".",
+                    IDC_STATIC,9,146,153,20
+END
+
+IDD_PREF_PLUGINS DIALOG DISCARDABLE  0, 0, 233, 174
+STYLE DS_MODALFRAME | DS_CONTROL | WS_CHILD | WS_VISIBLE | WS_CAPTION | 
+    WS_SYSMENU
+CAPTION "Plugins"
+FONT 8, "MS Sans Serif"
+BEGIN
+    COMBOBOX        IDC_PMO,78,17,125,54,CBS_DROPDOWNLIST | CBS_SORT | 
+                    WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Audio Output:",IDC_STATIC,30,19,44,8
+    GROUPBOX        "Audio",IDC_STATIC,3,3,227,37
+END
+
+IDD_UPDATEAVAILABLE DIALOG DISCARDABLE  0, 0, 219, 65
+STYLE DS_SETFOREGROUND | DS_CENTER | WS_POPUP | WS_VISIBLE | WS_CAPTION | 
+    WS_SYSMENU
+CAPTION "Update Available"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "Update now",IDOK,52,44,54,14
+    PUSHBUTTON      "Update later",IDCANCEL,115,44,54,14
+    LTEXT           "There is an update available for FreeAmp. Would you like you like to continue the update process now or update later?",
+                    -1,34,7,178,26
+    ICON            IDI_INFO,-1,7,7,21,20
+END
+
+IDD_MAIN_PREF_DIALOG DIALOG DISCARDABLE  0, 0, 313, 201
+STYLE DS_NOIDLEMSG | DS_SETFOREGROUND | DS_CENTER | WS_POPUP | WS_VISIBLE | 
+    WS_CLIPSIBLINGS | WS_CLIPCHILDREN | WS_CAPTION | WS_SYSMENU
+FONT 8, "MS Sans Serif"
+BEGIN
+    PUSHBUTTON      "OK",IDOK,98,184,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,152,184,50,14
+    PUSHBUTTON      "Apply",IDC_APPLY,206,184,50,14
+    PUSHBUTTON      "Help",IDC_HELPME,259,184,50,14
+    PUSHBUTTON      "Fade Area",IDC_FADE,83,4,230,14,BS_FLAT | NOT 
+                    WS_VISIBLE | NOT WS_TABSTOP
+    PUSHBUTTON      "Page Area",IDC_PAGE,83,22,227,151,BS_CENTER | 
+                    BS_VCENTER | BS_FLAT | NOT WS_VISIBLE
+    CONTROL         "",IDC_STATIC,"Static",SS_ETCHEDHORZ,0,178,313,1
+    CONTROL         "Tree1",IDC_LIST,"SysTreeView32",TVS_HASBUTTONS | 
+                    TVS_HASLINES | TVS_LINESATROOT | TVS_DISABLEDRAGDROP | 
+                    TVS_SHOWSELALWAYS | WS_BORDER | WS_TABSTOP,4,4,75,169
+END
+
+IDD_PREF_DIRECTORY DIALOGEX 0, 0, 233, 174
+STYLE DS_MODALFRAME | DS_CONTROL | WS_CHILD | WS_VISIBLE | WS_CAPTION | 
+    WS_SYSMENU
+CAPTION "Folders"
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    GROUPBOX        "Save Music Folder",IDC_STATIC,3,3,227,34
+    EDITTEXT        IDC_SAVEMUSICDIR,11,16,160,14,ES_AUTOHSCROLL
+    PUSHBUTTON      "Browse...",IDC_BROWSE,175,16,50,14
+    GROUPBOX        "",IDC_STATIC,3,45,227,126
+    LTEXT           " ",IDC_STATIC,9,47,8,8
+    CONTROL         "Watch These Folders for New Music",IDC_WATCHDIRS,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,11,45,131,10
+    CONTROL         "List1",IDC_DIRLIST,"SysListView32",LVS_REPORT | 
+                    LVS_SHOWSELALWAYS | LVS_SORTASCENDING | LVS_NOLABELWRAP | 
+                    LVS_EDITLABELS | LVS_NOCOLUMNHEADER | WS_BORDER | 
+                    WS_TABSTOP,10,61,154,103,WS_EX_CLIENTEDGE
+    PUSHBUTTON      "Add Folder...",IDC_ADDDIR,168,62,56,14
+    PUSHBUTTON      "Remove Folder",IDC_REMOVEDIR,168,81,56,14
+END
+
+IDD_PREF_PROFILE DIALOG DISCARDABLE  0, 0, 233, 175
+STYLE DS_MODALFRAME | DS_CONTROL | WS_CHILD | WS_VISIBLE | WS_CAPTION | 
+    WS_SYSMENU
+CAPTION "Relatable Profiles"
+FONT 8, "MS Sans Serif"
+BEGIN
+    CONTROL         "Enable Relatable Features",IDC_PROFILE_ENABLE,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,6,7,125,8
+    PUSHBUTTON      "&More on Relatable",IDC_PROFILE_HELP,156,7,70,12
+    GROUPBOX        "Profile Selection",IDC_STATIC,6,19,220,85
+    LISTBOX         IDC_PROFILE_LIST,11,29,205,65,LBS_SORT | LBS_MULTIPLESEL | 
+                    LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_TABSTOP
+    GROUPBOX        "New Profile",IDC_STATIC,6,104,220,64
+    LTEXT           "To create a new profile simply name it in the box below and click Add Profile.  To use an existing profile select from the box above.",
+                    IDC_STATIC,14,118,212,19
+    EDITTEXT        IDC_NEW_PROFILE,11,149,91,13,ES_AUTOHSCROLL
+    PUSHBUTTON      "&Add Profile",IDC_ADDPROFILE,109,148,45,14
+    PUSHBUTTON      "&Delete Profile",IDC_DELETEPROFILE,160,148,53,14
+END
+
+IDD_PREF_BROWSER DIALOG DISCARDABLE  0, 0, 233, 174
+STYLE DS_MODALFRAME | DS_CONTROL | WS_CHILD | WS_VISIBLE | WS_CAPTION | 
+    WS_SYSMENU
+CAPTION "MusicBrowser"
+FONT 8, "MS Sans Serif"
+BEGIN
+    LTEXT           "Available Columns",IDC_STATIC,9,38,58,8
+    LTEXT           "Current Columns",IDC_STATIC,137,38,52,8
+    LISTBOX         IDC_AVAILABLE_COLUMN_LIST,3,53,90,107,
+                    LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_TABSTOP
+    LISTBOX         IDC_CURRENT_COLUMN_LIST,134,53,90,107,
+                    LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "<<",IDC_REMOVE_COLUMN,99,62,30,15
+    PUSHBUTTON      ">>",IDC_ADD_COLUMN,99,81,30,15
+    LTEXT           "With this, you can select which columns are visible on the Playlist portion of the 'MyMusic' window.",
+                    IDC_STATIC,3,9,227,25
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDM_TRAY MENU DISCARDABLE 
+BEGIN
+    POPUP "Zinf"
+    BEGIN
+        MENUITEM "&My Music...",                IDMC_MYMUSIC
+        MENUITEM SEPARATOR
+        MENUITEM "&Play",                       IDMC_PLAY
+        MENUITEM "&Pause",                      IDMC_PAUSE
+        MENUITEM "&Stop",                       IDMC_STOP
+        MENUITEM "&Next Track",                 IDMC_NEXTTRACK
+        MENUITEM "&Previous Track",             IDMC_PREVIOUSTRACK
+        MENUITEM SEPARATOR
+        MENUITEM "E&xit",                       IDMC_EXIT
+    END
+END
+
+IDR_CONTEXT MENU DISCARDABLE 
+BEGIN
+    POPUP "Zinf"
+    BEGIN
+        MENUITEM "&My Music...",                IDMC_MYMUSIC
+        MENUITEM "&Open...",                    IDMC_FILE
+        MENUITEM SEPARATOR
+        MENUITEM "&Edit Info...",               IDMC_EDITINFO
+        MENUITEM "&Suggest Playlist",           IDMC_SUGGEST
+        MENUITEM "&Lookup at Bitzi",            IDMC_BITZILOOKUP
+        MENUITEM SEPARATOR
+        MENUITEM "E&xit",                       IDMC_EXIT
+    END
+END
+
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#define APSTUDIO_HIDDEN_SYMBOLS\r\n"
+    "#include ""windows.h""\r\n"
+    "#undef APSTUDIO_HIDDEN_SYMBOLS\r\n"
+    "#include ""..\\..\\..\\..\\config\\config.h""\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDI_EXE_ICON            ICON    DISCARDABLE     "icon1.ico"
+IDI_INFO                ICON    DISCARDABLE     "info.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    IDD_PREF_GENERAL, DIALOG
+    BEGIN
+        LEFTMARGIN, 3
+        RIGHTMARGIN, 230
+        TOPMARGIN, 3
+        BOTTOMMARGIN, 171
+    END
+
+    IDD_PREF_DEBUG, DIALOG
+    BEGIN
+        LEFTMARGIN, 3
+        RIGHTMARGIN, 230
+        TOPMARGIN, 3
+        BOTTOMMARGIN, 170
+    END
+
+    IDD_PREF_STREAMING, DIALOG
+    BEGIN
+        LEFTMARGIN, 3
+        RIGHTMARGIN, 230
+        TOPMARGIN, 3
+        BOTTOMMARGIN, 169
+    END
+
+    IDD_PREF_ABOUT, DIALOG
+    BEGIN
+        LEFTMARGIN, 3
+        RIGHTMARGIN, 230
+        TOPMARGIN, 3
+        BOTTOMMARGIN, 170
+    END
+
+    IDD_PREF_UPDATE, DIALOG
+    BEGIN
+        TOPMARGIN, 3
+        BOTTOMMARGIN, 172
+    END
+
+    IDD_PREF_GENERAL_OLD, DIALOG
+    BEGIN
+        LEFTMARGIN, 3
+        RIGHTMARGIN, 230
+        TOPMARGIN, 3
+        BOTTOMMARGIN, 171
+    END
+
+    IDD_PREF_ADVANCED, DIALOG
+    BEGIN
+        LEFTMARGIN, 3
+        RIGHTMARGIN, 230
+        TOPMARGIN, 3
+        BOTTOMMARGIN, 170
+    END
+
+    IDD_PREF_PLUGINS, DIALOG
+    BEGIN
+        LEFTMARGIN, 3
+        RIGHTMARGIN, 230
+        TOPMARGIN, 3
+        BOTTOMMARGIN, 171
+    END
+
+    IDD_UPDATEAVAILABLE, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 212
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 58
+    END
+
+    IDD_PREF_DIRECTORY, DIALOG
+    BEGIN
+        LEFTMARGIN, 3
+        RIGHTMARGIN, 230
+        TOPMARGIN, 3
+        BOTTOMMARGIN, 171
+    END
+
+    IDD_PREF_PROFILE, DIALOG
+    BEGIN
+        LEFTMARGIN, 6
+        RIGHTMARGIN, 226
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 168
+    END
+
+    IDD_PREF_BROWSER, DIALOG
+    BEGIN
+        LEFTMARGIN, 3
+        RIGHTMARGIN, 230
+        TOPMARGIN, 3
+        BOTTOMMARGIN, 170
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+#ifndef _MAC
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 2,2,0,7
+ PRODUCTVERSION 2,2,0,7
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904b0"
+        BEGIN
+            VALUE "Comments", "For the latest version go to http://www.zinf.org\0"
+            VALUE "CompanyName", "Zinf Open Source Development Effort\0"
+            VALUE "FileDescription", "The default user interface for FreeAmp. A user can change it's look through theme files which are similiar to, but more powerful than skins.\0"
+            VALUE "FileVersion", "2.2.1.0\0"
+            VALUE "InternalName", "Zinf\0"
+            VALUE "LegalCopyright", "Copyright © EMusic.com 1999-2000 (http://www.gnu.org/copyleft/gpl.html)\0"
+            VALUE "LegalTrademarks", "Zinf, EMusic\0"
+            VALUE "OriginalFilename", "freeamp.ui\0"
+            VALUE "PrivateBuild", "\0"
+            VALUE "ProductName", "Zinf User interface\0"
+            VALUE "ProductVersion", "2.2.1\0"
+            VALUE "SpecialBuild", "\0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1200
+    END
+END
+
+#endif    // !_MAC
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDB_UNCHECKED           BITMAP  DISCARDABLE     "unchecked.bmp"
+IDB_CHECKED             BITMAP  DISCARDABLE     "checked.bmp"
+IDB_FOLDER              BITMAP  DISCARDABLE     "folder.bmp"
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

@@ -1,0 +1,7 @@
+; m3u.def : Declares the module parameters for the DLL.
+
+LIBRARY      "m3u"
+DESCRIPTION  'M3U Playlist Format Library'
+
+EXPORTS
+	Initialize

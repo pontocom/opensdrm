@@ -1,0 +1,7 @@
+; musicbrowser.def : Declares the module parameters for the DLL.
+
+LIBRARY      "musicbrowser"
+DESCRIPTION  'Musicbrowser UI Library'
+
+EXPORTS
+	Initialize

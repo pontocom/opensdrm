@@ -1,0 +1,8 @@
+#!/bin/sh
+
+if `mkdir -p $1`; then
+  true
+else
+  true
+fi
+

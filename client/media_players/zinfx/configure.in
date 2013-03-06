@@ -1,0 +1,949 @@
+dnl FreeAmp - The Free MP3 Player
+dnl Portions copyright (C) 1998-2000 EMusic.com
+dnl
+dnl This program is free software; you can redistribute it and/or modify
+dnl it under the terms of the GNU General Public License as published by
+dnl the Free Software Foundation; either version 2 of the License, or
+dnl (at your option) any later version.
+dnl
+dnl This program is distributed in the hope that it will be useful,
+dnl but WITHOUT ANY WARRANTY; without even the implied warranty of
+dnl MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+dnl GNU General Public License for more details.
+dnl
+dnl You should have received a copy of the GNU General Public License
+dnl along with this program; if not, write to the Free Software
+dnl Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+dnl
+dnl $Id: configure.in,v 1.1 2004/10/13 16:16:04 linha2 Exp $
+
+dnl Process this file with your mom to produce a configure script
+AC_INIT(base/src/player.cpp)
+AC_CONFIG_AUX_DIR(config)
+AC_CANONICAL_HOST
+
+AC_DEFINE_UNQUOTED(ZINF_VERSION, "2.2.0")
+
+AC_PROG_MAKE_SET
+
+dnl Checks for programs.
+AC_PROG_CC
+AC_PROG_CXX
+AC_ISC_POSIX
+AC_PROG_RANLIB
+AC_PROG_INSTALL
+AC_CHECK_PROGS(PERL, perl)
+AC_CHECK_PROGS(NASM, nasm)
+
+dnl libcdaudio stuff
+AC_HEADER_STDC
+AC_CHECK_HEADERS(stdarg.h linux/cdrom.h linux/ucdrom.h sys/cdio.h io/cam/cdrom.h mntent.h sys/mntent.h sys/ucred.h sys/mount.h)
+AC_CHECK_FUNCS(getmntinfo shmget shmat shmdt semget semctl shmctl snprintf)
+AC_FUNC_GETMNTENT
+
+AC_C_CONST
+case "$cross_compiling" in
+  yes)
+    ;;
+  no)
+    AC_C_BIGENDIAN
+    AC_CHECK_SIZEOF(long)
+    ;;
+esac
+
+dnl Checks for libraries.
+
+dnl Checks for header files.
+AC_STDC_HEADERS
+AC_HAVE_HEADERS(unistd.h io.h pthread.h errno.h)
+
+AC_LANG_SAVE
+AC_LANG_CPLUSPLUS
+AC_HAVE_HEADERS(sstream)
+AC_LANG_RESTORE
+
+AC_CHECK_LIB(socket, connect, [EXTRALIBS="$EXTRALIBS -lsocket"])
+AC_CHECK_LIB(nsl, gethostbyname, [EXTRALIBS="$EXTRALIBS -lnsl"])
+
+dnl Checks for gdbm
+
+AC_ST_BLKSIZE
+AC_OFF_T
+AC_HAVE_FUNCS(rename ftruncate flock fsync)
+AC_CONST
+AC_HAVE_HEADERS(sys/file.h string.h stdlib.h memory.h fcntl.h)
+
+dnl end checks for gdbm
+
+
+AC_DEFUN([AC_PROTOTYPE],[
+ pushdef([function],translit([$1], [a-z], [A-Z]))
+ pushdef([tags],[AC_PROTOTYPE_TAGS(builtin([shift],builtin([shift],builtin([shift],$@))))])
+ for i in 1
+ do
+   AC_PROTOTYPE_LOOP(AC_PROTOTYPE_REVERSE($1, AC_PROTOTYPE_SUBST($2,tags),AC_PROTOTYPE_SUBST($3, tags),builtin([shift],builtin([shift],builtin([shift],$@)))))
+   AC_MSG_ERROR($1 unable to find a working combination)
+ done
+ popdef([tags])
+ popdef([function])
+])
+
+AC_DEFUN([AC_PROTOTYPE_REVERSE],[ifelse($#,0,,$#,1,[[$1]],[AC_PROTOTYPE_REVERSE(builtin([shift],$@)),[$1]])])
+
+AC_DEFUN([AC_PROTOTYPE_SUBST],[ifelse($2,,[$1],[AC_PROTOTYPE_SUBST(patsubst([$1],[$2],[$2[]_VAL]),builtin([shift],builtin([shift],$@)))])])
+
+AC_DEFUN([AC_PROTOTYPE_TAGS],[ifelse($1,,[],[$1, AC_PROTOTYPE_TAGS(builtin([shift],builtin([shift],$@)))])])
+
+AC_DEFUN([AC_PROTOTYPE_DEFINES],[ifelse($1,,[],[AC_DEFINE(function[]_$1, $1_VAL) AC_PROTOTYPE_DEFINES(builtin([shift],$@))])])
+
+AC_DEFUN([AC_PROTOTYPE_STATUS],[ifelse($1,,[],[$1 => $1_VAL AC_PROTOTYPE_STATUS(builtin([shift],$@))])])
+
+AC_DEFUN([AC_PROTOTYPE_EACH],[
+  ifelse($2,, [
+  ], [
+    pushdef([$1_VAL], $2)
+    AC_PROTOTYPE_LOOP(rest)
+    popdef([$1_VAL])
+    AC_PROTOTYPE_EACH($1, builtin([shift], builtin([shift], $@)))
+  ])
+])
+
+AC_DEFUN([AC_PROTOTYPE_LOOP],[
+  ifelse(builtin([eval], $# > 3), 1,
+  [
+    pushdef([rest],[builtin([shift],builtin([shift],$@))])
+    AC_PROTOTYPE_EACH($2,$1)
+    popdef([rest])
+  ], [
+    AC_MSG_CHECKING($3 AC_PROTOTYPE_STATUS(tags))
+    ac_save_CPPFLAGS="$CPPFLAGS"
+    ifelse(AC_LANG,CPLUSPLUS,if test "$GXX" = "yes" ; then CPPFLAGS="$CPPFLAGS -Werror" ; fi)
+    ifelse(AC_LANG,C,if test "$GCC" = "yes" ; then CPPFLAGS="$CPPFLAGS -Werror" ; fi)
+    AC_TRY_COMPILE($2, $1, [
+      CPPFLAGS="$ac_save_CPPFLAGS"
+      AC_MSG_RESULT(ok)
+      AC_PROTOTYPE_DEFINES(tags)
+      break;
+    ], [
+      CPPFLAGS="$ac_save_CPPFLAGS"
+      AC_MSG_RESULT(not ok)
+    ])
+  ]
+ )
+])
+
+AC_DEFUN([AC_PROTOTYPE_ACCEPT],[
+AC_PROTOTYPE(accept,
+ [
+  #include <sys/types.h>
+  #include <sys/socket.h>
+ ],
+ [
+  int a = 0;
+  ARG2 * b = 0;
+  ARG3 * c = 0;
+  accept(a, b, c);
+ ],
+ ARG2, [struct sockaddr, void],
+ ARG3, [socklen_t, size_t, int, unsigned int, long unsigned int])
+])
+
+AC_PROTOTYPE_ACCEPT
+
+dnl Check for some more stuff
+
+cmdline="true"
+isunix="true"
+UNIX_AUDIO_API="linux"
+OSLINK=""
+FPIC="-fPIC"
+LINKMOD="$CXX -shared"
+LIBMOD="ar -r"
+OSTYPE="UNIX";
+
+case "$host_os" in
+  windowsnt)
+    cmdline="false"
+    isunix="false"
+    ;;
+  win32)
+    isunix="false"
+    OSTYPE="CYGWIN"
+    ;;
+  freebsd*)
+    host_os="freebsd"
+    CFLAGS="$CFLAGS -D_THREAD_SAFE -pthread -I/usr/local/include"
+    LDFLAGS="$LDFLAGS -Wl,-export-dynamic -L/usr/local/lib"
+    ;;
+  netbsd*)
+    host_os="freebsd"
+    CFLAGS="$CFLAGS -I/usr/pkg/include -D_THREAD_SAFE -pthread"
+    LDFLAGS="$LDFLAGS -L/usr/pkg/lib -Wl,-export-dynamic"
+    ;;
+  irix*)
+    host_os="irix"
+    AC_DEFINE(IRIX_CDAUDIO)
+    CFLAGS="$CFLAGS -fsquangle"
+    ;;
+  linux*)
+    host_os="linux"
+    AC_DEFINE(HAVE_LINUX)
+    LDFLAGS="$LDFLAGS -Wl,-export-dynamic -L/usr/lib"
+    CFLAGS="$CFLAGS"
+    ;;
+  *qnx*)
+    host_os="qnx"
+    AC_DEFINE(QNX)
+    CFLAGS="-Wall -O2 -gdwarf-2 -I/usr/local/include"
+    LDFLAGS="$LDFLAGS -Wl,-export-dynamic -L/usr/local/lib"
+    LIBS="$LIBS -lsocket -lasound"
+    UNIX_AUDIO_API="qnx"
+    ;;
+  solaris*)
+    AC_DEFINE(SOLARIS_GETMNTENT)
+    AC_DEFINE(BROKEN_SOLARIS_LEADOUT)
+    host_os="solaris"
+    LIBS="$LIBS -lsocket -lnsl"
+    if test "$GCC" != "yes" ; then
+      dnl probably Sun CC.
+      FPIC="-Kpic"
+      LINKMOD="$CC -G"	
+    else
+      CFLAGS="$CFLAGS -fpermissive"
+    fi	
+    UNIX_AUDIO_API="solaris"
+    ;;
+  *)
+    echo "what are you?"
+    ;;
+    
+esac  
+
+if test "$UNIX_AUDIO_API" = "qnx"; then
+   AC_DEFINE(NO_CDAUDIO)
+else
+   OSDEPPLUGINS="$OSDEPPLUGINS plugins/cd.lmc"
+   OSDEPPLUGINS="$OSDEPPLUGINS plugins/cd.pmo"
+fi
+
+dnl *********************************
+dnl Check for dynamic loading library
+dnl *********************************
+
+if test "$host_os" = "beos"; then
+  AC_MSG_WARN([skipping libdl check, using BeOS add-on mechanism])
+elif test "$host_os" = "freebsd"; then
+  AC_CHECK_LIB(c, dlopen, foo="bar",
+    AC_MSG_ERROR([FreeAmp requires the ability to load libraries dynamically (using dlopen)])
+  )
+else
+  AC_CHECK_LIB(dl, dlopen, foo="bar", 
+     AC_CHECK_LIB(c, dlopen, foo="bar",
+         AC_MSG_ERROR([FreeAmp requires the ability to load libraries dynamically (using dlopen)]))
+  )
+fi
+
+if test "$isunix" = "true" ; then
+    AC_LANG_SAVE
+    AC_LANG_C dnl PLUSPLUS
+    AC_MSG_CHECKING(for G++ >= 2.91)
+    AC_TRY_RUN([
+int main() {
+#if defined (__GNUC__)
+#if (__GNUC__ == 2 && __GNUC_MINOR__ >= 91) || __GNUC__ > 2
+    return 0;
+#else
+    return 1;
+#endif
+#else
+    return 0;
+#endif
+}
+    ], gcc_good=true, gcc_good=false, gcc_good=true)
+    if test "$gcc_good" = "true"; then
+        AC_MSG_RESULT(yes)
+    else
+        AC_MSG_RESULT(no)
+        echo "You have a version of gcc that is too old to compile FreeAmp."
+        echo "We would recommend upgrading your gcc to something relatively"
+        echo "recent.  GCC is available at http://gcc.cygnus.com"
+        echo "Re-run this configure script after you have a newer version."
+        exit 1
+    fi
+    AC_LANG_RESTORE
+fi
+ 
+AC_SUBST(OSTYPE)
+AC_DEFINE_UNQUOTED(HOST_OS, "${host_os}")
+AC_DEFINE_UNQUOTED(HOST_CPU, "${host_cpu}")
+
+
+dnl the following is to so that the right includes (and only the right
+dnl includes) are added in at compile time.
+OSINC="-I$srcdir/base/unix/include -I$srcdir/base/unix/$host_os/include"
+OSDEP="unix/$host_os"
+
+if test "$isunix" = "false"  ; then
+  OSINC="-I$srcdir/base/$host_os/include -I$srcdir/ui/zinf/$host_os"
+  OSDEP="$host_os"
+fi
+
+dnl AC_SUBST(OSDEPSRC)
+AC_SUBST(OSDEPOBJ)
+AC_SUBST(OSDEP)
+AC_SUBST(OSINC)
+AC_SUBST(OSLINK)
+AC_SUBST(FPIC)
+AC_SUBST(LINKMOD)
+AC_SUBST(LIBMOD)
+AC_SUBST(build_cpu)
+AC_SUBST(UNIX_AUDIO_API)
+
+AC_CHECK_HEADER(esd.h, have_esound="true", have_esound="false")
+
+AC_ARG_ENABLE(esd, [  --disable-esd           Don't compile the EsounD output plugin], enable_esd=no, enable_esd=yes)
+
+if test "x$enable_esd" = "xno"; then
+   have_esound="false"; 
+fi
+
+if test "$have_esound" = "true"; then
+  AC_PATH_PROG(ESD_CONFIG, esd-config, no)
+  if test "$ESD_CONFIG" = "no" ; then
+     ESD_LIBS=""
+     have_esound="false"
+  else
+     AC_LANG_SAVE
+     AC_LANG_C
+     ESD_CFLAGS=`$ESD_CONFIG --cflags`
+     ESD_LIBS=`$ESD_CONFIG --libs`
+     min_esd_version=0.2.12
+     esd_major_version=`$ESD_CONFIG $esd_args --version | \
+           sed 's/\([[0-9]]*\).\([[0-9]]*\).\([[0-9]]*\)/\1/'`
+     esd_minor_version=`$ESD_CONFIG $esd_args --version | \
+           sed 's/\([[0-9]]*\).\([[0-9]]*\).\([[0-9]]*\)/\2/'`
+     esd_micro_version=`$ESD_CONFIG $esd_config_args --version | \
+           sed 's/\([[0-9]]*\).\([[0-9]]*\).\([[0-9]]*\)/\3/'`
+     ac_save_CFLAGS="$CFLAGS"
+     ac_save_LIBS="$LIBS"
+     CFLAGS="$CFLAGS $ESD_CFLAGS"
+     LIBS="$LIBS $ESD_LIBS"
+     rm -f conf.esdtest
+     AC_MSG_CHECKING(for ESD - version >= $min_esd_version)
+     AC_TRY_RUN([
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <esd.h>
+
+char*
+my_strdup (char *str)
+{
+  char *new_str;
+
+  if (str)
+    {
+      new_str = malloc ((strlen (str) + 1) * sizeof(char));
+      strcpy (new_str, str);
+    }
+  else
+    new_str = NULL;
+
+  return new_str;
+}
+
+int main ()
+{
+  int major, minor, micro;
+  char *tmp_version;
+
+  system ("touch conf.esdtest");
+
+  /* HP/UX 9 (%@#!) writes to sscanf strings */
+  tmp_version = my_strdup("$min_esd_version");
+  if (sscanf(tmp_version, "%d.%d.%d", &major, &minor, &micro) != 3) {
+     printf("%s, bad version string\n", "$min_esd_version");
+     exit(1);
+   }
+
+   if (($esd_major_version > major) ||
+      (($esd_major_version == major) && ($esd_minor_version > minor)) ||
+      (($esd_major_version == major) && ($esd_minor_version == minor) && ($esd_micro_version >= micro)))
+    {
+      return 0;
+    }
+  else
+    {
+      printf("\n*** 'esd-config --version' returned %d.%d.%d, but the minimum version\n", $esd_major_version, $esd_minor_version, $esd_micro_version);
+      printf("*** of ESD required is %d.%d.%d. If esd-config is correct, then it is\n", major, minor, micro);
+      printf("*** best to upgrade to the required version.\n");
+      printf("*** If esd-config was wrong, set the environment variable ESD_CONFIG\n");
+      printf("*** to point to the correct copy of esd-config, and remove the file\n");
+      printf("*** config.cache before re-running configure\n");
+      return 1;
+    }
+}
+
+],, have_esound=false, have_esound=false)
+     CFLAGS="$ac_save_CFLAGS"
+     LIBS="$ac_save_LIBS"
+     AC_LANG_RESTORE
+     rm -f conf.esdtest
+  fi
+
+   if test "$have_esound" = "true"; then
+     AC_MSG_RESULT(yes)
+     ESOUNDPLUGIN=plugins/esound.pmo
+     OSDEPPLUGINS="$OSDEPPLUGINS $ESOUNDPLUGIN"
+     OSINC="$OSINC -I$srcdir/io/esound/include"
+   else
+     AC_MSG_RESULT(no)
+     echo "WARNING: You have an old version of the EsounD software.  If you"
+     echo "want EsounD support in FreeAmp, please upgrade to the latest"
+     echo "version, which can be found at:"
+     echo "ftp://ftp.gnome.org/pub/GNOME/stable/sources/esound"  
+     ESD_LIBS=""
+     have_esound="false"
+   fi
+fi
+
+
+AC_SUBST(ESD_LIBS)
+
+dnl optional freetype support..
+save_CPPFLAGS="$CPPFLAGS"
+CPPFLAGS="$CPPFLAGS -I/usr/local/include"
+AC_LANG_SAVE
+AC_LANG_C
+AC_CHECK_HEADERS(freetype.h, have_freetype="true", have_freetype="false")
+
+if test "$have_freetype" = "false"; then
+  AC_CHECK_HEADERS(freetype/freetype.h, have_freetype="true", 
+                    have_freetype="false")
+else
+  AC_CHECK_HEADERS(freetype1/freetype/freetype.h, have_freetype="true", 
+                    have_freetype="false")
+fi
+CPPFLAGS="$save_CPPFLAGS"
+AC_LANG_RESTORE
+
+TTF_LIBS=""
+if test "$have_freetype" = "true"; then
+  AC_CHECK_LIB(ttf, TT_Init_FreeType, have_freetype="true", 
+               have_freetype = "false", -lm)
+fi
+
+if test "$have_freetype" = "true"; then
+  TTF_LIBS="-lttf"
+  AC_DEFINE(HAVE_FREETYPE)
+else
+  echo "WARNING: You don't have FreeType installed.  This means that FreeAmp"
+  echo "will fall back on X fonts.  To make FreeAmp's GUI interface all pretty,"
+  echo "you need FreeType.  Get the latest stable version at: "
+  echo "http://www.freetype.org/download.html"
+fi
+ 
+AC_SUBST(TTF_LIBS)
+
+dnl gtk+ junk
+
+have_gtk="true"
+
+if test "$have_gtk" = "true"; then
+  AC_PATH_PROG(GTK_CONFIG, gtk-config, no)
+  if test "$GTK_CONFIG" = "no"; then
+     have_gtk="false"
+  else
+     GTK_CFLAGS=`$GTK_CONFIG --cflags`
+     GTK_LIBS=`$GTK_CONFIG --libs gthread`
+     GTK_PREFIX=`$GTK_CONFIG --prefix`
+     min_gtk_version="1.2.5"
+     AC_MSG_CHECKING(for GTK+ version >= $min_gtk_version)
+     gtk_config_major=`$GTK_CONFIG --version | sed 's/\([[0-9]]*\).\([[0-9]]*\).\([[0-9]]*\)/\1/'`
+     gtk_config_minor=`$GTK_CONFIG --version | sed 's/\([[0-9]]*\).\([[0-9]]*\).\([[0-9]]*\)/\2/'`
+     gtk_config_micro=`$GTK_CONFIG --version | sed 's/\([[0-9]]*\).\([[0-9]]*\).\([[0-9]]*\)/\3/'`
+     ac_save_CFLAGS="$CFLAGS"
+     ac_save_LIBS="$LIBS"
+     CFLAGS="$CFLAGS $GTK_CFLAGS"
+     LIBS="$GTK_LIBS $LIBS"
+
+     AC_TRY_RUN([
+#include <gtk/gtk.h>
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+  int major, minor, micro;
+  char *tmp_version;
+
+  tmp_version = g_strdup("$min_gtk_version");
+  sscanf(tmp_version, "%d.%d.%d", &major, &minor, &micro);
+  if ((gtk_major_version != $gtk_config_major) ||
+      (gtk_minor_version != $gtk_config_minor) ||
+      (gtk_micro_version != $gtk_config_micro))
+      exit(1);
+  if ((gtk_major_version > major) ||
+     ((gtk_major_version == major) && (gtk_minor_version > minor)) ||
+     ((gtk_major_version == major) && (gtk_minor_version == minor) && (gtk_micro_version >= micro)))
+     return 0;
+  printf("\n*** An old version of GTK+ (%d.%d.%d) was found.\n",
+         gtk_major_version, gtk_minor_version, gtk_micro_version);
+  return 1;
+}], , have_gtk=false, have_gtk=false])
+    CFLAGS="$ac_save_CFLAGS"
+    LIBS="$ac_save_LIBS" 
+    if test "$have_gtk" = "false"; then
+       AC_MSG_RESULT(no)
+    else
+       AC_MSG_RESULT(yes)
+    fi
+  fi
+fi
+
+if test "$have_gtk" = "true"; then
+  OSDEPPLUGINS="$OSDEPPLUGINS plugins/musicbrowser.ui"
+  OSDEPPLUGINS="$OSDEPPLUGINS plugins/zinf.ui"
+  OSDEPPLUGINS="$OSDEPPLUGINS plugins/download.ui"
+  OSDEPPLUGINS="$OSDEPPLUGINS plugins/winamp.ftf"
+  OSDEPPLUGINS="$OSDEPPLUGINS plugins/kjofol.ftf"
+  OSINC="$OSINC -I$srcdir/ui/musicbrowser/unix/include"
+  OSINC="$OSINC -I$srcdir/ui/zinf/include -I$srcdir/ui/zinf/unix/include"
+  OSINC="$OSINC -I$srcdir/ui/download/unix/include"
+  OSINC="$OSINC -I$srcdir/ui/musicbrowser/include"
+  OSINC="$OSINC -I$srcdir/ftc/kjofol"
+  CFLAGS="$CFLAGS $GTK_CFLAGS"
+  AC_DEFINE(HAVE_GTK)
+else
+  GTK_CFLAGS=""
+  GTK_LIBS=""
+  GTK_PREFIX=""
+  echo "WARNING: GTK+ was not found on this system.  This means you won't be"
+  echo "able to use any of the graphical user interfaces.  That's a bad thing,"
+  echo "so go get the latest version of GTK+ from http://www.gtk.org"
+fi
+
+if test "$host_os" = "qnx"; then
+   EXTRALIBS="$EXTRALIBS $GTK_LIBS"
+   GTK_LIBS=""
+fi
+
+AC_SUBST(GTK_CFLAGS)
+AC_SUBST(GTK_LIBS)
+AC_SUBST(GTK_PREFIX)
+AC_SUBST(EXTRALIBS)
+
+AC_SUBST(CFLAGS)
+
+dnl orbit crap
+save_CPPFLAGS="$CPPFLAGS"
+ORBIT_CPP_CFLAGS=`orbit-config --cflags server`
+CPPFLAGS="$CPPFLAGS $GTK_CFLAGS $ORBIT_CPP_CFLAGS" 
+AC_LANG_SAVE
+AC_LANG_C
+AC_CHECK_HEADERS(orb/orbit.h, have_orbit="true", have_orbit="false")
+CPPFLAGS="$save_CPPFLAGS"
+AC_LANG_RESTORE
+
+ORBIT_LIBS=""
+ORBIT_IDL=""
+
+if test "$have_orbit" = "true"; then
+  ORBIT_LIBS=`orbit-config --libs server`
+  AC_DEFINE(HAVE_ORBIT)
+  OSDEPPLUGINS="$OSDEPPLUGINS plugins/corba.ui"
+  OSINC="$OSINC `orbit-config --cflags server`"
+  ORBIT_IDL=`which orbit-idl`
+fi
+
+AC_SUBST(ORBIT_LIBS)
+AC_SUBST(ORBIT_IDL)
+
+dnl rio stuff
+
+AC_ARG_ENABLE(rio, [  --enable-rio            Compile the rio pmp300 support plugin], enable_rio=yes, enable_rio=no)
+
+if test "x$enable_rio" = "xyes"; then
+   OSDEPPLUGINS="$OSDEPPLUGINS plugins/pmp300.ppp"
+else
+   echo "Not building the rio pmp300 plugin"
+fi
+
+mp3prof="false"
+
+AC_ARG_ENABLE(mp3prof,
+	[  --enable-mp3prof        Enable profiling of the MP3 decoder (linux only!)],
+	[case "${enableval}" in
+	  yes) mp3prof="true" ;;
+	  no) mp3prof="false" ;;
+	  *) AC_MSG_ERROR(bad value ${enableval} for --enable-mp3prof) ;;
+	esac])
+
+if test "$mp3prof" = "true"; then
+   AC_DEFINE(MP3_PROF)
+fi
+
+
+dnl *****
+dnl Check for type of threads.
+dnl This is largely OS driven, but we verify the existance of the pthread
+dnl library if we are on a unixen.
+dnl I feel largely justified in this move because there is currently no support
+dnl for other than pthreads in the unix code. 
+dnl *****
+
+if test "$host_os" = "beos"; then
+  AC_MSG_RESULT([This is BeOS; using BeOS threads.])
+elif test "$host_os" = "freebsd"; then
+  AC_CHECK_HEADER(pthread.h, ,
+    AC_MSG_ERROR([FreeAmp requires pthreads]))
+else
+  AC_CHECK_LIB(pthread, pthread_create, foo="bar",
+    AC_CHECK_LIB(c, pthread_create, foor="bar",
+       AC_MSG_ERROR([FreeAmp requires pthreads (-lpthread must work)])))
+fi
+
+dnl *****
+
+
+#AM_CONDITIONAL(AM_HAVE_LINUXTHREADS, test "$hblt" = "true")
+
+AC_ARG_ENABLE(cmdline,
+	      [  --enable-cmdline        Build command line zinf],
+	      [case "${enableval}" in
+	        yes) cmdline="true" ;;
+		no)  cmdline="false" ;;
+		*) AC_MSG_ERROR(bad value ${enableval} for --enable-cmdline) ;;
+	      esac])
+#AM_CONDITIONAL(AM_ENABLE_CMDLINE, test "$cmdline" = "true")
+
+
+AC_CHECK_LIB(ncurses,initscr,curses="ncurses", [
+	AC_CHECK_LIB(curses,initscr,curses="curses", [
+	  echo "curses/ncurses not found. disabling curses UI."
+	])
+])
+
+if test "$curses" != ""; then
+	OSDEPPLUGINS="$OSDEPPLUGINS plugins/ncurses.ui";
+	CURSES="$curses";
+	AC_SUBST(CURSES)
+fi
+
+dnl ****
+dnl Check for alsa
+dnl ****
+AC_CHECK_HEADER(sys/asoundlib.h,
+		AC_CHECK_LIB(asound, main,
+			     have_alsa="true"
+			     ,
+			     have_alsa="false"
+		)
+		,
+		have_alsa="false"
+)
+
+
+AC_ARG_ENABLE(alsa, [  --disable-alsa          Don't compile the ALSA output plugin], enable_alsa=no, enable_alsa=yes)
+if test "x$enable_alsa" = "xno"; then
+   have_alsa="false";
+fi
+
+if test "$have_alsa" = "true"; then
+  AC_MSG_CHECKING(for libasound headers version >= 0.5.0)
+  alsa_min_major_version=0
+  alsa_min_minor_version=5
+  alsa_min_micro_version=0
+  ac_save_CFLAGS="$CFLAGS"
+  ac_save_LIBS="$LIBS"
+
+  LIBS="$LIBS -lasound"
+  AC_LANG_SAVE
+  AC_LANG_C
+  AC_TRY_RUN([
+#include <sys/asoundlib.h>
+void main(void)
+{
+/* ensure backward compatibility */
+#if !defined(SND_LIB_MAJOR) && defined(SOUNDLIB_VERSION_MAJOR)
+#define SND_LIB_MAJOR SOUNDLIB_VERSION_MAJOR
+#endif
+#if !defined(SND_LIB_MINOR) && defined(SOUNDLIB_VERSION_MINOR)
+#define SND_LIB_MINOR SOUNDLIB_VERSION_MINOR
+#endif
+#if !defined(SND_LIB_SUBMINOR) && defined(SOUNDLIB_VERSION_SUBMINOR)
+#define SND_LIB_SUBMINOR SOUNDLIB_VERSION_SUBMINOR
+#endif
+
+#  if(SND_LIB_MAJOR > $alsa_min_major_version)
+  exit(0);
+#  else
+#    if(SND_LIB_MAJOR < $alsa_min_major_version)
+#       error not present
+#    endif
+
+#   if(SND_LIB_MINOR > $alsa_min_minor_version)
+  exit(0);
+#   else
+#     if(SND_LIB_MINOR < $alsa_min_minor_version)
+#          error not present
+#      endif
+
+#      if(SND_LIB_SUBMINOR < $alsa_min_micro_version)
+#        error not present
+#      endif
+#    endif
+#  endif
+exit(0);
+}
+], , have_alsa=false, have_alsa=false
+)
+   AC_LANG_RESTORE
+   CFLAGS="$ac_save_CFLAGS"
+   LIBS="$ac_save_LIBS"
+   if test "$have_alsa" = "false"; then
+      AC_MSG_RESULT(no)
+   else
+      AC_MSG_RESULT(yes)
+   fi
+fi
+
+if test "$host_os" = "qnx"; then
+   have_alsa=false
+fi
+
+ALSAPMOPLUGIN=plugins/alsa.pmo
+if test "$have_alsa" = "true"; then
+  OSDEPPLUGINS="$OSDEPPLUGINS $ALSAPMOPLUGIN";
+  OSINC="$OSINC -I$srcdir/io/alsa/$OSDEP/include"
+  AC_MSG_RESULT([compiling alsa pmo plugin])
+fi
+
+AC_CHECK_LIB(ogg, ogg_sync_init, have_ogg="yes",)
+AC_CHECK_LIB(vorbisfile, ov_info, have_vorbis="yes",, -lvorbis -logg)
+
+if test "$have_ogg" = "yes"; then
+  if test "$have_vorbis" = "yes"; then
+     OSINC="$OSINC -I$srcdir/lmc/vorbis/include"
+     OSDEPPLUGINS="$OSDEPPLUGINS plugins/vorbis.lmc";
+     OSDEPPLUGINS="$OSDEPPLUGINS plugins/vorbis.mdf";
+     AC_MSG_RESULT([compiling vorbis codec plugin])
+  fi 
+fi 
+
+ID3_LIBS=""
+AC_CHECK_LIB(z, uncompress,
+  ID3_LIBS=-lz
+  AC_MSG_RESULT([compiling id3lib with zlib])
+  AC_DEFINE(HAVE_ZLIB)
+)
+AC_SUBST(ID3_LIBS)
+
+dnl Partly taken from SDL's configure.in
+dnl -------------------------------------------------------------
+
+AC_ARG_ENABLE(arts, [  --disable-arts          Don't try to compile the arts plugin.], enable_arts=no, enable_arts=yes)
+
+if test "x$enable_arts" = "xyes"; then
+    AC_PATH_PROG(ARTSCCONFIG, artsc-config)
+    if test x$ARTSCCONFIG = x -o x$ARTSCCONFIG = x'"$ARTSCCONFIG"'; then
+    : # arts isn't installed
+    else
+        CFLAGS="$CFLAGS `$ARTSCCONFIG --cflags`"
+        AC_TRY_COMPILE([
+         #include <artsc.h>
+        ],[
+         arts_stream_t stream;
+        ],[
+         OSDEPPLUGINS="$OSDEPPLUGINS plugins/arts.pmo";
+         OSINC="$OSINC -I$srcdir/io/arts/include"
+         ARTS_LIBS=`$ARTSCCONFIG --libs`
+         AC_MSG_RESULT([compiling arts pmo plugin])
+        ])
+    fi
+fi
+
+AC_SUBST(ARTS_LIBS)
+AC_SUBST(EXTRALIBS)
+AC_SUBST(OSDEPPLUGINS)
+AC_SUBST(OSINC)
+
+AC_ARG_ENABLE(x86opts, [  --disable-x86opts       Don't use any x86 assembly optimizations], enable_x86=no, enable_x86=yes)
+
+if test "x$enable_x86" = "xyes"; then
+  if expr "$host_cpu" : "i.86$" > /dev/null; then
+    if test -n "$NASM"; then
+      AC_MSG_RESULT([Using x86 optimizations])
+      XINGASM="`echo lmc/xingmp3/src/cdctasm.o \
+                     lmc/xingmp3/src/cwinasm.o \
+                     lmc/xingmp3/src/cwin8asm.o \
+                     lmc/xingmp3/src/mdctasm.o \
+                     lmc/xingmp3/src/msisasm.o`"
+      AC_DEFINE(ASM_X86)
+    fi
+  fi
+fi
+
+AC_SUBST(XINGASM)
+
+AC_ARG_ENABLE(mutex-debug, [  --enable-mutex-debug    Enable verbose mutex debugging output], AC_DEFINE(DEBUG_MUTEXES), )
+
+AC_ARG_ENABLE(dmalloc,     [  --enable-dmalloc        Enable debugging with dmalloc], AC_DEFINE(USING_DMALLOC), )
+
+if test "x$enable_dmalloc" = "xyes"; then
+    DMALLOCLIB="-ldmallocxx"
+else
+    DMALLOCLIB=""
+fi
+
+AC_SUBST(DMALLOCLIB)
+
+AC_PATH_PROG(GDK_PIXBUF_CONFIG, gdk-pixbuf-config, no)
+min_gdk_pixbuf_version=0.8.0
+AC_MSG_CHECKING(for GDK_PIXBUF - version >= $min_gdk_pixbuf_version)
+no_gdk_pixbuf=""
+if test "$GDK_PIXBUF_CONFIG" = "no" ; then
+  no_gdk_pixbuf=yes
+  GDK_PIXBUF_LIBS=$GTK_LIBS
+else
+  GDK_PIXBUF_CFLAGS=`$GDK_PIXBUF_CONFIG $gdk_pixbufconf_args --cflags`
+  GDK_PIXBUF_LIBS=`$GDK_PIXBUF_CONFIG $gdk_pixbufconf_args --libs`
+
+  gdk_pixbuf_major_version=`$GDK_PIXBUF_CONFIG $gdk_pixbuf_args --version | \
+         sed 's/\([[0-9]]*\).\([[0-9]]*\).\([[0-9]]*\)/\1/'`
+  gdk_pixbuf_minor_version=`$GDK_PIXBUF_CONFIG $gdk_pixbuf_args --version | \
+         sed 's/\([[0-9]]*\).\([[0-9]]*\).\([[0-9]]*\)/\2/'`
+  gdk_pixbuf_micro_version=`$GDK_PIXBUF_CONFIG $gdk_pixbuf_config_args --version | \
+         sed 's/\([[0-9]]*\).\([[0-9]]*\).\([[0-9]]*\)/\3/'`
+  if test "x$enable_gdk_pixbuftest" = "xyes" ; then
+    ac_save_CFLAGS="$CFLAGS"
+    ac_save_LIBS="$LIBS"
+    CFLAGS="$CFLAGS $GDK_PIXBUF_CFLAGS"
+    LIBS="$LIBS $GDK_PIXBUF_LIBS"
+dnl
+dnl Now check if the installed GDK_PIXBUF is sufficiently new. (Also sanity
+dnl checks the results of gdk-pixbuf-config to some extent
+dnl
+    rm -f conf.gdk_pixbuftest
+    AC_TRY_RUN([
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <gdk-pixbuf/gdk-pixbuf.h>
+
+char*
+my_strdup (char *str)
+{
+  char *new_str;
+  
+  if (str)
+    {
+      new_str = malloc ((strlen (str) + 1) * sizeof(char));
+      strcpy (new_str, str);
+    }
+  else
+    new_str = NULL;
+  
+  return new_str;
+}
+
+int main ()
+{
+  int major, minor, micro;
+  char *tmp_version;
+
+  system ("touch conf.gdk_pixbuftest");
+
+  /* HP/UX 9 (%@#!) writes to sscanf strings */
+  tmp_version = my_strdup("$min_gdk_pixbuf_version");
+  if (sscanf(tmp_version, "%d.%d.%d", &major, &minor, &micro) != 3) {
+     printf("%s, bad version string\n", "$min_gdk_pixbuf_version");
+     exit(1);
+   }
+
+   if (($gdk_pixbuf_major_version > major) ||
+      (($gdk_pixbuf_major_version == major) && ($gdk_pixbuf_minor_version > minor)) ||
+      (($gdk_pixbuf_major_version == major) && ($gdk_pixbuf_minor_version == minor) && ($gdk_pixbuf_micro_version >= micro)))
+    {
+      return 0;
+    }
+  else
+    {
+      printf("\n*** 'gdk-pixbuf-config --version' returned %d.%d.%d, but the minimum version\n", $gdk_pixbuf_major_version, $gdk_pixbuf_minor_version, $gdk_pixbuf_micro_version);
+      printf("*** of GDK_PIXBUF required is %d.%d.%d. If gdk-pixbuf-config is correct, then it is\n", major, minor, micro);
+      printf("*** best to upgrade to the required version.\n");
+      printf("*** If gdk-pixbuf-config was wrong, set the environment variable GDK_PIXBUF_CONFIG\n");
+      printf("*** to point to the correct copy of gdk-pixbuf-config, and remove the file\n");
+      printf("*** config.cache before re-running configure\n");
+      return 1;
+    }
+}
+
+],, no_gdk_pixbuf=yes,[echo $ac_n "cross compiling; assumed OK... $ac_c"])
+     CFLAGS="$ac_save_CFLAGS"
+     LIBS="$ac_save_LIBS"
+   fi
+fi
+if test "x$no_gdk_pixbuf" = x ; then
+   AC_MSG_RESULT(yes)
+   AC_DEFINE(USING_GDKPIXBUF)
+else
+   AC_MSG_RESULT(no)
+   if test "$GDK_PIXBUF_CONFIG" = "no" ; then
+     echo "*** The gdk-pixbuf-config script installed by GDK_PIXBUF could not be found"
+     echo "*** If GDK_PIXBUF was installed in PREFIX, make sure PREFIX/bin is in"
+     echo "*** your path, or set the GDK_PIXBUF_CONFIG environment variable to the"
+     echo "*** full path to gdk-pixbuf-config."
+   else
+     if test -f conf.gdk_pixbuftest ; then
+      :
+     else
+        echo "*** Could not run GDK_PIXBUF test program, checking why..."
+        CFLAGS="$CFLAGS $GDK_PIXBUF_CFLAGS"
+        LIBS="$LIBS $GDK_PIXBUF_LIBS"
+        AC_TRY_LINK([
+#include <stdio.h>
+#include <gdk-pixbuf/gdk-pixbuf.h>
+],    [ return 0; ],
+      [ echo "*** The test program compiled, but did not run. This usually means"
+        echo "*** that the run-time linker is not finding GDK_PIXBUF or finding the wrong"
+        echo "*** version of GDK_PIXBUF. If it is not finding GDK_PIXBUF, you'll need to set your"
+        echo "*** LD_LIBRARY_PATH environment variable, or edit /etc/ld.so.conf to point"
+        echo "*** to the installed location  Also, make sure you have run ldconfig if that"
+        echo "*** is required on your system"
+        echo "***"
+        echo "*** If you have an old version installed, it is best to remove it, although"
+        echo "*** you may also be able to get things to work by modifying LD_LIBRARY_PATH"],
+      [ echo "*** The test program failed to compile or link. See the file config.log for the"
+        echo "*** exact error that occured. This usually means GDK_PIXBUF was incorrectly installed"
+        echo "*** or that you have moved GDK_PIXBUF since it was installed. In the latter case, you"
+        echo "*** may want to edit the gdk-pixbuf-config script: $GDK_PIXBUF_CONFIG" ])
+        CFLAGS="$ac_save_CFLAGS"
+        LIBS="$ac_save_LIBS"
+     fi
+   fi
+   GDK_PIXBUF_CFLAGS=""
+   GDK_PIXBUF_LIBS=$GTK_LIBS
+fi
+
+AC_SUBST(GDK_PIXBUF_CFLAGS)
+AC_SUBST(GDK_PIXBUF_LIBS)
+rm -f conf.gdk_pixbuftest
+
+CFLAGS="$CFLAGS $GDK_PIXBUF_CFLAGS"
+AC_SUBST(CFLAGS)
+
+AC_LANG_SAVE
+AC_LANG_CPLUSPLUS
+AC_CHECK_LIB(musicbrainz, mb_GetVersion, ,
+  [ echo "***"
+    echo "*** FreeAmp requires the MusicBrainz client library version 1.0.1."
+    echo "*** Download the library from "
+    echo "***     http://www.musicbrainz.org/download.html"
+    echo "***"
+  AC_MSG_ERROR(Cannot continue.)],-ldl -lm -lstdc++)
+AC_LANG_RESTORE
+
+AC_CONFIG_HEADER(config/config.h)
+AC_OUTPUT(Makefile Makefile-plugins Makefile.header Makefile.towav)
+touch .config.check

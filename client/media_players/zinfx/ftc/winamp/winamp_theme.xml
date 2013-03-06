@@ -1,0 +1,400 @@
+<Bitmap Name="CButtons" File="cbuttons.bmp"/>
+<Bitmap Name="Background" File="main.bmp"/>
+<Bitmap Name="Titlebar" File="titlebar.bmp"/>
+<Bitmap Name="ShufRep" File="shufrep.bmp"/>
+<Bitmap Name="Posbar" File="posbar.bmp"/>
+<Bitmap Name="Volume" File="volume.bmp"/>
+<Bitmap Name="Balance" File="balance.bmp"/>
+<Bitmap Name="Text" File="text.bmp"/>
+<Bitmap Name="Numbers" File="numbers.bmp"/>
+<Bitmap Name="MonoSter" File="monoster.bmp"/>
+<Bitmap Name="PlayPaus" File="playpaus.bmp"/>
+
+<ThemeInfo Name="Winamp Base" Author="Isaac Richards" 
+           EMail="info@freeamp.org" WebPage="http://www.freeamp.org"/>
+
+<Window Name="MainWindow">
+    <BackgroundBitmap Name="Background" Rect="0, 0, 275, 116"/>
+    <Controls>
+        <ButtonControl Name="Logo" URL="http://www.freeamp.org">
+                <Info Desc="Go to the FreeAmp web site" Tip="FreeAmp"/>
+            <Position Pos="253, 91"/>
+            <ControlStateBitmap Rect="253, 91, 265, 105" State="Normal"
+                                Name="Background"/>
+        </ButtonControl>
+    	<ButtonControl Name="Next">
+		<Info Desc="Move to next track" Tip="Next"/>
+	    <Position Pos="108, 88"/>
+	    <ControlStateBitmap Rect="92, 0, 113, 17" State="Normal" 
+                                Name="CButtons"/>
+            <ControlStateBitmap Rect="92, 18, 113, 35" State="Pressed"
+                                Name="CButtons"/>
+	</ButtonControl>
+	<ButtonControl Name="Prev">
+	        <Info Desc="Move to previous track" Tip="Previous"/>
+            <Position Pos="16, 88"/>
+            <ControlStateBitmap Rect="0, 0, 22, 17" State="Normal"
+                                Name="CButtons"/>
+            <ControlStateBitmap Rect="0, 18, 22, 35" State="Pressed"
+                                Name="CButtons"/>
+	</ButtonControl>
+	<ButtonControl Name="Minimize">
+	        <Info Desc="Minimize FreeAmp" Tip="Minimize"/>
+            <Position Pos="244, 3"/>
+            <ControlStateBitmap Rect="9, 0, 17, 8" State="Normal" 
+                                Name="Titlebar"/>
+            <ControlStateBitmap Rect="9, 9, 17, 17" State="Pressed"
+                                Name="Titlebar"/>
+	</ButtonControl>
+	<ButtonControl Name="MiniView">
+	        <Info Desc="Change to Shade view" Tip="Shade view"/>
+            <Position Pos="254, 3"/>
+            <ControlStateBitmap Rect="0, 18, 8, 27" State="Normal"
+                                Name="Titlebar"/>
+            <ControlStateBitmap Rect="9, 18, 17, 27" State="Pressed"
+                                Name="Titlebar"/>
+	    <ChangeWindow Window="Mini-Me"/>
+        </ButtonControl>
+	<ButtonControl Name="Options">
+	        <Info Desc="Open the options window" Tip="Options"/>
+            <Position Pos="6, 3"/>
+            <ControlStateBitmap Rect="0, 0, 8, 8" State="Normal"
+                                Name="Titlebar"/>
+            <ControlStateBitmap Rect="0, 9, 8, 17" State="Pressed"
+                                Name="Titlebar"/>
+        </ButtonControl>
+	<ButtonControl Name="Play">
+	        <Info Desc="Play the current track" Tip="Play"/>
+            <Position Pos="39, 88"/>
+            <ControlStateBitmap Rect="23, 0, 45, 17" State="Normal"
+                                Name="CButtons"/>
+            <ControlStateBitmap Rect="23, 18, 45, 35" State="Pressed"
+                                Name="CButtons"/>
+	</ButtonControl>
+	<ButtonControl Name="Pause">
+	        <Info Desc="Pause the current track" Tip="Pause"/>
+            <Position Pos="62, 88"/>
+            <ControlStateBitmap Rect="46, 0, 68, 17" State="Normal"
+                                Name="CButtons"/>
+            <ControlStateBitmap Rect="46, 18, 68, 35" State="Pressed"
+                                Name="CButtons"/>
+        </ButtonControl>
+	<ButtonControl Name="Files">
+	        <Info Desc="Open files/playlists to play" Tip="Files"/>
+            <Position Pos="136, 89"/>
+            <ControlStateBitmap Rect="114, 0, 135, 15" State="Normal"
+                                Name="CButtons"/>
+            <ControlStateBitmap Rect="114, 16, 135, 31" State="Pressed"
+                                Name="CButtons"/>
+        </ButtonControl>
+	<ButtonControl Name="Quit">
+	        <Info Desc="Quit FreeAmp" Tip="Quit"/>
+            <Position Pos="264, 3"/>
+            <ControlStateBitmap Rect="18, 0, 26, 8" State="Normal"
+                                Name="Titlebar"/>
+            <ControlStateBitmap Rect="18, 9, 26, 17" State="Pressed"
+                                Name="Titlebar"/>
+        </ButtonControl>
+	<ButtonControl Name="Stop">
+	        <Info Desc="Stop the current track" Tip="Stop"/>
+            <Position Pos="85, 88"/>
+            <ControlStateBitmap Rect="69, 0, 91, 17" State="Normal"
+                                Name="CButtons"/>
+            <ControlStateBitmap Rect="69, 18, 91, 35" State="Pressed"
+                                Name="CButtons"/>
+        </ButtonControl>
+        <ButtonControl Name="MyMusic">
+                <Info Desc="Browser my music collection" Tip="MyMusic"/>
+            <Position Pos="242, 58"/>
+            <ControlStateBitmap Rect="23, 61, 45, 72" State="Normal"
+                                Name="ShufRep"/>
+            <ControlStateBitmap Rect="69, 61, 91, 72" State="Pressed"
+                                Name="ShufRep"/>
+        </ButtonControl>
+        <MultiStateControl Name="Shuffle" NumStates="2">
+                <Info Desc="Play tracks in normal order||Play tracks in random order" Tip="Normal Play||Random Play"/>
+            <Position Pos="164, 89"/>
+            <ControlStateBitmap Rect="28, 0, 74, 14" State="Normal"
+                                StateNum="0" Name="ShufRep"/>
+            <ControlStateBitmap Rect="28, 15, 74, 29" State="Pressed"
+                                StateNum="0" Name="ShufRep"/>
+            <ControlStateBitmap Rect="28, 30, 74, 44" State="Normal"
+                                StateNum="1" Name="ShufRep"/>
+            <ControlStateBitmap Rect="28, 45, 74, 59" State="Pressed"
+                                StateNum="1" Name="ShufRep"/>
+        </MultiStateControl>
+        <MultiStateControl Name="Equalizer" NumStates="2">
+                <Info Desc="Not Implemented||Not Implemented" Tip="Show Equalizer||Hide Equalizer"/>
+            <Position Pos="219, 58"/>
+            <ControlStateBitmap Rect="0, 61, 22, 72" State="Normal"
+                                StateNum="0" Name="ShufRep"/>
+            <ControlStateBitmap Rect="46, 61, 68, 72" State="Pressed"
+                                StateNum="0" Name="ShufRep"/>
+            <ControlStateBitmap Rect="0, 73, 22, 84" State="Normal"
+                                StateNum="1" Name="ShufRep"/>
+            <ControlStateBitmap Rect="46, 73, 68, 84" State="Pressed"
+                                StateNum="1" Name="ShufRep"/>
+        </MultiStateControl>
+        <MultiStateControl Name="Repeat" NumStates="2">
+                <Info Desc="Repeat no tracks||Repeat current track" Tip="Repeat
+None||Repeat current"/>
+            <Position Pos="210, 89"/>
+            <ControlStateBitmap Rect="0, 0, 27, 14" State="Normal"
+                                StateNum="0" Name="ShufRep"/>
+            <ControlStateBitmap Rect="0, 15, 27, 29" State="Pressed"
+                                StateNum="0" Name="ShufRep"/>
+            <ControlStateBitmap Rect="0, 30, 27, 44" State="Normal"
+                                StateNum="1" Name="ShufRep"/>
+            <ControlStateBitmap Rect="0, 45, 27, 59" State="Pressed"
+                                StateNum="1" Name="ShufRep"/>
+        </MultiStateControl>
+        <SliderControl Name="Seek">
+                <Info Desc="Seek in the current track" Tip="Seek"/>
+            <Position Rect="16, 72, 263, 81"/>
+            <ControlStateBitmap Rect="248, 0, 276, 9" State="Normal"
+                                Name="Posbar"/>
+            <ControlStateBitmap Rect="278, 0, 306, 9" State="Pressed"
+                                Name="Posbar"/>
+            <ControlStateBitmap Rect="278, 0, 306, 9" State="Dragging"
+                                Name="Posbar"/>
+            <SliderTroughBitmap Rect="0, 0, 247, 9" NumFrames="1"
+                                Name="Posbar"/>
+        </SliderControl>
+        <SliderControl Name="Volume">
+                <Info Desc="Change volume" Tip="Volume"/>
+            <Position Rect="107, 57, 174, 69"/>
+            <ControlStateBitmap Rect="15, 421, 28, 431" State="Normal"
+                                Name="Volume"/>
+            <ControlStateBitmap Rect="0, 421, 13, 431" State="Pressed"
+                                Name="Volume"/>
+            <ControlStateBitmap Rect="0, 421, 13, 431" State="Dragging"
+                                Name="Volume"/>
+            <SliderTroughBitmap Rect="0, 0, 67, 417" NumFrames="28" Style="Vert"
+                                DeltaBetweenFrames="2" Name="Volume"/>
+        </SliderControl>
+        <SliderControl Name="Balance">
+                <Info Desc="Adjust Speaker balance" Tip="Balance"/>
+            <Position Rect="177, 57, 214, 69"/>
+            <ControlStateBitmap Rect="15, 421, 28, 431" State="Normal"
+                                Name="Volume"/>
+            <ControlStateBitmap Rect="0, 421, 13, 431" State="Pressed"
+                                Name="Volume"/>
+            <ControlStateBitmap Rect="0, 421, 13, 431" State="Dragging"
+                                Name="Volume"/>
+            <SliderTroughBitmap Rect="9, 0, 46, 417" NumFrames="28" Style="Vert"
+                                DeltaBetweenFrames="2" Name="Balance"
+                                MaxInCenter="true"/>
+        </SliderControl>
+        <PixmapFontControl Name="Title" IgnoreCase="yes">
+            <Position Rect="112, 27, 261, 33"/>
+            <ControlBitmap Rect="0, 0, 154, 17" Name="Text"/>
+            <FontMap Map="ABCDEFGHIJKLMNOPQRSTUVWXYZ`@@@ "/>
+            <FontMap Map="0123456789 _:()-'!_+\/[]^&%.=$#"/>
+            <FontMap Map="ежд?*                          "/>
+        </PixmapFontControl>
+        <PixmapFontControl Name="BitRate" IgnoreCase="yes">
+            <Position Rect="111, 43, 125, 48"/>
+            <ControlBitmap Rect="0, 0, 154, 17" Name="Text"/>
+            <FontMap Map="ABCDEFGHIJKLMNOPQRSTUVWXYZ`@@@ "/>
+            <FontMap Map="0123456789 _:()-'!_+\/[]^&%.=$#"/>
+            <FontMap Map="ежд?*                          "/>
+        </PixmapFontControl>
+        <PixmapFontControl Name="SampleRate" IgnoreCase="yes">
+            <Position Rect="156, 43, 165, 48"/>
+            <ControlBitmap Rect="0, 0, 154, 17" Name="Text"/>
+            <FontMap Map="ABCDEFGHIJKLMNOPQRSTUVWXYZ`@@@ "/>
+            <FontMap Map="0123456789 _:()-'!_+\/[]^&%.=$#"/>
+            <FontMap Map="ежд?*                          "/>
+        </PixmapFontControl>
+        <ButtonControl Name="StereoIndicator">
+                <Info Desc="" Tip=""/>
+            <Position Pos="239, 41"/>
+            <ControlStateBitmap Rect="0, 12, 28, 23" State="Disabled"
+                                Name="MonoSter"/>
+            <ControlStateBitmap Rect="0, 0, 28, 11" State="Normal"
+                                Name="MonoSter"/>
+        </ButtonControl>
+        <ButtonControl Name="MonoIndicator">
+                <Info Desc="" Tip=""/>
+            <Position Pos="212, 41"/>
+            <ControlStateBitmap Rect="29, 12, 57, 23" State="Disabled"
+                                Name="MonoSter"/>
+            <ControlStateBitmap Rect="29, 0, 57, 11" State="Normal"
+                                Name="MonoSter"/>
+        </ButtonControl>
+        <ButtonControl Name="PlayIndicator">
+                <Info Desc="" Tip=""/>
+            <Position Pos="26, 28"/>
+            <ControlStateBitmap Rect="18, 0, 26, 8" State="Disabled"
+                                Name="PlayPaus"/>
+            <ControlStateBitmap Rect="0, 0, 8, 8" State="Normal"
+                                Name="PlayPaus"/>
+        </ButtonControl>
+        <ButtonControl Name="PauseIndicator">
+                <Info Desc="" Tip=""/>
+            <Position Pos="26, 28"/>
+            <ControlStateBitmap Rect="18, 0, 26, 8" State="Disabled"
+                                Name="PlayPaus"/>
+            <ControlStateBitmap Rect="9, 0, 17, 8" State="Normal"
+                                Name="PlayPaus"/>
+        </ButtonControl>
+        <ButtonControl Name="StopIndicator">
+                <Info Desc="" Tip=""/>
+            <Position Pos="26, 28"/>
+            <ControlStateBitmap Rect="18, 0, 26, 8" State="Disabled"
+                                Name="PlayPaus"/>
+            <ControlStateBitmap Rect="18, 0, 26, 8" State="Normal"
+                                Name="PlayPaus"/>
+        </ButtonControl>
+        <ButtonControl Name="WindowStatus">
+                <Info Desc="" Tip=""/>
+            <Position Pos="0, 0"/>
+            <ControlStateBitmap Rect="27, 0, 301, 13" State="Normal"
+                                Name="Titlebar"/>
+            <ControlStateBitmap Rect="27, 15, 301, 28" State="Disabled"
+                                Name="Titlebar"/>
+        </ButtonControl>
+        <PixmapTimeControl Name="Time">
+            <Position Rect="40, 26, 98, 38"/>
+            <PartName Part="Minus" Name="MinusSign"/>
+            <PartName Part="MinuteTen" Name="MinuteTens"/> 
+            <PartName Part="MinuteOne" Name="MinuteOnes"/>
+            <PartName Part="SecondTen" Name="SecondTens"/>
+            <PartName Part="SecondOne" Name="SecondOnes"/>
+        </PixmapTimeControl>
+        <PixmapTimeControl Name="TimeRemaining">
+            <Position Rect="40, 26, 98, 38"/>
+            <PartName Part="Minus" Name="MinusSign"/>
+            <PartName Part="MinuteTen" Name="MinuteTens"/>
+            <PartName Part="MinuteOne" Name="MinuteOnes"/>
+            <PartName Part="SecondTen" Name="SecondTens"/>
+            <PartName Part="SecondOne" Name="SecondOnes"/>
+        </PixmapTimeControl>
+        <ButtonControl Name="MinusSign">
+            <Info Desc="" Tip=""/>
+            <Position Pos="40, 32"/>
+            <ControlStateBitmap Rect="20, 6, 24, 7" State="Disabled"
+                                Name="Numbers"/>
+            <ControlStateBitmap Rect="9, 6, 13, 7" State="Normal"
+                                Name="Numbers"/>
+        </ButtonControl>
+        <PixmapFontControl Name="MinuteTens" IgnoreCase="yes">
+            <Position Rect="48, 26, 56, 38"/>
+            <ControlBitmap Rect="0, 0, 98, 12" Name="Numbers"/>
+            <FontMap Map="0123456789 "/>
+        </PixmapFontControl>
+        <PixmapFontControl Name="MinuteOnes" IgnoreCase="yes">
+            <Position Rect="60, 26, 68, 38"/>
+            <ControlBitmap Rect="0, 0, 98, 12" Name="Numbers"/>
+            <FontMap Map="0123456789 "/>
+        </PixmapFontControl>
+        <PixmapFontControl Name="SecondTens" IgnoreCase="yes">
+            <Position Rect="78, 26, 86, 38"/>
+            <ControlBitmap Rect="0, 0, 98, 12" Name="Numbers"/>
+            <FontMap Map="0123456789 "/>
+        </PixmapFontControl>
+        <PixmapFontControl Name="SecondOnes" IgnoreCase="yes">
+            <Position Rect="90, 26, 98, 38"/>
+            <ControlBitmap Rect="0, 0, 98, 12" Name="Numbers"/>
+            <FontMap Map="0123456789 "/>
+        </PixmapFontControl>
+    </Controls>
+</Window>
+
+<Window Name="Mini-Me">
+    <BackgroundBitmap Name="Titlebar" Rect="27, 29, 301, 42"/>
+    <Controls>
+        <ButtonControl Name="MaxView">
+                <Info Desc="Change to Normal view" Tip="Normal view"/>
+            <Position Pos="254, 3"/>
+            <ControlStateBitmap Rect="0, 27, 7, 35" State="Normal"
+                                Name="Titlebar"/>
+            <ControlStateBitmap Rect="9, 27, 17, 35" State="Pressed"
+                                Name="Titlebar"/>
+            <ChangeWindow Window="MainWindow"/>
+        </ButtonControl>
+        <ButtonControl Name="Options">
+                <Info Desc="Open the options window" Tip="Options"/>
+            <Position Pos="6, 3"/>
+            <ControlStateBitmap Rect="0, 0, 8, 8" State="Normal"
+                                Name="Titlebar"/>
+            <ControlStateBitmap Rect="0, 9, 8, 17" State="Pressed"
+                                Name="Titlebar"/>
+        </ButtonControl>
+        <ButtonControl Name="Quit">
+                <Info Desc="Quit FreeAmp" Tip="Quit"/>
+            <Position Pos="264, 3"/>
+            <ControlStateBitmap Rect="18, 0, 27, 8" State="Normal"
+                                Name="Titlebar"/>
+            <ControlStateBitmap Rect="18, 9, 27, 17" State="Pressed"
+                                Name="Titlebar"/>
+        </ButtonControl>
+        <ButtonControl Name="Minimize">
+                <Info Desc="Minimize FreeAmp" Tip="Minimize"/>
+            <Position Pos="244, 3"/>
+            <ControlStateBitmap Rect="9, 0, 17, 8" State="Normal"
+                                Name="Titlebar"/>
+            <ControlStateBitmap Rect="9, 9, 17, 17" State="Pressed"
+                                Name="Titlebar"/>
+        </ButtonControl>
+        <ButtonControl Name="Prev">
+                <Info Desc="Move to previous track" Tip="Previous"/>
+            <Position Pos="169, 2"/>
+            <ControlStateBitmap Rect="196, 31, 202, 40" State="Normal"
+                                Name="Titlebar"/>
+        </ButtonControl>
+        <ButtonControl Name="Play">
+                <Info Desc="Play the current track" Tip="Play"/>
+            <Position Pos="176, 2"/>
+            <ControlStateBitmap Rect="203, 31, 212, 40" State="Normal"
+                                Name="Titlebar"/> 
+        </ButtonControl>
+        <ButtonControl Name="Pause">
+                <Info Desc="Pause the current track" Tip="Pause"/>
+            <Position Pos="186, 2"/>
+            <ControlStateBitmap Rect="213, 31, 221, 40" State="Normal"
+                                Name="Titlebar"/>
+        </ButtonControl>
+        <ButtonControl Name="Stop">
+                <Info Desc="Stop the current track" Tip="Stop"/>
+            <Position Pos="195, 2"/>
+            <ControlStateBitmap Rect="222, 31, 230, 40" State="Normal"
+                                Name="Titlebar"/> 
+        </ButtonControl>
+        <ButtonControl Name="Next">
+                <Info Desc="Move to next track" Tip="Next"/>
+            <Position Pos="204, 2"/>
+            <ControlStateBitmap Rect="231, 31, 241, 40" State="Normal"
+                                Name="Titlebar"/>
+        </ButtonControl>
+        <ButtonControl Name="Files">
+                <Info Desc="Open files/playlist to play" Tip="Files"/>
+            <Position Pos="215, 2"/>
+            <ControlStateBitmap Rect="242, 31, 241, 40" State="Normal"
+                                Name="Titlebar"/>
+        </ButtonControl>
+        <SliderControl Name="Seek" ThumbStates="3" Frames="1">
+                <Info Desc="Seek in the current track" Tip="Seek"/>
+            <Position Rect="226, 4, 242, 10"/>
+            <ControlBitmap Rect="17, 36, 25, 42" Name="Titlebar" 
+                           Style="Vert"/>
+            <SliderTroughBitmap Rect="0, 36, 16, 42" NumFrames="1"
+                                Name="Titlebar"/>
+        </SliderControl>
+        <ButtonControl Name="WindowStatus">
+                <Info Desc="" Tip=""/>
+            <Position Pos="0, 0"/>
+            <ControlStateBitmap Rect="27, 29, 301, 42" State="Normal"
+                                Name="Titlebar"/>
+            <ControlStateBitmap Rect="27, 42, 301, 55" State="Disabled"
+                                Name="Titlebar"/>
+         </ButtonControl>
+        <PixmapFontControl Name="Time" IgnoreCase="yes">
+            <Position Rect="130, 4, 150, 9"/>
+            <ControlBitmap Rect="0, 0, 154, 17" Name="Text"/>
+            <FontMap Map="ABCDEFGHIJKLMNOPQRSTUVWXYZ`@@  "/>
+            <FontMap Map="0123456789 _:()-'!_+\/[]^&%.=$#"/>
+            <FontMap Map="ежд?*                          "/>
+        </PixmapFontControl>
+    </Controls>
+</Window>

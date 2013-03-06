@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns="http://www.adetti.pt/opensdrmws" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://www.adetti.pt/opensdrmws" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema targetNamespace="http://www.adetti.pt/opensdrmws">
+      <s:import namespace="http://schemas.xmlsoap.org/soap/encoding/" />
+      <s:import namespace="http://schemas.xmlsoap.org/wsdl/" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="AUSrequestModifyUserSubscriptionRequest">
+    <wsdl:part name="identification" type="s:string" />
+    <wsdl:part name="signature_algorithm_identifier" type="s:string" />
+    <wsdl:part name="name" type="s:string" />
+    <wsdl:part name="address" type="s:string" />
+    <wsdl:part name="email_address" type="s:string" />
+    <wsdl:part name="authentication_type" type="s:string" />
+    <wsdl:part name="uid" type="s:string" />
+    <wsdl:part name="username" type="s:string" />
+    <wsdl:part name="password" type="s:string" />
+    <wsdl:part name="arbitrary_data" type="s:string" />
+    <wsdl:part name="signature" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AUSrequestModifyUserSubscriptionResponse">
+    <wsdl:part name="result_message" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AUSrequestUserSubscriptionRequest">
+    <wsdl:part name="identification" type="s:string" />
+    <wsdl:part name="signature_algorithm_identifier" type="s:string" />
+    <wsdl:part name="name" type="s:string" />
+    <wsdl:part name="address" type="s:string" />
+    <wsdl:part name="email_address" type="s:string" />
+    <wsdl:part name="authentication_type" type="s:string" />
+    <wsdl:part name="username" type="s:string" />
+    <wsdl:part name="password" type="s:string" />
+    <wsdl:part name="public_key" type="s:string" />
+    <wsdl:part name="arbitrary_data" type="s:string" />
+    <wsdl:part name="signature" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AUSrequestUserSubscriptionResponse">
+    <wsdl:part name="result_message" type="s:string" />
+    <wsdl:part name="user_id" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AUSrequestAuthenticationRequest">
+    <wsdl:part name="identification" type="s:string" />
+    <wsdl:part name="signature_algorithm_identifier" type="s:string" />
+    <wsdl:part name="authentication_type" type="s:string" />
+    <wsdl:part name="username" type="s:string" />
+    <wsdl:part name="password" type="s:string" />
+    <wsdl:part name="signature" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AUSrequestAuthenticationResponse">
+    <wsdl:part name="result_message" type="s:string" />
+    <wsdl:part name="user_id" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AUSrequestDeleteUserSubscriptionRequest">
+    <wsdl:part name="identification" type="s:string" />
+    <wsdl:part name="signature_algorithm_identifier" type="s:string" />
+    <wsdl:part name="uid" type="s:string" />
+    <wsdl:part name="username" type="s:string" />
+    <wsdl:part name="password" type="s:string" />
+    <wsdl:part name="arbitrary_data" type="s:string" />
+    <wsdl:part name="signature" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AUSrequestDeleteUserSubscriptionResponse">
+    <wsdl:part name="result_message" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AUSrequestComponentSubscriptionRequest">
+    <wsdl:part name="arbitrary_data" type="s:string" />
+    <wsdl:part name="public_key" type="s:string" />
+    <wsdl:part name="password" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AUSrequestComponentSubscriptionResponse">
+    <wsdl:part name="result_message" type="s:string" />
+    <wsdl:part name="certificate" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AUSrequestUserInfoRequest">
+    <wsdl:part name="identification" type="s:string" />
+    <wsdl:part name="signature_algorithm_identifier" type="s:string" />
+    <wsdl:part name="authentication_type" type="s:string" />
+    <wsdl:part name="uid" type="s:string" />
+    <wsdl:part name="username" type="s:string" />
+    <wsdl:part name="password" type="s:string" />
+    <wsdl:part name="signature" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AUSrequestUserInfoResponse">
+    <wsdl:part name="result_message" type="s:string" />
+    <wsdl:part name="uid" type="s:string" />
+    <wsdl:part name="name" type="s:string" />
+    <wsdl:part name="address" type="s:string" />
+    <wsdl:part name="email" type="s:string" />
+    <wsdl:part name="other_data_xml" type="s:string" />
+    <wsdl:part name="certificate" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AUSrequestUserPaymentInfoRequest">
+    <wsdl:part name="identification" type="s:string" />
+    <wsdl:part name="signature_algorithm_identifier" type="s:string" />
+    <wsdl:part name="pgw_identification" type="s:string" />
+    <wsdl:part name="user_identification" type="s:string" />
+    <wsdl:part name="pvalue" type="s:string" />
+    <wsdl:part name="signature" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AUSrequestUserPaymentInfoResponse">
+    <wsdl:part name="result_message" type="s:string" />
+    <wsdl:part name="payclearer" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AUSrequestListOfPGWRequest">
+    <wsdl:part name="identification" type="s:string" />
+    <wsdl:part name="signature_algorithm_identifier" type="s:string" />
+    <wsdl:part name="authentication_type" type="s:string" />
+    <wsdl:part name="signature" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AUSrequestListOfPGWResponse">
+    <wsdl:part name="result_message" type="s:string" />
+    <wsdl:part name="list_of_pgw" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AUSrequestMutualValidationRequest">
+    <wsdl:part name="uid" type="s:string" />
+    <wsdl:part name="login" type="s:string" />
+    <wsdl:part name="hash" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AUSrequestMutualValidationResponse">
+    <wsdl:part name="result_message" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AUSrequestWalletVerificationRequest">
+    <wsdl:part name="uid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AUSrequestWalletVerificationResponse">
+    <wsdl:part name="result_message" type="s:string" />
+  </wsdl:message>
+  <wsdl:portType name="opensdrmwsPortType">
+    <wsdl:operation name="AUSrequestModifyUserSubscription">
+      <wsdl:input message="tns:AUSrequestModifyUserSubscriptionRequest" />
+      <wsdl:output message="tns:AUSrequestModifyUserSubscriptionResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="AUSrequestUserSubscription">
+      <wsdl:input message="tns:AUSrequestUserSubscriptionRequest" />
+      <wsdl:output message="tns:AUSrequestUserSubscriptionResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="AUSrequestAuthentication">
+      <wsdl:input message="tns:AUSrequestAuthenticationRequest" />
+      <wsdl:output message="tns:AUSrequestAuthenticationResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="AUSrequestDeleteUserSubscription">
+      <wsdl:input message="tns:AUSrequestDeleteUserSubscriptionRequest" />
+      <wsdl:output message="tns:AUSrequestDeleteUserSubscriptionResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="AUSrequestComponentSubscription">
+      <wsdl:input message="tns:AUSrequestComponentSubscriptionRequest" />
+      <wsdl:output message="tns:AUSrequestComponentSubscriptionResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="AUSrequestUserInfo">
+      <wsdl:input message="tns:AUSrequestUserInfoRequest" />
+      <wsdl:output message="tns:AUSrequestUserInfoResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="AUSrequestUserPaymentInfo">
+      <wsdl:input message="tns:AUSrequestUserPaymentInfoRequest" />
+      <wsdl:output message="tns:AUSrequestUserPaymentInfoResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="AUSrequestListOfPGW">
+      <wsdl:input message="tns:AUSrequestListOfPGWRequest" />
+      <wsdl:output message="tns:AUSrequestListOfPGWResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="AUSrequestMutualValidation">
+      <wsdl:input message="tns:AUSrequestMutualValidationRequest" />
+      <wsdl:output message="tns:AUSrequestMutualValidationResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="AUSrequestWalletVerification">
+      <wsdl:input message="tns:AUSrequestWalletVerificationRequest" />
+      <wsdl:output message="tns:AUSrequestWalletVerificationResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="opensdrmwsBinding" type="tns:opensdrmwsPortType">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="rpc" />
+    <wsdl:operation name="AUSrequestModifyUserSubscription">
+      <soap:operation soapAction="http://localhost/opensdrm/AUS/AUS.ws.php/AUSrequestModifyUserSubscription" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://www.adetti.pt/opensdrmws" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://www.adetti.pt/opensdrmws" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AUSrequestUserSubscription">
+      <soap:operation soapAction="http://localhost/opensdrm/AUS/AUS.ws.php/AUSrequestUserSubscription" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://www.adetti.pt/opensdrmws" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://www.adetti.pt/opensdrmws" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AUSrequestAuthentication">
+      <soap:operation soapAction="http://localhost/opensdrm/AUS/AUS.ws.php/AUSrequestAuthentication" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://www.adetti.pt/opensdrmws" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://www.adetti.pt/opensdrmws" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AUSrequestDeleteUserSubscription">
+      <soap:operation soapAction="http://localhost/opensdrm/AUS/AUS.ws.php/AUSrequestDeleteUserSubscription" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://www.adetti.pt/opensdrmws" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://www.adetti.pt/opensdrmws" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AUSrequestComponentSubscription">
+      <soap:operation soapAction="http://localhost/opensdrm/AUS/AUS.ws.php/AUSrequestComponentSubscription" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://www.adetti.pt/opensdrmws" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://www.adetti.pt/opensdrmws" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AUSrequestUserInfo">
+      <soap:operation soapAction="http://localhost/opensdrm/AUS/AUS.ws.php/AUSrequestUserInfo" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://www.adetti.pt/opensdrmws" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://www.adetti.pt/opensdrmws" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AUSrequestUserPaymentInfo">
+      <soap:operation soapAction="http://localhost/opensdrm/AUS/AUS.ws.php/AUSrequestUserPaymentInfo" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://www.adetti.pt/opensdrmws" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://www.adetti.pt/opensdrmws" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AUSrequestListOfPGW">
+      <soap:operation soapAction="http://localhost/opensdrm/AUS/AUS.ws.php/AUSrequestListOfPGW" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://www.adetti.pt/opensdrmws" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://www.adetti.pt/opensdrmws" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AUSrequestMutualValidation">
+      <soap:operation soapAction="http://localhost/opensdrm/AUS/AUS.ws.php/AUSrequestMutualValidation" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://www.adetti.pt/opensdrmws" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://www.adetti.pt/opensdrmws" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AUSrequestWalletVerification">
+      <soap:operation soapAction="http://localhost/opensdrm/AUS/AUS.ws.php/AUSrequestWalletVerification" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://www.adetti.pt/opensdrmws" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://www.adetti.pt/opensdrmws" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="opensdrmws">
+    <wsdl:port name="opensdrmwsPort" binding="tns:opensdrmwsBinding">
+      <soap:address location="http://localhost/opensdrm/AUS/AUS.ws.php" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,1240 @@
+                        FreeAmp Theme HOWTO
+                        -------------------
+                            written by
+                            Robert Kaye
+                         (rob@emusic.com)
+        $Id: ThemeHowTo.txt,v 1.1 2004/10/13 16:16:18 linha2 Exp $
+                    (Updated for version 2.1.0)
+
+INTRODUCTION
+
+FreeAmp 2.0 supports fully customizable themes -- anyone with experience
+in Photoshop/Gimp and HTML should be able to create their own Themes.
+These themes are platform independent -- they will look exactly the same
+on Windows as they will on Linux. 
+
+Unlike WinAmp, FreeAmp themes are not limited to having one layout for the 
+controls. The FreeAmp window can be any shape and the button layouts
+can be anything the theme designer desires. Care to leave out some 
+buttons or display items you don't care for? Go ahead leave them out --
+FreeAmp doesn't care.
+
+If you find any problems with this HOWTO, please mail rob@emusic.com
+with your comments, or better yet head over to Bugzilla and enter a 
+bug report <http://www.freeamp.org/bugzilla>.
+
+
+GETTING STARTED
+
+To get started working on FreeAmp themes, I recommend that you 
+grab FreeAmp.fat from the themes directory in your FreeAmp
+installation and unzip it using your favorite ZIP program. A FreeAmp
+theme file is just a ZIP file with the extension changed from .zip to
+.fat. Some older themes may need to get unpackaged with the MakeTheme
+tool that is available fromt he freeamp.org website.
+
+Take a brief look at the theme.xml file and the bitmaps that get
+unpacked. Or you can look at Appendix B. :-) Then read on.
+
+
+THEMES
+
+A theme consists of at least four files that get packaged into one
+.fat file:
+
+  1) A bitmap for buttons/controls
+  2) A background bitmap for the player
+  3) theme.xml, which is an XML document that describes the layout 
+     of the theme
+  4) A title.txt file which contains a descriptive name of the
+     theme. Please place only a simple descriptive name in this file.
+     Use the ThemeInfo tag in theme.xml for giving detailed theme credits.
+     Only the first line of this file is used.
+
+Don't be scared by the XML -- in this case you might as well call it
+an HTML-like syntax, which sounds less intimidating. :-)
+
+A theme designer creates these three or more files in a separate 
+directory and then points FreeAmp to these files. 
+
+The ThemePath preference should point to the theme directory or a 
+completed .fat file. To do this under Linux, edit the ThemePath preference 
+in ~/.freeamp/preferences, or under Windows edit the 
+HKEY_CURRENT_USER/Software/FreeAmp/FreeAmp v2.1/Main/ThemePath 
+registry value to point to your theme directory.
+
+If your theme supports the ReloadTheme button, you can edit the
+theme on disk and then click the ReloadTheme button to re-parse and
+reload the theme without exiting FreeAmp.
+
+When you are done with your theme and want to ship it off to the
+FreeAmp theme repository or to your friends, package it up using
+any stinking zip program you can find. Rename the resultant .zip
+file to have a .fat extension and you're done.
+
+BITMAPS
+
+All controls in FreeAmp are bitmaps, and to keep things simple
+for all platforms all bitmaps are Windows bitmap format (BMP). 
+(Sorry, all you Linux fans. :-( ) It doesn't matter which bit depth 
+your theme bitmaps are, but usually 256 color bitmaps will suffice 
+while keeping the size of the theme down.
+
+For each bitmap the theme designer can specify a color which will
+be used as the transparent color in the bitmap. All pixels in that
+bitmap that are deemed to be transparent, will never be shown on
+a FreeAmp theme. This allows theme designers to create arbitrarily
+shaped FreeAmp windows and controls.
+
+Each bitmap is given a name -- other controls will refer back to
+this name in the theme.xml file.
+
+
+FONTS
+
+TrueType fonts are used both on Linux and Windows. If you use some fancy 
+font in a theme, there is a good chance that other people will not have 
+that font on their machine. In that case, you should include your font 
+in the theme package. Please make sure that you have the right to
+distribute that font with theme. If you are unsure of the rights regarding
+fonts, you may want to use Microsoft's WebFonts, which you can redistribute.
+
+A font is given a name, which TextControl controls will refer back to.
+
+
+RECTS
+
+All throughout a theme descriptions Rect attributes are used. A Rect
+specifies a rectangular region on a bitmap. The Rect is defined as
+
+   Rect="x1,y1,x2,y2"
+   
+Where x2 and y2 are inclusive of the Rect.
+
+
+THEME.XML
+
+The actual theme file is an XML document. Right now FreeAmp only
+supports XML documents encoded in ISO8859/1 (and even that has
+not been thoroughly tested). Just assume that the theme.xml
+file is a regular text file.
+
+XML differs from HTML in quite a few respects, but if you are
+familiar with HTML you should have no problem with XML. Just think
+as a theme as a special kind of HTML document.
+
+There are two major differences between HTML and XML. First, XML 
+is case sensitive. So ButtonControl is not the same as buttoncontrol.
+Second, XML has the concept of an empty tag where the two following
+constructs are equivalent:
+
+   <Info Desc="Subvert the dominant paradigm"> </Info>
+
+   <Info Desc="Subvert the dominant paradigm"/>
+
+The default FreeAmp theme makes copious use of the empty tag construct
+since many theme details are specified using attributes. 'Desc' in the 
+example above is an attribute to the Info tag. Attributes values *must*
+always be enclosed by double quotes and the attribute names are
+case sensitive as well.
+
+Also, we currently do not have a DTD specified for these XML files.
+Once we get out of beta, I will bring this HOWTO and a DTD up to
+the latest and greatest info.
+
+TITLE.TXT
+
+The file TITLE.TXT should contain one line of text that gives the theme
+a descriptive name. This text will be shown in the options dialog
+when all the available themes are listed. Note: Only the first line
+of text of this file will be used.
+
+Bitmap:
+-------
+
+To specify a bitmap for use with a theme you might use:
+
+<Bitmap Name="Background" File="background.bmp" TransColor="#FF0000"/>
+
+This give the bitmap the name 'Background' and it tells FreeAmp
+that the bitmap resides in background.bmp, and that the Transparent
+color is primary red. The TransColor attribute specifies the color
+that is transparent. Just like HTML it does this with the triple
+hex notation with the # symbol. #FF0000 is red because it specifies all
+red, no green and no blue.
+
+You will want to specify one bitmap for the main background of your
+FreeAmp theme and one bitmap for buttons. You can use as many bitmaps
+as you like, but loading your theme om FreeAmp will be slower if you
+have many bitmaps. 
+
+
+Font:
+-----
+
+To specify a font:
+
+<Font Name="San Serif" Face="Arial,Helvetica" File="verdana.ttf"/>
+
+The Name attribute specifies the given name for this font that 
+TextControls will use. The Face attribute specifies which font to use.
+This can be a comma separated list. FreeAmp will first attempt to
+find a font named Arial, and if it can't find that it will attempt
+to font font called Helvetica and so on. If FreeAmp can't find any
+of the specified fonts, it will use the default font. 
+
+If the File attribute is given, the system will load the given font 
+file before attempting to use the font. This allows theme designers to 
+embed their favorite TrueType fonts in their themes. If you intend to
+make your Theme available to others (and we hope you will!) please
+make sure that you have the rights to distribute the fonts you embed
+in your themes.
+
+
+Window:
+-------
+
+The default window that FreeAmp opens a theme in is called 'MainWindow'.
+You may define as many other windows as you care -- make sure to
+include a ChangeWindow button to allow the user to change between
+windows. (See below for details)
+
+To specify the main window, use this construct:
+
+<Window Name="MainWindow">
+
+A Window cannot be an empty tag. Inside the Window tag you will need to
+define a <Panel>.
+
+
+Panel & TogglePanel:
+--------------------
+
+Each window needs to have at least one Panel. Panels can be linked to
+buttons which open and close the panels. The main FreeAmp theme is
+implemented using 3 panels: The top portion of the player that contains
+the display area, the equalizer section and the buttons on the bottom of
+the player. To specify a simple panel that does not does not have any
+pop-out panels, use the following:
+
+  <Panel Name="Default" Bitmap="Background" Pos="0,0" Rect="0,0,327,95"
+         ZOrder="1">
+
+This specifies a panel named 'Default', using the Rect (0,0,327,95) area
+of bitmap 'Background' as the background. Pos specifies the panel will be 
+located at the logical theme origin and the default ZOrder of 1. If
+you do not plan on having panels that open/close you will need to
+simply make sure the background bitmap rects are correct, and you can 
+simply ignore Pos and ZOrder and set them to the defaults shown above.
+
+If you'd like to have fancy panels that pop open/closed to expose/hide
+features, you need to define multiple Panel tags inside the Window tag.
+For instance, the lower Panel in the freeamp theme is defined as follows:
+
+    <Panel Name="PlayerBottom" Bitmap="Background"
+           Rect="0, 95, 327, 161" Pos="0,95" TogglePos="0,170" ZOrder="2"
+           OnCloseHide="Equalizer" OnOpenShow="Equalizer">
+
+Name, Bitmap and Rect are the same as in the example above. Pos indicates
+where the panel will be placed when the panel is closed (not toggled). When
+the user toggles the panel, the panel will be moved to the TogglePos. Upon
+toggling the panel again, the panel moves back to Pos. One panel should
+be specified as the base panel, and other panels should then be specified
+in relation to the base panel.
+
+ZOrder specifies the how overlapping Panels will be ordered. If two
+or more panels overlap, the panel with the highest ZOrder value will
+be shown on top and the panel with the lowest ZOrder will be shown
+at the bottom.
+
+Optionally, you can specify to show or hide other panels when a panel
+gets toggled. The OnOpenShow, OnOpenHide, OnCloseShow, and OnCloseHide
+attributes specified other panels to show/hide when the current panel is
+opened/closed. In the example above, the Equalizer panel is hidden when
+the PlayerBottom panel is closed, and the same Equalizer panel is shown
+when the PlayerBottom panel is opened.
+
+When you have a panel that can be opened or closed, you will need to
+create a button that will open/close the panel when the button is
+pressed. This button can be of any name (make sure to not use one
+of the names that is already used by other components), but it must
+contain a TogglePanel tag:
+
+   <TogglePanel Panel="PlayerBottom"/>
+
+When the user clicks this button the PlayerBottom panel will get toggled. 
+
+A Panel cannot be an empty tag. Inside the Panel tag you will need to
+define <Controls>.
+
+
+Controls:
+---------
+
+This tag has no attributes. It is a container for all the controls
+that are to be placed on a window. Inside of the Controls tag you may
+include <MultiStateControl>, <ButtonControl>, <TextControl>,
+<SliderControl> and <VSliderControl> tags.
+
+
+ButtonControl:
+--------------
+
+Ok, now we're getting to the heart of FreeAmp themes. A ButtonControl
+presents a button to the user. The button may have 4 different states:
+ 
+    Normal, MouseOver, Pressed, and Disabled
+    
+A ControlBitmap (see below) will define bitmaps for each of these
+states. The ButtonControl tag only has one attribute:
+
+    <ButtonControl Name="Stop">
+
+The Name of the button is corresponds to a function in FreeAmp. In the
+case above, the control is tied to the Stop function. If the user presses
+this button the player will stop playing. See Appendix A at
+the end of this howto for a list of buttons that can be defined.
+The one exception to this rule are buttons that define a <ChangeWindow>
+tag. These buttons are used to switch to a different window layout
+and should use a name is not used by FreeAmp. I suggest that you use
+the name of the window layout that the ChangeWindow switches to. (Don't
+you hate people who end their sentences in prepositions?) 
+
+Buttons can be any arbitrary shape if the source bitmap specifies a
+transparent color with the TransColor attribute. Any portion of a button
+that is visible will be considered to be part of the active area of the
+button. When the user moves the mouse over an active portion of the
+button, a hint for that button is displayed in the Info text field.
+If the user clicks on the active area of a button it will be
+interpreted as a button press.
+
+For the 'Logo' button the theme designer can specifiy a 'URL' attribute,
+which will pop open the web browser and go to that web page. If the
+URL attribute is not specified, the button will open the browser to
+http://www.freeamp.org
+
+
+The ButtonControl will need to include the <Info>, <Position>, and
+<ControlBitmap> and optionally include the <ChangeWindow> or <TogglePanel>
+tags.
+
+MultiStateControl:
+------------------
+
+A MultiStateControl is just like a button, but it can take on different
+states. The PlayPause button is implemented as a MultiStateControl and it
+therefore doubles as the Pause button as well:
+
+    <MultiStateControl Name="PlayPause" NumStates="2">
+    
+The NumStates attribute defines how many different states a button
+can have. This number depends on the type of control that is being
+implemented. The PlayPause and the Shuffle controls will always have 2 states
+(Play/Pause, ShuffleNone/Shuffle) and the Repeat control will always 
+have 3 states (RepeatNone,RepeatOne,RepeatAll).    
+
+The ButtonControl will need to include the <Info>, <Position>, and
+<ControlBitmap> tags.
+
+
+TextControl:
+------------
+
+A text control is an area where some information is displayed:
+
+    <TextControl Name="Time">
+
+The name of the TextControl is used to identify what information gets
+displayed in the field. You can specify Title, Info, BufferInfo, and
+Time TextControls. NOTE: For the Time field, you can hit the '@' key and
+FreeAmp will put the time '23:59:59' into the time field so you can test
+the size of the time field. (Time fields that are too small end up 
+marqueeing back and forth and that looks nasty)
+
+A TextControl will need to include the <Position> and <Style> tags.
+
+
+SliderControl:
+--------------
+
+SliderControls are used to control volume and seek position:
+
+    <SliderControl Name="Volume">  
+
+SliderControls are also used to control the equalizer channels:
+
+    <SliderControl Name="Eq1" Notch="50%" NotchWidth="4">  
+
+The Name can either be Volume, Seek, Balance, Preamp, or Eq0 - Eq9 
+for the Equalizer sliders. The optional Notch and NotchWidth attributes
+allow the theme designer to specify a 'notch' that can be used as a 
+default position for a slider. When the user moves the slider across
+the notch position, the slider will snap to the notch postion. The
+eq sliders use notches in order to make it easier to set all the eq
+sliders to the neutral 50% position. Notch defines the slider percentage
+where the notch should be located, and NotchWidth defines the
+total width of the Notch. When the slider thumb is inside this NotchWidth
+zone, the slider remains snapped to the Notch center.
+
+The SliderControl needs to define the <Info>, <Position>, and 
+<ControlBitmap> tags. The only bitmaps associated with a slider control 
+are the bitmaps for the thumb of the slider control. The actual frame of 
+the control is part of the background bitmap. The thumb bitmap is specified 
+by the <ControlBitmap> tag and has three states:
+
+    Normal, MouseOver, and Disabled
+
+VSliderControl:
+--------------
+
+A VSliderControl is just a vertical version of the SliderControl. Please
+refer to the SliderControl docs above.
+
+Info:
+-----
+
+The Info tag is used to give the user feedback about a control:
+
+    <Info Desc="Stop the player" Tip="Stop"/>
+
+The text contained in the Desc attribute is displayed in the Info
+TextControl when the user moves the mouse over the control that
+specifies the Info tag. And, once we get tooltips implemented,
+the Tip attribute will define the text shown in the tooltip when
+the mouse hovers over a button.
+
+For a MultiStateControl, set Desc and Tip attribute strings for each of
+the states can be seperated by '||'. The play/pause button <Info>
+tag looks like this:
+
+    <Info Desc="Play the current track||Pause the current track" 
+          Tip="Play||Pause"/>
+
+If the Desc and Tip attributes are not seperated by '||' then the
+entire Desc and Tip attribute text will be shown for all states of the
+button.
+          
+
+Position:
+---------
+
+The position tag includes the Rect attribute to indicate where the
+control should be placed on the background bitmap:
+
+    <Position Rect="202,122,234,155"/>
+
+The coordinates specified in the Rect attribute are in background bitmap
+coordinates. In the example above, the button will be placed 202 
+pixels to the right of the left edge of the control bitmap and
+122 pixels below the top edge of the control bitmap.
+
+In beta 4, the theme designer should also be able to specify a Pos
+instead of a Rect, and the size of the button will be determined
+from the information given in the ControlBitmap tag.
+
+
+ControlBitmap:
+--------------
+
+The ControlBitmap tag specifies the bitmap to use for a control:
+
+    <ControlBitmap Rect="237,148,288,163" Name="Buttons"/>
+    
+The coordinates specified in the Rect attribute are in "Buttons" bitmap
+coordinates. In the above case, the control bitmap starts 237 pixels
+to the right of the left edge of the Buttons bitmap, and 148 pixels
+below the top edge of the Buttons bitmap.
+
+The x2 and y2 coordinates of the control bitmap depend on how many 
+'frames' the control expects in the ControlBitmap. For instance, the 
+regular ButtonControl has 4 frames (Normal, MouseOver, Pressed and 
+Disabled) and the ControlBitmap for a ButtonControl should be 4 times as 
+wide as the specified Rect from the Position tag.
+
+For instance:
+
+    <Position Rect="182,100,246,115"/>
+    <ControlBitmap Rect="0,203,259,218" Name="Buttons"/>
+
+The Position Rect specifies a rectangular region that is 65 pixels
+wide and 16 pixels high. (Remember that Rects are x2,y2 inclusive,
+which means that you need to calculate the width like: w = x2 - x1 + 1.
+Same goes for height)
+
+Therefore the ControlBitmap needs to 65 * 4 = 260 pixels wide,
+and 16 pixels high. If the control bitmap starts at 0,203 then you
+arrive at: Rect="0,203,259,218"
+
+For a SliderControl and VSliderControl thumb, you will need 3 frames. 
+For a MultiStateControl you will need the ControlBitmap to be 4 frames 
+wide and n frames high where n is the value defined by the NumStates 
+attribute. State 0 will be in the first row of bitmaps, state 1 in 
+the second row and so on.
+
+Style:
+------
+
+The Style tag is used to define the style of a TextControl:
+
+   <Style Align="Left" Font="Serif" Bold="Yes" Color="#FF00FF"/>
+
+The Style tag must define the Font attribute which identifies 
+the font (defined by the <Font> tag) to use. The Style tag may
+also have an Align (Left, Center, Right), a Bold (Yes, No),
+a Italic (Yes, No), an Underline (Yes, No) attribute, and a Color
+tag that uses #RRGGBB colors in hex just like HTML does. Only the 
+Font attribute is required, the others are optional.
+
+
+ChangeWindow:
+-------------
+
+A ChangeWindow tag is used to specify that a button should change
+the theme to a different window layout:
+
+   <ChangeWindow Window="WindowShade">
+   
+The Window attribute defines which layout to activate when the user
+clicks on this button. This layout must be defined in the current
+theme.
+   
+
+ThemeInfo:
+----------
+
+The ThemeInfo tag allows the theme designers to give the theme a
+name and to give themselves some credit. Pressing 'C' in the theme
+ui or clicking on the Credits button brings up the credits in the
+Title TextControl:
+
+   <ThemeInfo Name="FreeAmp Theme" Author="Bill Bull & Robert Kaye" 
+              EMail="info@freeamp.org" WebPage="http://www.freeamp.org"
+              Misc="Based on artwork made from scanning my butt"/>
+
+The Name attribute is the name of the theme, and the Author attribute
+is the name of the Author(s). The EMail and WebPage attributes are
+for authors to let the theme users know where to contact them and
+which web page may have more info about the author/theme. The Misc
+field is for whatever miscellaneous credit information you'd like to
+include. Only the Name attribute is required.
+
+If you intend on submitting your themes to the FreeAmp.org page, please
+fill out the ThemeInfo tag completely. The script on our web page that
+automatically generates the themes page will open up each theme and pull
+out the ThemeInfo to display that on the theme page. If you don't fill out
+the ThemeInfo tag, you will not get credit for your theme.
+
+Headlines:
+----------
+
+FreeAmp now has the capabilities to download headlines from popular
+websites such as Slashdot. The Headlines tag defines where to download
+the headlines and what data to display:
+
+<Headlines URL="http://www.slashdot.org/slashdot.xml"
+           XMLPath="/backslash/story/title"
+           XMLURLPath="/backslash/story/url"
+           DownloadInterval="3600"
+           ChangeInterval="10"/>
+
+This Headlines tag shows the headlines from Slashdot in the 'HeadlineInfo'
+TextField. The URL attribute specifies the HTTP location of the XML document 
+that contains the headlines. This currently only works with XML documents
+retrieved via HTTP! The XMLPath attribute defines which text fields to show 
+as headlines. In this case each <title> tag that is nested inside of a 
+<story> tag, which is in turn nested inside a <backslash> tag will be 
+considered a headline. The XMLURLPath attribute defines which XML fields are 
+URLs associated with the headlines. There must be an XMLURLPath field for 
+every headline, otherwise the headline URLs will not function. For example, 
+examine the following XML example:
+
+    <?xml version="1.0"?><backslash
+    xmlns:backslash="http://slashdot.org/backslash.dtd">
+ 
+    <story>
+       <title>Final Fantasy Movie Trailers</title>
+       <url>http://slashdot.org/articles/00/03/07/0058211.shtml</url>
+
+Given the above Headlines tag, it will show 'Final Fantasy Move Trailers'
+in the HeadlineInfo field and if the user clicks on that text field,
+FreeAmp will open a browser to http://slashdot.org/articles/00... 
+
+The DownloadInterval attribute detemines how often the headlines should be 
+downloaded, and the ChangeInterval attribute determines how quickly FreeAmp 
+should flip through the headlines. Both intervals are specified in seconds, 
+and in the example above, the headlines are grabbed once an hour and each 
+headline is displayed for 10 seconds. All attributes except XMLURLPath 
+are required.
+
+The headlines are actually displayed in a TextField called HeadlineInfo.
+
+
+QUICK REFERENCE
+
+<Bitmap>
+   -- specifies a bitmap for use in the theme
+   
+   Attributes:   
+
+   Name -- The name of the bitmap as referenced by other controls
+   File -- The file where this bitmap can be found
+   TransColor -- An HTML color specification for use as the transparent color  
+   
+   Subtags:
+   
+   None.
+
+<Font>
+
+   -- specifies a font for use in the theme
+   
+   Attributes:   
+
+   Name -- The name of the bitmap as referenced by other controls
+   Face -- A comma separated list of font faces to use
+   File -- The filename of the font to load from the theme package [optional]
+
+   Subtags:
+   
+   None.
+
+<Window>
+
+   -- specifies a window layout.
+   
+   Attributes:
+   
+   Name -- The name of the window. Each theme must define a 'MainWindow'.
+
+   Subtags:
+   
+   <Panel> (required)
+
+<Panel>
+
+   -- specifies a panel and a background bitmap
+   
+   Attributes:
+   
+   Name -- The name of the Panel. Each Windows must defined one Panel.
+   Bitmap -- The bitmap to use as the background
+   Rect -- The rectangular area of the background bitmap to use as the
+           panel surface.
+   Pos -- Defines the closed location for the panel.
+   ZOrder -- Defines the ZOrder (layer) for this panel.
+   TogglePos -- Defines open location for this panel. [optional]
+   OnOpenShow -- Defines another panel to show when this panel is 
+                 opened. [optional]
+   OnOpenHide -- Defines another panel to hide when this panel is 
+                 opened. [optional]
+   OnCloseShow -- Defines another panel to show when this panel is 
+                  closed. [optional]
+   OnCloseHide -- Defines another panel to hide when this panel is 
+                  closed. [optional]
+   
+   Subtags:
+   
+   <Controls> (required)
+   
+
+<Controls>
+   
+   -- specifies which controls to place in the window
+   
+   Attributes:
+   
+   None.
+   
+   Subtags:
+
+   <MultiStateControl>
+   <ButtonControl>
+   <TextControl>
+   <SliderControl>
+   <VSliderControl>
+
+   
+<ButtonControl>
+
+   -- specifies a name button control
+   
+   Attributes:
+   
+   Name -- the name of the control. See Appendix A for a list of
+           possible control names.
+   URL -- For the 'Logo' button only. This specifies the web page to
+          go to if the user clicks on the button. Defaults to 
+          http://www.freeamp.org if not specified.        
+
+   Subtags:
+   
+   <Info> (required)
+   <Position> (required)
+   <ControlBitmap> (required) 
+
+<TextControl>
+
+   -- specifies a text display area
+   
+   Attributes:
+   
+   Name -- the name of the control. See Appendix A for a list of
+           possible control names.
+
+   Subtags:
+
+   <Position> (required)
+   <Style> (required) 
+
+<SliderControl>
+
+   -- specifies a slider control
+   
+   Attributes:
+   
+   Name -- the name of the control. See Appendix A for a list of
+           possible control names.
+   Notch -- define a location on the slider bar where the slider thumb
+            will snap to. This is specified in percent. (e.g. 50% will
+            place a notch in the middle of the slider) [optional]
+   NotchWidth -- Used with a Notch, it defines the width of the notch
+                 snap zone. [optional]
+
+   Subtags:
+
+   <Info> (required)
+   <Position> (required)
+   <ControlBitmap> (required) 
+
+<VSliderControl>
+
+   -- specifies a vertical slider control
+   
+   Attributes:
+   
+   Name -- the name of the control. See Appendix A for a list of
+           possible control names.
+
+   Subtags:
+
+   <Info> (required)
+   <Position> (required)
+   <ControlBitmap> (required) 
+
+<Info>
+
+   -- specifies textual information for this control such as the
+      description and the tooltip.   
+
+   Attributes:
+   
+   Desc -- the text displayed in the Info TextControl when the user
+           moves the mouse over the control.
+   Tip -- The tooltip text to display when the user places the mouse
+          over the control. (Not currently implemented) [optional]
+          
+   Subtags:
+   
+   None.
+   
+<Position>
+
+   -- specifies the location of the control on the window
+   
+   Attributes:
+   
+   Rect -- the location where the control should appear
+   
+   Subtags:
+   
+   None.
+   
+<ControlBitmap>
+
+   -- specifies the source bitmap and source locations for a control
+   
+   Attributes:
+   
+   Rect -- the location where the multi-frame bitmap is located
+   Name -- the name of the bitmap to take the bitmaps from
+   
+   Subtags:
+   
+   None.
+  
+<Style>
+
+   -- specifies the font and font style for a TextControl
+   
+   Attributes:
+   
+   Font -- The name of the font to be used in this control 
+   Align -- The text alignment within the control (Left, Center, Right) [optional]     
+   Bold -- Show text in boldface (Yes, No) [optional]
+   Italic -- Show text in italics (Yes, No) [optional]
+   Underline -- Show text underlined (Yes, No) [optional]
+   Color -- Show the text in the given color (#RRGGBB) [optional]
+
+<ThemeInfo>
+
+   -- specifies the credits for this theme
+   
+   Attributes:
+   
+   Name -- The name of the theme
+   Author -- The name(s) of the theme author(s) [optional]
+   EMail -- The email address of the theme author(s) [optional]
+   WebPage -- The Web page associated with the author(s)/theme. [optional]
+
+
+<Headlines>
+
+   -- specified a what to display in the HeadlineInfo text field.
+   
+   URL -- The HTTP location where the XML headline document can be found.
+   XMLPath -- The XML location where headlines can be found.
+   XMLURLPath -- The XML location where headline URLs can be found.	[optional]
+   DownloadInterval -- How frequently to download new headlines (seconds)
+   ChangeInterval -- How frequently to show a new headline (seconds)
+
+      
+
+Troubleshooting:
+
+Q: When I move the mouse over a button the button moves slightly.
+   What's up with that?
+   
+A: The Rect specified in the ControlBitmap tag is of a different size
+   than the Rect specified in the Position tag.
+
+
+APPENDIX A
+
+
+Available Control Names
+
+MultiStateControls:
+
+PlayPause     -- Play/Pause button
+PlayStop      -- Play/Stop button
+Repeat        -- Repeat None/Repeat One/Repeat All
+Shuffle       -- Normal/Shuffle mode
+MPause        -- Multistate Pause button. State 0 is shown when the player
+                 is not paused, and state 1 is shown when the player is
+                 paused to give the user visual feedback that the player is
+                 paused.
+Mute          -- Mute volume control. State 0 is shown during normal playback
+                 and state 1 is shown when the player is muted.
+SigIndicator  -- The signatures pending indicator. State 0 is shown when
+                 no signatures are pending, state 1 when signatures are
+                 pending and state 2 when the player is signaturing tracks.
+EqEnable      -- Enabled/disable the equalizer. State 0 is shown when the
+                 equalizer is enabled and state 1 is shown when the equalizer
+                 is disabled.
+
+ButtonControls:
+
+Play          -- The play button that gets disabled during playback
+Pause         -- The pause button that gets disabled during non playback
+Stop          -- stop playing
+Prev          -- go to previous track
+Next          -- go to next track
+Quit          -- quit the player
+MyMusic       -- open musicbrowser
+Options       -- open options dialog
+Download      -- open the download manager
+Logo          -- FreeAmp logo, clicking it will open a web browser to 
+                 the FreeAmp site.
+Minimize      -- Minimizes FreeAmp
+ReloadTheme   -- Reload the current theme
+Credits       -- Shows the theme credits in the title field
+Help          -- Show the FreeAmp help files.
+Files         -- Allows the user to select a file to play.
+
+
+TextControls:
+
+Title         -- The song title text area
+Info          -- The area where button info and status messages get displayed
+StreamInfo    -- Shows the bitrate, sample rate and stereo mode for the
+                 current mp3.
+BufferInfo    -- The input and output buffer states (for streaming only)
+Time          -- The time display (use '@' key to test the size of the field)
+TimeRemaining -- The time display used when in TimeRemaining mode 
+        
+SliderControls,VSliderControls:        
+        
+Volume        -- adjusts the volume
+Seek          -- seek in a track
+Balance       -- adjusts the balance between the left and right speaker
+Preamp        -- adjusts the preamp
+Eq0 - Eq9     -- sliders that adjust the equalizers settings. Eq0 through
+                 Eq9 map to 60Hz, 170Hz, 310Hz, 600hz, 1Khz, 3Khz, 6Khz,
+                 12Khz, 14Khz, 16Khz, repectively.
+   
+APPENDIX B
+
+This is the current FreeAmp theme.xml file:
+
+<Bitmap Name="Background" File="background.bmp" TransColor="#FF0000"/>
+<Bitmap Name="Buttons" File="buttons.bmp" TransColor="#FF0000"/>
+<Bitmap Name="MiniButtons" File="minibuttons.bmp" TransColor="#FF0000"/>
+<Bitmap Name="MiniBackground" File="minibackground.bmp" TransColor="#FF0000"/>
+<Bitmap Name="MediumBackground" File="mediumbackground.bmp" TransColor="#FF0000"/> 
+<Bitmap Name="Equalizer" File="equalizer.bmp" TransColor="#FF0000"/> 
+
+<Font Name="Main" File="arial.ttf" Face="Arial"/>
+
+<ThemeInfo Name="FreeAmp Theme" Author="Bill Bull, Robert Kaye & Mark B. Elrod " 
+           EMail="info@freeamp.org" WebPage="http://www.freeamp.org"/>
+
+<Window Name="MainWindow">
+    <Panel Name="PlayerBottom" Bitmap="Background" 
+           Rect="0, 95, 327, 161" Pos="0,95" TogglePos="0,170" ZOrder="2"
+           OnCloseHide="Equalizer" OnOpenShow="Equalizer">
+        <Controls>
+            <ButtonControl Name="Logo" URL="http://www.freeamp.org">
+            	<Info Desc="Go to the FreeAmp web site" Tip="FreeAmp"/>
+                <Position Pos="23,33"/>
+                <ControlBitmap Rect="0,236,267,255" Name="Buttons"/>
+            </ButtonControl>
+            <MultiStateControl Name="PlayStop" NumStates="2">
+            	<Info Desc="Play the current track||Stop the current track" Tip="Play||Stop"/>
+                <Position Pos="228,29"/>
+                <ControlBitmap Rect="0,96,119,159" Name="Buttons"/>
+            </MultiStateControl>
+            <MultiStateControl Name="MPause" NumStates="2">
+            	<Info Desc="Pause the current track||Continue playing" 
+            	            Tip="Pause||Continue"/>
+                <Position Pos="258,29"/>
+                <ControlBitmap Rect="0,282,119,345" Name="Buttons"/>
+            </ButtonControl>
+            <ButtonControl Name="Prev">
+            	<Info Desc="Move to previous track" Tip="Previous"/>
+                <Position Pos="198,29"/>
+                <ControlBitmap Rect="0,0,119,31" Name="Buttons"/>
+            </ButtonControl>
+            <ButtonControl Name="Next">
+            	<Info Desc="Move to next track" Tip="Next"/>
+                <Position Pos="287,29"/>
+                <ControlBitmap Rect="0,32,119,63" Name="Buttons"/>
+            </ButtonControl>	
+            <ButtonControl Name="MyMusic">
+            	<Info Desc="Browse my music collection" Tip="MyMusic"/>
+                <Position Pos="44,7"/>
+                <ControlBitmap Rect="0,172,291,186" Name="Buttons"/>
+            </ButtonControl>
+            <ButtonControl Name="Options">
+            	<Info Desc="Open the options window" Tip="Options"/>
+                <Position Pos="119,7"/>
+                <ControlBitmap Rect="0,188,263,202" Name="Buttons"/>
+            </ButtonControl>
+            <ButtonControl Name="Download">
+             	 <Info Desc="Open the download manager" Tip="Download"/>
+                <Position Pos="187,7"/>
+                <ControlBitmap Rect="0,204,303,218" Name="Buttons"/>
+            </ButtonControl>
+            <ButtonControl Name="Files">
+            	<Info Desc="Open files/playlists to play" Tip="Files"/>
+                <Position Pos="265,7"/>
+                <ControlBitmap Rect="0,220,207,234" Name="Buttons"/>
+            </ButtonControl>
+            <MultiStateControl Name="Repeat" NumStates="3">
+            	<Info Desc="Play normally (No repeat)||Repeat current track||Repeat all tracks" 
+                      Tip="No Repeat||Repeat current||Repeat all"/>
+                <Position Pos="151,31"/>
+                <ControlBitmap Rect="123,11,286,85" Name="Buttons"/>
+            </MultiStateControl>
+            <MultiStateControl Name="Shuffle" NumStates="2">
+            	<Info Desc="Play tracks in normal order||Play tracks in random order" Tip="Normal play||Random play"/>
+                <Position Pos="109,31"/>
+                <ControlBitmap Rect="123,87,286,136" Name="Buttons"/>
+            </MultiStateControl>
+       </Controls>
+   </Panel>
+    <Panel Name="PlayerTop" Bitmap="Background" Rect="0, 0, 327, 95" 
+           Pos="0,0" ZOrder="1">
+        <Controls>
+            <!--ButtonControl Name="ReloadTheme">
+            <!--Info Desc="Reload current theme" Tip="Reload theme"/>
+                <!--Position Rect="12,0,24,15"/>
+                <!--ControlBitmap Rect="53,264,104,272" Name="Buttons"/>
+            <!--/ButtonControl>
+            <ButtonControl Name="Quit">
+            	<Info Desc="Quit FreeAmp" Tip="Quit"/>
+                <Position Rect="303,0,315,15"/>
+                <ControlBitmap Rect="212,264,263,272" Name="Buttons"/>
+            </ButtonControl>
+            <ButtonControl Name="Minimize">
+            	<Info Desc="Minimize FreeAmp" Tip="Minimize"/>
+                <Position Rect="289,0,301,15"/>
+                <ControlBitmap Rect="159,264,210,272" Name="Buttons"/>
+            </ButtonControl>
+            <ButtonControl Name="MediumView">
+             <Info Desc="Change to medium view" Tip="Medium view"/>
+                <Position Pos="275,0"/>
+                <ControlBitmap Rect="123,140,174,155" Name="Buttons"/>
+                <ChangeWindow Window="MediumView"/>
+            </ButtonControl>
+            <ButtonControl Name="Help">
+                <Info Desc="View the FreeAmp player help" Tip="Help"/>
+                <Position Pos="262,0"/>
+                <ControlBitmap Rect="106,264,157,279" Name="Buttons"/>
+            </ButtonControl> 
+            <ButtonControl Name="Equalizer">
+                <Info Desc="Open equalizer" Tip="Equalizer"/>
+                <Position Pos="249,0"/>
+                <ControlBitmap Rect="176,140,227,155" Name="Buttons"/>
+                <TogglePanel Panel="PlayerBottom"/>
+            </ButtonControl> 
+            <TextControl Name="Title">
+                <Position Rect="9,23,317,36"/>
+                <Style Align="Left" Font="Main" Bold="Yes"/>
+            </TextControl>
+            <TextControl Name="Info">
+                <Position Rect="9,55,179,67"/>
+                <Style Font="Main"/>
+            </TextControl>	 
+            <TextControl Name="StreamInfo">
+                <Position Rect="9,40,210,52"/>
+                <Style Font="Main"/>
+            </TextControl>
+            <TextControl Name="Time">
+            	   <Info Desc="Current time/Time remaining"/>
+                <Position Rect="210,43,317,65"/>
+                <Style Font="Main" Align="Right" Bold="Yes"/>
+            </TextControl>
+            <TextControl Name="TimeRemaining">
+            	   <Info Desc="Time remaining/Current time"/>
+                <Position Rect="210,43,317,65"/>
+                <Style Font="Main" Align="Right" Bold="Yes" Color="#666666"/>
+            </TextControl>
+            <MultiStateControl Name="Mute" NumStates="2">
+            	<Info Desc="Mute sound||Unmute sound" 
+                      Tip="Mute||Unmute"/>
+                <Position Pos="13,78"/>
+                <ControlBitmap Rect="230,140,293,165" Name="Buttons"/>
+            </MultiStateControl>
+            <MultiStateControl Name="SigIndicator" NumStates="3">
+                <Info Desc="No signatures to generate||Need to generate signatures||Generating signatures" 
+                      Tip="Idle||Pending||Generating"/>
+                <Position Pos="306,80"/>
+                <ControlBitmap Rect="121,307,156,333" Name="Buttons"/>
+            </MultiStateControl>
+            <SliderControl Name="Volume">  
+            	   <Info Desc="Change volume" Tip="Volume"/>
+                <Position Rect="34,80,114,88"/>
+                <ControlBitmap Rect="136,0,183,8" Name="Buttons"/>
+            </SliderControl>
+            <SliderControl Name="Seek">
+            	<Info Desc="Seek in the current track" Tip="Seek"/>
+                <Position Rect="142,80,299,88"/>
+                <ControlBitmap Rect="136,0,183,8" Name="Buttons"/>
+            </SliderControl>
+        </Controls>
+    </Panel>
+   <Panel Name="Equalizer" Bitmap="Equalizer" HideWhenClosed="yes" 
+          Rect="0, 0, 327, 76" Pos="0,95" ZOrder="0">
+       <Controls>
+            <SliderControl Name="Balance">
+                <Info Desc="Adjust speaker balance" Tip="Balance"/>
+                <Position Rect="216,194,296,201"/>
+                <ControlBitmap Rect="136,0,183,8" Name="Buttons"/>
+            </SliderControl>
+            <VSliderControl Name="Eq0" Notch="50%" NotchWidth="4">
+                <Info Desc="Equalize 60Hz" Tip="60Hz"/>
+                <Position Rect="86,23,98,65"/>
+                <ControlBitmap Rect="186,0,224,2" Name="Buttons"/>
+            </VSliderControl>  
+            <VSliderControl Name="Eq1" Notch="50%" NotchWidth="4">
+                <Info Desc="Equalize 170Hz" Tip="170Hz"/>
+                <Position Rect="102,23,114,65"/>
+                <ControlBitmap Rect="186,0,224,2" Name="Buttons"/>
+            </VSliderControl>
+            <VSliderControl Name="Eq2" Notch="50%" NotchWidth="4">
+                <Info Desc="Equalize 310Hz" Tip="310Hz"/>
+                <Position Rect="118,23,130,65"/>
+                <ControlBitmap Rect="186,0,224,2" Name="Buttons"/>
+            </VSliderControl>
+            <VSliderControl Name="Eq3" Notch="50%" NotchWidth="4">
+                <Info Desc="Equalize 600Hz" Tip="600Hz"/>
+                <Position Rect="134,23,146,65"/>
+                <ControlBitmap Rect="186,0,224,2" Name="Buttons"/>
+            </VSliderControl>
+            <VSliderControl Name="Eq4" Notch="50%" NotchWidth="4">
+                <Info Desc="Equalize 1kHz" Tip="1kHz"/>
+                <Position Rect="150,23,162,65"/>
+                <ControlBitmap Rect="186,0,224,2" Name="Buttons"/>
+            </VSliderControl>
+            <VSliderControl Name="Eq5" Notch="50%" NotchWidth="4">
+                <Info Desc="Equalize 3kHz" Tip="3kHz"/>
+                <Position Rect="166,23,178,65"/>
+                <ControlBitmap Rect="186,0,224,2" Name="Buttons"/>
+            </VSliderControl>
+            <VSliderControl Name="Eq6" Notch="50%" NotchWidth="4">
+                <Info Desc="Equalize 6kHz" Tip="6kHz"/>
+                <Position Rect="182,23,194,65"/>
+                <ControlBitmap Rect="186,0,224,2" Name="Buttons"/>
+            </VSliderControl>
+            <VSliderControl Name="Eq7" Notch="50%" NotchWidth="4">
+                <Info Desc="Equalize 12kHz" Tip="12kHz"/>
+                <Position Rect="198,23,210,65"/>
+                <ControlBitmap Rect="186,0,224,2" Name="Buttons"/>
+            </VSliderControl>
+            <VSliderControl Name="Eq8" Notch="50%" NotchWidth="4">
+                <Info Desc="Equalize 14kHz" Tip="14kHz"/>
+                <Position Rect="214,23,226,65"/>
+                <ControlBitmap Rect="186,0,224,2" Name="Buttons"/>
+            </VSliderControl>
+            <VSliderControl Name="Eq9" Notch="50%" NotchWidth="4">
+                <Info Desc="Equalize 16kHz" Tip="16kHz"/>
+                <Position Rect="230,23,242,65"/>
+                <ControlBitmap Rect="186,0,224,2" Name="Buttons"/>
+            </VSliderControl> 
+            <VSliderControl Name="Preamp" Notch="50%" NotchWidth="4">
+                <Info Desc="Preamp" Tip="Preamp"/>
+                <Position Rect="43,19,55,58"/>
+                <ControlBitmap Rect="227,0,265,5" Name="Buttons"/>
+            </VSliderControl> 
+            <MultiStateControl Name="EqEnable" NumStates="2">
+            	   <Info Desc="Turn off Equalizer||Turn on Equalizer" 
+                      Tip="Eq Off||Eq On"/>
+                <Position Pos="13,9"/>
+                <ControlBitmap Rect="121,282,168,305" Name="Buttons"/>
+            </MultiStateControl>
+        </Controls>
+   </Panel>
+</Window>            
+
+<Window Name="Mini-Me">
+    <BackgroundBitmap Name="MiniBackground" Rect="0, 0, 173, 37"/>
+    <Controls>
+        <MultiStateControl Name="PlayStop" NumStates="2">
+        	<Info Desc="Play the current track||Stop the current track" Tip="Play||Stop"/>
+            <Position Pos="83,17"/>
+            <ControlBitmap Rect="0,79,95,116" Name="MiniButtons"/>
+        </MultiStateControl>
+        <MultiStateControl Name="MPause" NumStates="2">
+        	<Info Desc="Pause the current track||Continue playing" 
+        	            Tip="Pause||Continue"/>
+            <Position Pos="107,17"/>
+            <ControlBitmap Rect="0,40,95,77" Name="MiniButtons"/>
+        </ButtonControl>
+        <ButtonControl Name="Prev">
+        	<Info Desc="Move to previous track" Tip="Previous"/>
+            <Position Pos="59,17"/>
+            <ControlBitmap Rect="0,0,95,18" Name="MiniButtons"/>
+        </ButtonControl>
+        <ButtonControl Name="Next">
+        	<Info Desc="Move to next track" Tip="Next"/>
+            <Position Pos="131,17"/>
+            <ControlBitmap Rect="0,20,95,38" Name="MiniButtons"/>
+        </ButtonControl>	
+        <ButtonControl Name="Quit">
+        	<Info Desc="Quit FreeAmp" Tip="Quit"/>
+            <Position Pos="153,0"/>
+            <ControlBitmap Rect="0,152,47,167" Name="MiniButtons"/>
+        </ButtonControl>
+        <ButtonControl Name="Minimize">
+        	<Info Desc="Minimize FreeAmp" Tip="Minimize"/>
+            <Position Pos="139,0"/>
+            <ControlBitmap Rect="0,118,55,133" Name="MiniButtons"/>
+        </ButtonControl>
+        <ButtonControl Name="NormalView">
+        	<Info Desc="Change to normal view" Tip="Normal view"/>
+            <Position Pos="125,0"/>
+            <ControlBitmap Rect="0,135,55,150" Name="MiniButtons"/>
+            <ChangeWindow Window="MainWindow"/>
+        </ButtonControl>
+        <TextControl Name="Time">
+        	   <Info Desc="Current time/time remaining"/>
+            <Position Rect="9,19,53,31"/>
+            <Style Font="Main" Align="Right" Bold="Yes"/>
+        </TextControl>
+        <TextControl Name="TimeRemaining">
+        	   <Info Desc="Time remaining/Current Time"/>
+            <Position Rect="9,19,53,31"/>
+            <Style Font="Main" Align="Right" Bold="Yes" Color="#666666"/>
+        </TextControl>
+        <SliderControl Name="Volume">  
+        	   <Info Desc="Change volume" Tip="Volume"/>
+            <Position Rect="40,5,66,13"/>
+            <ControlBitmap Rect="61,118,72,126" Name="MiniButtons"/>
+        </SliderControl>
+        <SliderControl Name="Seek">
+        	<Info Desc="Seek in the current track" Tip="Seek"/>
+            <Position Rect="87,5,113,13"/>
+            <ControlBitmap Rect="61,118,72,126" Name="MiniButtons"/>
+        </SliderControl>
+    </Controls>
+</Window>            
+
+<Window Name="MediumView">
+    <BackgroundBitmap Name="MediumBackground" Rect="0, 0, 173, 55"/>
+    <Controls>
+        <MultiStateControl Name="PlayStop" NumStates="2">
+        	<Info Desc="Play the current track||Stop the current track" Tip="Play||Stop"/>
+            <Position Pos="83,35"/>
+            <ControlBitmap Rect="0,79,95,116" Name="MiniButtons"/>
+        </MultiStateControl>
+        <MultiStateControl Name="MPause" NumStates="2">
+        	<Info Desc="Pause the current track||Continue playing" 
+        	            Tip="Pause||Continue"/>
+            <Position Pos="107,35"/>
+            <ControlBitmap Rect="0,40,95,77" Name="MiniButtons"/>
+        </ButtonControl>
+        <ButtonControl Name="Prev">
+        	<Info Desc="Move to previous track" Tip="Previous"/>
+            <Position Pos="59,35"/>
+            <ControlBitmap Rect="0,0,95,18" Name="MiniButtons"/>
+        </ButtonControl>
+        <ButtonControl Name="Next">
+        	<Info Desc="Move to next track" Tip="Next"/>
+            <Position Pos="131,35"/>
+            <ControlBitmap Rect="0,20,95,38" Name="MiniButtons"/>
+        </ButtonControl>	
+
+        <ButtonControl Name="Quit">
+        	<Info Desc="Quit FreeAmp" Tip="Quit"/>
+            <Position Pos="153,0"/>
+            <ControlBitmap Rect="0,152,47,167" Name="MiniButtons"/>
+        </ButtonControl>
+        <ButtonControl Name="Minimize">
+        	<Info Desc="Minimize FreeAmp" Tip="Minimize"/>
+            <Position Pos="139,0"/>
+            <ControlBitmap Rect="0,118,55,133" Name="MiniButtons"/>
+        </ButtonControl>
+        <ButtonControl Name="MiniView">
+        	<Info Desc="Change to mini view" Tip="Mini view"/>
+            <Position Pos="125,0"/>
+            <ControlBitmap Rect="0,135,55,150" Name="MiniButtons"/>
+            <ChangeWindow Window="Mini-Me"/>
+        </ButtonControl>
+
+        <TextControl Name="Time">
+        	   <Info Desc="Current time/time remaining"/>
+            <Position Rect="9,37,53,49"/>
+            <Style Font="Main" Align="Right" Bold="Yes"/>
+        </TextControl>
+        <TextControl Name="TimeRemaining">
+        	   <Info Desc="Time remaining/Current Time"/>
+            <Position Rect="9,37,53,49"/>
+            <Style Font="Main" Align="Right" Bold="Yes" Color="#666666"/>
+        </TextControl>
+        <TextControl Name="Title">
+            <Position Rect="7,18,163,34"/>
+            <Style Align="Left" Font="Main" Color="#DDDDDD"/>
+        </TextControl>
+
+        <SliderControl Name="Volume">  
+        	   <Info Desc="Change volume" Tip="Volume"/>
+            <Position Rect="40,5,66,13"/>
+            <ControlBitmap Rect="61,118,72,126" Name="MiniButtons"/>
+        </SliderControl>
+        <SliderControl Name="Seek">
+        	<Info Desc="Seek in the current track" Tip="Seek"/>
+            <Position Rect="87,5,113,13"/>
+            <ControlBitmap Rect="61,118,72,126" Name="MiniButtons"/>
+        </SliderControl>
+    </Controls>
+</Window>            

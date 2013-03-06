@@ -1,0 +1,34 @@
+This is a very simple UI plugin for FreeAmp, *heavily* based on cmdlineUI.
+It implements a CORBA server thread (using ORBit).
+ 
+For an example of how to use it, see simple_client.py, it should be
+quite self-explanatory.
+
+simple_client.py is available at:
+ http://aviendha.bt.nu/~martin/simple_client.py
+ 
+A little more complex client using a database in a SQL is available
+upon request. A truly ugly half-assed gui client (supporting dnd) is
+also available on request.
+ 
+What you need to build this plugin:
+Linux (tested on debian potato) ought to work on other unix variants.
+ORBit (tested with 0.5.3)
+(For a cleaner design I could have gone with ORBit-C++, but then you'd
+have needed yet another library)
+
+If you got ORBit up and running you should be ok.
+ 
+To test it with simple_client.py you need
+Python <http://www.python.org> 
+ORBit-Python <http://projects.sault.org/orbit-python/>
+ 
+Questions and/or comments should be sent to
+Martin Enlund <maren@lysator.liu.se>
+
+
+* TO DO *
+ + Volume control
+ + Song info (id3-tags, length)
+ + Skipping (+10s, -10s)
+

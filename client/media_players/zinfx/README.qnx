@@ -1,0 +1,37 @@
+FreeAmp notes for Building/Running on QNX RTP
+---------------------------------------------
+
+First, you need to have the X server and (all) the development packages
+that come with the QNX RTP distribution installed.
+
+Grab gtk+ and glib 1.2.8 from ftp://ftp.gtk.org
+ To build these:
+ - Untar glib, go into it's subdir
+ - run libtoolize --force
+ - run ./configure --prefix=FIXME
+ - make install
+ - repeat for gtk+
+
+The FIXME's there because I forget what prefix to use, and can't reboot to 
+check it out yet =)
+
+Next you need to install the MusicBrainz client library from:
+  http://www.musicbrainz.org
+To build:
+  - Untar the distribution
+  - run ./configure --prefix=FIXME
+  - make install
+
+Finally, do the same thing for freeamp.  If you want to get and install
+FreeType, do that, but it's not necessary.
+
+Anyway, after freeamp builds, just make install it and run it with 'freeamp'.
+
+It's identical to the linux and win32 ports, so if you need usage instructions
+look to those README files.
+
+What's Not Working:
+-------------------
+- the main window has a border, stuff breaks if i set it to borderless
+- the 'My Streams' dynamic content isn't enabled
+- CD playing isn't enabled

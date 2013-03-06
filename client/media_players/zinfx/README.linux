@@ -1,0 +1,31 @@
+Zinf Notes for Linux users 
+-----------------------------
+
+To use the ALSA Sound System:
+=============================
+
+To use the ALSA output plugin, shutdown Zinf if it is currently 
+running and then edit the .freeamp/preferences file in your home directory. To use 
+Zinf with the ALSA 1:1 device (which leaves the default device open 
+other uses) the PMO and ALSADevice lines to look like this:
+
+  PMO: alsa.pmo
+  ALSADevice: 1:1
+
+If you installed ALSA after you installed Zinf, there is a good chance
+that you do not have ALSA support for Zinf installed. Reinstall
+Zinf after you have ALSA properly configured.
+
+
+To use the EsounD Sound System:
+===============================
+
+To use the EsounD output plugin, read/follow the instructions above and
+change the following lines to look like these:
+
+  PMO: esound.pmo
+  EsounDHost: localhost 
+
+If you don't have an EsoundD server running locally, change the EsounDHost
+setting to the name of your EsounD server.
+

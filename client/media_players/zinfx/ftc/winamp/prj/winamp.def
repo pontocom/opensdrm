@@ -1,0 +1,7 @@
+; winamp.def : Declares the module parameters for the DLL.
+
+LIBRARY      "winamp"
+DESCRIPTION  'WinAmp Foreign Theme'
+
+EXPORTS
+	Initialize

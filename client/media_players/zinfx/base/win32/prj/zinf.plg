@@ -1,0 +1,865 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: fabaselib - Win32 NASM Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\DOCUME~1\CARLOS~1\LOCALS~1\Temp\RSP3B2.tmp" with contents
+[
+/nologo /MDd /W3 /GX /Z7 /Od /I "..\..\..\lib\http\include" /I "..\..\..\lib\zlib\include" /I "..\..\..\lib\xml\include" /I "..\..\..\lib\gdbm" /I "..\include" /I "..\..\include" /I "..\..\..\config" /I "..\..\..\ui\win32Test\include" /I "..\..\..\ui\win32Test\res" /I "..\..\..\io\include" /I "..\..\..\ui\include" /I "..\..\..\lmc\include" /I "..\..\aps" /I "..\..\..\lib\musicbrainz\lib" /I "..\..\..\lib\musicbrainz\expat\xmlparse" /I "..\..\..\lib\musicbrainz\expat\xmltok" /I "..\..\..\lib\musicbrainz" /D "_DEBUG" /D "_WINDOWS" /D "WIN32" /D "NOMINMAX" /Fp"Debug/fabaselib.pch" /YX /Fo"Debug/" /Fd"Debug/" /FD /c 
+"D:\Development\InternalProjects\zinfx\base\src\database.cpp"
+"D:\Development\InternalProjects\zinfx\base\src\debug.cpp"
+"D:\Development\InternalProjects\zinfx\base\src\downloadmanager.cpp"
+"D:\Development\InternalProjects\zinfx\base\src\errors.cpp"
+"D:\Development\InternalProjects\zinfx\lib\http\src\Http.cpp"
+"D:\Development\InternalProjects\zinfx\base\src\log.cpp"
+"D:\Development\InternalProjects\zinfx\base\src\missingfile.cpp"
+"D:\Development\InternalProjects\zinfx\base\src\musiccatalog.cpp"
+"D:\Development\InternalProjects\zinfx\base\win32\src\mutex.cpp"
+"D:\Development\InternalProjects\zinfx\lib\xml\src\Parse.cpp"
+"D:\Development\InternalProjects\zinfx\base\src\player.cpp"
+"D:\Development\InternalProjects\zinfx\base\src\playlist.cpp"
+"D:\Development\InternalProjects\zinfx\base\src\preferences.cpp"
+"D:\Development\InternalProjects\zinfx\base\src\propimpl.cpp"
+"D:\Development\InternalProjects\zinfx\base\src\registrar.cpp"
+"D:\Development\InternalProjects\zinfx\base\src\registry.cpp"
+"D:\Development\InternalProjects\zinfx\base\win32\src\semaphore.cpp"
+"D:\Development\InternalProjects\zinfx\base\src\thread.cpp"
+"D:\Development\InternalProjects\zinfx\base\src\timer.cpp"
+"D:\Development\InternalProjects\zinfx\base\src\undomanager.cpp"
+"D:\Development\InternalProjects\zinfx\base\src\utility.cpp"
+"D:\Development\InternalProjects\zinfx\base\win32\src\win32prefs.cpp"
+"D:\Development\InternalProjects\zinfx\base\win32\src\win32thread.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\CARLOS~1\LOCALS~1\Temp\RSP3B2.tmp" 
+Creating temporary file "C:\DOCUME~1\CARLOS~1\LOCALS~1\Temp\RSP3B3.tmp" with contents
+[
+/nologo /out:"..\fabaselib.lib" 
+.\Debug\database.obj
+.\Debug\debug.obj
+.\Debug\downloadmanager.obj
+.\Debug\errors.obj
+.\Debug\Http.obj
+.\Debug\log.obj
+.\Debug\missingfile.obj
+.\Debug\musiccatalog.obj
+.\Debug\mutex.obj
+.\Debug\Parse.obj
+.\Debug\player.obj
+.\Debug\playlist.obj
+.\Debug\preferences.obj
+.\Debug\propimpl.obj
+.\Debug\registrar.obj
+.\Debug\registry.obj
+.\Debug\semaphore.obj
+.\Debug\thread.obj
+.\Debug\timer.obj
+.\Debug\undomanager.obj
+.\Debug\utility.obj
+.\Debug\win32prefs.obj
+.\Debug\win32thread.obj
+]
+Creating command line "link.exe -lib @C:\DOCUME~1\CARLOS~1\LOCALS~1\Temp\RSP3B3.tmp"
+<h3>Output Window</h3>
+Compiling...
+database.cpp
+debug.cpp
+downloadmanager.cpp
+errors.cpp
+Http.cpp
+log.cpp
+missingfile.cpp
+musiccatalog.cpp
+mutex.cpp
+Parse.cpp
+player.cpp
+playlist.cpp
+preferences.cpp
+propimpl.cpp
+registrar.cpp
+registry.cpp
+semaphore.cpp
+thread.cpp
+timer.cpp
+undomanager.cpp
+utility.cpp
+win32prefs.cpp
+win32thread.cpp
+Creating library...
+<h3>
+--------------------Configuration: gdbm - Win32 NASM Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\DOCUME~1\CARLOS~1\LOCALS~1\Temp\RSP3B4.tmp" with contents
+[
+/nologo /MDd /W3 /GX /Z7 /Od /I "..\config" /I ".\\" /I "..\\" /D "_DEBUG" /D "_WINDOWS" /D "WIN32" /D "NOMINMAX" /Fp"Debug/gdbm.pch" /YX /Fo"Debug/" /Fd"Debug/" /FD /c 
+"D:\Development\InternalProjects\zinfx\lib\gdbm\bucket.c"
+"D:\Development\InternalProjects\zinfx\lib\gdbm\falloc.c"
+"D:\Development\InternalProjects\zinfx\lib\gdbm\findkey.c"
+"D:\Development\InternalProjects\zinfx\lib\gdbm\gdbmclose.c"
+"D:\Development\InternalProjects\zinfx\lib\gdbm\gdbmdelete.c"
+"D:\Development\InternalProjects\zinfx\lib\gdbm\gdbmerrno.c"
+"D:\Development\InternalProjects\zinfx\lib\gdbm\gdbmexists.c"
+"D:\Development\InternalProjects\zinfx\lib\gdbm\gdbmfdesc.c"
+"D:\Development\InternalProjects\zinfx\lib\gdbm\gdbmfetch.c"
+"D:\Development\InternalProjects\zinfx\lib\gdbm\gdbmopen.c"
+"D:\Development\InternalProjects\zinfx\lib\gdbm\gdbmreorg.c"
+"D:\Development\InternalProjects\zinfx\lib\gdbm\gdbmseq.c"
+"D:\Development\InternalProjects\zinfx\lib\gdbm\gdbmsetopt.c"
+"D:\Development\InternalProjects\zinfx\lib\gdbm\gdbmstore.c"
+"D:\Development\InternalProjects\zinfx\lib\gdbm\gdbmsync.c"
+"D:\Development\InternalProjects\zinfx\lib\gdbm\global.c"
+"D:\Development\InternalProjects\zinfx\lib\gdbm\hash.c"
+"D:\Development\InternalProjects\zinfx\lib\gdbm\update.c"
+"D:\Development\InternalProjects\zinfx\lib\gdbm\version.c"
+]
+Creating command line "cl.exe @C:\DOCUME~1\CARLOS~1\LOCALS~1\Temp\RSP3B4.tmp" 
+Creating temporary file "C:\DOCUME~1\CARLOS~1\LOCALS~1\Temp\RSP3B5.tmp" with contents
+[
+/nologo /out:"..\gdbm.lib" 
+.\Debug\bucket.obj
+.\Debug\falloc.obj
+.\Debug\findkey.obj
+.\Debug\gdbmclose.obj
+.\Debug\gdbmdelete.obj
+.\Debug\gdbmerrno.obj
+.\Debug\gdbmexists.obj
+.\Debug\gdbmfdesc.obj
+.\Debug\gdbmfetch.obj
+.\Debug\gdbmopen.obj
+.\Debug\gdbmreorg.obj
+.\Debug\gdbmseq.obj
+.\Debug\gdbmsetopt.obj
+.\Debug\gdbmstore.obj
+.\Debug\gdbmsync.obj
+.\Debug\global.obj
+.\Debug\hash.obj
+.\Debug\update.obj
+.\Debug\version.obj
+]
+Creating command line "link.exe -lib @C:\DOCUME~1\CARLOS~1\LOCALS~1\Temp\RSP3B5.tmp"
+<h3>Output Window</h3>
+Compiling...
+bucket.c
+falloc.c
+findkey.c
+D:\Development\InternalProjects\zinfx\lib\gdbm\findkey.c(111) : warning C4018: '==' : signed/unsigned mismatch
+gdbmclose.c
+gdbmdelete.c
+gdbmerrno.c
+gdbmexists.c
+gdbmfdesc.c
+gdbmfetch.c
+gdbmopen.c
+D:\Development\InternalProjects\zinfx\lib\gdbm\gdbmopen.c(274) : warning C4018: '<' : signed/unsigned mismatch
+D:\Development\InternalProjects\zinfx\lib\gdbm\gdbmopen.c(288) : warning C4018: '!=' : signed/unsigned mismatch
+D:\Development\InternalProjects\zinfx\lib\gdbm\gdbmopen.c(297) : warning C4018: '!=' : signed/unsigned mismatch
+D:\Development\InternalProjects\zinfx\lib\gdbm\gdbmopen.c(306) : warning C4018: '!=' : signed/unsigned mismatch
+D:\Development\InternalProjects\zinfx\lib\gdbm\gdbmopen.c(353) : warning C4018: '!=' : signed/unsigned mismatch
+D:\Development\InternalProjects\zinfx\lib\gdbm\gdbmopen.c(379) : warning C4018: '!=' : signed/unsigned mismatch
+gdbmreorg.c
+gdbmseq.c
+gdbmsetopt.c
+gdbmstore.c
+gdbmsync.c
+global.c
+hash.c
+update.c
+version.c
+Creating library...
+<h3>
+--------------------Configuration: download - Win32 NASM Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating command line "rc.exe /l 0x409 /fo"Debug/download.res" /i "\Development\InternalProjects\zinfx\ui\download\win32\res" /d "_DEBUG" "D:\Development\InternalProjects\zinfx\ui\download\win32\res\download.rc"" 
+Creating temporary file "C:\DOCUME~1\CARLOS~1\LOCALS~1\Temp\RSP3B6.tmp" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /I "..\res" /I "..\include" /I "..\..\include" /I "..\..\..\include" /I "..\..\..\..\io\include" /I "..\..\..\..\base\include" /I "..\..\..\..\base\win32\include" /I "..\..\..\..\config" /I "..\..\..\..\ui\include" /I "..\..\..\..\lmc\include" /I "..\..\..\..\lib\gdbm" /D "_DEBUG" /D "_WINDOWS" /D "WIN32" /D "NOMINMAX" /Fp"Debug/download.pch" /YX /Fo"Debug/" /Fd"Debug/" /FD /c 
+"D:\Development\InternalProjects\zinfx\ui\download\win32\src\downloadui.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\CARLOS~1\LOCALS~1\Temp\RSP3B6.tmp" 
+Creating temporary file "C:\DOCUME~1\CARLOS~1\LOCALS~1\Temp\RSP3B7.tmp" with contents
+[
+fabaselib.lib gdbm.lib version.lib wsock32.lib comctl32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib musicbrainz.lib /nologo /base:"0x12200000" /subsystem:windows /dll /incremental:yes /pdb:"Debug/download.pdb" /debug /machine:I386 /def:".\downloadui.def" /out:"download.ui" /implib:"Debug/download.lib" /pdbtype:sept /libpath:"..\..\..\..\lib\gdbm" /libpath:"..\..\..\..\base\win32" /libpath:"..\..\..\..\lib\musicbrainz" 
+.\Debug\downloadui.obj
+.\Debug\download.res
+\Development\InternalProjects\zinfx\base\win32\fabaselib.lib
+\Development\InternalProjects\zinfx\lib\gdbm\gdbm.lib
+]
+Creating command line "link.exe @C:\DOCUME~1\CARLOS~1\LOCALS~1\Temp\RSP3B7.tmp"
+<h3>Output Window</h3>
+Compiling resources...
+Compiling...
+downloadui.cpp
+Linking...
+   Creating library Debug/download.lib and object Debug/download.exp
+Creating temporary file "C:\DOCUME~1\CARLOS~1\LOCALS~1\Temp\RSP3BB.bat" with contents
+[
+@echo off
+IF NOT EXIST ..\..\..\..\base\win32\prj\plugins mkdir                                           ..\..\..\..\base\win32\prj\plugins
+copy download.ui                             ..\..\..\..\base\win32\prj\plugins
+]
+Creating command line "C:\DOCUME~1\CARLOS~1\LOCALS~1\Temp\RSP3BB.bat"
+
+        1 file(s) copied.
+<h3>
+--------------------Configuration: fileinput - Win32 NASM Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating command line "rc.exe /l 0x409 /fo"Debug/local.res" /i "\Development\InternalProjects\zinfx\io\local\win32\res" /d "_DEBUG" "D:\Development\InternalProjects\zinfx\io\local\win32\res\local.rc"" 
+Creating temporary file "C:\DOCUME~1\CARLOS~1\LOCALS~1\Temp\RSP3BC.tmp" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /I "..\..\\" /I "..\..\..\include" /I "..\..\include" /I "..\..\..\..\io\include" /I "..\..\..\..\base\include" /I "..\..\..\..\base\win32\include" /I "..\..\..\..\config" /I "..\..\..\..\ui\include" /I "..\..\..\..\lmc\include" /D "_DEBUG" /D "_WINDOWS" /D "WIN32" /D "NOMINMAX" /Fp"Debug/fileinput.pch" /YX /Fo"Debug/" /Fd"Debug/" /FD /c 
+"D:\Development\InternalProjects\zinfx\io\local\localfileinput.cpp"
+"D:\Development\InternalProjects\zinfx\io\src\pipeline.cpp"
+"D:\Development\InternalProjects\zinfx\io\src\pmi.cpp"
+"D:\Development\InternalProjects\zinfx\io\src\pullbuffer.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\CARLOS~1\LOCALS~1\Temp\RSP3BC.tmp" 
+Creating temporary file "C:\DOCUME~1\CARLOS~1\LOCALS~1\Temp\RSP3BD.tmp" with contents
+[
+fabaselib.lib wsock32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /base:"0x11900000" /subsystem:windows /dll /incremental:yes /pdb:"Debug/fileinput.pdb" /debug /machine:I386 /def:".\fileinput.def" /out:"fileinput.pmi" /implib:"Debug/fileinput.lib" /pdbtype:sept /libpath:"..\..\..\..\base\win32" 
+.\Debug\localfileinput.obj
+.\Debug\pipeline.obj
+.\Debug\pmi.obj
+.\Debug\pullbuffer.obj
+.\Debug\local.res
+\Development\InternalProjects\zinfx\base\win32\fabaselib.lib
+]
+Creating command line "link.exe @C:\DOCUME~1\CARLOS~1\LOCALS~1\Temp\RSP3BD.tmp"
+<h3>Output Window</h3>
+Compiling resources...
+Compiling...
+localfileinput.cpp
+pipeline.cpp
+c:\program files\microsoft visual studio\vc98\include\vector(39) : warning C4786: 'std::vector<std::basic_string<char,std::char_traits<char>,std::allocator<char> >,std::allocator<std::basic_string<char,std::char_traits<char>,std::allocator<char> > > >::vector<std::basic_string<char,std::char_traits<char>,std::allocator<char> >,std::allocator<std::basic_string<char,std::char_traits<char>,std::allocator<char> > > >' : identifier was truncated to '255' characters in the debug information
+pmi.cpp
+pullbuffer.cpp
+Linking...
+   Creating library Debug/fileinput.lib and object Debug/fileinput.exp
+Creating temporary file "C:\DOCUME~1\CARLOS~1\LOCALS~1\Temp\RSP3C1.bat" with contents
+[
+@echo off
+IF NOT EXIST ..\..\..\..\base\win32\prj\plugins mkdir                          ..\..\..\..\base\win32\prj\plugins
+copy fileinput.pmi                     ..\..\..\..\base\win32\prj\plugins
+]
+Creating command line "C:\DOCUME~1\CARLOS~1\LOCALS~1\Temp\RSP3C1.bat"
+
+        1 file(s) copied.
+<h3>
+--------------------Configuration: zlib - Win32 NASM Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\DOCUME~1\CARLOS~1\LOCALS~1\Temp\RSP3C2.tmp" with contents
+[
+/nologo /MDd /W3 /GX /Z7 /Od /I "..\include" /I "..\..\..\config" /D "_DEBUG" /D "_WINDOWS" /D "WIN32" /D "NOMINMAX" /Fp"Debug/zlib.pch" /YX /Fo"Debug/" /Fd"Debug/" /FD /c 
+"D:\Development\InternalProjects\zinfx\lib\zlib\src\adler32.c"
+"D:\Development\InternalProjects\zinfx\lib\zlib\src\compress.c"
+"D:\Development\InternalProjects\zinfx\lib\zlib\src\crc32.c"
+"D:\Development\InternalProjects\zinfx\lib\zlib\src\deflate.c"
+"D:\Development\InternalProjects\zinfx\lib\zlib\src\gzio.c"
+"D:\Development\InternalProjects\zinfx\lib\zlib\src\infblock.c"
+"D:\Development\InternalProjects\zinfx\lib\zlib\src\infcodes.c"
+"D:\Development\InternalProjects\zinfx\lib\zlib\src\inffast.c"
+"D:\Development\InternalProjects\zinfx\lib\zlib\src\inflate.c"
+"D:\Development\InternalProjects\zinfx\lib\zlib\src\inftrees.c"
+"D:\Development\InternalProjects\zinfx\lib\zlib\src\infutil.c"
+"D:\Development\InternalProjects\zinfx\lib\zlib\src\trees.c"
+"D:\Development\InternalProjects\zinfx\lib\zlib\src\uncompr.c"
+"D:\Development\InternalProjects\zinfx\lib\zlib\src\zutil.c"
+]
+Creating command line "cl.exe @C:\DOCUME~1\CARLOS~1\LOCALS~1\Temp\RSP3C2.tmp" 
+Creating temporary file "C:\DOCUME~1\CARLOS~1\LOCALS~1\Temp\RSP3C3.tmp" with contents
+[
+/nologo /out:"..\zlib.lib" 
+.\Debug\adler32.obj
+.\Debug\compress.obj
+.\Debug\crc32.obj
+.\Debug\deflate.obj
+.\Debug\gzio.obj
+.\Debug\infblock.obj
+.\Debug\infcodes.obj
+.\Debug\inffast.obj
+.\Debug\inflate.obj
+.\Debug\inftrees.obj
+.\Debug\infutil.obj
+.\Debug\trees.obj
+.\Debug\uncompr.obj
+.\Debug\zutil.obj
+]
+Creating command line "link.exe -lib @C:\DOCUME~1\CARLOS~1\LOCALS~1\Temp\RSP3C3.tmp"
+<h3>Output Window</h3>
+Compiling...
+adler32.c
+compress.c
+crc32.c
+deflate.c
+gzio.c
+infblock.c
+infcodes.c
+inffast.c
+inflate.c
+inftrees.c
+infutil.c
+trees.c
+uncompr.c
+zutil.c
+Creating library...
+<h3>
+--------------------Configuration: unzip - Win32 NASM Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\DOCUME~1\CARLOS~1\LOCALS~1\Temp\RSP3C4.tmp" with contents
+[
+/nologo /MDd /W3 /GX /Z7 /Od /I "..\include" /I "..\..\zlib\include" /I "..\..\..\config" /D "_DEBUG" /D "_WINDOWS" /D "WIN32" /D "NOMINMAX" /Fp"Debug/unzip.pch" /YX /Fo"Debug/" /Fd"Debug/" /FD /c 
+"D:\Development\InternalProjects\zinfx\lib\unzip\src\zip_header.cpp"
+"D:\Development\InternalProjects\zinfx\lib\unzip\src\zip_inflate.cpp"
+"D:\Development\InternalProjects\zinfx\lib\unzip\src\zip_testcrc.cpp"
+"D:\Development\InternalProjects\zinfx\lib\unzip\src\zip_utils.cpp"
+"D:\Development\InternalProjects\zinfx\lib\unzip\src\zip_wrapper.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\CARLOS~1\LOCALS~1\Temp\RSP3C4.tmp" 
+Creating command line "link.exe -lib /nologo /out:"..\unzip.lib"  .\Debug\zip_header.obj .\Debug\zip_inflate.obj .\Debug\zip_testcrc.obj .\Debug\zip_utils.obj .\Debug\zip_wrapper.obj "
+<h3>Output Window</h3>
+Compiling...
+zip_header.cpp
+D:\Development\InternalProjects\zinfx\lib\unzip\src\zip_header.cpp(43) : warning C4305: 'initializing' : truncation from 'const int' to 'char'
+D:\Development\InternalProjects\zinfx\lib\unzip\src\zip_header.cpp(43) : warning C4309: 'initializing' : truncation of constant value
+zip_inflate.cpp
+zip_testcrc.cpp
+zip_utils.cpp
+zip_wrapper.cpp
+Creating library...
+<h3>
+--------------------Configuration: zinfui - Win32 NASM Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating command line "rc.exe /l 0x409 /fo"Debug/zinfui.res" /i "\Development\InternalProjects\zinfx\ui\zinf\win32\res" /d "_DEBUG" "D:\Development\InternalProjects\zinfx\ui\zinf\win32\res\zinfui.rc"" 
+Creating temporary file "C:\DOCUME~1\CARLOS~1\LOCALS~1\Temp\RSP3C5.tmp" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /I "..\..\..\..\base\aps" /I "..\res" /I "..\include" /I "..\..\include" /I "..\..\..\include" /I "..\..\..\..\io\include" /I "..\..\..\..\base\include" /I "..\..\..\..\base\win32\include" /I "..\..\..\..\config" /I "..\..\..\..\ui\include" /I "..\..\..\..\lmc\include" /I "..\..\..\..\lib\gdbm" /I "..\..\..\..\lib\xml\include" /I "..\..\..\..\lib\zlib\include" /I "..\..\..\..\lib\unzip\include" /I "..\..\..\..\lib\http\include" /D "_DEBUG" /D "_WINDOWS" /D "WIN32" /D "NOMINMAX" /Fp"Debug/zinfui.pch" /YX /Fo"Debug/" /Fd"Debug/" /FD /c 
+"D:\Development\InternalProjects\zinfx\ui\zinf\src\Bitmap.cpp"
+"D:\Development\InternalProjects\zinfx\ui\zinf\src\ButtonControl.cpp"
+"D:\Development\InternalProjects\zinfx\ui\zinf\src\Canvas.cpp"
+"D:\Development\InternalProjects\zinfx\ui\zinf\src\Control.cpp"
+"D:\Development\InternalProjects\zinfx\ui\zinf\src\DialControl.cpp"
+"D:\Development\InternalProjects\zinfx\ui\zinf\src\Equalizer.cpp"
+"D:\Development\InternalProjects\zinfx\ui\zinf\src\Font.cpp"
+"D:\Development\InternalProjects\zinfx\ui\zinf\src\ForeignTheme.cpp"
+"D:\Development\InternalProjects\zinfx\ui\zinf\src\Headlines.cpp"
+"D:\Development\InternalProjects\zinfx\lib\http\src\Http.cpp"
+"D:\Development\InternalProjects\zinfx\ui\zinf\win32\src\Median.cpp"
+"D:\Development\InternalProjects\zinfx\ui\zinf\src\MultiStateControl.cpp"
+"D:\Development\InternalProjects\zinfx\ui\zinf\src\Panel.cpp"
+"D:\Development\InternalProjects\zinfx\lib\xml\src\Parse.cpp"
+"D:\Development\InternalProjects\zinfx\ui\zinf\src\PixFontControl.cpp"
+"D:\Development\InternalProjects\zinfx\ui\zinf\src\PixSliderControl.cpp"
+"D:\Development\InternalProjects\zinfx\ui\zinf\src\PixTimeControl.cpp"
+"D:\Development\InternalProjects\zinfx\ui\zinf\src\SliderControl.cpp"
+"D:\Development\InternalProjects\zinfx\ui\zinf\src\TextControl.cpp"
+"D:\Development\InternalProjects\zinfx\ui\zinf\src\Theme.cpp"
+"D:\Development\InternalProjects\zinfx\ui\zinf\win32\src\ThemeManager.cpp"
+"D:\Development\InternalProjects\zinfx\ui\zinf\src\ThemeZip.cpp"
+"D:\Development\InternalProjects\zinfx\ui\zinf\src\VSliderControl.cpp"
+"D:\Development\InternalProjects\zinfx\ui\zinf\win32\src\Win32Bitmap.cpp"
+"D:\Development\InternalProjects\zinfx\ui\zinf\win32\src\Win32Canvas.cpp"
+"D:\Development\InternalProjects\zinfx\ui\zinf\win32\src\Win32Font.cpp"
+"D:\Development\InternalProjects\zinfx\ui\zinf\win32\src\Win32MessageDialog.cpp"
+"D:\Development\InternalProjects\zinfx\ui\zinf\win32\src\Win32PreferenceWindow.cpp"
+"D:\Development\InternalProjects\zinfx\ui\zinf\win32\src\Win32Window.cpp"
+"D:\Development\InternalProjects\zinfx\ui\zinf\src\Window.cpp"
+"D:\Development\InternalProjects\zinfx\ui\zinf\src\ZinfTheme.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\CARLOS~1\LOCALS~1\Temp\RSP3C5.tmp" 
+Creating temporary file "C:\DOCUME~1\CARLOS~1\LOCALS~1\Temp\RSP3C6.tmp" with contents
+[
+fabaselib.lib zlib.lib unzip.lib gdbm.lib shlwapi.lib version.lib wsock32.lib winmm.lib comctl32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib musicbrainz.lib /nologo /base:"0x12000000" /subsystem:windows /dll /incremental:yes /pdb:"Debug/zinf.pdb" /debug /machine:I386 /def:".\zinfui.def" /out:"zinf.ui" /implib:"Debug/zinf.lib" /pdbtype:sept /libpath:"..\..\..\..\lib\unzip" /libpath:"..\..\..\..\lib\zlib" /libpath:"..\..\..\..\lib\gdbm" /libpath:"..\..\..\..\base\win32" /libpath:"..\..\..\..\lib\musicbrainz" 
+.\Debug\Bitmap.obj
+.\Debug\ButtonControl.obj
+.\Debug\Canvas.obj
+.\Debug\Control.obj
+.\Debug\DialControl.obj
+.\Debug\Equalizer.obj
+.\Debug\Font.obj
+.\Debug\ForeignTheme.obj
+.\Debug\Headlines.obj
+.\Debug\Http.obj
+.\Debug\Median.obj
+.\Debug\MultiStateControl.obj
+.\Debug\Panel.obj
+.\Debug\Parse.obj
+.\Debug\PixFontControl.obj
+.\Debug\PixSliderControl.obj
+.\Debug\PixTimeControl.obj
+.\Debug\SliderControl.obj
+.\Debug\TextControl.obj
+.\Debug\Theme.obj
+.\Debug\ThemeManager.obj
+.\Debug\ThemeZip.obj
+.\Debug\VSliderControl.obj
+.\Debug\Win32Bitmap.obj
+.\Debug\Win32Canvas.obj
+.\Debug\Win32Font.obj
+.\Debug\Win32MessageDialog.obj
+.\Debug\Win32PreferenceWindow.obj
+.\Debug\Win32Window.obj
+.\Debug\Window.obj
+.\Debug\ZinfTheme.obj
+.\Debug\zinfui.res
+\Development\InternalProjects\zinfx\lib\zlib\zlib.lib
+\Development\InternalProjects\zinfx\base\win32\fabaselib.lib
+\Development\InternalProjects\zinfx\lib\unzip\unzip.lib
+]
+Creating command line "link.exe @C:\DOCUME~1\CARLOS~1\LOCALS~1\Temp\RSP3C6.tmp"
+<h3>Output Window</h3>
+Compiling resources...
+Compiling...
+Bitmap.cpp
+ButtonControl.cpp
+Canvas.cpp
+Control.cpp
+DialControl.cpp
+Equalizer.cpp
+Font.cpp
+ForeignTheme.cpp
+Headlines.cpp
+Http.cpp
+Median.cpp
+MultiStateControl.cpp
+Panel.cpp
+Parse.cpp
+PixFontControl.cpp
+PixSliderControl.cpp
+PixTimeControl.cpp
+SliderControl.cpp
+TextControl.cpp
+Theme.cpp
+ThemeManager.cpp
+ThemeZip.cpp
+VSliderControl.cpp
+Win32Bitmap.cpp
+Win32Canvas.cpp
+Win32Font.cpp
+Win32MessageDialog.cpp
+Win32PreferenceWindow.cpp
+Win32Window.cpp
+Window.cpp
+ZinfTheme.cpp
+Linking...
+   Creating library Debug/zinf.lib and object Debug/zinf.exp
+Creating temporary file "C:\DOCUME~1\CARLOS~1\LOCALS~1\Temp\RSP3CB.bat" with contents
+[
+@echo off
+IF NOT EXIST ..\..\..\..\base\win32\prj\plugins mkdir                                                          ..\..\..\..\base\win32\prj\plugins
+copy zinf.ui                                         ..\..\..\..\base\win32\prj\plugins
+]
+Creating command line "C:\DOCUME~1\CARLOS~1\LOCALS~1\Temp\RSP3CB.bat"
+
+        1 file(s) copied.
+<h3>
+--------------------Configuration: httpinput - Win32 NASM Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating command line "rc.exe /l 0x409 /fo"Debug/http.res" /i "\Development\InternalProjects\zinfx\io\http\win32\res" /d "_DEBUG" "D:\Development\InternalProjects\zinfx\io\http\win32\res\http.rc"" 
+Creating temporary file "C:\DOCUME~1\CARLOS~1\LOCALS~1\Temp\RSP3CC.tmp" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /I "..\..\\" /I "..\..\..\include" /I "..\..\include" /I "..\..\..\..\io\include" /I "..\..\..\..\base\include" /I "..\..\..\..\base\win32\include" /I "..\..\..\..\config" /I "..\..\..\..\ui\include" /I "..\..\..\..\lmc\include" /D "_DEBUG" /D "_WINDOWS" /D "WIN32" /D "NOMINMAX" /Fp"Debug/httpinput.pch" /YX /Fo"Debug/" /Fd"Debug/" /FD /c 
+"D:\Development\InternalProjects\zinfx\base\src\debug.cpp"
+"D:\Development\InternalProjects\zinfx\io\http\httpinput.cpp"
+"D:\Development\InternalProjects\zinfx\io\src\pipeline.cpp"
+"D:\Development\InternalProjects\zinfx\io\src\pmi.cpp"
+"D:\Development\InternalProjects\zinfx\io\src\pullbuffer.cpp"
+"D:\Development\InternalProjects\zinfx\io\src\tstream.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\CARLOS~1\LOCALS~1\Temp\RSP3CC.tmp" 
+Creating temporary file "C:\DOCUME~1\CARLOS~1\LOCALS~1\Temp\RSP3CD.tmp" with contents
+[
+fabaselib.lib gdbm.lib version.lib wsock32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib musicbrainz.lib /nologo /base:"0x10400000" /subsystem:windows /dll /incremental:yes /pdb:"Debug/httpinput.pdb" /debug /machine:I386 /def:".\httpinput.def" /out:"httpinput.pmi" /implib:"Debug/httpinput.lib" /pdbtype:sept /libpath:"..\..\..\..\base\win32" /libpath:"..\..\..\..\lib\gdbm" /libpath:"..\..\..\..\lib\musicbrainz" 
+.\Debug\debug.obj
+.\Debug\httpinput.obj
+.\Debug\pipeline.obj
+.\Debug\pmi.obj
+.\Debug\pullbuffer.obj
+.\Debug\tstream.obj
+.\Debug\http.res
+\Development\InternalProjects\zinfx\base\win32\fabaselib.lib
+]
+Creating command line "link.exe @C:\DOCUME~1\CARLOS~1\LOCALS~1\Temp\RSP3CD.tmp"
+<h3>Output Window</h3>
+Compiling resources...
+Compiling...
+debug.cpp
+httpinput.cpp
+pipeline.cpp
+c:\program files\microsoft visual studio\vc98\include\vector(39) : warning C4786: 'std::vector<std::basic_string<char,std::char_traits<char>,std::allocator<char> >,std::allocator<std::basic_string<char,std::char_traits<char>,std::allocator<char> > > >::vector<std::basic_string<char,std::char_traits<char>,std::allocator<char> >,std::allocator<std::basic_string<char,std::char_traits<char>,std::allocator<char> > > >' : identifier was truncated to '255' characters in the debug information
+pmi.cpp
+pullbuffer.cpp
+tstream.cpp
+Linking...
+   Creating library Debug/httpinput.lib and object Debug/httpinput.exp
+Creating temporary file "C:\DOCUME~1\CARLOS~1\LOCALS~1\Temp\RSP3D1.bat" with contents
+[
+@echo off
+IF NOT EXIST ..\..\..\..\base\win32\prj\plugins mkdir                               ..\..\..\..\base\win32\prj\plugins
+copy httpinput.pmi                          ..\..\..\..\base\win32\prj\plugins
+]
+Creating command line "C:\DOCUME~1\CARLOS~1\LOCALS~1\Temp\RSP3D1.bat"
+
+        1 file(s) copied.
+<h3>
+--------------------Configuration: id3v1 - Win32 NASM Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating command line "rc.exe /l 0x409 /fo"Debug/id3v1.res" /i "\Development\InternalProjects\zinfx\plm\metadata\id3v1\res" /d "_DEBUG" "D:\Development\InternalProjects\zinfx\plm\metadata\id3v1\res\id3v1.rc"" 
+Creating temporary file "C:\DOCUME~1\CARLOS~1\LOCALS~1\Temp\RSP3D2.tmp" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /I "..\..\\" /I "..\..\..\include" /I "..\..\include" /I "..\..\..\..\io\include" /I "..\..\..\..\base\include" /I "..\..\..\..\base\win32\include" /I "..\..\..\..\config" /I "..\..\..\..\ui\include" /I "..\..\..\..\lmc\include" /D "_DEBUG" /D "_WINDOWS" /D "WIN32" /D "NOMINMAX" /Fp"Debug/id3v1.pch" /YX /Fo"Debug/" /Fd"Debug/" /FD /c 
+"D:\Development\InternalProjects\zinfx\plm\metadata\id3v1\id3v1.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\CARLOS~1\LOCALS~1\Temp\RSP3D2.tmp" 
+Creating temporary file "C:\DOCUME~1\CARLOS~1\LOCALS~1\Temp\RSP3D3.tmp" with contents
+[
+fabaselib.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /base:"0x10500000" /subsystem:windows /dll /incremental:yes /pdb:"Debug/id3v1.pdb" /debug /machine:I386 /def:".\id3v1.def" /out:"id3v1.mdf" /implib:"Debug/id3v1.lib" /pdbtype:sept /libpath:"..\..\..\..\base\win32" 
+.\Debug\id3v1.obj
+.\Debug\id3v1.res
+\Development\InternalProjects\zinfx\base\win32\fabaselib.lib
+]
+Creating command line "link.exe @C:\DOCUME~1\CARLOS~1\LOCALS~1\Temp\RSP3D3.tmp"
+<h3>Output Window</h3>
+Compiling resources...
+Compiling...
+id3v1.cpp
+Linking...
+   Creating library Debug/id3v1.lib and object Debug/id3v1.exp
+Creating temporary file "C:\DOCUME~1\CARLOS~1\LOCALS~1\Temp\RSP3D7.bat" with contents
+[
+@echo off
+IF NOT EXIST ..\..\..\..\base\win32\prj\plugins mkdir                               ..\..\..\..\base\win32\prj\plugins
+copy id3v1.mdf      ..\..\..\..\base\win32\prj\plugins
+]
+Creating command line "C:\DOCUME~1\CARLOS~1\LOCALS~1\Temp\RSP3D7.bat"
+
+        1 file(s) copied.
+<h3>
+--------------------Configuration: m3u - Win32 NASM Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating command line "rc.exe /l 0x409 /fo"Debug/m3u.res" /i "\Development\InternalProjects\zinfx\plm\playlist\m3u\res" /d "_DEBUG" "D:\Development\InternalProjects\zinfx\plm\playlist\m3u\res\m3u.rc"" 
+Creating temporary file "C:\DOCUME~1\CARLOS~1\LOCALS~1\Temp\RSP3D8.tmp" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /I "..\..\\" /I "..\..\..\include" /I "..\..\include" /I "..\..\..\..\io\include" /I "..\..\..\..\base\include" /I "..\..\..\..\base\win32\include" /I "..\..\..\..\config" /I "..\..\..\..\ui\include" /I "..\..\..\..\lmc\include" /D "_DEBUG" /D "_WINDOWS" /D "WIN32" /D "NOMINMAX" /Fp"Debug/m3u.pch" /YX /Fo"Debug/" /Fd"Debug/" /FD /c 
+"D:\Development\InternalProjects\zinfx\plm\playlist\m3u\m3u.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\CARLOS~1\LOCALS~1\Temp\RSP3D8.tmp" 
+Creating temporary file "C:\DOCUME~1\CARLOS~1\LOCALS~1\Temp\RSP3D9.tmp" with contents
+[
+fabaselib.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /base:"0x10700000" /subsystem:windows /dll /incremental:yes /pdb:"Debug/m3u.pdb" /debug /machine:I386 /def:".\m3u.def" /out:"m3u.plf" /implib:"Debug/m3u.lib" /pdbtype:sept /libpath:"..\..\..\..\base\win32" 
+.\Debug\m3u.obj
+.\Debug\m3u.res
+\Development\InternalProjects\zinfx\base\win32\fabaselib.lib
+]
+Creating command line "link.exe @C:\DOCUME~1\CARLOS~1\LOCALS~1\Temp\RSP3D9.tmp"
+<h3>Output Window</h3>
+Compiling resources...
+Compiling...
+m3u.cpp
+Linking...
+   Creating library Debug/m3u.lib and object Debug/m3u.exp
+Creating temporary file "C:\DOCUME~1\CARLOS~1\LOCALS~1\Temp\RSP3DD.bat" with contents
+[
+@echo off
+IF NOT EXIST ..\..\..\..\base\win32\prj\plugins mkdir                                ..\..\..\..\base\win32\prj\plugins
+copy m3u.plf       ..\..\..\..\base\win32\prj\plugins
+]
+Creating command line "C:\DOCUME~1\CARLOS~1\LOCALS~1\Temp\RSP3DD.bat"
+
+        1 file(s) copied.
+<h3>
+--------------------Configuration: obsinput - Win32 NASM Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating command line "rc.exe /l 0x409 /fo"Debug/obs.res" /i "\Development\InternalProjects\zinfx\io\obs\win32\res" /d "_DEBUG" "D:\Development\InternalProjects\zinfx\io\obs\win32\res\obs.rc"" 
+Creating temporary file "C:\DOCUME~1\CARLOS~1\LOCALS~1\Temp\RSP3DE.tmp" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /I "..\..\\" /I "..\..\..\include" /I "..\..\include" /I "..\..\..\..\io\include" /I "..\..\..\..\base\include" /I "..\..\..\..\base\win32\include" /I "..\..\..\..\config" /I "..\..\..\..\ui\include" /I "..\..\..\..\lmc\include" /D "_DEBUG" /D "_WINDOWS" /D "WIN32" /D "NOMINMAX" /Fp"Debug/obsinput.pch" /YX /Fo"Debug/" /Fd"Debug/" /FD /c 
+"D:\Development\InternalProjects\zinfx\io\obs\obsinput.cpp"
+"D:\Development\InternalProjects\zinfx\io\src\pipeline.cpp"
+"D:\Development\InternalProjects\zinfx\io\src\pmi.cpp"
+"D:\Development\InternalProjects\zinfx\io\src\pullbuffer.cpp"
+"D:\Development\InternalProjects\zinfx\io\src\tstream.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\CARLOS~1\LOCALS~1\Temp\RSP3DE.tmp" 
+Creating temporary file "C:\DOCUME~1\CARLOS~1\LOCALS~1\Temp\RSP3DF.tmp" with contents
+[
+fabaselib.lib wsock32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /base:"0x11000000" /subsystem:windows /dll /incremental:yes /pdb:"Debug/obsinput.pdb" /debug /machine:I386 /def:".\obsinput.def" /out:"obsinput.pmi" /implib:"Debug/obsinput.lib" /pdbtype:sept /libpath:"..\..\..\..\base\win32" 
+.\Debug\obsinput.obj
+.\Debug\pipeline.obj
+.\Debug\pmi.obj
+.\Debug\pullbuffer.obj
+.\Debug\tstream.obj
+.\Debug\obs.res
+\Development\InternalProjects\zinfx\base\win32\fabaselib.lib
+]
+Creating command line "link.exe @C:\DOCUME~1\CARLOS~1\LOCALS~1\Temp\RSP3DF.tmp"
+<h3>Output Window</h3>
+Compiling resources...
+Compiling...
+obsinput.cpp
+pipeline.cpp
+c:\program files\microsoft visual studio\vc98\include\vector(39) : warning C4786: 'std::vector<std::basic_string<char,std::char_traits<char>,std::allocator<char> >,std::allocator<std::basic_string<char,std::char_traits<char>,std::allocator<char> > > >::vector<std::basic_string<char,std::char_traits<char>,std::allocator<char> >,std::allocator<std::basic_string<char,std::char_traits<char>,std::allocator<char> > > >' : identifier was truncated to '255' characters in the debug information
+pmi.cpp
+pullbuffer.cpp
+tstream.cpp
+Linking...
+   Creating library Debug/obsinput.lib and object Debug/obsinput.exp
+Creating temporary file "C:\DOCUME~1\CARLOS~1\LOCALS~1\Temp\RSP3E3.bat" with contents
+[
+@echo off
+IF NOT EXIST ..\..\..\..\base\win32\prj\plugins mkdir                         ..\..\..\..\base\win32\prj\plugins
+copy obsinput.pmi                    ..\..\..\..\base\win32\prj\plugins
+]
+Creating command line "C:\DOCUME~1\CARLOS~1\LOCALS~1\Temp\RSP3E3.bat"
+
+        1 file(s) copied.
+<h3>
+--------------------Configuration: rmp - Win32 NASM Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating command line "rc.exe /l 0x409 /fo"Debug/rmp.res" /i "\Development\InternalProjects\zinfx\dlm\rmp\res" /d "_DEBUG" "D:\Development\InternalProjects\zinfx\dlm\rmp\res\rmp.rc"" 
+Creating temporary file "C:\DOCUME~1\CARLOS~1\LOCALS~1\Temp\RSP3E4.tmp" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /I "..\\" /I "..\..\include" /I "..\include" /I "..\..\..\io\include" /I "..\..\..\base\include" /I "..\..\..\base\win32\include" /I "..\..\..\config" /I "..\..\..\ui\include" /I "..\..\..\lib\xml\include" /D "_DEBUG" /D "_WINDOWS" /D "WIN32" /D "NOMINMAX" /Fp"Debug/rmp.pch" /YX /Fo"Debug/" /Fd"Debug/" /FD /c 
+"D:\Development\InternalProjects\zinfx\lib\xml\src\Parse.cpp"
+"D:\Development\InternalProjects\zinfx\dlm\rmp\rmp.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\CARLOS~1\LOCALS~1\Temp\RSP3E4.tmp" 
+Creating temporary file "C:\DOCUME~1\CARLOS~1\LOCALS~1\Temp\RSP3E5.tmp" with contents
+[
+fabaselib.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /base:"0x11300000" /subsystem:windows /dll /incremental:yes /pdb:"Debug/rmp.pdb" /debug /machine:I386 /def:".\rmp.def" /out:"rmp.dlf" /implib:"Debug/rmp.lib" /pdbtype:sept /libpath:"..\..\..\base\win32" 
+.\Debug\Parse.obj
+.\Debug\rmp.obj
+.\Debug\rmp.res
+\Development\InternalProjects\zinfx\base\win32\fabaselib.lib
+]
+Creating command line "link.exe @C:\DOCUME~1\CARLOS~1\LOCALS~1\Temp\RSP3E5.tmp"
+<h3>Output Window</h3>
+Compiling resources...
+Compiling...
+Parse.cpp
+rmp.cpp
+Linking...
+   Creating library Debug/rmp.lib and object Debug/rmp.exp
+Creating temporary file "C:\DOCUME~1\CARLOS~1\LOCALS~1\Temp\RSP3E9.bat" with contents
+[
+@echo off
+IF NOT EXIST ..\..\..\base\win32\prj\plugins mkdir                                  ..\..\..\base\win32\prj\plugins
+copy rmp.dlf  ..\..\..\base\win32\prj\plugins
+]
+Creating command line "C:\DOCUME~1\CARLOS~1\LOCALS~1\Temp\RSP3E9.bat"
+
+        1 file(s) copied.
+<h3>
+--------------------Configuration: soundcard - Win32 NASM Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating command line "rc.exe /l 0x409 /fo"Debug/soundcard.res" /i "\Development\InternalProjects\zinfx\io\soundcard\win32\res" /d "_DEBUG" "D:\Development\InternalProjects\zinfx\io\soundcard\win32\res\soundcard.rc"" 
+Creating temporary file "C:\DOCUME~1\CARLOS~1\LOCALS~1\Temp\RSP3EA.tmp" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /I "..\include" /I "..\..\include" /I "..\..\..\include" /I "..\..\..\..\io\include" /I "..\..\..\..\base\include" /I "..\..\..\..\base\win32\include" /I "..\..\..\..\config" /I "..\..\..\..\ui\include" /I "..\..\..\..\lmc\include" /D "_DEBUG" /D "_WINDOWS" /D "WIN32" /D "NOMINMAX" /Fp"Debug/soundcard.pch" /YX /Fo"Debug/" /Fd"Debug/" /FD /c 
+"D:\Development\InternalProjects\zinfx\io\src\eventbuffer.cpp"
+"D:\Development\InternalProjects\zinfx\io\src\pipeline.cpp"
+"D:\Development\InternalProjects\zinfx\io\src\pmo.cpp"
+"D:\Development\InternalProjects\zinfx\io\src\pullbuffer.cpp"
+"D:\Development\InternalProjects\zinfx\io\soundcard\win32\src\soundcardpmo.cpp"
+"D:\Development\InternalProjects\zinfx\io\src\win32volume.cpp"
+"D:\Development\InternalProjects\zinfx\base\src\debug.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\CARLOS~1\LOCALS~1\Temp\RSP3EA.tmp" 
+Creating temporary file "C:\DOCUME~1\CARLOS~1\LOCALS~1\Temp\RSP3EB.tmp" with contents
+[
+fabaselib.lib winmm.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /base:"0x11500000" /subsystem:windows /dll /incremental:yes /pdb:"Debug/soundcard.pdb" /debug /machine:I386 /def:".\soundcard.def" /out:"soundcard.pmo" /implib:"Debug/soundcard.lib" /pdbtype:sept /libpath:"..\..\..\..\base\win32" 
+.\Debug\eventbuffer.obj
+.\Debug\pipeline.obj
+.\Debug\pmo.obj
+.\Debug\pullbuffer.obj
+.\Debug\soundcardpmo.obj
+.\Debug\win32volume.obj
+.\Debug\debug.obj
+.\Debug\soundcard.res
+\Development\InternalProjects\zinfx\base\win32\fabaselib.lib
+]
+Creating command line "link.exe @C:\DOCUME~1\CARLOS~1\LOCALS~1\Temp\RSP3EB.tmp"
+<h3>Output Window</h3>
+Compiling resources...
+Compiling...
+eventbuffer.cpp
+pipeline.cpp
+pmo.cpp
+pullbuffer.cpp
+soundcardpmo.cpp
+win32volume.cpp
+debug.cpp
+Linking...
+   Creating library Debug/soundcard.lib and object Debug/soundcard.exp
+Creating temporary file "C:\DOCUME~1\CARLOS~1\LOCALS~1\Temp\RSP3EF.bat" with contents
+[
+@echo off
+IF NOT EXIST ..\..\..\..\base\win32\prj\plugins mkdir                                       ..\..\..\..\base\win32\prj\plugins
+copy soundcard.pmo                                  ..\..\..\..\base\win32\prj\plugins
+]
+Creating command line "C:\DOCUME~1\CARLOS~1\LOCALS~1\Temp\RSP3EF.bat"
+
+        1 file(s) copied.
+<h3>
+--------------------Configuration: xing - Win32 NASM Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\DOCUME~1\CARLOS~1\LOCALS~1\Temp\RSP3F0.bat" with contents
+[
+@echo off
+nasmw -f win32 -o .\Debug\msisasm.obj ..\..\src\msisasm.asm
+]
+Creating command line "C:\DOCUME~1\CARLOS~1\LOCALS~1\Temp\RSP3F0.bat"
+Creating temporary file "C:\DOCUME~1\CARLOS~1\LOCALS~1\Temp\RSP3F1.bat" with contents
+[
+@echo off
+nasmw -f win32 -o .\Debug\mdctasm.obj ..\..\src\mdctasm.asm
+]
+Creating command line "C:\DOCUME~1\CARLOS~1\LOCALS~1\Temp\RSP3F1.bat"
+Creating temporary file "C:\DOCUME~1\CARLOS~1\LOCALS~1\Temp\RSP3F2.bat" with contents
+[
+@echo off
+nasmw -f win32 -o .\Debug\cwinasm.obj ..\..\src\cwinasm.asm
+]
+Creating command line "C:\DOCUME~1\CARLOS~1\LOCALS~1\Temp\RSP3F2.bat"
+Creating temporary file "C:\DOCUME~1\CARLOS~1\LOCALS~1\Temp\RSP3F3.bat" with contents
+[
+@echo off
+nasmw -f win32 -o .\Debug\cwin8asm.obj ..\..\src\cwin8asm.asm
+]
+Creating command line "C:\DOCUME~1\CARLOS~1\LOCALS~1\Temp\RSP3F3.bat"
+Creating temporary file "C:\DOCUME~1\CARLOS~1\LOCALS~1\Temp\RSP3F4.bat" with contents
+[
+@echo off
+nasmw -f win32 -o .\Debug\cdctasm.obj ..\..\src\cdctasm.asm
+]
+Creating command line "C:\DOCUME~1\CARLOS~1\LOCALS~1\Temp\RSP3F4.bat"
+Creating command line "rc.exe /l 0x409 /fo"Debug/xing.res" /i "\Development\InternalProjects\zinfx\lmc\xingmp3\win32\res" /d "_DEBUG" "D:\Development\InternalProjects\zinfx\lmc\xingmp3\win32\res\xing.rc"" 
+Performing Custom Build Step on ..\..\src\msisasm.asm
+Performing Custom Build Step on ..\..\src\mdctasm.asm
+Performing Custom Build Step on ..\..\src\cwinasm.asm
+Performing Custom Build Step on ..\..\src\cwin8asm.asm
+Performing Custom Build Step on ..\..\src\cdctasm.asm
+Creating temporary file "C:\DOCUME~1\CARLOS~1\LOCALS~1\Temp\RSP3F5.tmp" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /I "..\..\\" /I "..\..\..\include" /I "..\..\include" /I "..\..\..\..\io\include" /I "..\..\..\..\base\include" /I "..\..\..\..\base\win32\include" /I "..\..\..\..\config" /I "..\..\..\..\ui\include" /I "..\..\..\..\..\..\Crypto++" /D "_DEBUG" /D "_WINDOWS" /D "ASM_X86" /D "WIN32" /D "NOMINMAX" /Fp"Debug/xing.pch" /YX /Fo"Debug/" /Fd"Debug/" /FD /c 
+"D:\Development\InternalProjects\zinfx\io\src\eventbuffer.cpp"
+"D:\Development\InternalProjects\zinfx\io\src\pipeline.cpp"
+"D:\Development\InternalProjects\zinfx\io\src\pullbuffer.cpp"
+"D:\Development\InternalProjects\zinfx\lmc\xingmp3\src\cdct.c"
+"D:\Development\InternalProjects\zinfx\lmc\xingmp3\src\csbt.c"
+"D:\Development\InternalProjects\zinfx\lmc\xingmp3\src\cup.c"
+"D:\Development\InternalProjects\zinfx\lmc\xingmp3\src\cupl3.c"
+"D:\Development\InternalProjects\zinfx\lmc\xingmp3\src\cwinm.c"
+"D:\Development\InternalProjects\zinfx\lmc\xingmp3\src\dec8.c"
+"D:\Development\InternalProjects\zinfx\lmc\xingmp3\src\dorm.cpp"
+"D:\Development\InternalProjects\zinfx\lmc\xingmp3\src\hwin.c"
+"D:\Development\InternalProjects\zinfx\lmc\xingmp3\src\icdct.c"
+"D:\Development\InternalProjects\zinfx\lmc\xingmp3\src\isbt.c"
+"D:\Development\InternalProjects\zinfx\lmc\xingmp3\src\iup.c"
+"D:\Development\InternalProjects\zinfx\lmc\xingmp3\src\iwinm.c"
+"D:\Development\InternalProjects\zinfx\lmc\xingmp3\src\l3dq.c"
+"D:\Development\InternalProjects\zinfx\lmc\xingmp3\src\l3init.c"
+"D:\Development\InternalProjects\zinfx\lmc\xingmp3\src\mdct.c"
+"D:\Development\InternalProjects\zinfx\lmc\xingmp3\src\mhead.c"
+"D:\Development\InternalProjects\zinfx\lmc\xingmp3\src\msis.c"
+"D:\Development\InternalProjects\zinfx\lmc\xingmp3\src\uph.c"
+"D:\Development\InternalProjects\zinfx\lmc\xingmp3\src\upsf.c"
+"D:\Development\InternalProjects\zinfx\lmc\xingmp3\src\wavep.c"
+"D:\Development\InternalProjects\zinfx\lmc\xingmp3\src\xinglmc.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\CARLOS~1\LOCALS~1\Temp\RSP3F5.tmp" 
+Creating temporary file "C:\DOCUME~1\CARLOS~1\LOCALS~1\Temp\RSP3F6.tmp" with contents
+[
+fabaselib.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib wsock32.lib /nologo /base:"0x11800000" /subsystem:windows /dll /incremental:yes /pdb:"Debug/xing.pdb" /debug /machine:I386 /def:".\xing.def" /out:"xing.lmc" /implib:"Debug/xing.lib" /pdbtype:sept /libpath:"..\..\..\..\base\win32" 
+.\Debug\eventbuffer.obj
+.\Debug\pipeline.obj
+.\Debug\pullbuffer.obj
+.\Debug\cdct.obj
+.\Debug\csbt.obj
+.\Debug\cup.obj
+.\Debug\cupl3.obj
+.\Debug\cwinm.obj
+.\Debug\dec8.obj
+.\Debug\dorm.obj
+.\Debug\hwin.obj
+.\Debug\icdct.obj
+.\Debug\isbt.obj
+.\Debug\iup.obj
+.\Debug\iwinm.obj
+.\Debug\l3dq.obj
+.\Debug\l3init.obj
+.\Debug\mdct.obj
+.\Debug\mhead.obj
+.\Debug\msis.obj
+.\Debug\uph.obj
+.\Debug\upsf.obj
+.\Debug\wavep.obj
+.\Debug\xinglmc.obj
+.\Debug\xing.res
+.\Debug\cdctasm.obj
+.\Debug\cwin8asm.obj
+.\Debug\cwinasm.obj
+.\Debug\mdctasm.obj
+.\Debug\msisasm.obj
+\Development\InternalProjects\zinfx\base\win32\fabaselib.lib
+"\WWW\DemoSiemens\Crypto++\Debug\cryptlib.lib"
+]
+Creating command line "link.exe @C:\DOCUME~1\CARLOS~1\LOCALS~1\Temp\RSP3F6.tmp"
+<h3>Output Window</h3>
+Compiling resources...
+Compiling...
+eventbuffer.cpp
+pipeline.cpp
+pullbuffer.cpp
+cdct.c
+d:\development\internalprojects\zinfx\lmc\xingmp3\src\cdct.c(101) : warning C4101: 'p' : unreferenced local variable
+d:\development\internalprojects\zinfx\lmc\xingmp3\src\cdct.c(101) : warning C4101: 'q' : unreferenced local variable
+d:\development\internalprojects\zinfx\lmc\xingmp3\src\cdct.c(99) : warning C4101: 'a' : unreferenced local variable
+csbt.c
+cup.c
+d:\development\internalprojects\zinfx\lmc\xingmp3\src\cupini.c(217) : warning C4013: 'memset' undefined; assuming extern returning int
+cupl3.c
+d:\development\internalprojects\zinfx\lmc\xingmp3\src\cupl3.c(547) : warning C4244: '+=' : conversion from 'float ' to 'int ', possible loss of data
+cwinm.c
+dec8.c
+d:\development\internalprojects\zinfx\lmc\xingmp3\src\dec8.c(123) : warning C4013: 'memset' undefined; assuming extern returning int
+dorm.cpp
+hwin.c
+icdct.c
+isbt.c
+iup.c
+d:\development\internalprojects\zinfx\lmc\xingmp3\src\iupini.c(189) : warning C4013: 'memset' undefined; assuming extern returning int
+iwinm.c
+l3dq.c
+l3init.c
+mdct.c
+mhead.c
+msis.c
+D:\Development\InternalProjects\zinfx\lmc\xingmp3\src\msis.c(233) : warning C4013: 'memset' undefined; assuming extern returning int
+uph.c
+upsf.c
+wavep.c
+xinglmc.cpp
+d:\development\internalprojects\zinfx\lmc\xingmp3\src\xinglmc.cpp(59) : fatal error C1083: Cannot open include file: 'aes.h': No such file or directory
+Error executing cl.exe.
+
+
+
+<h3>Results</h3>
+zinf.exe - 1 error(s), 20 warning(s)
+</pre>
+</body>
+</html>

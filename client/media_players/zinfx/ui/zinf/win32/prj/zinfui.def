@@ -1,0 +1,7 @@
+; freeampui.def : Declares the module parameters for the DLL.
+
+LIBRARY      "zinf"
+DESCRIPTION  'Zinf UI Library'
+
+EXPORTS
+	Initialize

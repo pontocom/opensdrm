@@ -1,0 +1,62 @@
+# Generated automatically from Makefile.towav.in by configure.
+include Makefile.header
+
+XINGLMCOBJS = lmc/xingmp3/src/cdct.o lmc/xingmp3/src/cupl3.o \
+  lmc/xingmp3/src/hwin.o lmc/xingmp3/src/iup.o \
+  lmc/xingmp3/src/l3init.o \
+  lmc/xingmp3/src/msis.o lmc/xingmp3/src/wavep.o \
+  lmc/xingmp3/src/csbt.o \
+  lmc/xingmp3/src/cwinm.o lmc/xingmp3/src/icdct.o \
+  lmc/xingmp3/src/mdct.o \
+  lmc/xingmp3/src/uph.o lmc/xingmp3/src/cup.o lmc/xingmp3/src/dec8.o \
+  lmc/xingmp3/src/isbt.o lmc/xingmp3/src/l3dq.o \
+  lmc/xingmp3/src/mhead.o \
+  lmc/xingmp3/src/upsf.o lmc/xingmp3/src/iwinm.o
+XINGLMCOBJS += lmc/xingmp3/src/cdctasm.o lmc/xingmp3/src/cwinasm.o lmc/xingmp3/src/cwin8asm.o lmc/xingmp3/src/mdctasm.o lmc/xingmp3/src/msisasm.o
+
+ID3V2OBJ  = plm/metadata/id3v2/id3v2.o
+ID3V2OBJ += plm/metadata/id3v2/c_wrapper.o
+ID3V2OBJ += plm/metadata/id3v2/field.o
+ID3V2OBJ += plm/metadata/id3v2/field_binary.o
+ID3V2OBJ += plm/metadata/id3v2/field_integer.o
+ID3V2OBJ += plm/metadata/id3v2/field_string_ascii.o
+ID3V2OBJ += plm/metadata/id3v2/field_string_unicode.o
+ID3V2OBJ += plm/metadata/id3v2/frame.o
+ID3V2OBJ += plm/metadata/id3v2/frame_impl.o
+ID3V2OBJ += plm/metadata/id3v2/frame_parse.o
+ID3V2OBJ += plm/metadata/id3v2/frame_render.o
+ID3V2OBJ += plm/metadata/id3v2/header.o
+ID3V2OBJ += plm/metadata/id3v2/header_frame.o
+ID3V2OBJ += plm/metadata/id3v2/header_tag.o
+ID3V2OBJ += plm/metadata/id3v2/helpers.o
+ID3V2OBJ += plm/metadata/id3v2/io.o
+ID3V2OBJ += plm/metadata/id3v2/io_decorators.o
+ID3V2OBJ += plm/metadata/id3v2/io_helpers.o
+ID3V2OBJ += plm/metadata/id3v2/misc_support.o
+ID3V2OBJ += plm/metadata/id3v2/readers.o
+ID3V2OBJ += plm/metadata/id3v2/spec.o
+ID3V2OBJ += plm/metadata/id3v2/tag.o
+ID3V2OBJ += plm/metadata/id3v2/tag_file.o
+ID3V2OBJ += plm/metadata/id3v2/tag_find.o
+ID3V2OBJ += plm/metadata/id3v2/tag_impl.o
+ID3V2OBJ += plm/metadata/id3v2/tag_parse.o
+ID3V2OBJ += plm/metadata/id3v2/tag_parse_lyrics3.o
+ID3V2OBJ += plm/metadata/id3v2/tag_parse_musicmatch.o
+ID3V2OBJ += plm/metadata/id3v2/tag_parse_v1.o
+ID3V2OBJ += plm/metadata/id3v2/tag_render.o
+ID3V2OBJ += plm/metadata/id3v2/utils.o
+ID3V2OBJ += plm/metadata/id3v2/writers.o
+
+TOWAVOBJS = $(XINGLMCOBJS) $(ID3V2OBJ) lmc/xingmp3/src/towave.o
+SIGAPPOBJS  = $(XINGLMCOBJS) lmc/xingmp3/src/sigapp.o lmc/xingmp3/src/sigmain.o 
+SIGAPPOBJS += lmc/xingmp3/src/sigmp3.o
+SIGAPPOBJS +=  plm/metadata/id3v1/id3v1.o $(ID3V2OBJ)
+
+CFLAGS += -DCOMPILING_SIGAPP
+#CFLAGS += -DHAVE_ID3V2
+
+towav: $(TOWAVOBJS)
+	gcc -o towav $(TOWAVOBJS) -lm
+
+sigapp: $(SIGAPPOBJS)
+	g++ -o sigapp $(SIGAPPOBJS) $(ID3_LIBS) -lmusicbrainz -lm -ldl

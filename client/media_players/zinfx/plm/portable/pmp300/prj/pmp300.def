@@ -1,0 +1,7 @@
+; pmp300.def : Declares the module parameters for the DLL.
+
+LIBRARY      "pmp300"
+DESCRIPTION  'Diamond Rio PMP-300 Portable Player Library'
+
+EXPORTS
+	Initialize

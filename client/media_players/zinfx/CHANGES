@@ -1,0 +1,451 @@
+Changes for version 2.2.0 
+--------------------------------------------------------------------
+
+- FreeA*p is now Zinf!
+- Fixed makefile problem so that wavlmc.o gets removed
+- Added support for saving the fileselector path between invocations
+  of the dialog. (Ed Sweetman)
+- Added support for recursively adding files when selecting a folder
+  to add to the database (Ed Sweetman)
+- Added MyMusic as one of the options for the searching (linux)
+- Removed all the Relatable, MusicBrainz, and Bitzi metadata lookup/
+  submit stuff. The only MusicBrainz thing that remains is the CD Lookup.
+- Updated the internal zlib version to 1.4
+- Removed the custom downloaded stream stuff.
+- Removed all the options for the portable player stuff
+
+Changes for version 2.1.1 
+--------------------------------------------------------------------
+
+- Fixed crashes during sigging process
+- Fixed Vorbis playback to work with Vorbis RC2
+- Added a better musicbrainz library missing error message.
+- Added John Cantrrill's WAV LMC
+- Fixed the streaming http redirect to work for more general 
+  (not just dot notation) URLS.
+- Fixed some track move and drag and drop issues in the playlist
+  manager for Linux.
+
+Changes for version 2.1.0 final
+--------------------------------------------------------------------
+
+- Upgraded the code that interfaces with the musicbrainz client library.
+- Fixed a streaming bug where it never finish buffering small files.
+- Fixed a couple of minor theme alignment issues
+- Fixed bugs where metadata was not written to ID3v1/v2 tags.
+- Fixed bug where ID3v1 tags were favored over ID3v2 tags.
+- Added a right client context menu to the main freeamp ui
+- Improved the Ogg/Vorbis streaming support
+
+
+Changes for version 2.1.0 rc6
+--------------------------------------------------------------------
+- Added support for mouse wheel volume adjustment in linux
+- Removed in the internal Vorbis code -- outside libraries are now needed
+  for using vorbis.
+- Added ID3lib code to the freeamp codebase. The id3 interfaces keep changing
+  so we'll just wait until that stablizes.
+- The user can now set which MusicBrainz server FreeAmp should use. 
+- Ray Lucke contributed the arts pmo
+- Decreased the startup time quite a bit.
+- Random stability bugs fixed.
+
+Changes for version 2.1.0 rc5
+--------------------------------------------------------------------
+- Fixed some streaming (HTTP) issues (some streams not found)
+- Improved the default theme to look a bit more consistent and to include
+  a balance slider
+- Implemented notches in sliders so that the EQ settings can be reset easily.
+- Fixed a bug where after an audio breakup the time display/slider setting
+  in win32 was incorrect.
+- Fixed a segfault when switching themes, theme modes or cancelling out
+  of the options dialog.
+- Included new and improved Relatable TRM technology
+
+
+Changes for version 2.1.0 rc4
+--------------------------------------------------------------------
+- MusicBrainz CD lookup will no longer attempt to look up each track
+  after the first track lookup fails.
+- The data coming from the MB client lib and the vorbis metadata plugin
+  now gets converted to ISO 8859-1
+- The ALSA plugin does not report an error during stream rebuffering
+- Stream rebuffering values have been tweaked a bit to improve the
+  rebuffering of the stream.
+- The proxy support has been improved. Previously the URI special
+  character encoding function was a bit too overzealous.
+- The mouse wheel/middle button mute was not working properly on themes
+  without a mute button.
+- Added support for redirects for http streaming
+
+Changes for version 2.1.0 rc3
+--------------------------------------------------------------------
+- More bugfixes
+- MusicBrainz CD lookup plugin
+- Major changes to the Xing MP3 decoder to make it re-entrant.
+
+Changes for version 2.1.0 rc2
+--------------------------------------------------------------------
+- Quite a few bug fixes, including the intermittant deadlock when
+  switching streams.
+- Very prelimininary Fairtunes tipping integration.
+- FreeAmp will no longer pop up annoying boxes when it comes across
+  a corrupt track. 
+- Fixed segfault on exit problem in Linux
+
+Changes for Linux and Windows version 2.1.0 rc1
+--------------------------------------------------------------------
+- The playlist can now be customized to change/reorder the fields that are 
+  shown. (win32 patch contributed by Steve Kemp)
+- ORBit-based corba UI contributed by Martin Enlund
+- Almost completely functional QNX port! see README.qnx
+- The IRIX port is almost running...
+- The Solaris port works again (on solaris 7, at least)
+- The Relatable features now work behind proxy servers.
+
+Changes for Linux and Windows version 2.1.0 beta 9
+--------------------------------------------------------------------
+
+- Added support for changing the volume with the mouse wheel in windows.
+- The average vorbis bitrate is updated every 3 seconds.
+- Updated to the latest and greatest Vorbis code.
+- Added support for reading Vorbis metadata. No write support yet.
+- Fixed a bug where FreeAmp would keep playing some tracks indefinitely
+- Fixed a win32 bug where FreeAmp crashed when it loaded a playlist that
+  has a track missing.
+- Fixed the long startup time when not connected to the 'net and a Releatable
+  profile was enabled.
+- bunches of memory leaks plugged.
+- (Hopefully) fixed DnD on some Win98 boxes.
+- Added a link button to the Edit Track Info dialog that goes to the track's
+  page at musicbrainz.
+- Sort additions to the playlist from the music tree properly.
+- Try to grab track numbers from the filename.
+- Enhancements to the GTK My Music.
+- Save -20dB equalizer settings properly.
+- Bunches of little fixes to the Win32 My Music, mostly involving DnD.
+- Don't read tags from files that they don't need to be read on.
+- SoundsLike recommendations
+
+Changes for Linux and Windows version 2.1.0 beta 8
+--------------------------------------------------------------------
+
+- Relatable profiles now get saved properly.
+- Much more tolerant of bad frames w/i MP3s
+- preliminary FreeBSD support, courtesy of Roger Hardiman
+- linux: Don't poll the CD for changes by default
+- Fix the streaming bug introduced in beta 7
+
+Changes for Linux and Windows version 2.1.0 beta 7
+--------------------------------------------------------------------
+
+- Fix a bunch of problems related to the Relatable features
+- Fix the horribly broken Coca-Cola themes
+- Fix icecast titlestreaming
+- id3 tags are now saves properly on linux
+- Turning on/off the equalizer now works as expected
+- The equalizer now clips less and sounds a bit better
+- The preamp in the equalizer panel works.
+- Fixed an issue where http streaming/headlines/downloads 
+  were not working on some proxies.
+- The ID3v2 Artist is now read from either TPE1 or TPE2 if one or
+  the other is empty
+
+
+Changes for Linux and Windows version 2.1.0 beta 6
+--------------------------------------------------------------------
+
+- FreeAmp lives!
+- Full Vorbis support (www. )
+- Relatable playlist features - see http://www.relatable.com
+- The player should now advance through playlists that contain
+  HTTP streams.
+- The slider bars no longer eat the mouse input for lunch.
+
+Changes for Linux and Windows version 2.1.0 beta 5
+--------------------------------------------------------------------
+
+- Reworking the Panel subsystem again, with default theme changes
+- Add track numbers or '?' to the music tree
+- Use gdk-pixbuf on linux to load any image file format in themes
+- New help files, in HTML
+- Partial support for K-jofol themes (on linux only)
+- Fixes to the winamp skin converter
+
+Changes for Linux and Windows version 2.1.0 beta 4
+--------------------------------------------------------------------
+
+- New structure to 'My Streams' in the music tree, now it's grabbed
+  off of freeamp.org
+- Fixed a number of bugs in the GTK UIs
+- Reworking of 'Panel' subsystem, as used by the equalizer in the default theme
+- Bugfixes to the equalizer
+- Multiselect in the Linux MusicBrowser 
+- Rewritten linux information editor
+
+Changes for Linux and Windows version 2.1.0 beta 3
+--------------------------------------------------------------------
+
+- See note for beta 1. It still applies. 
+- Fixed lots of bugs... for details go to:
+
+http://www.freeamp.org/bugzilla/buglist.cgi?bug_status=RESOLVED&bug_status=VERIFIED&bug_status=CLOSED&email1=&emailtype1=substring&emailassigned_to1=1&email2=&emailtype2=substring&emailreporter2=1&bugidtype=include&bug_id=&changedin=&votes=&chfield=resolution&chfieldfrom=5%2F18%2F2000&chfieldto=5%2F30%2F2000&chfieldvalue=&product=FreeAmp&short_desc=&short_desc_type=substring&long_desc=&long_desc_type=substring&bug_file_loc=&bug_file_loc_type=substring&field0-0-0=noop&type0-0-0=noop&value0-0-0=&cmdtype=doit&newqueryname=&order=Reuse+same+sort+as+last+time
+
+Changes for Linux and Windows version 2.1.0 beta 2
+--------------------------------------------------------------------
+
+- Mainly bugfixes from beta 1
+- Font fixes for the Win32 freeamp ui
+- Enhancements to 'Watch this Directory'
+
+Changes for Linux and Windows version 2.1.0 beta 1
+--------------------------------------------------------------------
+
+This is the first beta release ofthe 2.1 series. For changes for 
+the 2.1 series, please refer to the specification:
+
+    http://www.freeamp.org/~robert/FreeAmp_2.1_Spec.doc
+
+The following items from the spec are not included in the first 2.1 
+release:
+
+    - CD Burning support
+    - Playlist view in theme
+    - Icecast stream listing (waiting on the server side xml changes)
+
+
+Changes for Linux and Windows version 2.0.8
+--------------------------------------------------------------------
+
+- Fixed the HTTP error issue with single-click downloading.
+- Fixed some issues with playing some mp3 files.
+
+
+Changes for Linux and Windows version 2.0.7
+--------------------------------------------------------------------
+
+- Fixed the proxy support for the download manager.
+- Fixed crashing issues in the GTK freeamp ui.
+
+Changes for Linux and Windows version 2.0.6
+--------------------------------------------------------------------
+
+- The update process will now allow us to update system files and
+  files that do not have version info, such as the help files.
+- We squashed the huge memory leak some people were seeing.
+- ShoutCast title streaming is now supported.
+
+Changes for Linux and Windows version 2.0.5
+--------------------------------------------------------------------
+
+- More bugfixes than you can shake a stick at.
+- Fixed VBR file playback problem
+- Fixed problem where seek slider sometimes jumped back to its 
+  original position during a seek.
+- Changed Download Manager to use non-blocking IO so that FreeAmp
+  always exits cleanly, even if it is stuck in a connect()
+
+Changes for Linux and Windows version 2.0.4
+--------------------------------------------------------------------
+
+- No new features, just lots and lots of bug fixes.
+
+Changes for Linux and Windows version 2.0.3
+--------------------------------------------------------------------
+
+- Help files on Linux work again.
+- Changing window modes in a theme work again.
+- A bug in the Linux 'My Music' file selection/import was fixed.
+
+Changes for Linux and Windows version 2.0.2
+--------------------------------------------------------------------
+
+- Improved speed for adding and removing items in My Music window.
+- Fixes issues with Windows 2000 compatability.
+- Importing Tracks works again.
+- FreeAmp now associates itself with .fat files under Windows.
+- Fixed buffer bug in windows output plugin.
+- Fixed slider issues.
+- Themes now support a miscellaneous comment field that will be 
+  displayed in the credits for the theme.
+- FreeAmp is now bound to processor 0 under Windows NT.
+- Fix for "Not saving theme" bug under Linux.
+- Better recreation of file/mimetypes under Windows.
+- Fixed theme reload bug.
+- Track info dialog now displays track location.
+- Fonts are now antialiased under Windows.
+
+Changes for Linux and Windows version 2.0.1
+--------------------------------------------------------------------
+
+- Help files for both Linux and Win32 have been updated further.
+- Bug fixes galore. 
+- Resolved several resource issues.
+- Win32 Music Browser no longer shows duplicates when you search 
+  for music again.
+- Added some more icons.
+
+Changes for Linux and Windows version 2.0
+--------------------------------------------------------------------
+
+- Help files for both Linux and Win32 have been updated further.
+- New medium and small modes for the default FreeAmp theme.
+- Better handling of Artist sorting in My Music window.
+- A nice pretty welcome wizard for My Music that gets you up and
+  running ASAP.
+- FreeAmp Classic theme now supported. Not quite the same as the old
+  FreeAmp but pretty darn close. Hope you like it.
+- Repeat after me, "Lots and lots of bug fixes!"
+- This is it, 2.0 is now gold! Yippee! Now we get to start work on 
+  2.1 <grin> and add all those features that were frozen out of 2.0.
+
+
+Changes for Linux and Windows version 2.0 beta 5
+--------------------------------------------------------------------
+
+- Help files for both Linux and Win32 have been updated.
+- TrueType font support for Linux themes.
+- Updated default FreeAmp theme to use transparent buttons.
+- Added vertical slider capability to themes.
+- Editing metadata in the music browser nows works a lot better.
+- Linux music browser has snazzy new icons in the tree control.
+- Preference to set toolbar look: Icons, Text, or Both.
+- My Music window remembers its state.
+- New example theme, Aquatica... you gotta check this one out!
+- Again, Lots and lots of bug fixes.
+
+Changes for Linux and Windows version 2.0 beta 4
+--------------------------------------------------------------------
+
+- Again, Lots and lots of bug fixes.
+- Help files for both Linux and Win32 have been updated.
+- New artwork in the music browser.
+- Ability to organize music in playlist manager with drag and drop.
+- VBR files are now handled correctly.
+- Large ID3v2 tags are handled correctly.
+- Fixed alignment issues in default theme
+- Added support for PLS playlist files
+- Added new toolbar UI which allows app to live in system tray.
+
+
+Changes for Linux and Windows version 2.0 beta 3
+--------------------------------------------------------------------
+
+- Help files for both Linux and Win32
+- Updated Music Browser/Playlist Manager
+- Lots and lots of bug fixes
+- Updated default theme
+
+Changes for Linux and Windows version 2.0 beta 2
+--------------------------------------------------------------------
+
+- Win32 and Linux are now at 100% feature parity.
+- All new user interface with Themes support. Let's see how creative
+  you guys are. Check out http://www.freeamp.org/text/ThemeHowTo.txt
+  for more info on making your own themes.
+- Totally rewritten playlist management. New Playlist Manager and
+  more robust back end.
+- Download Manager
+- Auto-update, download new components as they are released and 
+  always know you have the latest bug fixes.
+- All major functionality is implemented as plugins, feel free to 
+  add more!
+- Basic id3v2 metadata support. (yes we actually read data out of
+  them, not just skip them)
+- Way too many bug fixes to list here... 
+
+Changes for Linux and Windows version 1.3.1:
+--------------------------------------------------------------------
+
+- Fixed binary installs requiring esd and asound libs, when they
+  shouldn't have.
+- Fixed some random compile warnings
+- Fixed a source install issue where mkinstalldirs could not be found
+- Fixed ncurses.ui and mpeg123.ui to properly display id3 tags again
+- Added README.linux with some PMO change docs
+- The linux version can now play Windows .m3u files
+- Removed GTK config stuff in the configure.in script
+- Fixed half implemented shuffle improvement
+
+Changes for Linux and Windows version 1.3.0:
+--------------------------------------------------------------------
+
+- Fixed support for MPEG-1,2 layer 2 files
+- Fixed 'LMC cannot decode, corrupt media?' bug
+- Added PreBuffer support
+- Added HTTP proxy support (thanks to Alan Cutter for the patch)
+- Improved audio pipeline with much clearer model and common base classes
+- Added support for selecting network card for streaming plugins
+- Added Linux Enlightened Sound Daemon support. (thanks go to Isaac Richards)
+- Added icecast style title streaming support
+- Added ncurses UI for unix (thanks go to Stephan Auerhahn)
+- Fixed lots of the volume bugs for win98/95
+- Fixed "tray menu hanging around" bug
+- Fixed "Lack of changelog"... here it is!
+- You can now use FreeAmp to play files directly from Netscape
+- Random playing is now actually random and non repeating, repeating,
+  repeating, repeating...
+
+
+Changes for Linux and Windows version 1.2.3:
+--------------------------------------------------------------------
+- Fixed support for MPEG 2.5 streams and files
+- Windows release now uses Jean-Michel HERVE's x86 optimizations
+- Added support for saving incoming SHOUTcast/HTTP streams to disk,
+  (enabled by the "-save" command-line argument or the "SaveStreams"
+  preference on Linux).  See the README for more information.
+- Added an install-freeamp script for Linux
+
+Changes for Linux version 1.2.2:
+--------------------------------------------------------------------
+- Incorporated x86 assembly MP3 decoder optimizations from
+  "Jean-Michel HERVE" <tuo_stg@hotmail.com>
+
+- Added support for a preferences file in ~/.freeamp_prefs
+  The command-line properties are no longer supported.
+  See the README for more information.
+
+Changes for Windows version 1.2.1:
+--------------------------------------------------------------------
+- Fixed minimization bugs
+
+Changes for Windows version 1.2:
+--------------------------------------------------------------------
+- All cool changes listed for Linux Below +
+
+- Real Playlist Support
+
+- Save playlists to your Rio
+
+- Live in tray
+
+- Pref Panel
+
+Changes for Linux version 1.2:
+--------------------------------------------------------------------
+- Added assembly decoder optimizations, input and output buffering. FreeAmp
+  should now be able to play audio uninterrupted, unless the load
+  on the machine gets too great. FreeAmp is now much less processor 
+  intensive, while consuming more memory.
+
+- Added support for SHOUTcast, HTTP and RTP streaming. You can now specify
+  a file, an http://, or a rtp:// on the command line. For more information
+  on SHOUTcast, please see http://icecast.linuxpower.org or
+  http://www.shoutcast.com
+
+- Logging support. Using the Logging, LogInput, LogDecode properties
+  the user can now log debug information and errors to the file freeamp.log.
+  This will allow the freeamp team to debug problems with versions of FreeAmp
+  in the field.
+
+- VBR stream support. FreeAmp handles VBR streams correctly. It might
+  have done this in previous versions too, but it does it better now. :-)
+
+- stdin support. To accept an mp3 stream from stdin, invoke freeamp like
+  this:
+
+      freeamp file://- < myfile.mp3
+
+- Added properties for logging and buffering. See README for details.
+
+- Added autoplay support.

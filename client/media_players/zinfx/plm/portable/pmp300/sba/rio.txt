@@ -1,0 +1,250 @@
+
+Diamond Rio Protocol Investigation - The Snowblind Alliance (c) 1999
+--------------------------------------------------------------------
+        Last updated 11/03/99
+        Author jab@cix.co.uk
+
+Contents
+--------
+        1. Hardware used to determine protocol
+        2. Software tools used to determine protocol
+        3. PC parallel port access
+        4. Directory block layout
+        5. Transmitting and receiving data to the device
+        6. Block usage table and FAT
+
+
+1. Hardware used to determine protocol
+-------------------------------------
+        The following hardware was used in determining the protocol
+        used between a PC and the Diamond Rio...
+
+                HP VectraXA P233 32M running MS Win98
+                Diamond Rio PMP300
+
+2. Software tools used to determine protocol
+--------------------------------------------
+        A Win98 VxD was put together which intercepted and logged
+        all I/O traffic between the PC (running the 'Rio Manager'
+        software) and the Rio.
+        This data was then used to determine the protocol used to
+        upload and download data to the device.
+
+3. PC parallel port access
+--------------------------
+        The following ports are used (using the default 0x378).
+
+                0x378   Parallel Port Data
+                0x379   Parallel Port Status
+                0x37a   Parallel Port Control
+
+        Data to be sent from the host to the Rio is written to this port
+        as normal 8 bit data. The host then writes a value to the
+        control port. This value is made up using a alternating bit 3
+        (used as a data latch) which informs the Rio that data is present
+        in the data port and is waiting to be retrieved.
+
+        Data to be sent from the Rio to the host is done using the status
+        port. Only the top 4 bits are used so a single byte sent to the
+        host is split up into 2 nibbles which are sent with their bits
+        reversed. Also because bit 7 of the status port is an inversion
+        of the +busy line (pin 11) this bit needs to be inverted.
+        Below is a example of how the host would read the nibble pair from
+        the Rio to make up a single data byte.
+
+                UCHAR ucIn, ucRx;
+
+                // get first nibble
+                ucRx = INPORT( ParallelPortStatus );
+                ucIn = ((ucRx & 0xf0) ^ 0x80) >> 4;
+                // get second nibble
+                ucRx = INPORT( ParallelPortStatus );
+                ucIn |= (ucRx & 0xf0) ^ 0x80;
+                // reverse all bits in byte
+                ucIn = BitReverse( ucIn );
+
+        The Control port is used to latch data present in the data port
+        and to send commands to the Rio.
+
+4. Directory block layout
+-------------------------
+        The first 32K on the Rio is dedicated to the directory block
+        which contains the directory header, directory entries and the
+        file allocation table (FAT) used by he Rio.
+        Ammending the directory block is all that is required to delete a
+        file, rename a file or change the playlist order.
+
+        The layout of the 32K directory block is as follows...
+
+                Description                     Offset  Size
+                -----------------------------------------------
+                directory header                0       512
+                directory entries (60*128)      512     7680
+                32K block used flags            8192    8192
+                FAT (8192*sizeof(short))        16384   16384
+                                                        -----
+                                                total   32768
+
+                Directory Header
+                ----------------
+                The CDirHeader class represents the directory header.
+
+                A description of the members are as follows...
+
+                        USHORT m_usCountEntry;
+                        ----------------------
+                        Number of files currently on the device.
+
+                        USHORT m_usCount32KBlockAvailable;
+                        ----------------------------------
+                        Number of 32K blocks available on flash ram.
+
+                        USHORT m_usCount32KBlockUsed;
+                        -----------------------------
+                        Number of 32K blocks currently used by directory
+                        block and files or which are marked as bad.
+
+                        USHORT m_usCount32KBlockRemaining;
+                        ----------------------------------
+                        Number of 32K blocks not is use or marked as bad.
+
+                        USHORT m_usCount32KBlockBad;
+                        ----------------------------
+                        Number 32K blocks marked as bad.
+
+                        long m_lTimeLastUpdate;
+                        -----------------------
+                        The Rio Manager software updates this with the
+                        current time ( taken from time(NULL) ) whenever
+                        data has been uploaded to the device.
+
+                        USHORT m_usChecksum1;
+                        ---------------------
+                        Checksum of the directory header only.
+
+                        USHORT m_usChecksum2;
+                        ---------------------
+                        Checksum of everything in the directory block except
+                        the directory header.
+                        Note that because m_usChecksum2 is part of the
+                        directory header it must be calculated first before
+                        calculating m_usChecksum1.
+
+                        char m_acNotUsed2[ 2 ];
+                        -----------------------
+                        Unknown. Rio Manager software sets these to 0xff.
+                        The Rio utility on the otherhand sets them to 0x00.
+
+                        USHORT m_usVersion;
+                        -------------------
+                        Rio manager v1.00 doesn't use this value.
+                        Rio manager v1.01 expects this value to be 0x0100
+                        otherwise it think's a earlier version has been
+                        used to update the device and will therefore
+                        reformat the device.
+                        The Rio utility sets this value to 0x0100 so both
+                        v1.00 and v1.01 of the Rio manager software will
+                        recognize the directory.
+
+                        char m_acNotUsed3[ 512 - 22 ];
+                        ------------------------------
+                        Always seems to be 0.
+
+                Directory Entries
+                -----------------
+                The CDirEntry class represents a directory entry.
+                Each directory entry is 128 bytes long.
+                The maximum number of directory entries and therefore
+                files which can be uploaded to the device is 60.
+
+                A description of the members are as follows...
+
+                        USHORT m_usPos32KBlock;
+                        -----------------------
+                        Position of the first 32K where data for this file
+                        is stored.
+
+                        USHORT m_usCount32KBlock;
+                        -------------------------
+                        Number of 32K blocks taken up by the file.
+
+                        USHORT m_usSize32KMod;
+                        ----------------------
+                        Number of bytes in the last 32K block. If the filesize
+                        is divisible by 32K then this value is 0.
+
+                        long m_lSize;
+                        -------------
+                        File size.
+                        The duration of a track as displayed by the device is
+                        calculated using the filesize and the properties.
+
+                        char m_acNotUsed[ 5 ];
+                        ----------------------
+                        Unknown.
+
+                        long m_lTimeUpload;
+                        -------------------
+                        Upload time ( taken from time(NULL) ).
+
+                        char m_aucProperty[ 4 ];
+                        ------------------------
+                        The files audio property (bits per sample,
+                        sample rate...) taken from the first four bytes of
+                        the audio file.
+
+                        char m_acNotUsed3[ 5 ];
+                        -----------------------
+                        Always seems to be filled with 0.
+
+                        char m_szName[ 128 - 28 ];
+                        --------------------------
+                        File name.
+
+
+5. Transmitting and receiving data to the device
+------------------------------------------------
+        Although the directory header and directory entries use references
+        to 32K blocks, data is tx'ed and rx'ed in 512 + 16 byte blocks.
+        When uploading data the extra 16 bytes contains information about
+        the location of the previous and next 512 byte block. I assume
+        this information is used by the device so it knows which 512 block
+        of audio to goto when seeking forwards or backwards.
+
+        To send or receive data a series of bytes which indicate
+        the upload/download command and a 512 byte offset is sent
+        to the device.
+        Data is then received or transmitted to the device.
+        If sending data the additional 16 bytes (described above) must be sent.
+        If receiving data the additional 16 bytes (which can be ignored) must
+        be received.
+
+        Although the Rio manager software does not allow you to upload
+        non-mp3 files or to download files from the device it is possible
+        with the Rio utility.
+
+6. Block usage table and FAT
+----------------------------
+        The directory block contains an array of 8192 bytes which indicate
+        which 32K blocks are in use or marked as bad.
+        0x00 Indicates that the block is ok and in use.
+        0x0f Indicates that the block is bad and should therefore not be used.
+        0xff Indicates that the block is ok and is free.
+
+        Also in the directory block there is an array of 8192 16-bit values
+        which are used to determine the next 32K audio block in use.
+        A 0 signifies that it is the last 32K block.
+
+        Investigation shows that the above two tables are not used by the
+        device for playback as information about the next audio block to
+        play is sent in the extra 16 bytes following a 512 byte upload
+        (see above). This means that the above tables are used as a means
+        of block management by the host software only and can therefore
+        be organized differently and/or used to store other information.
+
+
+
+
+
+
+

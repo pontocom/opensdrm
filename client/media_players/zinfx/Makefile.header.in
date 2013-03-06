@@ -1,0 +1,129 @@
+# Freeamp Makefile header 
+# contains all the compiler-related configure-extracted vars
+# $Id: Makefile.header.in,v 1.1 2004/10/13 16:16:04 linha2 Exp $
+
+SHELL = /bin/sh
+
+srcdir = @srcdir@
+top_srcdir = @top_srcdir@
+VPATH = @srcdir@
+prefix = @prefix@
+exec_prefix = @exec_prefix@
+
+bindir = @bindir@
+sbindir = @sbindir@
+libexecdir = @libexecdir@
+datadir = @datadir@
+sysconfdir = @sysconfdir@
+sharedstatedir = @sharedstatedir@
+localstatedir = @localstatedir@
+libdir = @libdir@
+infodir = @infodir@
+mandir = @mandir@
+includedir = @includedir@
+
+DESTDIR =
+
+top_builddir = .
+
+AUTOCONF = @AUTOCONF@
+
+INSTALL = @INSTALL@
+INSTALL_PROGRAM = @INSTALL_PROGRAM@
+INSTALL_DATA = @INSTALL_DATA@
+INSTALL_SCRIPT = @INSTALL_SCRIPT@
+transform = @program_transform_name@
+
+CPU = @host_cpu@
+
+host_alias = @host_alias@
+host_triplet = @host@
+CC = @CC@
+CXX = @CXX@
+CXXLD = $(CXX)
+GTK_CFLAGS = @GTK_CFLAGS@
+GTK_CONFIG = @GTK_CONFIG@
+GTK_LIBS = @GTK_LIBS@
+GTK_PREFIX = @GTK_PREFIX@
+ESD_LIBS = @ESD_LIBS@
+ARTS_LIBS = @ARTS_LIBS@
+TTF_LIBS = @TTF_LIBS@
+ID3_LIBS = @ID3_LIBS@
+GDK_PIXBUF_LIBS = @GDK_PIXBUF_LIBS@
+ORBIT_IDL = @ORBIT_IDL@
+ORBIT_LIBS = @ORBIT_LIBS@
+BUILD_STATIC = @BUILD_STATIC@
+MAKEINFO = @MAKEINFO@
+NASM = @NASM@
+PACKAGE = @PACKAGE@
+PERL = @PERL@
+RANLIB = @RANLIB@
+VERSION = @VERSION@
+HOST_OS = @host_os@
+UNIX_AUDIO_API = @UNIX_AUDIO_API@
+CFLAGS = -Wall @CFLAGS@ -D_REENTRANT
+OSDEP = @OSDEP@
+OSINC = @OSINC@
+OSTYPE = @OSTYPE@
+LINKMOD = @LINKMOD@ $(LDFLAGS)
+LIBMOD = @LIBMOD@
+
+OSDEPOBJ = @OSDEPOBJ@
+
+INCLUDES = -I. -I$(srcdir)/lib/gdbm -I$(srcdir)/base/include -I$(srcdir)/config -I$(srcdir)/io/include -I$(srcdir)/ui/include -I$(srcdir)/lmc/include -I$(srcdir)/io/soundcard/unix/$(UNIX_AUDIO_API)/include -I$(srcdir)/lmc/xingmp3/include -I$(srcdir)/lmc/cd/include -I$(srcdir)/plm/portable/pmp300/sba -I$(srcdir)/lib/xml/include -I$(srcdir)/lib/zlib/include -I$(srcdir)/lib/unzip/include -I$(srcdir)/io/cd/unix/include -I$(srcdir)/base/aps -I$(srcdir)/io/wavout/include -I$(srcdir)/ui/lcd/include -I$(srcdir)/ui/irman/include -I$(srcdir)/lib/http/include -I$(srcdir)/io/signature/include -I$(srcdir)/plm/metadata/id3v2 -I$(srcdir)/lmc/wav/include $(OSINC)
+
+CXXFLAGS = $(EXTRA_CXXFLAGS)
+ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
+mkinstalldirs = $(SHELL) $(srcdir)/config/mkinstalldirs
+CONFIG_HEADER = ./config/config.h
+CONFIG_CLEAN_FILES = 
+PROGRAMS =  $(bin_PROGRAMS)
+
+DEFS = -I. -I$(srcdir) -I./config -DUNIX_LIBDIR=\"$(libdir)\" -D$(HOST_OS)
+CPPFLAGS = @CPPFLAGS@
+LDFLAGS = @LDFLAGS@
+X_CFLAGS = @X_CFLAGS@
+X_LIBS = @X_LIBS@ -lX11 -lXext
+EXTRALIBS = @EXTRALIBS@
+X_EXTRA_LIBS = @X_EXTRA_LIBS@
+X_PRE_LIBS = @X_PRE_LIBS@
+
+COMPILE = $(CC) $(DEFS) $(INCLUDES) $(CFLAGS) $(RELOC)
+CXXCOMPILE = $(CXX) $(DEFS) $(INCLUDES) $(CFLAGS) $(CPPFLAGS) $(CXXFLAGS)
+CXXCOMPILE += $(RELOC)
+
+CXXLINK = $(CXXLD) $(CXXFLAGS) $(LDFLAGS) $(RELOC) -o $@
+
+.SUFFIXES: .S .c .cpp .lo .o .s .doh .asm .asm1
+
+.cpp.o:
+	$(CXXCOMPILE) -c $< -o $@
+
+.cpp.lo:
+	$(CXXCOMPILE) -c $< -o $@
+
+.cpp.doh:
+	$(CXXCOMPILE) -O0 -c $< -o $@
+
+.c.o:
+	$(COMPILE) -c $< -o $@
+
+.c.lo:
+	$(COMPILE) -c $< -o $@
+
+.asm.asm1:
+	$(PERL) -pe 's/\b_//g' $< > $@
+
+.asm1.o:
+	$(NASM) -f elf -o $@ $<
+
+.s.o:
+	$(COMPILE) -c $< -o $@
+
+.S.o:
+	$(COMPILE) -c $< -o $@
+
+@SET_MAKE@
+
+PIMAKE = $(MAKE) -f Makefile-plugins -$(MAKEFLAGS)
+

@@ -1,0 +1,83 @@
+         How to compile the FreeAmp MSVC Projects on Windows 32
+                  by Chad Loder <cloder@ccs.neu.edu>
+	   $Id: README.win32,v 1.1 2004/10/13 16:16:04 linha2 Exp $
+
+
+1) Download and install a source distribution.
+
+2) Download and install NASM (http://www.web-sites.co.uk/nasm/).
+
+3) Download and install the Win32 port of the SGI stl from:
+   http://www.freeamp.org/~robert/stl.html
+
+   (This page is a mirror of the original page, which no longer exists)
+
+4) Run Developer Studio and open the FreeAmp workspace located at:
+   freeamp\base\win32\prj\freeamp.dsw
+
+5) Put NASM in your path. Choose "Tools | Options" in DevStudio and
+   go to the "Directories" tab.  Choose "Show Directories For" and
+   select "Executable Files". Then add the directory where you have
+   NASM.
+
+6) The workspace is set up so that DevStudio automatically calculates
+   dependencies between projects. This means that building the top
+   level project (called simply "freeamp") will automatically build
+   all the other projects you need to run the product. Set freeamp
+   as your active project.
+
+7) Build the freeamp project, and then run freeamp.exe. If you
+   installed a shipping version of FreeAmp somewhere else, the first
+   time you run the development version of FreeAmp, it will ask
+   you whether you want to associate .MP3 files with the development
+   version. It's up to you, I find it's nice to associate them with
+   the development version.
+
+8) If you get some errors compiling the dsoundcardpmo.cpp file, you likely
+   have an old version (or rather, the stock DirectX headers that ship
+   with MSVC 5.0) of DirectX installed. You can either update the DirectX
+   SDK (which is a *very* large download) or you can grab the needed 
+   dsound.h file from here: http://www.freeamp.org/misc/dsound.h
+
+
+OTHER NOTES
+###########
+
+Setting Breakpoints
+-------------------
+
+You may have trouble setting breakpoints when freeamp is not
+currently being debugged. This is because you cannot set breakpoints
+in DLLs for which DevStudio hasn't loaded the debug symbols. This is
+common when you want to debug something that happens early in FreeAmp's
+startup.
+
+Once FreeAmp is completely up and running, all of the DLLs and debug
+symbols are loaded and you can set breakpoints anywhere, but before that
+time, not all the DLLs have loaded and you can't set breakpoints in some
+files. You can fix this situation by telling DevStudio about the
+DLLs you want to debug. Go to the "Project | Settings"
+dialog for the "freeamp" project and choose the "Debug" tab.
+Select "Additional DLLs" in the "Category" list and then enter
+each DLL that you want to debug. Note that FreeAmp DLL files
+do not end in .DLL -- they have funky names like something.ppp
+and something.ppo. Most of them live in the freeamp\plugins
+directory, and it wouldn't hurt to add them ALL to the "Additional
+DLLs" category -- this will cause DevStudio to load the debug
+symbols ahead of time, and you can set breakpoints before you
+start debugging.
+
+
+Building From the Command Line
+------------------------------
+
+You can automate the build (for those of you who don't like using
+the DevStudio GUI) by exporting all the makefiles (select
+"Project | Export Makefile" and then running Microsoft's NMAKE.EXE
+on the freeamp makefile. You may need to twiddle a little bit
+to get it to work, but it's not difficult.
+
+If you are using DevStudio 6, or greater, you can also build from
+the command line by using a command line similar to this one:
+
+  MSDEV  drive:path\freeamp\base\win32\proj\freeamp.dsw /make all /out:Build-Log.txt

@@ -1,0 +1,13 @@
+<!ELEMENT Directory   (Service+)>
+<!ELEMENT Service     (Stream+)>
+<!ELEMENT Stream      (Url, Name, Description, Genre?, WebUrl?, Bitrate?, 
+                       Users?, MaxUsers?)>
+<!ELEMENT Url         (#PCDATA)>
+<!ELEMENT Name        (#PCDATA)>
+<!ELEMENT Description (#PCDATA)>
+<!ELEMENT Genre       (#PCDATA)>
+<!ELEMENT WebUrl      (#PCDATA)>
+<!ELEMENT Bitrate     (#PCDATA)>
+<!ELEMENT Users       (#PCDATA)>
+<!ELEMENT MaxUsers    (#PCDATA)>
+<!ATTLIST Service  Name CDATA #REQUIRED>

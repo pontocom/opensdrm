@@ -1,0 +1,7 @@
+; pls.def : Declares the module parameters for the DLL.
+
+LIBRARY      "pls"
+DESCRIPTION  'PLS Playlist Format Library'
+
+EXPORTS
+	Initialize

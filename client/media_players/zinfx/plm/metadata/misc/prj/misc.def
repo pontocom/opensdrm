@@ -1,0 +1,7 @@
+; misc.def : Declares the module parameters for the DLL.
+
+LIBRARY      "misc"
+DESCRIPTION  'Miscellaneous MetaData Library'
+
+EXPORTS
+	Initialize

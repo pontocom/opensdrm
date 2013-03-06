@@ -1,0 +1,7 @@
+; vorbismdf.def : Declares the module parameters for the DLL.
+
+LIBRARY      "vorbismdf"
+DESCRIPTION  'Vorbis MetaData Library'
+
+EXPORTS
+	Initialize

@@ -1,0 +1,7 @@
+; wavlmc.def : Declares the module parameters for the DLL.
+
+LIBRARY      "wav"
+DESCRIPTION  'Wav Decoder Library'
+
+EXPORTS
+	Initialize

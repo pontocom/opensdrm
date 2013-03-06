@@ -1,0 +1,190 @@
+# Generated automatically from Makefile.in by configure.
+# Zinf master Makefile
+# $Id: Makefile.in,v 1.1 2004/10/13 16:16:04 linha2 Exp $
+
+FPIC=
+# RELOC = null for zinf main; RELOC = -fpic for plugins.
+
+include Makefile.header
+
+all: dirs zinf plugins
+
+ZLIBOBJ  = lib/zlib/src/adler32.o lib/zlib/src/compress.o lib/zlib/src/crc32.o
+ZLIBOBJ += lib/zlib/src/deflate.o lib/zlib/src/gzio.o lib/zlib/src/infblock.o
+ZLIBOBJ += lib/zlib/src/infcodes.o lib/zlib/src/inffast.o lib/zlib/src/inflate.o
+ZLIBOBJ += lib/zlib/src/inftrees.o lib/zlib/src/infutil.o lib/zlib/src/trees.o
+ZLIBOBJ += lib/zlib/src/uncompr.o lib/zlib/src/zutil.o
+
+lib/zlib/lib/libzlib.a: $(ZLIBOBJ)
+	+test -d lib/zlib/lib || mkdir lib/zlib/lib
+	$(LIBMOD) $@ $(ZLIBOBJ)
+
+GDBMOBJ  = lib/gdbm/bucket.o lib/gdbm/falloc.o lib/gdbm/findkey.o
+GDBMOBJ += lib/gdbm/gdbmclose.o lib/gdbm/gdbmdelete.o lib/gdbm/gdbmerrno.o
+GDBMOBJ += lib/gdbm/gdbmexists.o lib/gdbm/gdbmfdesc.o lib/gdbm/gdbmfetch.o
+GDBMOBJ += lib/gdbm/gdbmopen.o lib/gdbm/gdbmreorg.o lib/gdbm/gdbmseq.o
+GDBMOBJ += lib/gdbm/gdbmsetopt.o lib/gdbm/gdbmstore.o lib/gdbm/gdbmsync.o
+GDBMOBJ += lib/gdbm/global.o lib/gdbm/hash.o lib/gdbm/update.o
+GDBMOBJ += lib/gdbm/version.o
+
+lib/gdbm/lib/libfagdbm.a: $(GDBMOBJ)
+	+test -d lib/gdbm/lib || mkdir lib/gdbm/lib
+	$(LIBMOD) $@ $(GDBMOBJ)
+
+PARSEOBJ = lib/xml/src/Parse.o
+
+lib/xml/lib/libfaxml.a: $(PARSEOBJ)
+	+test -d lib/xml/lib || mkdir lib/xml/lib
+	$(LIBMOD) $@ $(PARSEOBJ)
+
+HTTPOBJ = lib/http/src/Http.o
+
+lib/http/lib/libfahttp.a: $(HTTPOBJ)
+	+test -d lib/http/lib || mkdir lib/http/lib
+	$(LIBMOD) $@ $(HTTPOBJ)
+
+ZINFunixOBJ  = base/unix/src/bootstrap.o base/unix/src/unixprefs.o
+ZINFunixOBJ += base/unix/src/win32impl.o base/unix/src/pthreadthread.o
+ZINFunixOBJ += base/unix/src/debug.o base/unix/src/mutex.o 
+ZINFunixOBJ += base/unix/src/semaphore.o base/unix/src/utility.o
+ZINFunixOBJ += base/unix/src/browser.o
+
+ZINFsolarisOBJ = $(ZINFunixOBJ)
+ZINFlinuxOBJ   = $(ZINFunixOBJ)
+ZINFfreebsdOBJ = $(ZINFunixOBJ)
+ZINFqnxOBJ     = $(ZINFunixOBJ)
+ZINFirixOBJ    = $(ZINFunixOBJ)
+
+ZINFOBJ =  base/src/log.o base/src/player.o base/src/musiccatalog.o
+ZINFOBJ += base/src/playlist.o base/src/propimpl.o base/src/registrar.o
+ZINFOBJ += base/src/registry.o base/src/thread.o io/src/eventbuffer.o
+ZINFOBJ += base/src/prefixprefs.o base/src/preferences.o
+ZINFOBJ += base/src/debug.o base/src/utility.o base/src/database.o 
+ZINFOBJ += base/src/downloadmanager.o base/src/errors.o
+ZINFOBJ += io/src/pullbuffer.o io/src/tstream.o
+ZINFOBJ += base/src/undomanager.o #base/src/updatemanager.o
+ZINFOBJ += base/src/timer.o base/src/missingfile.o io/src/pipeline.o
+ZINFOBJ += $(ZINF$(HOST_OS)OBJ) 
+ZINFOBJ += lib/gdbm/lib/libfagdbm.a lib/xml/src/Parse.o 
+ZINFOBJ += lib/zlib/lib/libzlib.a lib/http/src/Http.o
+#ZINFOBJ += LeakTracer.o
+#ZINFOBJ += dmallocc.o
+
+ZINFlinuxLIBS = -ldl -lpthread 
+ZINFsolarisLIBS = -ldl -lpthread
+ZINFfreebsdLIBS = -pthread
+ZINFqnxLIBS = -lasound
+ZINFirixLIBS = -lpthread
+UNIXZINFLIBS = $(ZINF$(HOST_OS)LIBS) $(EXTRALIBS) -lmusicbrainz #-ldmallocthcxx
+
+ZINFLIBS = $($(OSTYPE)ZINFLIBS) @DMALLOCLIB@
+ZINFPOSTLINK = $($(OSTYPE)ZINFPOSTLINK)
+
+# hack hack hack
+DIRECTORIES  = base base/src base/unix base/unix/src 
+DIRECTORIES += dlm dlm/rmp io io/alsa io/alsa/unix
+DIRECTORIES += io/alsa/unix/linux io/alsa/unix/linux/src io/esound io/arts/src
+DIRECTORIES += io/esound/src io/http io/local io/obs io/src io/soundcard
+DIRECTORIES += io/soundcard/unix 
+DIRECTORIES += io/soundcard/unix/$(UNIX_AUDIO_API) 
+DIRECTORIES += io/soundcard/unix/$(UNIX_AUDIO_API)/src
+DIRECTORIES += io/soundcard/unix/linux/src 
+DIRECTORIES += io/wavout io/wavout/src io/wavout/include 
+DIRECTORIES += lib lib/xml lib/xml/src lib/http lib/http/src lib/zlib lmc
+DIRECTORIES += lmc/xingmp3 lmc/xingmp3/src lib/gdbm lib/zlib/src lmc/vorbis 
+DIRECTORIES += plm plm/metadata plm/playlist plm/portable plm/portable/pmp300
+DIRECTORIES += lmc/xingmp3/src plm/metadata/id3v1 plm/metadata/id3v2 
+DIRECTORIES += plm/metadata/misc plm/playlist/m3u plm/portable/pmp300/sba ui
+DIRECTORIES += ui/download ui/download/unix ui/zinf
+DIRECTORIES += ui/cmdline ui/download/unix/src 
+DIRECTORIES += ui/zinf/tools ui/zinf/unix ui/irman ui/lcd ui/musicbrowser
+DIRECTORIES += ui/zinf/src ui/zinf/tools/src ui/zinf/unix/src
+DIRECTORIES += ui/musicbrowser/src ui/musicbrowser/unix ui/mpg123 plm/playlist/pls
+DIRECTORIES += ui/irman/src ui/lcd/src ui/musicbrowser/unix/src ui/ncurses
+DIRECTORIES += update update/unix lmc/cd lmc/cd/src io/cd io/cd/unix 
+DIRECTORIES += io/cd/unix/src lib/unzip lib/unzip/src ftc ftc/kjofol ftc/winamp
+DIRECTORIES += lmc/vorbis/src 
+DIRECTORIES += lib/musicbrainz plm/metadata/vorbis  ui/corba
+DIRECTORIES += lib/musicbrainz/lib
+
+dirs:
+	for p in $(DIRECTORIES); do \
+	  test -d $$p || mkdir $$p; \
+        done
+          
+zinf: $(ZINFOBJ) $(zinf_DEPENDENCIES)
+	@rm -f zinf
+	$(CXXLINK) $(ZINFOBJ) $(LDFLAGS) $(ZINFLIBS)
+#	$(CXXLINK) -v -nostdlib -Wl,--export-dynamic -Wl,-call_shared -rdynamic /usr/lib/crt1.o /usr/lib/crti.o /usr/lib/gcc-lib/i386-linux/2.95.2/crtbegin.o -Wl,--whole-archive $(ZINFOBJ) /usr/lib/libdl.a /usr/lib/libpthread.a /usr/lib/libgtk.a /usr/lib/libgdk.a /usr/lib/libgmodule.a /usr/lib/libgthread.a /usr/lib/libglib.a /usr/X11R6/lib/libXi.a /usr/X11R6/lib/libXext.a /usr/X11R6/lib/libX11.a /usr/lib/libttf.a /usr/lib/gcc-lib/i386-linux/2.95.2/libstdc++.a -Wl,--no-whole-archive /usr/lib/libm.a -lgcc -lc -lgcc /usr/lib/gcc-lib/i386-linux/2.95.2/crtend.o /usr/lib/crtn.o 
+	$(ZINFPOSTLINK)
+
+clean: zinf-clean plugins-clean
+
+clean-zinf zinf-clean:
+	-rm -f $(ZINFOBJ) zinf $(ZLIBOBJ) $(GDBMOBJ) $(PARSEOBJ) $(HTTPOBJ) $(MUSICBRAINZOBJ) 
+
+plugins: plugins-cc
+
+plugins-cc install-plugins uninstall-plugins clean-plugins plugins-install plugins-clean:
+	+test -d plugins || mkdir plugins
+	+$(PIMAKE) $@
+
+distclean: clean
+	-rm -f config.status Makefile config.cache config/config.h
+	-rm -f Makefile.header Makefile-plugins
+
+install: install-zinf install-themes install-plugins 
+
+uninstall: uninstall-zinf uninstall-themes uninstall-plugins
+	-rmdir -p $(DESTDIR)$(datadir)/zinf/themes
+	-rmdir -p $(DESTDIR)$(libdir)/zinf
+
+install-zinf: zinf
+	$(mkinstalldirs) $(DESTDIR)$(bindir)
+	$(INSTALL_PROGRAM) zinf $(DESTDIR)$(bindir)
+	$(mkinstalldirs) /usr/share/pixmaps
+	$(INSTALL_DATA) installer/unix/linux/zinf.png $(GTK_PREFIX)/share/pixmaps
+	$(mkinstalldirs) /usr/share/gnome/apps/Audio
+	$(INSTALL_DATA) installer/unix/linux/Zinf.desktop $(GTK_PREFIX)/share/gnome/apps/Audio
+	if test -f "MakeTheme"; then \
+		$(INSTALL_PROGRAM) MakeTheme $(DESTDIR)$(bindir);\
+	fi;
+
+uninstall-zinf:
+	-${RM} $(DESTDIR)$(bindir)/zinf
+	-${RM} $(DESTDIR)$(bindir)/MakeTheme
+	-${RM} $(GTK_PREFIX)/share/pixmaps/zinf.png
+	-${RM} $(GTK_PREFIX)/share/gnome/apps/Audio/Zinf.desktop
+
+install-themes:
+	$(mkinstalldirs) $(DESTDIR)$(datadir)/zinf/themes
+	@list=`ls $(srcdir)/themes/*.*`; for p in $$list; do \
+	  if test -f $$p; then \
+	    echo "  $(INSTALL_DATA) $$p $(DESTDIR)$(datadir)/zinf/themes/`basename $$p`"; \
+	    $(INSTALL_DATA) $$p $(DESTDIR)$(datadir)/zinf/themes/`basename $$p`; \
+	  else :; fi; \
+	done
+
+uninstall-themes:
+	@list=`ls $(srcdir)/themes/*.*`; for p in $$list; do \
+	  if test -f $$p; then \
+	    ${RM} "$(DESTDIR)$(datadir)/zinf/themes/`basename $$p`"; \
+	  fi; \
+	done
+
+depend:
+	makedepend -- $(DEFS) -I/usr/include/g++-3 $(INCLUDES) $(CFLAGS) -- `echo $(ZINFOBJ) | sed -e 's,\.o,.cpp,g'`
+	+$(PIMAKE) depend
+
+Makefile: $(srcdir)/Makefile.in $(srcdir)/Makefile-plugins.in
+	cd $(top_builddir) && ./config.status
+	echo 'Makefile has been rebuilt; please run `make` again.'
+
+
+#Makefile: configure.in configure
+#	./config.status --recheck
+#	./config.status
+#	make -$(MAKEFLAGS)
+
+# DO NOT DELETE THIS LINE -- make depend depends on it.
+

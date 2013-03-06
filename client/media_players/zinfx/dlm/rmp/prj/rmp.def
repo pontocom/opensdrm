@@ -1,0 +1,7 @@
+; rmp.def : Declares the module parameters for the DLL.
+
+LIBRARY      "rmp"
+DESCRIPTION  'RMP Download Format Library'
+
+EXPORTS
+	Initialize

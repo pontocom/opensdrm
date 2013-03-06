@@ -1,0 +1,7 @@
+; simpleui.def : Declares the module parameters for the DLL.
+
+LIBRARY      "simple"
+DESCRIPTION  'Simple UI Library'
+
+EXPORTS
+	Initialize

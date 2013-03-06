@@ -1,0 +1,7 @@
+;diskout.def : Declares the module parameters for the DLL.
+
+LIBRARY      "wavout"
+DESCRIPTION  'DiskOut Output Library'
+
+EXPORTS
+	Initialize

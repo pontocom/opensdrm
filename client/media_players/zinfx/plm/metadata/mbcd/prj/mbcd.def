@@ -1,0 +1,7 @@
+; mbcd.def : Declares the module parameters for the DLL.
+
+LIBRARY      "mbcd"
+DESCRIPTION  'MusicBrainz CD Lookup Library'
+
+EXPORTS
+	Initialize

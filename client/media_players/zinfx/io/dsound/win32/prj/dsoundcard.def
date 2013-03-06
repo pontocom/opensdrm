@@ -1,0 +1,7 @@
+;dsoundcard.def : Declares the module parameters for the DLL.
+
+LIBRARY      "dsoundcard"
+DESCRIPTION  'DirectSoundCard Output Library'
+
+EXPORTS
+	Initialize

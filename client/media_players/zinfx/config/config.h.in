@@ -1,0 +1,279 @@
+/*____________________________________________________________________________
+	
+	FreeAmp - The Free MP3 Player
+
+	Portions Copyright (C) 1998-2000 EMusic.com
+
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	GNU General Public License for more details.
+
+	You should have received a copy of the GNU General Public License
+	along with this program; if not, write to the Free Software
+	Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+	
+	$Id: config.h.in,v 1.1 2004/10/13 16:16:05 linha2 Exp $
+____________________________________________________________________________*/
+
+#ifndef CONFIG_H
+#define CONFIG_H
+
+#include <limits.h>
+
+
+/* name of company */
+#define BRANDING_COMPANY "Zinf"
+
+/* name of player */
+#define BRANDING "Zinf"
+
+/* name of player + "The" and "the" if it is needed for your player name. for 
+   example, Welcome to FreeAmp does not need the "the" but Welcome to the 
+   EMusic Player does in order to read well. */
+#define The_BRANDING "Zinf"
+#define the_BRANDING "Zinf"
+
+/* uncomment this line if branding version != FreeAmp version */
+/* #define BRANDING_VERSION "2.0.7" */
+
+#define BRANDING_URL "http://www.zinf.org"
+#define BRANDING_UPDATE_SERVER "www.zinf.org"
+#define BRANDING_UPDATE_PATH "/update/zinf/"
+#define BRANDING_DEFAULT_THEME "Zinf.fat"
+#define BRANDING_SHARE_PATH "/../share/zinf"
+#define BRANDING_APP_NAME "zinf"
+
+#define ZINF_PATH_ENV "ZINF_PATH"
+#define ZINF_VERSION "2.2.0"
+
+#ifndef BRANDING_VERSION
+#define BRANDING_VERSION ZINF_VERSION
+#endif
+
+#undef DEBUG_MUTEXES
+#undef USING_DMALLOC
+#undef HAVE_SEMCTL
+#undef NO_CDAUDIO
+
+#ifdef USING_DMALLOC
+#include <dmalloc.h>
+#define DMALLOC_FUNC_CHECK 1
+#endif
+
+#undef HAVE_GTK
+#undef HAVE_FREETYPE_FREETYPE_H
+#undef HAVE_FREETYPE_H
+#undef HAVE_FREETYPE
+#undef HAVE_LIBVORBIS 
+#undef HAVE_ZLIB
+#undef HAVE_ARTSC_ARTSC_H
+#undef HAVE_KDE_ARTSC_ARTSC_H
+#undef HAVE_SSTREAM
+
+#undef USING_GDKPIXBUF
+
+#define HAVE_UNISTD_H 0
+#define HAVE_IO_H 0
+#define HAVE_ERRNO_H 0
+
+#undef WORDS_BIGENDIAN
+
+/* musicbrainz stuff */
+#define MUSICBRAINZ_SERVER "www.musicbrainz.org"
+#define MUSICBRAINZ_PORT   80 
+
+/* cdaudio stuff */
+#undef SOLARIS_GETMNTENT
+#undef BROKEN_SOLARIS_LEADOUT
+#undef HAVE_GETMNTENT
+#undef STDC_HEADERS
+#undef IRIX_CDAUDIO
+#undef HAVE_GETMNTINFO
+#undef HAVE_SNPRINTF
+#undef HAVE_LINUX_CDROM_H
+#undef HAVE_IO_CAM_CDROM_H
+#undef HAVE_LINUX_UCDROM_H
+#undef HAVE_MNTENT_H
+#undef HAVE_SYS_CDIO_H
+#undef HAVE_SYS_MOUNT_H
+#undef HAVE_SYS_MNTENT_H
+#undef HAVE_SYS_UCRED_H
+#undef HAVE_STDARG_H
+#undef SIZEOF_LONG
+
+/* gdbm stuff */
+
+#undef const
+#undef HAVE_ST_BLKSIZE
+#undef off_t
+#undef HAVE_RENAME
+#undef HAVE_FTRUNCATE
+#undef HAVE_FLOCK
+#undef HAVE_FSYNC
+#undef HAVE_SYS_FILE_H
+#undef HAVE_STRING_H
+#undef HAVE_STDLIB_H
+#undef HAVE_MEMORY_H
+#undef HAVE_FCNTL_H
+
+/* end gdbm stuff */
+
+#define HAVE_BASELINUXTHREADS 0
+#define HAVE_ENHLINUXTHREADS 0
+#define HAVE_MITPTHREADS 0
+#define HAVE_BROKENMITPTHREADS 0
+
+#define HAVE_LINUX 0
+#define HAVE_LINUX_LIBC5 0
+#define HAVE_SOLARIS 0
+#define HAVE_BEOS 0
+
+#define HOST_OS "unknown"
+#define HOST_CPU "unknown"
+
+#undef ASM_X86
+#undef ASM_X86_OLD
+
+#define MP3_PROF 0
+
+#if HAVE_BROKENMITPTHREADS
+#define _MIT_POSIX_THREADS
+#endif
+
+#if HAVE_SOLARIS
+#define __SOLARIS__
+#endif
+
+#if HAVE_LINUX /* Linux requires thread support */
+#define __LINUX__
+#endif /* HAVE_LINUX */
+
+#if HAVE_UNISTD_H
+#define RD_BNRY_FLAGS O_RDONLY
+#elif HAVE_IO_H
+#define RD_BNRY_FLAGS O_RDONLY | O_BINARY
+#endif
+
+/* Endian Issues */
+#ifdef __LINUX__
+#include <endian.h>
+#endif /* __LINUX__ */
+
+#ifdef WIN32
+#define __LITTLE_ENDIAN 1234
+#define __BIG_ENDIAN    4321
+#define __PDP_ENDIAN    3412
+#define __BYTE_ORDER    __LITTLE_ENDIAN
+#endif
+
+/* define our datatypes */
+/* real number */
+typedef double real;
+
+#if HAVE_BEOS
+# include <support/SupportDefs.h>
+# include <endian.h>
+#else
+
+#if UCHAR_MAX == 0xff
+
+typedef unsigned char	uint8;
+typedef signed char		int8;
+
+#else
+#error This machine has no 8-bit type
+#endif
+
+#if UINT_MAX == 0xffff
+
+typedef unsigned int	uint16;
+typedef int				int16;
+
+#elif USHRT_MAX == 0xffff
+
+typedef unsigned short	uint16;
+typedef short			int16;
+
+#else
+#error This machine has no 16-bit type
+#endif
+
+
+#if UINT_MAX == 0xfffffffful
+
+typedef unsigned int	uint32;
+typedef int				int32;
+
+#elif ULONG_MAX == 0xfffffffful
+
+typedef unsigned long	uint32;
+typedef long			int32;
+
+#elif USHRT_MAX == 0xfffffffful
+
+typedef unsigned short	uint32;
+typedef short			int32;
+
+#else
+#error This machine has no 32-bit type
+#endif
+
+#endif
+
+/* What character marks the end of a directory entry? For DOS and
+   Windows, it is "\"; in UNIX it is "/". */
+#if defined(WIN32) || defined(OS2) || defined(__DOS__)
+#define DIR_MARKER '\\'
+#define DIR_MARKER_STR "\\"
+#else
+#define DIR_MARKER '/'
+#define DIR_MARKER_STR "/"
+#endif /* WIN32 */
+
+/* What character(s) marks the end of a line in a text file? 
+   For DOS and Windows, it is "\r\n"; in UNIX it is "\r". */
+#if defined(WIN32) || defined(OS2) || defined(__DOS__)
+#define LINE_END_MARKER_STR "\r\n"
+#else
+#define LINE_END_MARKER_STR "\n"
+#endif /* WIN32 */
+
+#if !defined(WIN32) || !defined(OS2) || !defined(__DOS__)
+#define ROOT_DIR "/"
+#endif
+
+#ifndef NULL
+#ifdef  __cplusplus
+#define NULL    0
+#else
+#define NULL    ((void *)0)
+#endif
+#endif /* NULL */
+
+#ifndef _MAX_PATH
+#define _MAX_PATH 4096
+#endif
+
+#ifndef MAX_PATH
+#define MAX_PATH 4096
+#endif
+
+#undef ACCEPT_ARG2
+#undef ACCEPT_ARG3
+
+#define fa_socklen_t ACCEPT_ARG3
+
+/* kludges for beos */
+#if HAVE_BEOS
+# include <be/kernel/OS.h>
+# define usleep(a)	snooze(a)
+#endif
+
+#endif /* CONFIG_H */
+

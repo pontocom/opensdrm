@@ -1,0 +1,13 @@
+#!/bin/sh
+
+echo "Removing zinf rpms..."
+rpm -e zinf
+echo "Removing binaries, libs, share..."
+rm -f /usr/bin/zinf
+rm -f /usr/local/bin/zinf
+rm -rf /usr/lib/zinf
+rm -rf /usr/local/lib/zinf
+rm -rf /usr/share/zinf
+rm -rf /usr/local/share/zinf
+echo "Removing ~/.zinf"
+rm -rf ~/.zinf 

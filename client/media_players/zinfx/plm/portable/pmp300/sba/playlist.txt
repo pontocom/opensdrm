@@ -1,0 +1,15 @@
+;------------------------------------------------------------------------------
+; example playlist file which can use ';' and '#' to preceed comments
+
+# first entry
+../../mp3/diplomat6_bigmouthshut.mp3
+../../mp3/boogie_beat.mp3
+../../mp3/its_alright.mp3
+../../mp3/im_not_lost_im_exploring.mp3
+../../mp3/hit_the_ground_runnin.mp3
+../../mp3/midnight_high.mp3
+../../mp3/when_she_runs.mp3
+
+; last entry
+../../mp3/Charm.Mp3
+

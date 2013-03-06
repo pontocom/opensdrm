@@ -1,0 +1,7 @@
+; vorbis.def : Declares the module parameters for the DLL.
+
+LIBRARY      "vorbis"
+DESCRIPTION  'Vorbis Decoder Library'
+
+EXPORTS
+	Initialize

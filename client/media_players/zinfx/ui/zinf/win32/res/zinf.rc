@@ -1,0 +1,430 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#define APSTUDIO_HIDDEN_SYMBOLS
+#include "windows.h"
+#undef APSTUDIO_HIDDEN_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_OPENURL DIALOG FIXED IMPURE  0, 0, 280, 21
+STYLE DS_3DLOOK | DS_CONTROL | WS_CHILD | WS_CLIPSIBLINGS
+FONT 8, "MS Sans Serif"
+BEGIN
+    CONTROL         "",IDS_URL,"Static",SS_ETCHEDHORZ,-2,0,282,1
+    LTEXT           "URL:",IDS_URL,6,6,17,8
+    EDITTEXT        IDC_URL,29,4,188,12,ES_AUTOHSCROLL
+    PUSHBUTTON      "Open URL",IDC_OPEN_URL,222,3,50,13
+END
+
+IDD_SAVERIO DIALOG FIXED IMPURE  0, 0, 280, 29
+STYLE DS_3DLOOK | DS_CONTROL | WS_CHILD | WS_CLIPSIBLINGS
+FONT 8, "MS Sans Serif"
+BEGIN
+    CONTROL         "",IDC_STATIC,"Static",SS_ETCHEDHORZ,-2,0,282,1
+    PUSHBUTTON      "Save To Rio",IDC_SAVE_RIO,222,8,50,13
+    LTEXT           "NOTE: Pressing the ""Save To Rio"" button will clear the current contents of your Rio and upload the playlist currently selected in FreeAmp.",
+                    IDC_STATIC,4,3,211,24
+END
+
+IDD_PREF1 DIALOG DISCARDABLE  0, 0, 233, 174
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "General"
+FONT 8, "MS Sans Serif"
+BEGIN
+    COMBOBOX        IDC_UI,81,13,125,50,CBS_DROPDOWNLIST | CBS_SORT | 
+                    WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_PMO,81,31,125,54,CBS_DROPDOWNLIST | CBS_SORT | 
+                    WS_VSCROLL | WS_TABSTOP
+    CONTROL         "Slider1",IDC_PRIORITY,"msctls_trackbar32",TBS_AUTOTICKS | 
+                    WS_TABSTOP,9,66,214,15
+    EDITTEXT        IDC_INPUT,73,122,25,12,ES_AUTOHSCROLL | ES_NUMBER
+    EDITTEXT        IDC_OUTPUT,73,138,25,12,ES_AUTOHSCROLL | ES_NUMBER
+    EDITTEXT        IDC_PREBUFFER,73,154,25,12,ES_AUTOHSCROLL | ES_NUMBER
+    CONTROL         "Stay on top",IDC_STAYONTOP,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,153,126,52,10
+    CONTROL         "Manifest in Tray instead of Taskbar",IDC_TRAY,"Button",
+                    BS_AUTOCHECKBOX | BS_MULTILINE | WS_TABSTOP,153,145,75,
+                    17
+    LTEXT           "User Interface:",IDC_STATIC,27,15,48,8
+    LTEXT           "Output:",IDC_STATIC,50,32,25,8
+    GROUPBOX        "Plug-Ins",IDC_STATIC,3,2,227,48
+    GROUPBOX        "Decoder Priority",IDC_STATIC,3,54,227,52
+    GROUPBOX        "Buffer Sizes",IDC_STATIC,3,110,136,60
+    LTEXT           "Input Buffer Size:",IDC_STATIC,13,124,57,8
+    LTEXT           "Output Buffer Size:",IDC_STATIC,8,140,60,8
+    LTEXT           "Kilobytes",IDC_STATIC,103,124,29,8
+    LTEXT           "Kilobytes",IDC_STATIC,103,140,29,8
+    LTEXT           "Low",IDC_STATIC,41,84,14,8
+    LTEXT           "Normal",IDC_STATIC,104,84,23,8
+    LTEXT           "High",IDC_STATIC,175,84,16,8
+    LTEXT           "Realtime",IDC_STATIC,199,84,28,8
+    GROUPBOX        "Misc",IDC_STATIC,145,110,85,60
+    LTEXT           "Idle",IDC_STATIC,10,84,12,8
+    CTEXT           "Below Normal",IDC_STATIC,69,84,29,15
+    CTEXT           "Above Normal",IDC_STATIC,135,84,27,16
+    LTEXT           "Prebuffer Streams:",IDC_STATIC,9,156,59,8
+    LTEXT           "Seconds",IDC_STATIC,103,156,29,8
+END
+
+IDD_PREF3 DIALOG DISCARDABLE  0, 0, 233, 174
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Debug"
+FONT 8, "MS Sans Serif"
+BEGIN
+    GROUPBOX        "",IDC_STATIC,3,84,227,86
+    LTEXT           " ",IDC_STATIC,9,84,8,8
+    CONTROL         "Enable Logging",IDC_LOG,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,11,83,63,10
+    CONTROL         "Log general player errors (e.g. Loading plugins)",
+                    IDC_LOGMAIN,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,13,98,
+                    163,10
+    CONTROL         "Log input from PMIs (e.g. File, HTTP, SHOUTcast, icecast)",
+                    IDC_LOGINPUT,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,13,
+                    112,174,10
+    CONTROL         "Log output from PMOs (e.g. Wave, DirectSound)",
+                    IDC_LOGOUTPUT,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,13,
+                    126,169,10
+    CONTROL         "Log decoding process (e.g. MP3, CDDA)",IDC_LOGDECODER,
+                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,13,140,145,10
+    CONTROL         "Log performance issues (e.g. Timings, Buffer Under/Overflows)",
+                    IDC_LOGPERFORMANCE,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,
+                    13,154,213,10
+    LTEXT           "If you are experiencing a problem with FreeAmp it is possible to log what the program is doing in order to help us track down the cause. When you enable logging a file is created in the program's install directory ",
+                    IDC_STATIC,3,3,227,24
+    LTEXT           "called freeamp.log. You should send us the log file when you report a bug.",
+                    IDC_STATIC,3,27,227,17
+    LTEXT           "You have the ability to narrow the logging to a particular portion of FreeAmp by selecting the various logging options. If you are not sure in which portion of the program the problem is occuring you can simply enable all the logging options.",
+                    IDC_STATIC,3,46,227,32
+END
+
+IDD_PREF2 DIALOG DISCARDABLE  0, 0, 233, 174
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Streaming"
+FONT 8, "MS Sans Serif"
+BEGIN
+    LTEXT           "Buffer Streams For",IDC_STATIC,57,17,59,8
+    EDITTEXT        IDC_STREAM_INTERVAL,117,15,25,12,ES_AUTOHSCROLL | 
+                    ES_NUMBER
+    LTEXT           "Seconds",IDC_STATIC,146,17,29,8
+    GROUPBOX        "",IDC_STATIC,3,40,227,42
+    LTEXT           " ",IDC_STATIC,9,42,8,8
+    CONTROL         "Save Streams Locally",IDC_SAVESTREAMS,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,11,41,83,10
+    LTEXT           "Save Location:",IDC_SAVELOCATION_TEXT,11,52,49,8
+    EDITTEXT        IDC_STREAMSAVEDIR,11,62,160,14,ES_AUTOHSCROLL
+    PUSHBUTTON      "Browse...",IDC_BROWSE,175,62,50,14
+    GROUPBOX        "",IDC_STATIC,3,89,227,41
+    LTEXT           " ",IDC_STATIC,9,90,8,8
+    CONTROL         "Use Proxy Server",IDC_USEPROXY,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,11,89,69,10
+    EDITTEXT        IDC_PROXYADDRESS,11,111,173,14,ES_AUTOHSCROLL
+    CTEXT           ":",IDC_COLON_TEXT,185,114,8,8
+    EDITTEXT        IDC_PORT,193,111,29,14,ES_AUTOHSCROLL | ES_NUMBER
+    LTEXT           "Port:",IDC_PORT_TEXT,193,101,15,8
+    LTEXT           "Proxy Address:",IDC_PROXYADDRESS_TEXT,11,101,47,8
+    GROUPBOX        "",IDC_STATIC,3,137,227,32
+    LTEXT           " ",IDC_STATIC,9,138,8,8
+    CONTROL         "Use Alternate IP",IDC_USETHISIP,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,11,137,64,10
+    EDITTEXT        IDC_IPADDRESS1,90,149,18,14,ES_AUTOHSCROLL | ES_NUMBER
+    LTEXT           "IP Address:",IDC_IPADDRESS_TEXT,47,153,37,8
+    CTEXT           ".",IDC_PERIOD1,108,155,8,8
+    EDITTEXT        IDC_IPADDRESS2,116,149,18,14,ES_AUTOHSCROLL | ES_NUMBER
+    CTEXT           ".",IDC_PERIOD2,134,155,8,8
+    EDITTEXT        IDC_IPADDRESS3,143,149,18,14,ES_AUTOHSCROLL | ES_NUMBER
+    CTEXT           ".",IDC_PERIOD3,161,155,8,8
+    EDITTEXT        IDC_IPADDRESS4,169,149,18,14,ES_AUTOHSCROLL | ES_NUMBER
+    GROUPBOX        "Buffer Sizes",IDC_STATIC,3,3,227,30
+END
+
+IDD_PREF4 DIALOG DISCARDABLE  0, 0, 233, 174
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "About"
+FONT 8, "MS Sans Serif"
+BEGIN
+    LTEXT           "Zinf is an Open Source effort to build the best digital audio player available.  In the interest of supporting the free software community, while at the same time fostering the growth of the online delivery of",
+                    IDC_STATIC,3,24,227,24
+    LTEXT           "music, EMusic.com, THE Source for Downloadable Music, is funding both the FreeAmp.org domain and the efforts of the FreeAmp team. The FreeAmp team consists of: Mark B. Elrod, Robert Kaye, Brett Thomas, Jason Woodward, and Mark H. Weaver.",
+                    IDC_STATIC,3,48,227,33
+    LTEXT           "Other people have also contributed to FreeAmp:",
+                    IDC_STATIC,3,83,227,9
+    LTEXT           "Zinf is being released under the terms of the GPL. As is provided by the GPL, all of EMusic.com's and your efforts toward FreeAmp will be released back to the community at large.",
+                    IDC_STATIC,3,122,227,25
+    LTEXT           "Alan Cutter, Gabor Fleischer, Jean-Michel HERVE, Hiromasa Kato, Michael Bruun Petersen, Sylvain Rebaud, The Snowblind Alliance, Tom Spindler, Valters Vingolds, and Bill Yuan.",
+                    IDC_STATIC,3,92,227,24
+    LTEXT           "version 1.3.1",IDC_STATIC,96,14,42,8
+    LTEXT           "Zinf",IDC_STATIC,102,5,29,8
+    PUSHBUTTON      "Visit FreeAmp.org",IDC_GOTOFREEAMP,30,156,67,14
+    PUSHBUTTON      "Visit EMusic.com",IDC_GOTOEMUSIC,136,156,67,14
+END
+
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#define APSTUDIO_HIDDEN_SYMBOLS\r\n"
+    "#include ""windows.h""\r\n"
+    "#undef APSTUDIO_HIDDEN_SYMBOLS\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDB_DIALS               BITMAP  DISCARDABLE     "dials.bmp"
+IDB_CONTROL_MASK_MID    BITMAP  DISCARDABLE     "control_mask_mid.bmp"
+IDB_BIG_FONT            BITMAP  DISCARDABLE     "big_font.bmp"
+IDB_SMALL_FONT          BITMAP  DISCARDABLE     "small_font.bmp"
+IDB_LOGO                BITMAP  DISCARDABLE     "logo.bmp"
+IDB_DIALS_256           BITMAP  DISCARDABLE     "dials256.bmp"
+IDB_SMALL_FONT_256      BITMAP  DISCARDABLE     "small_font256.bmp"
+IDB_LOGO_256            BITMAP  DISCARDABLE     "logo256.bmp"
+IDB_BIG_FONT_256        BITMAP  DISCARDABLE     "big_font256.bmp"
+IDB_LAST                BITMAP  DISCARDABLE     "last_buttons.bmp"
+IDB_NEXT                BITMAP  DISCARDABLE     "next_buttons.bmp"
+IDB_PAUSE               BITMAP  DISCARDABLE     "pause_buttons.bmp"
+IDB_PLAY                BITMAP  DISCARDABLE     "play_buttons.bmp"
+IDB_STOP                BITMAP  DISCARDABLE     "stop_buttons.bmp"
+IDB_CLOSE               BITMAP  DISCARDABLE     "close_buttons.bmp"
+IDB_MINIMIZE            BITMAP  DISCARDABLE     "minimize_buttons.bmp"
+IDB_MODE                BITMAP  DISCARDABLE     "mode_buttons.bmp"
+IDB_STOP_256            BITMAP  DISCARDABLE     "stop_buttons256.bmp"
+IDB_LAST_256            BITMAP  DISCARDABLE     "last_buttons256.bmp"
+IDB_MINIMIZE_256        BITMAP  DISCARDABLE     "minimize_buttons256.bmp"
+IDB_MODE_256            BITMAP  DISCARDABLE     "mode_buttons256.bmp"
+IDB_NEXT_256            BITMAP  DISCARDABLE     "next_buttons256.bmp"
+IDB_PAUSE_256           BITMAP  DISCARDABLE     "pause_buttons256.bmp"
+IDB_PLAY_256            BITMAP  DISCARDABLE     "play_buttons256.bmp"
+IDB_CLOSE_256           BITMAP  DISCARDABLE     "close_buttons256.bmp"
+IDB_OPEN                BITMAP  DISCARDABLE     "open_buttons.bmp"
+IDB_REPEAT              BITMAP  DISCARDABLE     "repeat_buttons.bmp"
+IDB_SHUFFLE             BITMAP  DISCARDABLE     "shuffle_buttons.bmp"
+IDB_SHUFFLE_256         BITMAP  DISCARDABLE     "shuffle_buttons256.bmp"
+IDB_REPEAT_256          BITMAP  DISCARDABLE     "repeat_buttons256.bmp"
+IDB_OPEN_256            BITMAP  DISCARDABLE     "open_buttons256.bmp"
+IDB_SHUFFLED_ICON_256   BITMAP  DISCARDABLE     "shuffled_icon256.bmp"
+IDB_REPEAT_ALL_ICON_256 BITMAP  DISCARDABLE     "all_icon256.bmp"
+IDB_REPEAT_ICON         BITMAP  DISCARDABLE     "repeat_icon.bmp"
+IDB_REPEAT_ICON_256     BITMAP  DISCARDABLE     "repeat_icon256.bmp"
+IDB_SHUFFLED_ICON       BITMAP  DISCARDABLE     "shuffled_icon.bmp"
+IDB_REPEAT_ALL_ICON     BITMAP  DISCARDABLE     "all_icon.bmp"
+IDB_WINDOW_MASK_MID     BITMAP  DISCARDABLE     "window_mask_mid.bmp"
+IDB_BODY                BITMAP  DISCARDABLE     "body.bmp"
+IDB_BODY_256            BITMAP  DISCARDABLE     "body256.bmp"
+IDB_TIME_BACK           BITMAP  DISCARDABLE     "time_background.bmp"
+IDB_DRAWER_MASK         BITMAP  DISCARDABLE     "drawer_mask.bmp"
+IDB_DRAWER              BITMAP  DISCARDABLE     "drawer.bmp"
+IDB_PLAYLIST_BODY       BITMAP  DISCARDABLE     "playlist_back.bmp"
+IDB_PLAYLIST_CONTROL_MASK BITMAP  DISCARDABLE     "playlist_control_mask.bmp"
+IDB_PANEL_BACKING_MASK  BITMAP  DISCARDABLE     "panel_backing_mask.bmp"
+IDB_PANEL_BACKING       BITMAP  DISCARDABLE     "panel_backing.bmp"
+IDB_SCROLLBAR           BITMAP  DISCARDABLE     "scrollbar.bmp"
+IDB_TIME_BACK_256       BITMAP  DISCARDABLE     "time_background256.bmp"
+IDB_SCROLLBAR_256       BITMAP  DISCARDABLE     "scrollbar256.bmp"
+IDB_PANEL_BACKING_256   BITMAP  DISCARDABLE     "panel_backing256.bmp"
+IDB_PLAYLIST_BODY_256   BITMAP  DISCARDABLE     "playlist_back256.bmp"
+IDB_DRAWER_256          BITMAP  DISCARDABLE     "drawer256.bmp"
+IDB_DELETE_256          BITMAP  DISCARDABLE     "delete_buttons256.bmp"
+IDB_ADD_256             BITMAP  DISCARDABLE     "add_buttons256.bmp"
+IDB_DELETE              BITMAP  DISCARDABLE     "delete_buttons.bmp"
+IDB_ADD                 BITMAP  DISCARDABLE     "add_buttons.bmp"
+IDB_SAVE_256            BITMAP  DISCARDABLE     "save_buttons256.bmp"
+IDB_LOAD_256            BITMAP  DISCARDABLE     "load_buttons256.bmp"
+IDB_SAVE                BITMAP  DISCARDABLE     "save_buttons.bmp"
+IDB_LOAD                BITMAP  DISCARDABLE     "load_buttons.bmp"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Cursor
+//
+
+IDC_DIAL                CURSOR  DISCARDABLE     "arrow.cur"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDI_EXE_ICON            ICON    DISCARDABLE     "icon1.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDM_MAIN MENU DISCARDABLE 
+BEGIN
+    POPUP "popup"
+    BEGIN
+        MENUITEM "Open...",                     IDC_OPEN
+        MENUITEM "Save...",                     IDC_SAVE
+        MENUITEM SEPARATOR
+        MENUITEM "Preferences...",              IDC_PREF
+        MENUITEM SEPARATOR
+        MENUITEM "Exit",                        IDC_EXIT
+    END
+END
+
+IDM_TRAY MENU DISCARDABLE 
+BEGIN
+    POPUP "popup"
+    BEGIN
+        MENUITEM "Open...",                     IDC_OPEN
+        MENUITEM "Save...",                     IDC_SAVE
+        MENUITEM SEPARATOR
+        MENUITEM "Preferences...",              IDC_PREF
+        MENUITEM SEPARATOR
+        MENUITEM "Play",                        IDC_PLAY
+        MENUITEM "Pause",                       IDC_PAUSE
+        MENUITEM "Next Song",                   IDC_NEXTSONG
+        MENUITEM "Last Song",                   IDC_LASTSONG
+        MENUITEM SEPARATOR
+        MENUITEM "Exit",                        IDC_EXIT
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    IDD_PREF1, DIALOG
+    BEGIN
+        LEFTMARGIN, 3
+        RIGHTMARGIN, 230
+        TOPMARGIN, 3
+        BOTTOMMARGIN, 171
+    END
+
+    IDD_PREF3, DIALOG
+    BEGIN
+        LEFTMARGIN, 3
+        RIGHTMARGIN, 230
+        TOPMARGIN, 3
+        BOTTOMMARGIN, 170
+    END
+
+    IDD_PREF2, DIALOG
+    BEGIN
+        LEFTMARGIN, 3
+        RIGHTMARGIN, 230
+        TOPMARGIN, 3
+        BOTTOMMARGIN, 169
+    END
+
+    IDD_PREF4, DIALOG
+    BEGIN
+        LEFTMARGIN, 3
+        RIGHTMARGIN, 230
+        TOPMARGIN, 3
+        BOTTOMMARGIN, 170
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+#ifndef _MAC
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,3,1,0
+ PRODUCTVERSION 1,3,1,0
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904b0"
+        BEGIN
+            VALUE "Comments", "For the latest version go to http://www.zinf.org\0"
+            VALUE "CompanyName", "Zinf Open Source Development Effort\0"
+            VALUE "FileDescription", "Zinf\0"
+            VALUE "FileVersion", "2.2.1.0\0"
+            VALUE "InternalName", "Zinf\0"
+            VALUE "LegalCopyright", "Copyright © GoodNoise Corporation 1999\0"
+            VALUE "LegalTrademarks", "Zinf, GoodNoise\0"
+            VALUE "OriginalFilename", "freeamp.ui\0"
+            VALUE "ProductName", "Zinf\0"
+            VALUE "ProductVersion", "2.2.1\0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1200
+    END
+END
+
+#endif    // !_MAC
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

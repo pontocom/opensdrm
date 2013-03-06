@@ -1,0 +1,7 @@
+; id3v2.def : Declares the module parameters for the DLL.
+
+LIBRARY      "id3v2"
+DESCRIPTION  'ID3v2 MetaData Library'
+
+EXPORTS
+	Initialize
