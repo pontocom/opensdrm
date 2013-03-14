@@ -76,7 +76,7 @@ function validateFormAdd()
 
 <?php
 	$its_admin = new ITS_Administrator();
-	$servers = $its_admin->listServers_();
+	$servers = $its_admin->listIPMPtools();
 ?>
 <table border="1" align="center">
 <tr>
