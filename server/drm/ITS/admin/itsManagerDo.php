@@ -10,7 +10,8 @@ $itsadm = new ITS_Administrator();
 
 if($_REQUEST['what']=='addnew')
 {
-	$itsadm->addServer($_REQUEST['ctype'], $_REQUEST['location']);
+	//$itsadm->addServer($_REQUEST['ctype'], $_REQUEST['location']);
+    //$itsadm->addnewIPMPtool(/*IPMPTOOLID*/, /*IPMPTOOLURL*/, /*IPMPTOOLDESCRIPTION*/);
 	header('Location: itsManager.php');	
 }
 if($_REQUEST['what']=='remove')

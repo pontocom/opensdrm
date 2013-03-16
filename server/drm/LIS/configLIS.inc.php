@@ -31,8 +31,8 @@ Temple Place, Suite 330, Boston, MA 02111-1307 USA
 //General configuration file
 //AUS DB DIRECTIVES
 $LIS_DB_TYPE = "mysql";
-$LIS_DB_SERVER = "localhost";
-$LIS_DB_DBNAME = "lis_sf";
+$LIS_DB_SERVER = "127.0.0.1";
+$LIS_DB_DBNAME = "lisws_dev";
 $LIS_DB_USRNAME = "root";
 $LIS_DB_PWD = "";
 

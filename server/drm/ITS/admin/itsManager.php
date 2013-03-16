@@ -77,6 +77,10 @@ function validateFormAdd()
 <?php
 	$its_admin = new ITS_Administrator();
 	$servers = $its_admin->listIPMPtools();
+    if($servers == -1) // no ipmp tools registered yet
+    {
+        echo '<center>No IPMP tools registered yet!</center>';
+    } else {
 ?>
 <table border="1" align="center">
 <tr>
@@ -108,20 +112,28 @@ Location
 	}
 ?>
 </table>
+<?php
+    }
+?>
 <!-- Part of the login form -->
 <form action="itsManagerDo.php" method="POST" name="ncform">
   <table border="0" align="center">
     <tr>
-      <td colspan="2" class="head">Add new server</td>
+      <td colspan="2" class="head">Add new IPMP tool</td>
     </tr>
     <tr>
-      <td class="required"> Component Type: </td>
+      <td class="required"> IPMP tool ID: </td>
       <td><input type="text" name="ctype" id="ctype"><input type="hidden" name="what" value="addnew"></td>
     </tr>
     <tr>
       <td class="required"> Location (URL): </td>
       <td><input type="text" name="location" id="location"></td>
     </tr>
+      <tr>
+          <td class="required"> IPMP tool description: </td>
+          <td>
+              <input type="text" name="location" id="location"></td>
+      </tr>
     <tr>
       <td>  </td>
       <td><input type="button" value="Add" onclick="javascript:validateFormAdd()"></td>

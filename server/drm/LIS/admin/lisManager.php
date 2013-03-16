@@ -75,8 +75,69 @@ function validateFormAdd()
 <p align="center"><a href="lisManagerDo.php?what=logout" class="logout">Logout</a></p>
 
 <?php
-	$lis_admin = new LIS_Administrator();
-	$servers = $lis_admin->listServers_();
+$lis_admin = new LIS_Administrator();
+$l = $lis_admin->listAllLicenses();
+?>
+<table border="1" align="center">
+    <tr>
+        <td class="head">
+            License Identifier
+        </td>
+        <td class="head">
+            Template ID
+        </td>
+        <td class="head">
+            User ID
+        </td>
+        <td class="head">
+            Content ID
+        </td>
+        <td class="head">
+            License
+        </td>
+        <td class="head">
+            Content ID hash
+        </td>
+        <td class="head">
+        </td>
+    </tr>
+    <?php
+    if($l != -1){
+        foreach($l as $license)
+        {
+            ?>
+            <tr>
+                <td>
+                    <?php echo $license[0]; ?>
+                </td>
+                <td>
+                    <?php echo $license[1]; ?>
+                </td>
+                <td>
+                    <?php echo $license[2]; ?>
+                </td>
+                <td>
+                    <?php echo $license[3]; ?>
+                </td>
+                <td>
+                    <?php echo htmlentities($license[4]); ?>
+                </td>
+                <td>
+            <pre><?php echo  $license[5]; ?></code>
+                </td>
+                <td>
+                    <a href="lisManagerDo.php?what=remove&ctype=<?php echo $servers[$n]; ?>">Remove</a>
+                </td>
+            </tr>
+        <?php
+        }
+    }
+        ?>
+</table>
+<br><br>
+
+<?php
+    $lt = $lis_admin->listAllLicenseTemplates();
 ?>
 <table border="1" align="center">
 <tr>
@@ -84,22 +145,46 @@ function validateFormAdd()
 Component Identifier
 </td>
 <td class="head">
-Location
+Type
 </td>
-<td class="head">
-</td>
+    <td class="head">
+        Description
+    </td>
+    <td class="head">
+        Content Type
+    </td>
+    <td class="head">
+        Num Parameters
+    </td>
+    <td class="head">
+        License template
+    </td>
+    <td class="head">
+    </td>
 </tr>
-<?php 
-	for($n=0; $n<count($servers); $n=$n+2)
-	{
-?>		
+<?php
+    foreach($lt as $template)
+    {
+?>
 <tr>
 <td>
-<?php echo $servers[$n]; ?>
+<?php echo $template[0]; ?>
 </td>
-<td>
-<?php echo $servers[$n+1]; ?>
-</td>
+    <td>
+        <?php echo $template[1]; ?>
+    </td>
+    <td>
+        <?php echo $template[2]; ?>
+    </td>
+    <td>
+        <?php echo $template[3]; ?>
+    </td>
+    <td>
+        <?php echo $template[4]; ?>
+    </td>
+    <td>
+        <pre><?php echo htmlentities($template[5]); ?></code>
+    </td>
 <td>
 <a href="lisManagerDo.php?what=remove&ctype=<?php echo $servers[$n]; ?>">Remove</a>
 </td>
@@ -108,26 +193,7 @@ Location
 	}
 ?>
 </table>
-<!-- Part of the login form -->
-<form action="lisManagerDo.php" method="POST" name="ncform">
-  <table border="0" align="center">
-    <tr>
-      <td colspan="2" class="head">Add new server</td>
-    </tr>
-    <tr>
-      <td class="required"> Component Type: </td>
-      <td><input type="text" name="ctype" id="ctype"><input type="hidden" name="what" value="addnew"></td>
-    </tr>
-    <tr>
-      <td class="required"> Location (URL): </td>
-      <td><input type="text" name="location" id="location"></td>
-    </tr>
-    <tr>
-      <td>  </td>
-      <td><input type="button" value="Add" onclick="javascript:validateFormAdd()"></td>
-    </tr>
-  </table>
-</form>
+
 <p align="center" class="footer"><?php echo $GLOBALS['VERSION'].$GLOBALS['FOOTER_NOTE'];?></p>
 </body>
 </html>

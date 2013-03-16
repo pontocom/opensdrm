@@ -256,6 +256,48 @@ class LIS_Administrator extends DatabaseHandler
 </table>";
 	}
 
+    /**
+     * Function that lists all the licenses created at the license server
+     */
+    public function listAllLicenses(){
+        $sql = 'SELECT * FROM license';
+        $rs=$this->db_con->executeQuery($sql);
+        if($rs->RecordCount()==0) { // no results were found
+            $result = -1;
+        } else { // we build an XML structure to provide the needed license template list
+            $result = array();
+            $n=0;
+            while(!$rs->EOF) {
+                $result[$n] = array($rs->fields["id"], $rs->fields["template_id"], $rs->fields["uid"], $rs->fields["cid"], $rs->fields["license"], $rs->fields["cid_hash"]);
+                $n++;
+                $rs->MoveNext();
+            }
+        }
+
+        return $result;
+    }
+
+    /**
+     * Function that lists all the license templates
+     */
+    public function listAllLicenseTemplates(){
+        $sql = 'SELECT * FROM license_template';
+        $rs=$this->db_con->executeQuery($sql);
+        if($rs->RecordCount()==0) { // no results were found
+            $result = -1;
+        } else { // we build an XML structure to provide the needed license template list
+            $result = array();
+            $n=0;
+            while(!$rs->EOF) {
+                $result[$n] = array($rs->fields["id"], $rs->fields["type"], $rs->fields["description"], $rs->fields["content_type"], $rs->fields["num_params"], $rs->fields["license_template"]);
+                $n++;
+                $rs->MoveNext();
+            }
+        }
+
+        return $result;
+    }
+
 
 	/**
 	 * Closes the database access.
