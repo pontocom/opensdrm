@@ -31,8 +31,8 @@ Temple Place, Suite 330, Boston, MA 02111-1307 USA
 //General configuration file
 //PGW DB DIRECTIVES
 $PGW_DB_TYPE = "mysql";
-$PGW_DB_SERVER = "localhost";
-$PGW_DB_DBNAME = "pgw_sf";
+$PGW_DB_SERVER = "127.0.0.1";
+$PGW_DB_DBNAME = "pgwws_dev";
 $PGW_DB_USRNAME = "root";
 $PGW_DB_PWD = "";
 $GLOBALS['VERSION'] = "<a href='../../'>OpenSDRM</a> Payment Gateway Server 0.2sf ";

@@ -76,58 +76,110 @@ function validateFormAdd()
 
 <?php
 	$mds_admin = new MDS_Administrator();
-	$servers = $mds_admin->listServers_();
+	$cd = $mds_admin->listContentDelivery();
+
+    $cl = $mds_admin->listContentLocation();
 ?>
+
 <table border="1" align="center">
-<tr>
-<td class="head">
-Component Identifier
-</td>
-<td class="head">
-Location
-</td>
-<td class="head">
-</td>
-</tr>
-<?php 
-	for($n=0; $n<count($servers); $n=$n+2)
-	{
-?>		
-<tr>
-<td>
-<?php echo $servers[$n]; ?>
-</td>
-<td>
-<?php echo $servers[$n+1]; ?>
-</td>
-<td>
-<a href="mdsManagerDo.php?what=remove&ctype=<?php echo $servers[$n]; ?>">Remove</a>
-</td>
-</tr>
-<?php
-	}
-?>
+    <tr>
+        <td class="head">
+            ID
+        </td>
+        <td class="head">
+            Content ID
+        </td>
+        <td class="head">
+            User ID
+        </td>
+        <td class="head">
+            Status
+        </td>
+        <td class="head">
+        </td>
+    </tr>
+    <?php
+    if($cd != -1){
+        foreach($cd as $delivery)
+        {
+            ?>
+            <tr>
+                <td>
+                    <?php echo $delivery[0]; ?>
+                </td>
+                <td>
+                    <?php echo $delivery[1]; ?>
+                </td>
+                <td>
+                    <?php echo $delivery[2]; ?>
+                </td>
+                <td>
+                    <?php echo $delivery[3]; ?>
+                </td>
+                <td>
+                    <a href="mdsManagerDo.php?what=remove&ctype=<?php echo $delivery[0]; ?>">Remove</a>
+                </td>
+            </tr>
+        <?php
+        }
+    }
+    ?>
 </table>
-<!-- Part of the login form -->
-<form action="mdsManagerDo.php" method="POST" name="ncform">
-  <table border="0" align="center">
+<br><br>
+
+<table border="1" align="center">
     <tr>
-      <td colspan="2" class="head">Add new server</td>
+        <td class="head">
+            ID
+        </td>
+        <td class="head">
+            Content ID
+        </td>
+        <td class="head">
+            Type
+        </td>
+        <td class="head">
+            Protocol
+        </td>
+        <td class="head">
+            Location
+        </td>
+        <td class="head">
+        </td>
     </tr>
-    <tr>
-      <td class="required"> Component Type: </td>
-      <td><input type="text" name="ctype" id="ctype"><input type="hidden" name="what" value="addnew"></td>
-    </tr>
-    <tr>
-      <td class="required"> Location (URL): </td>
-      <td><input type="text" name="location" id="location"></td>
-    </tr>
-    <tr>
-      <td>  </td>
-      <td><input type="button" value="Add" onclick="javascript:validateFormAdd()"></td>
-    </tr>
-  </table>
-</form>
+    <?php
+    if($cl != -1){
+        foreach($cl as $location)
+        {
+            ?>
+            <tr>
+                <td>
+                    <?php echo $location[0]; ?>
+                </td>
+                <td>
+                    <?php echo $location[1]; ?>
+                </td>
+                <td>
+                    <?php echo $location[2]; ?>
+                </td>
+                <td>
+                    <?php echo $location[3]; ?>
+                </td>
+                <td>
+                    <?php echo $location[4]; ?>
+                </td>
+                <td>
+                    <a href="mdsManagerDo.php?what=remove&ctype=<?php echo $location[0]; ?>">Remove</a>
+                </td>
+            </tr>
+        <?php
+        }
+    }
+    ?>
+</table>
+<br><br>
+
+
 <p align="center" class="footer"><?php echo $GLOBALS['VERSION'].$GLOBALS['FOOTER_NOTE'];?></p>
 </body>
 </html>

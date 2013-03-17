@@ -76,58 +76,52 @@ function validateFormAdd()
 
 <?php
 	$pgw_admin = new PGW_Administrator();
-	$servers = $pgw_admin->listServers_();
+	$t = $pgw_admin->listAllTransactions();
 ?>
 <table border="1" align="center">
 <tr>
 <td class="head">
-Component Identifier
+Transaction #
 </td>
 <td class="head">
-Location
+COS ID
 </td>
+    <td class="head">
+        Payment Data
+    </td>
+    <td class="head">
+        Status
+    </td>
 <td class="head">
 </td>
 </tr>
-<?php 
-	for($n=0; $n<count($servers); $n=$n+2)
-	{
-?>		
-<tr>
-<td>
-<?php echo $servers[$n]; ?>
-</td>
-<td>
-<?php echo $servers[$n+1]; ?>
-</td>
-<td>
-<a href="pgwManagerDo.php?what=remove&ctype=<?php echo $servers[$n]; ?>">Remove</a>
-</td>
-</tr>
-<?php
-	}
-?>
+    <?php
+    if($t != -1){
+        foreach($t as $transaction)
+        {
+            ?>
+            <tr>
+                <td>
+                    <?php echo $transaction[0]; ?>
+                </td>
+                <td>
+                    <?php echo $transaction[1]; ?>
+                </td>
+                <td>
+                    <?php echo $transaction[2]; ?>
+                </td>
+                <td>
+                    <?php echo $transaction[3]; ?>
+                </td>
+                <td>
+                    <a href="pgwManagerDo.php?what=remove&ctype=<?php echo $transaction[0]; ?>">Remove</a>
+                </td>
+            </tr>
+        <?php
+        }
+    }
+    ?>
 </table>
-<!-- Part of the login form -->
-<form action="pgwManagerDo.php" method="POST" name="ncform">
-  <table border="0" align="center">
-    <tr>
-      <td colspan="2" class="head">Add new server</td>
-    </tr>
-    <tr>
-      <td class="required"> Component Type: </td>
-      <td><input type="text" name="ctype" id="ctype"><input type="hidden" name="what" value="addnew"></td>
-    </tr>
-    <tr>
-      <td class="required"> Location (URL): </td>
-      <td><input type="text" name="location" id="location"></td>
-    </tr>
-    <tr>
-      <td>  </td>
-      <td><input type="button" value="Add" onclick="javascript:validateFormAdd()"></td>
-    </tr>
-  </table>
-</form>
 <p align="center" class="footer"><?php echo $GLOBALS['VERSION'].$GLOBALS['FOOTER_NOTE'];?></p>
 </body>
 </html>

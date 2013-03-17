@@ -256,6 +256,42 @@ class MDS_Administrator extends DatabaseHandler
 </table>";
 	}
 
+    public function listContentDelivery(){
+        $sql = 'SELECT * FROM content_delivery';
+        $rs=$this->db_con->executeQuery($sql);
+        if($rs->RecordCount()==0) { // no results were found
+            $result = -1;
+        } else { // we build an XML structure to provide the needed license template list
+            $result = array();
+            $n=0;
+            while(!$rs->EOF) {
+                $result[$n] = array($rs->fields["id"], $rs->fields["cid"], $rs->fields["uid"], $rs->fields["status"]);
+                $n++;
+                $rs->MoveNext();
+            }
+        }
+
+        return $result;
+    }
+
+    public function listContentLocation(){
+        $sql = 'SELECT * FROM content_location';
+        $rs=$this->db_con->executeQuery($sql);
+        if($rs->RecordCount()==0) { // no results were found
+            $result = -1;
+        } else { // we build an XML structure to provide the needed license template list
+            $result = array();
+            $n=0;
+            while(!$rs->EOF) {
+                $result[$n] = array($rs->fields["id"], $rs->fields["cid"], $rs->fields["type"], $rs->fields["protocol"], $rs->fields["location"]);
+                $n++;
+                $rs->MoveNext();
+            }
+        }
+
+        return $result;
+    }
+
 
 	/**
 	 * Closes the database access.

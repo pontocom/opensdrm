@@ -36,8 +36,8 @@ $REGISTRATION_NUMBER = 'urn:mpeg:mpeg21:diid:doi:';
 $INTERNAL_ID = 'org/medianet/mediabox/';
 //RGS DB DIRECTIVES
 $GLOBALS['RGS_DB_TYPE'] = "mysql";
-$GLOBALS['RGS_DB_SERVER'] = "localhost";
-$GLOBALS['RGS_DB_DBNAME'] = "rgs_sf";
+$GLOBALS['RGS_DB_SERVER'] = "127.0.0.1";
+$GLOBALS['RGS_DB_DBNAME'] = "rgsws_dev";
 $GLOBALS['RGS_DB_USRNAME'] = "root";
 $GLOBALS['RGS_DB_PWD'] = "";
 $GLOBALS['VERSION'] = "<a href='../../'>OpenSDRM</a> Registration Server 0.2sf ";

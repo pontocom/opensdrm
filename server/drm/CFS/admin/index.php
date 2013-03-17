@@ -1,6 +1,6 @@
 <?
 session_start();
-if($_SESSION['LOGIN']==1) {
+if(isset($_SESSION['LOGIN']) && $_SESSION['LOGIN']==1) {
 	header("Location: cfsManager.php");
 }
 //require_once("Zend/Config/Ini.php");

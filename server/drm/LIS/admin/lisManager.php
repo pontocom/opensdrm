@@ -126,7 +126,7 @@ $l = $lis_admin->listAllLicenses();
             <pre><?php echo  $license[5]; ?></code>
                 </td>
                 <td>
-                    <a href="lisManagerDo.php?what=remove&ctype=<?php echo $servers[$n]; ?>">Remove</a>
+                    <a href="lisManagerDo.php?what=remove&ctype=<?php echo $license[0]; ?>">Remove</a>
                 </td>
             </tr>
         <?php
@@ -186,7 +186,7 @@ Type
         <pre><?php echo htmlentities($template[5]); ?></code>
     </td>
 <td>
-<a href="lisManagerDo.php?what=remove&ctype=<?php echo $servers[$n]; ?>">Remove</a>
+<a href="lisManagerDo.php?what=remove&ctype=<?php echo $template[0]; ?>">Remove</a>
 </td>
 </tr>
 <?php

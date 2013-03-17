@@ -5,7 +5,8 @@ include_once($_SERVER["DOCUMENT_ROOT"].$GLOBALS['INSTALLATION_DIR']."/PGW/admin/
 
 if($_REQUEST['op']=="REGISTRATION") {
 	$pgw_admin = new PGW_Administrator();
-	if($pgw_admin->createNewAdminAccount_($_REQUEST['username'], $_REQUEST['password'])==true){
+	//if($pgw_admin->createNewAdminAccount_($_REQUEST['username'], $_REQUEST['password'])==true){
+    if($pgw_admin->createNewAdminAccount($_REQUEST['username'], $_REQUEST['password'])==true){
 		$_SESSION['LOGIN']=1;
 		header("Location: pgwManager.php");
 	} else {
@@ -13,7 +14,8 @@ if($_REQUEST['op']=="REGISTRATION") {
 	}
 } else {
 	$pgw_admin = new PGW_Administrator();
-	if($pgw_admin->verifyLogin_($_REQUEST['username'], $_REQUEST['password'])==true){
+	//if($pgw_admin->verifyLogin_($_REQUEST['username'], $_REQUEST['password'])==true){
+    if($pgw_admin->verifyLogin($_REQUEST['username'], $_REQUEST['password'])==true){
 		$_SESSION['LOGIN']=1;
 		header("Location: pgwManager.php");
 	} else {

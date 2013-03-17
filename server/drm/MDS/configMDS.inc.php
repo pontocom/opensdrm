@@ -31,8 +31,8 @@ Temple Place, Suite 330, Boston, MA 02111-1307 USA
 //General configuration file
 //AUS DB DIRECTIVES
 $MDS_DB_TYPE = "mysql";
-$MDS_DB_SERVER = "localhost";
-$MDS_DB_DBNAME = "mds_sf";
+$MDS_DB_SERVER = "127.0.0.1";
+$MDS_DB_DBNAME = "mdsws_dev";
 $MDS_DB_USRNAME = "root";
 $MDS_DB_PWD = "";
 

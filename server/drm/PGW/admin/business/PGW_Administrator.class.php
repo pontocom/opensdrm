@@ -393,6 +393,25 @@ class PGW_Administrator extends DatabaseHandler
 
 	}
 
+    public function listAllTransactions()
+    {
+        $sql = 'SELECT * FROM pgwws_transaction';
+        $rs=$this->db_con->executeQuery($sql);
+        if($rs->RecordCount()==0) { // no results were found
+            $result = -1;
+        } else { // we build an XML structure to provide the needed license template list
+            $result = array();
+            $n=0;
+            while(!$rs->EOF) {
+                $result[$n] = array($rs->fields["transaction_number"], $rs->fields["cos_id"], $rs->fields["pay_data"], $rs->fields["status"]);
+                $n++;
+                $rs->MoveNext();
+            }
+        }
+
+        return $result;
+    }
+
 	/**
 	 * Closes the database access.
 	 */

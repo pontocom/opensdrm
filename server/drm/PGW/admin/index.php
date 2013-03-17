@@ -1,6 +1,6 @@
 <?
 session_start();
-if($_SESSION['LOGIN']==1) {
+if(isset($_SESSION['LOGIN']) && $_SESSION['LOGIN']==1) {
 	header("Location: pgwManager.php");
 }
 include_once($_SERVER["DOCUMENT_ROOT"]."/config.inc.php");

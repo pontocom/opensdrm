@@ -76,7 +76,7 @@ function validateFormAdd()
 
 <?php
 	$rgs_admin = new RGS_Administrator();
-	$servers = $rgs_admin->listServers_();
+	$c = $rgs_admin->listAllContent();
 ?>
 <table border="1" align="center">
 <tr>
@@ -84,50 +84,51 @@ function validateFormAdd()
 Component Identifier
 </td>
 <td class="head">
-Location
+Internal ID
 </td>
-<td class="head">
-</td>
-</tr>
-<?php 
-	for($n=0; $n<count($servers); $n=$n+2)
-	{
-?>		
-<tr>
-<td>
-<?php echo $servers[$n]; ?>
-</td>
-<td>
-<?php echo $servers[$n+1]; ?>
-</td>
-<td>
-<a href="rgsManagerDo.php?what=remove&ctype=<?php echo $servers[$n]; ?>">Remove</a>
+    <td class="head">
+        Hash
+    </td>
+    <td class="head">
+        File
+    </td>
+    <td class="head">
+        Metadata
+    </td>
+    <td class="head">
 </td>
 </tr>
-<?php
-	}
-?>
+    <?php
+    if($c != -1){
+        foreach($c as $content)
+        {
+            ?>
+            <tr>
+                <td>
+                    <?php echo $content[0]; ?>
+                </td>
+                <td>
+                    <?php echo $content[1]; ?>
+                </td>
+                <td>
+                    <?php echo $content[2]; ?>
+                </td>
+                <td>
+                    <?php echo $content[3]; ?>
+                </td>
+                <td>
+                    <?php echo $content[4]; ?>
+                </td>
+                <td>
+                    <a href="rsManagerDo.php?what=remove&ctype=<?php echo $content[0]; ?>">Remove</a>
+                </td>
+            </tr>
+        <?php
+        }
+    }
+    ?>
+
 </table>
-<!-- Part of the login form -->
-<form action="rgsManagerDo.php" method="POST" name="ncform">
-  <table border="0" align="center">
-    <tr>
-      <td colspan="2" class="head">Add new server</td>
-    </tr>
-    <tr>
-      <td class="required"> Component Type: </td>
-      <td><input type="text" name="ctype" id="ctype"><input type="hidden" name="what" value="addnew"></td>
-    </tr>
-    <tr>
-      <td class="required"> Location (URL): </td>
-      <td><input type="text" name="location" id="location"></td>
-    </tr>
-    <tr>
-      <td>  </td>
-      <td><input type="button" value="Add" onclick="javascript:validateFormAdd()"></td>
-    </tr>
-  </table>
-</form>
 <p align="center" class="footer"><?php echo $GLOBALS['VERSION'].$GLOBALS['FOOTER_NOTE'];?></p>
 </body>
 </html>

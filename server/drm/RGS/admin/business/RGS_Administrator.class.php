@@ -309,7 +309,11 @@ class RGS_Administrator extends DatabaseHandler
 </table>";
 	}
 
-	function checkRGSCert($rgsCert) {
+    /**
+     * @param $rgsCert
+     * @return A|bool
+     */
+    function checkRGSCert($rgsCert) {
 		/* to check the RGS Cert, it will be necessary to get the COS public key from the RGS database (certificate) and check the signature of the certificate */
 		/* NOTE: if we have more than one AUS, it will be needed to get the ausCert issuer ID and check for the apropriate AUS public key on the database */
     	//$l = new Logger("RGS");
@@ -335,6 +339,29 @@ class RGS_Administrator extends DatabaseHandler
 		}
 		return true;
 	}
+
+    /**
+     * List the registered content
+     */
+    public function listAllContent()
+    {
+        $sql = 'SELECT * FROM rgsws_content';
+        $rs=$this->db_con->executeQuery($sql);
+        if($rs->RecordCount()==0) { // no results were found
+            $result = -1;
+        } else { // we build an XML structure to provide the needed license template list
+            $result = array();
+            $n=0;
+            while(!$rs->EOF) {
+                $result[$n] = array($rs->fields["content_id"], $rs->fields["internal_id"], $rs->fields["hash"], $rs->fields["file"], $rs->fields["metadata"]);
+                $n++;
+                $rs->MoveNext();
+            }
+        }
+
+        return $result;
+
+    }
 
 	/**
 	 * Closes the database access.
