@@ -83,6 +83,10 @@ if(($op == "CFSrequestServerLocation") && $id) {
     return;
 }
 
+/**
+ * @param $id Contains the id of the service
+ * @return array The location of the service and the result code
+ */
 function CFSrequestServerLocation($id) {
 	$l = new Logger();
 	$l->Log("CFS:CFSrequestServerLocation");
